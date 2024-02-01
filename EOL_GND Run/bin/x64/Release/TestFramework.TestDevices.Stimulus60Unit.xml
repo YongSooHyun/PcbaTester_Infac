@@ -1,0 +1,247 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TestFramework.TestDevices.Stimulus60Unit</name>
+    </assembly>
+    <members>
+        <member name="T:TestFramework.TestDevices.Stimulus60Unit">
+            <summary>
+            An object of this class gives access to the stimulus unit (60V).
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.ResourceRequest(System.Int32,System.UInt32)">
+            <summary>
+            Requests for the resource 'stimulus unit (60V)'.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="DeviceCount">Number of requested devices</param>
+            <remarks>
+            The requested devices are consecutive numbered starting with 0.
+            This number is used as 'Device ID'.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.GetDevice(System.Int32)">
+            <summary>
+            Gives access to the requested stimulus unit.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <returns>A stimulus unit</returns>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.#ctor(System.Int32,System.Int32)">
+            <summary>
+            An object of this class gives access to the stimulus unit (60V).
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="DeviceID">Device ID</param>
+            <remarks>
+            The device ID must be unique for each device. Devices are consecutive numbered starting with 0.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.Dispose">
+            <summary>
+            Releases the stimulus unit object.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.ConnectForce(System.UInt32,System.UInt32)">
+            <summary>
+            Sets the close flag for the relays connecting bus with stimulus force ports.
+            </summary>
+            <param name="BusHigh">Number of the high bus [1..8] - 0 selects no bus</param>
+            <param name="BusLow">Number of the low bus [1..8] - 0 selects no bus</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.DisconnectForce(System.UInt32,System.UInt32)">
+            <summary>
+            Sets the open flag for the relays connecting bus with stimulus force ports.
+            </summary>
+            <param name="BusHigh">Number of the high bus [1..8] - 0 selects no bus</param>
+            <param name="BusLow">Number of the low bus [1..8] - 0 selects no bus</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.ConnectSense(System.UInt32,System.UInt32)">
+            <summary>
+            Sets the close flag for the relays connecting bus with stimulus sense ports.
+            </summary>
+            <param name="BusHigh">Number of the high bus [1..8] - 0 selects no bus</param>
+            <param name="BusLow">Number of the low bus [1..8] - 0 selects no bus</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.DisconnectSense(System.UInt32,System.UInt32)">
+            <summary>
+            Sets the open flag for the relays connecting bus with stimulus sense ports.
+            </summary>
+            <param name="BusHigh">Number of the high bus [1..8] - 0 selects no bus</param>
+            <param name="BusLow">Number of the low bus [1..8] - 0 selects no bus</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.CommitConnections">
+            <summary>
+            Collects all close and open flags and makes them effective.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.ClearConnections">
+            <summary>
+            Sets the open flag for all relays.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.SetupStaticStimulation(System.Double,System.Double)">
+            <summary>
+            Sets the parameters for a static stimulation.
+            </summary>
+            <param name="Current">Stimulation current</param>
+            <param name="Voltage">Stimulation voltage</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.SetupStaticStimulation(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Sets the parameters for a static stimulation.
+            </summary>
+            <param name="Current">Stimulation current</param>
+            <param name="Voltage">Stimulation voltage</param>
+            <param name="CurrentMeasurementRange">Current measurement range</param>
+            <param name="VoltageMeasurementRange">Voltage measurement range</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.GetStaticStimulationCapabilities(System.Int32,System.Double,System.Double,System.Double@,System.Double@)">
+            <summary>
+            Determines the stimulus capabilities.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="Current">Intended stimulation current</param>
+            <param name="Voltage">Intended stimulation voltage</param>
+            <param name="ActualCurrent">Actual stimulation current</param>
+            <param name="ActualVoltage">Actual stimulation voltage</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.GetStaticStimulationCapabilities(System.Int32,System.Double,System.Double,System.Double,System.Double,System.Double@,System.Double@,System.Double@,System.Double@)">
+            <summary>
+            Determines the stimulus capabilities.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="Current">Intended stimulation current</param>
+            <param name="Voltage">Intended stimulation voltage</param>
+            <param name="CurrentMeasurementRange">Intended current measurement range</param>
+            <param name="VoltageMeasurementRange">Intended voltage measurement range</param>
+            <param name="ActualCurrent">Actual stimulation current</param>
+            <param name="ActualVoltage">Actual stimulation voltage</param>
+            <param name="ActualCurrentMeasurementRange">Actual current measurement range</param>
+            <param name="ActualVoltageMeasurementRange">Actual voltage measurement range</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.SetupPermanentStimulation(System.Double,System.Double)">
+            <summary>
+            Sets the parameters for a permanent stimulation.
+            </summary>
+            <param name="Current">Stimulation current</param>
+            <param name="Voltage">Stimulation voltage</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.SetupPermanentStimulation(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Sets the parameters for a permanent stimulation.
+            </summary>
+            <param name="Current">Stimulation current</param>
+            <param name="Voltage">Stimulation voltage</param>
+            <param name="CurrentMeasurementRange">Current measurement range</param>
+            <param name="VoltageMeasurementRange">Voltage measurement range</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.GetPermanentStimulationCapabilities(System.Int32,System.Double,System.Double,System.Double@,System.Double@)">
+            <summary>
+            Determines the stimulus capabilities.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="Current">Intended stimulation current</param>
+            <param name="Voltage">Intended stimulation voltage</param>
+            <param name="ActualCurrent">Actual stimulation current</param>
+            <param name="ActualVoltage">Actual stimulation voltage</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.GetPermanentStimulationCapabilities(System.Int32,System.Double,System.Double,System.Double,System.Double,System.Double@,System.Double@,System.Double@,System.Double@)">
+            <summary>
+            Determines the stimulus capabilities.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="Current">Intended stimulation current</param>
+            <param name="Voltage">Intended stimulation voltage</param>
+            <param name="CurrentMeasurementRange">Intended current measurement range</param>
+            <param name="VoltageMeasurementRange">Intended voltage measurement range</param>
+            <param name="ActualCurrent">Actual stimulation current</param>
+            <param name="ActualVoltage">Actual stimulation voltage</param>
+            <param name="ActualCurrentMeasurementRange">Actual current measurement range</param>
+            <param name="ActualVoltageMeasurementRange">Actual voltage measurement range</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.GetStimulationTimingCapabilities(System.Int32,System.Double,System.Double,System.Double,System.UInt32,System.Double@,System.Double@,System.Double@,System.UInt32@)">
+            <summary>
+            Determines the timing capabilities.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="DischargeTime">Intended discharge time</param>
+            <param name="MeasurementDelay">Intended measurement delay</param>
+            <param name="MeasurementPeriod">Intended measurement period</param>
+            <param name="MeasurementCount">Measurement count</param>
+            <param name="ActualDischargeTime">Actual discharge time</param>
+            <param name="ActualMeasurementDelay">Actual measurement delay</param>
+            <param name="ActualMeasurementPeriod">Actual measurement period</param>
+            <param name="ActualMeasurementCount">Actual measurement count</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.TriggerMeasurement(System.Int32)">
+            <summary>
+            Triggers a single measurement.
+            </summary>
+            <param name="MeasurementID">Measurement ID</param>
+            <remarks>
+            All requested measurements must be identified by a unique number, the 'Measurement ID'.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.RequestMeasurementResult(System.Int32,System.UInt32)">
+            <summary>
+            Requests for multiple measurement results.
+            </summary>
+            <param name="MeasurementID">Measurement ID</param>
+            <param name="MeasurementCount">Number of measurements</param>
+            <remarks>
+            All requested measurements must be identified by a unique number, the 'Measurement ID'.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.RequestMeasurementResult(System.Int32)">
+            <summary>
+            Requests for a single measurement result.
+            </summary>
+            <param name="MeasurementID">Measurement ID</param>
+            <remarks>
+            All requested measurements must be identified by a unique number, the 'Measurement ID'.
+            </remarks>
+        </member>
+        <member name="T:TestFramework.TestDevices.Stimulus60Unit.MeasurementResult">
+            <summary>
+            An object of this class gives access to the measurement results.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.MeasurementResult.Dispose">
+            <summary>
+            Releases the measurement result object.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.MeasurementResult.ReceiveMeasurementResult(System.Int32,System.UInt32,System.Double[]@,System.Double[]@)">
+            <summary>
+            Fetches multiple measurement results.
+            </summary>
+            <param name="MeasurementID">Measurement ID</param>
+            <param name="MeasurementCount">Number of measurements</param>
+            <param name="Current">Measured current</param>
+            <param name="Voltage">Measured voltage</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.MeasurementResult.ReceiveMeasurementResult(System.Int32,System.Double@,System.Double@)">
+            <summary>
+            Fetches a single measurement result.
+            </summary>
+            <param name="MeasurementID">Measurement ID</param>
+            <param name="Current">Measured current</param>
+            <param name="Voltage">Measured voltage</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.GetMeasurementResult(System.Int32)">
+            <summary>
+            Gives access to the measurement result.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <returns>The measurement result object</returns>
+        </member>
+        <member name="M:TestFramework.TestDevices.Stimulus60Unit.Z(System.Object)">
+            <summary>
+            Do not use. For internal purposes only.
+            </summary>
+            <param name="arg">arg</param>
+            <returns>object</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,14 @@
+E:\Project\ICT_Project\IntelligentPcbaTester_Infac_Inline\Be.Windows.Forms.HexBox\bin\x86\Release\Be.Windows.Forms.HexBox.dll
+E:\Project\ICT_Project\IntelligentPcbaTester_Infac_Inline\Be.Windows.Forms.HexBox\obj\x86\Release\Be.Windows.Forms.HexBox.csproj.AssemblyReference.cache
+E:\Project\ICT_Project\IntelligentPcbaTester_Infac_Inline\Be.Windows.Forms.HexBox\obj\x86\Release\Be.Windows.Forms.HexBox.resources
+E:\Project\ICT_Project\IntelligentPcbaTester_Infac_Inline\Be.Windows.Forms.HexBox\obj\x86\Release\Be.Windows.Forms.Properties.Resources.resources
+E:\Project\ICT_Project\IntelligentPcbaTester_Infac_Inline\Be.Windows.Forms.HexBox\obj\x86\Release\Be.Windows.Forms.HexBox.csproj.GenerateResource.cache
+E:\Project\ICT_Project\IntelligentPcbaTester_Infac_Inline\Be.Windows.Forms.HexBox\obj\x86\Release\Be.Windows.Forms.HexBox.csproj.CoreCompileInputs.cache
+E:\Project\ICT_Project\IntelligentPcbaTester_Infac_Inline\Be.Windows.Forms.HexBox\obj\x86\Release\Be.Windows.Forms.HexBox.dll
+C:\OperationService\IntelligentPcbaTester_Infac_Inline\Be.Windows.Forms.HexBox\bin\x86\Release\Be.Windows.Forms.HexBox.dll
+C:\OperationService\IntelligentPcbaTester_Infac_Inline\Be.Windows.Forms.HexBox\obj\x86\Release\Be.Windows.Forms.HexBox.csproj.AssemblyReference.cache
+C:\OperationService\IntelligentPcbaTester_Infac_Inline\Be.Windows.Forms.HexBox\obj\x86\Release\Be.Windows.Forms.HexBox.resources
+C:\OperationService\IntelligentPcbaTester_Infac_Inline\Be.Windows.Forms.HexBox\obj\x86\Release\Be.Windows.Forms.Properties.Resources.resources
+C:\OperationService\IntelligentPcbaTester_Infac_Inline\Be.Windows.Forms.HexBox\obj\x86\Release\Be.Windows.Forms.HexBox.csproj.GenerateResource.cache
+C:\OperationService\IntelligentPcbaTester_Infac_Inline\Be.Windows.Forms.HexBox\obj\x86\Release\Be.Windows.Forms.HexBox.csproj.CoreCompileInputs.cache
+C:\OperationService\IntelligentPcbaTester_Infac_Inline\Be.Windows.Forms.HexBox\obj\x86\Release\Be.Windows.Forms.HexBox.dll

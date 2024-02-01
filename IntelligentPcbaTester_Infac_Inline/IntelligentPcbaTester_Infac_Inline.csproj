@@ -1,0 +1,564 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{24C43BB5-EB2A-4CC7-9176-814BDF7570CC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>IntelligentPcbaTester</RootNamespace>
+    <AssemblyName>IntelligentPcbaTester_Infac_Inline</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Crc32.NET, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dc0b95cf99bf4e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\Crc32.NET.1.2.0\lib\net20\Crc32.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\ObjectListView.Official.2.9.1\lib\net20\ObjectListView.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.118.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.118.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.118.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.118.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.118.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TestFramework.Common, Version=1.1.0.42, Culture=neutral, PublicKeyToken=91d36d3ec2aa0933, processorArchitecture=MSIL" />
+    <Reference Include="TestFramework.PluginTestCell, Version=1.8.0.51, Culture=neutral, PublicKeyToken=84276bb520253941, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\AppSettings.cs" />
+    <EmbeddedResource Include="UI\JtagSettingsForm.resx">
+      <DependentUpon>JtagSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\VersionHistoryForm.resx">
+      <DependentUpon>VersionHistoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="novaflash.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Script\ElozProgramScript.cs" />
+    <Compile Include="Common\ElozResultLogFormatter.cs" />
+    <Compile Include="Common\ObjectListViewExtensions.cs" />
+    <Compile Include="Device\Dio.cs" />
+    <Compile Include="Device\DioOut.cs" />
+    <Compile Include="Device\DioRead.cs" />
+    <Compile Include="Device\FidScanner.cs" />
+    <Compile Include="Device\Novaflash.cs" />
+    <Compile Include="Device\Plc.cs" />
+    <Compile Include="Device\ProbeCounter.cs" />
+    <Compile Include="Device\Scope.cs" />
+    <Compile Include="MES\MesMessage.cs" />
+    <Compile Include="MES\MesRequestMessage.cs" />
+    <Compile Include="MES\MesResponseMessage.cs" />
+    <Compile Include="MES\MesServer.cs" />
+    <Compile Include="Model\CrcTable.cs" />
+    <Compile Include="Model\NovaflashData.cs" />
+    <Compile Include="Model\ComportSettings.cs" />
+    <Compile Include="Common\Logger.cs" />
+    <Compile Include="Common\Utils.cs" />
+    <Compile Include="Device\BarcodeScanner.cs" />
+    <Compile Include="Device\Eloz1.cs" />
+    <Compile Include="Device\PowerSupply.cs" />
+    <Compile Include="Model\ComportSettingsManager.cs" />
+    <Compile Include="Model\FixtureProbeCount.cs" />
+    <Compile Include="Model\FixtureProbeCountManager.cs" />
+    <Compile Include="Model\HistoryGroup.cs" />
+    <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\ProductManager.cs" />
+    <Compile Include="Model\TestHistory.cs" />
+    <Compile Include="Model\TestHistoryConfiguration.cs" />
+    <Compile Include="Model\TestHistoryContext.cs" />
+    <Compile Include="Model\TestProject.cs" />
+    <Compile Include="Model\TestProjectManager.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserManager.cs" />
+    <Compile Include="Model\UserPermission.cs" />
+    <Compile Include="Plugin\TestCell.cs" />
+    <None Include="Script\NovaFlash Check XML.cs" />
+    <None Include="Script\NovaFlash Run XML.cs" />
+    <None Include="Script\ElozComPortScript.cs" />
+    <None Include="Script\ElozProgramSectionsScript.cs" />
+    <None Include="Script\NovaFlash Run XML Slave.cs" />
+    <Compile Include="Series\SeriesClient.cs" />
+    <Compile Include="Series\SeriesMessage.cs" />
+    <Compile Include="Series\SeriesRequestMessage.cs" />
+    <Compile Include="Series\SeriesResponseMessage.cs" />
+    <Compile Include="Series\SeriesServer.cs" />
+    <Compile Include="UI\ComportSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ComportSettingsForm.Designer.cs">
+      <DependentUpon>ComportSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Custom\HexNumericUpDown.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Custom\PieChart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Custom\PieChart.Designer.cs">
+      <DependentUpon>PieChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FidEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FidEditForm.Designer.cs">
+      <DependentUpon>FidEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FidScanForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FidScanForm.Designer.cs">
+      <DependentUpon>FidScanForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GeneralSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\GeneralSettingsForm.Designer.cs">
+      <DependentUpon>GeneralSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\JtagSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\JtagSettingsForm.Designer.cs">
+      <DependentUpon>JtagSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\MechanicsControlForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MechanicsControlForm.Designer.cs">
+      <DependentUpon>MechanicsControlForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MessageDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MessageDialog.Designer.cs">
+      <DependentUpon>MessageDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SeriesSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SeriesSettingsForm.Designer.cs">
+      <DependentUpon>SeriesSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MesSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MesSettingsForm.Designer.cs">
+      <DependentUpon>MesSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\NameSelectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\NameSelectionForm.Designer.cs">
+      <DependentUpon>NameSelectionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\NovaflashSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\NovaflashSettingsForm.Designer.cs">
+      <DependentUpon>NovaflashSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\OnOffControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\OnOffControl.Designer.cs">
+      <DependentUpon>OnOffControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PasswordSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PasswordSettingsForm.Designer.cs">
+      <DependentUpon>PasswordSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PathSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PathSettingsForm.Designer.cs">
+      <DependentUpon>PathSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProbeCountEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ProbeCountEditForm.Designer.cs">
+      <DependentUpon>ProbeCountEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProductOpenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ProductOpenForm.Designer.cs">
+      <DependentUpon>ProductOpenForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProductSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ProductSettingsForm.Designer.cs">
+      <DependentUpon>ProductSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TestHistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\TestHistoryForm.Designer.cs">
+      <DependentUpon>TestHistoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TestProjectEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\TestProjectEditForm.Designer.cs">
+      <DependentUpon>TestProjectEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CrcSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\CrcSettingsForm.Designer.cs">
+      <DependentUpon>CrcSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UserSettingsForm.Designer.cs">
+      <DependentUpon>UserSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\VersionHistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\VersionHistoryForm.Designer.cs">
+      <DependentUpon>VersionHistoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\ProductSettingsViewModel.cs" />
+    <EmbeddedResource Include="UI\ComportSettingsForm.resx">
+      <DependentUpon>ComportSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Custom\PieChart.resx">
+      <DependentUpon>PieChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FidEditForm.resx">
+      <DependentUpon>FidEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FidScanForm.resx">
+      <DependentUpon>FidScanForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\GeneralSettingsForm.resx">
+      <DependentUpon>GeneralSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UI\MechanicsControlForm.resx">
+      <DependentUpon>MechanicsControlForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MessageDialog.resx">
+      <DependentUpon>MessageDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SeriesSettingsForm.resx">
+      <DependentUpon>SeriesSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MesSettingsForm.resx">
+      <DependentUpon>MesSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NameSelectionForm.resx">
+      <DependentUpon>NameSelectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NovaflashSettingsForm.resx">
+      <DependentUpon>NovaflashSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\OnOffControl.resx">
+      <DependentUpon>OnOffControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PasswordSettingsForm.resx">
+      <DependentUpon>PasswordSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PathSettingsForm.resx">
+      <DependentUpon>PathSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ProbeCountEditForm.resx">
+      <DependentUpon>ProbeCountEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ProductOpenForm.resx">
+      <DependentUpon>ProductOpenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ProductSettingsForm.resx">
+      <DependentUpon>ProductSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TestHistoryForm.resx">
+      <DependentUpon>TestHistoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TestProjectEditForm.resx">
+      <DependentUpon>TestProjectEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Device\Novaflash.Extern.cs" />
+    <EmbeddedResource Include="UI\CrcSettingsForm.resx">
+      <DependentUpon>CrcSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserSettingsForm.resx">
+      <DependentUpon>UserSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\ComportSettings.datasource" />
+    <None Include="Properties\DataSources\MesResultInfo.datasource" />
+    <None Include="Properties\DataSources\Product.datasource" />
+    <None Include="Properties\DataSources\User.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mobis4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-green-circle-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-red-circle-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\right-arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fn-dll.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="grpMan.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="README.txt" />
+    <None Include="Resources\icons8-gray-circle-48.png" />
+    <None Include="Resources\icons8-yellow-circle-48.png" />
+    <None Include="Resources\icons8-black-circle-48.png" />
+    <None Include="Resources\arrow-up-mid-32.png" />
+    <None Include="Resources\arrow-up-underline-64.png" />
+    <None Include="Resources\arrow-up-underline-32.png" />
+    <None Include="Resources\arrow-up-underline-16.png" />
+    <None Include="Resources\arrow-up-step-64.png" />
+    <None Include="Resources\arrow-up-step-32.png" />
+    <None Include="Resources\arrow-up-step-16.png" />
+    <None Include="Resources\arrow-up-64.png" />
+    <None Include="Resources\arrow-up-32.png" />
+    <None Include="Resources\arrow-up-16.png" />
+    <None Include="Resources\arrow-refresh-64.png" />
+    <None Include="Resources\arrow-refresh-32.png" />
+    <None Include="Resources\arrow-refresh-16.png" />
+    <None Include="Resources\arrow-down-upperline-64.png" />
+    <None Include="Resources\arrow-down-upperline-32.png" />
+    <None Include="Resources\arrow-down-upperline-16.png" />
+    <None Include="Resources\arrow-down-step-64.png" />
+    <None Include="Resources\arrow-down-step-32.png" />
+    <None Include="Resources\arrow-down-step-16.png" />
+    <None Include="Resources\arrow-down-64.png" />
+    <None Include="Resources\arrow-down-32.png" />
+    <None Include="Resources\arrow-down-16.png" />
+    <None Include="Resources\cancel-96.png" />
+    <None Include="Resources\cancel-48.png" />
+    <None Include="Resources\cancel-32.png" />
+    <None Include="Resources\open_folder-96.png" />
+    <None Include="Resources\open_folder-48.png" />
+    <None Include="Resources\open_folder-32.png" />
+    <None Include="Resources\SNS.png" />
+    <None Include="Resources\infac.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.csproj">
+      <Project>{26c5f25f-b450-4caf-ad8b-b8d11ae73457}</Project>
+      <Name>Be.Windows.Forms.HexBox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CasRnf32NET\CasRnf32NET.csproj">
+      <Project>{216dd68b-ba02-45fc-bfaa-685a8f085a7f}</Project>
+      <Name>CasRnf32NET</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EOL_GND\EOL_GND.csproj">
+      <Project>{4d54dff3-e40d-44bb-84b5-8338ba4e88de}</Project>
+      <Name>EOL_GND</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InfoBox\InfoBox.csproj">
+      <Project>{18B58CA4-E470-4EB4-AC2B-52BECAFE0B53}</Project>
+      <Name>InfoBox</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
+</Project>

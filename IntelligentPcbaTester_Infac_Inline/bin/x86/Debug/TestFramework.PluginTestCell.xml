@@ -1,0 +1,1359 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TestFramework.PluginTestCell</name>
+    </assembly>
+    <members>
+        <member name="T:TestFramework.PluginTestCell.AlertManager">
+            <summary>
+            An object of this class acts as an interface between the test cell plugin and the TestFramework alert manager.
+            </summary>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.AlertManager.AlertStage">
+            <summary>
+            The available alert stages.
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.AlertManager.AlertStage.WarningStage">
+            <summary>
+            Warning stage
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.AlertManager.AlertStage.ErrorStage">
+            <summary>
+            Error stage
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.AlertManager.AlertStage.FatalErrorStage">
+            <summary>
+            Fatal error stage
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.AlertManager.#ctor(TestFramework.PluginTestCell.TestCellEnvironment)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.AlertManager.Dispose">
+            <summary>
+            Releases the alert manager object.
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.AlertManager.TriggerAlert(System.String,TestFramework.PluginTestCell.AlertManager.AlertStage,System.Boolean@)">
+            <summary>
+            Triggers an alert of the given stage.
+            </summary>
+            <param name="Message">Alert message</param>
+            <param name="Stage">Alert stage</param>
+            <param name="Abort">If true, the alert manager requests an abort of the running test process</param>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.BoardHandler">
+            <summary>
+            An object of this class acts as an interface between the test cell plugin and the TestFramework board handler.
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.BoardHandler.#ctor(TestFramework.PluginTestCell.TestCellEnvironment)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.BoardHandler.Dispose">
+            <summary>
+            Releases the board handler object.
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.BoardHandler.GetFixtureCartridgeIdentificationCode">
+            <summary>
+            Determines the identification code of the present fixture cartridge.
+            </summary>
+            <returns>Fixture identification code</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.BoardHandler.GetBoardIdentificationCode">
+            <summary>
+            Determines the identification code of the present board.
+            </summary>
+            <returns>Board identification code</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.BoardHandler.SetBoardIdentificationCode(System.String)">
+            <summary>
+            Sets the identification code of the present board.
+            </summary>
+            <param name="BoardID">Board identification code</param>
+            <remarks>This method should only be used, if the board handler itself can not determine the board's identification code.</remarks>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.BoardHandler.GetFixturePosition">
+            <summary>
+            Determines the current fixture position.
+            </summary>
+            <returns>The current fixture position.</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.BoardHandler.GetFixturePositionCount">
+            <summary>
+            Determines the number of fixture positions.
+            </summary>
+            <returns>The number of fixture positions.</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.BoardHandler.IsBoardAvailable">
+            <summary>
+            Determines if a board is available in front of the test cell.
+            </summary>
+            <returns>True if a board is available.</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.BoardHandler.IsBoardIn">
+            <summary>
+            Determines if a board is in the test cell.
+            </summary>
+            <returns>True if a board is in.</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.BoardHandler.MoveBoardIn">
+            <summary>
+            Moves a board into the test cell.
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.BoardHandler.MoveBoardOut(System.Int32)">
+            <summary>
+            Moves board out to the path defined by PathID.
+            </summary>
+            <param name="PathID">Selected outlet</param>
+            <remarks>
+            PathID 0 typically identifies the path for good boards.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.BoardHandler.MoveBoardInAndOut(System.Int32)">
+            <summary>
+            Moves a board into the test cell and simultaneously another one out of the test cell to the path defined by PathID.
+            </summary>
+            <param name="PathID">Selected outlet</param>
+            <remarks>
+            PathID 0 typically identifies the path for good boards.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.BoardHandler.MoveFixture(System.Int32)">
+            <summary>
+            Moves the fixture to the specified position.
+            </summary>
+            <param name="PositionID">ID of the Position</param>
+            <remarks>
+            PositionID 0 typically identifies the 'open' position.
+            PositionID 1 typically identifies the 'close' position.
+            Additional positions could be available in case of a multi-stage fixture.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.BoardHandler.RecontactFixture">
+            <summary>
+            Performs a recontact: opens the fixture and closes it again to the previous position.
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.BoardHandler.ExecuteCommand(System.String)">
+            <summary>
+            Executes a command.
+            </summary>
+            <param name="Command">The command</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.BoardHandler.ExecuteCommand(System.String,System.String)">
+            <summary>
+            Executes a command.
+            </summary>
+            <param name="Command">The command</param>
+            <param name="Argument">The argument</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.ErrorOccuredEventHandler">
+            <summary>
+            This event handler will be called when an error has been occurred.
+            </summary>
+            <param name="ErrorID">Error ID</param>
+            <param name="ErrorMessage">Error message</param>
+            <param name="ErrorDetails">Error details</param>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.TestCellEnvironment">
+            <summary>
+            An object of this class acts as an interface between the test cell plugin and the TestFramework.
+            </summary>
+        </member>
+        <member name="E:TestFramework.PluginTestCell.TestCellEnvironment.ErrorOccured">
+            <summary>
+            This event handler will be called when an error has been occurred.
+            </summary>
+            <remarks>
+            Must be enabled by setting 'ErrorOccuredEventEnabled'.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestCellEnvironment.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestCellEnvironment.Dispose">
+            <summary>
+            Releases the test cell environment object.
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestCellEnvironment.GetErrorCode">
+            <summary>
+            Determines the error code if an error has been occurred.
+            </summary>
+            <returns>The error code.</returns>
+            <remarks>
+            If an error has been occurred the error code will be returned.
+            If no error has been occurred 0 will be returned.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestCellEnvironment.GetErrorText">
+            <summary>
+            Determines the error text if an error has been occurred.
+            </summary>
+            <returns>The error text.</returns>
+            <remarks>
+            If an error has been occurred the error text will be returned.
+            If no error has been occurred an empty string will be returned.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestCellEnvironment.ClearError">
+            <summary>
+            Clears the stored error code and error text. 
+            </summary>
+            <remarks>
+            This method should be called after an error has been handled and the entry is no longer needed.
+            </remarks>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestCellEnvironment.ErrorOccuredEventEnabled">
+            <summary>
+            Enables/disables the 'error occurred' event.
+            </summary>
+            <remarks>
+            If true:
+            Error messages will no longer be displayed by the TestFramework.
+            All error messages will be send to the 'error occurred' event handler.
+            If false:
+            Error messages will be displayed by the TestFramework.
+            Error messages will no longer be send to the 'error occurred' event handler.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestCellEnvironment.GetBoardHandler">
+            <summary>
+            Gives access to the board handler object.
+            </summary>
+            <returns>The board handler object</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestCellEnvironment.GetAlertManager">
+            <summary>
+            Gives access to the alert manager object.
+            </summary>
+            <returns>The alert manager object</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestCellEnvironment.GetTestDevices">
+            <summary>
+            Gives access to the test devices object.
+            </summary>
+            <returns>The test devices object</returns>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestCellEnvironment.UserManager">
+            <summary>
+            ! Not yet implemented !
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestCellEnvironment.Dispose(TestFramework.PluginTestCell.BoardHandler)">
+            <summary>
+            
+            </summary>
+            <param name="board_handler"></param>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestCellEnvironment.Dispose(TestFramework.PluginTestCell.AlertManager)">
+            <summary>
+            
+            </summary>
+            <param name="alert_manager"></param>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestCellEnvironment.Dispose(TestFramework.PluginTestCell.TestDevices)">
+            <summary>
+            
+            </summary>
+            <param name="test_devices"></param>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestCellEnvironment.GetTestResult">
+            <summary>
+            Gives access to the test result object.
+            </summary>
+            <returns>The test result object</returns>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestCellEnvironment.ReturnMessage">
+            <summary>
+            If called in server mode this message will be returned to the calling application.
+            </summary>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.ITestCellInterface">
+            <summary>
+            The implementation of this interface builds the TestFramework plugin interface of a test cell.
+            </summary>
+            <remarks>
+            This interface needs to be implemented by a every plugin test cell as 'TestFrameworkPlugin.TestCell'.
+            The name of the root namespace must be 'TestFrameworkPlugin' and the name of the class must be 'TestCell'.
+            The implementation of method 'Configure' is optional all other methods must be implemented.
+            To implement a subset of the methods a TestCell class without implementing ITestCellInterface could be defined.
+            Loading the TestCell plugin the TestFramework will analyse the TestCell class.
+            Only implemented methods will be used.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.ITestCellInterface.Info">
+            <summary>
+            Determines an info text describing the test cell.
+            </summary>
+            <returns>Info text describing the test cell.</returns>
+            <remarks>
+            This method will be called by the TestFramework to get a short description of the test program.
+            Example for an info text: "Standard test cell; Plugin created by elowerk 2009; Version 1.0.0.0"
+            </remarks>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.ITestCellInterface.Run(TestFramework.PluginTestCell.TestCellEnvironment,System.String,System.String)">
+            <summary>
+            Runs the test cell.
+            </summary>
+            <param name="Environment">The test cell environment</param>
+            <param name="Command">A command</param>
+            <param name="Argument">An argument related to the command</param>
+            <remarks>
+            This method will be called by the TestFramework to run the test cell.
+            Commands and arguments can be used to control the test cell plugin. Syntax and functions
+            can be freely defined by the implementation of the plugin. Merely the command prefix "TFW."
+            is reserved for internal purposes and should not be used. If the Run method is called
+            from the tester software user interface the command is "TFW.OpenProject" and the argument
+            is the project name.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.ITestCellInterface.Configure">
+            <summary>
+            Opens a configuration dialog.
+            </summary>
+            <remarks>
+            This method will be called by the TestFramework to configure the test cell interface.
+            </remarks>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.Project">
+            <summary>
+            An object of this class acts as an interface between the test cell plugin and the TestFramework projects.
+            </summary>
+        </member>
+        <member name="E:TestFramework.PluginTestCell.Project.NewTestResultRecord">
+            <summary>
+            This event handler will be called when a new result record is available.
+            </summary>
+        </member>
+        <member name="E:TestFramework.PluginTestCell.Project.TestRunFinished">
+            <summary>
+            This event handler will be called when the test run is finished.
+            </summary>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.Project.ErrorOccurredEventHandler">
+            <summary>
+            This event handler will be called when an error has been occurred.
+            </summary>
+            <param name="ErrorID">Error ID</param>
+            <param name="ErrorMessage">Error message</param>
+            <param name="ErrorDetails">Error details</param>
+        </member>
+        <member name="E:TestFramework.PluginTestCell.Project.ErrorOccurred">
+            <summary>
+            This event handler will be called when an error has been occurred.
+            </summary>
+            <remarks>
+            Must be enabled by setting 'ErrorOccuredEventEnabled' in test cell environment.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.Project.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.Project.OpenProject(System.String)">
+            <summary>
+            Opens the project in ready only mode.
+            </summary>
+            <param name="name">Name of the project</param>
+            <returns>True if project opens properly.</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.Project.OpenProject(System.String,System.Boolean)">
+            <summary>
+            Opens the project.
+            </summary>
+            <param name="Name">Name of the project</param>
+            <param name="WriteAccess">True: allows write access</param>
+            <returns>True if project opens properly.</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.Project.CloseProject">
+            <summary>
+            Closes the project.
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.Project.RunTest(System.String[])">
+            <summary>
+            ! Not yet implemented !
+            </summary>
+            <param name="Arguments">Arguments</param>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.Project.ShowTestEditor">
+            <summary>
+            Shows the test editor dialog for the project.
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.Project.RunTest">
+            <summary>
+            Runs the project's test.
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.Project.GetTestResult">
+            <summary>
+            Gives access to the test result object.
+            </summary>
+            <returns>The test result object</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.Project.LoadTestData">
+            <summary>
+            Loads the test data of the project into the memory.
+            </summary>
+            <remarks>
+            Loading the data could take a long time depending on the projects's size.
+            If this method is not called, the data will be loaded automatically before the first test run.
+            This could effect a noticeable delay.
+            </remarks>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.Project.LogMode">
+            <summary>
+            Log generation modus.
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.Project.LogMode.LogDefault">
+            <summary>
+            Log mode depends on the individual setting for each test step.
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.Project.LogMode.LogAlways">
+            <summary>
+            If the log mode of a test step is 'FaultsOnly' the mode 'Always' will be used instead. Regardless of the steps's result state the result will be logged.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.Project.GeneralLogMode">
+            <summary>
+            Overrides the individual log mode of all test steps.
+            </summary>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.Project.RunMode">
+            <summary>
+            Run mode.
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.Project.RunMode.Normal">
+            <summary>
+            The execution procedure depends on the settings within the test program.
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.Project.RunMode.HaltOnFault">
+            <summary>
+            The test program will halt at each faulty test step. This mode might be overwritten within the test program.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.Project.DefaultRunMode">
+            <summary>
+            The default run mode.
+            </summary>
+            <remarks>
+            The mode can only be set if the project is opened but not running.
+            This default run mode might be overwritten within the test program.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.Project.BreakRunningTest">
+            <summary>
+            Breaks the running test.
+            </summary>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.Project.Item">
+            <summary>
+            An object of this class gives access to project data.
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.Project.Item.#ctor(elowerk.TestFramework.Internal.Lifter.ITestProjectDataBase)">
+            <summary>
+            
+            </summary>
+            <param name="test_project_data_base"></param>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.Project.Item.#ctor(elowerk.TestFramework.Internal.Lifter.ITestProjectDataBase,TestFramework.PluginTestCell.Project.Item)">
+            <summary>
+            
+            </summary>
+            <param name="test_project_data_base"></param>
+            <param name="owner"></param>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.Project.Item.GetProperty(System.String)">
+            <summary>
+            Determines a property*s value.
+            </summary>
+            <param name="query">Query command</param>
+            <returns>Requested object</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.Project.Item.GetProperty(System.String,System.Object)">
+            <summary>
+            Determines a property*s value.
+            </summary>
+            <param name="query">Query command</param>
+            <param name="arg">Query argument</param>
+            <returns>Requested object</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.Project.Item.GetProperty(System.String,System.Object[])">
+            <summary>
+            Determines a property*s value.
+            </summary>
+            <param name="query">Query command</param>
+            <param name="args">Query arguments</param>
+            <returns>Requested object</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.Project.Item.GetItem(System.String)">
+            <summary>
+            Determines a sub-item.
+            </summary>
+            <param name="query">Query command</param>
+            <returns>Requested item</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.Project.Item.GetItem(System.String,System.Object)">
+            <summary>
+            Determines a sub-item.
+            </summary>
+            <param name="query">Query command</param>
+            <param name="arg">Query argument</param>
+            <returns>Requested item</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.Project.Item.GetItem(System.String,System.Object[])">
+            <summary>
+            Determines a sub-item.
+            </summary>
+            <param name="query">Query command</param>
+            <param name="args">Query arguments</param>
+            <returns>Requested item</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.Project.GetItem(System.String)">
+            <summary>
+            Gets a root level item.
+            </summary>
+            <param name="query">Query command</param>
+            <returns>Requested item</returns>
+            <remarks>
+            <Member name="GeneralRemarks">   
+        The data items are building a recursive data structure.
+        Any item can contain sub-items itself.
+        Method GetItem returns the requested sub-item.
+        Item names can be concatenated with dots to a combined query.
+        <code lang="vb">
+        item = args.Data.GetItem("ItemA").GetItem("ItemB")
+        ' the same query combined: 
+        item = args.Data.GetItem("ItemA.ItemB")
+        </code> 
+    </Member>
+            <Member name="TestCellProjectItemRemarks">   
+        If a requested item does not exist a special 'Null-Item' object will be returned.
+        A Null-Item can be detected requesting the boolean property "#IsNull".
+        <code lang="vb">
+        is_null = CType(args.Data.GetItem("ItemA").GetProperty("#IsNull"), Boolean)
+        </code> 
+        Items can contain a list of sub-items which can be querried by it's index.
+        The number of sub-items can be find out by requesting the integer property "#Count".
+        <code lang="vb">        
+        For i as Integer = 0 to CType(args.Data.GetItem("ItemC").GetProperty("#Count"), Integer)
+          item = args.Data.GetItem("ItemC", i)
+        Next
+        </code>        
+    </Member>
+            <Member name="GeneralPropertyRemarks">   
+        Any item can contain property values.
+        Method GetProperty returns the requested property value.
+        <code lang="vb">
+        value = args.Data.GetItem("ItemA").GetProperty("PropA")
+        </code> 
+        If a requested property does not exist a special 'Null-Property' object will be returned.
+        The ToString method of the Null-Property always returns the empyt string.
+        To detect if a property exists request the property with the argument "#IsNull".
+        <code lang="vb">
+        is_null = CType(args.Data.GetItem("ItemA").GetProperty("PropA", "#IsNull"), Boolean)
+        </code> 
+    </Member>
+            The provided data structure:
+            <list type="bullet">  
+              <item>Item <b>ProjectData</b>
+        <list type="bullet">
+          <item>Sub-Item <b>TestFramework</b> - The frameworks's properties.</item>
+          <item>Sub-Item <b>BoardData</b> - The board's master data.</item>
+          <item>Sub-Item <b>FixtureData</b>  - The fixture's master data.</item>
+          <item>Sub-Item <b>TestData</b> - The test program's master data.</item>
+          <item>Sub-Item <b>TestResult</b> - The results of the last test run.</item>
+        </list>
+      </item><item>Item <b>TestFramework</b>
+        <list type="bullet">
+          <item>Property <b>AttachedProjects</b> as string array - The names of the attached projects.</item> 
+        </list>
+      </item>
+              <item>Item <b>TestData</b> - The test program's master data.
+        <list type="bullet">
+          <item>Sub-Item <b>TestSection</b>(TestSectionName as string) - The master data of a test section.</item>
+          <item>Sub-Item <b>TestStep</b>(TestStepRecordID as integer) - The master data of a test step.</item>
+        </list>
+        <list type="bullet">
+          <item>Property <b>ProjectName</b> as string - The name of the test project.</item>
+        </list>    
+      </item><item>Item <b>TestSection</b> - The master data of a test section.
+        <list type="bullet">
+          <item>Property <b>BoardName</b> as string - The name of board the test section is assigned to.</item>
+        </list>    
+      </item><item>Item <b>TestStep</b> - The master data of a test step.
+        <list type="bullet">
+          <item>Sub-Item <b>Properties</b> - The properties (parameters) defined for the test step.</item>
+          <item>Sub-Item <b>TestChannels</b> - The test step's test channel data.</item>
+        </list>
+        <list type="bullet">
+          <item>Property <b>TestSectionName</b> -  The name of the test section containing the test step.</item>
+          <item>Property <b>TemplateName</b> -  The name of the test step's test template.</item>
+          <item>Property <b>PropertyNames</b> as string array - The names of all test step properties (parameters).</item>
+        </list>
+      </item><item>Item <b>Properties</b> - The properties (parameters) defined for the test step.
+        <list type="bullet">
+          <item>Property <b>{any property defined for the test step}</b>(Selector as string)
+            <list type="bullet">
+              <item>Selector <b>Type</b> - GetProperty will return the type name of the parameter as one of the following strings:
+                                                 Boolean, Enumeration, Float, Integer, IntegerArray, Text, TestChannel, Tolerance, None.</item>
+              <item>Selector <b>{empty}</b> - GetProperty will return the property's value. 
+                                              A Boolean type will be returned as boolean, a Float type as double, 
+                                              an Integer type as integer, an IntegerArray type as integer array
+                                              and all others as string.</item>
+            </list>
+          </item>  
+        </list>
+      </item><item>Item <b>TestChannels</b> - The test channels of a a test step.
+        <list type="bullet">
+          <item>Property <b>All</b> as integer array - All nail numbers of all test channel parameters.</item>
+          <item>Property <b>Stimulus</b> as integer array - Nail numbers of all test channel parameters where the name contains the pattern "Force" or "Sense" but not "Guard".</item>
+          <item>Property <b>Guard</b> as integer array - Nail numbers of all test channel parameters where the name contains the pattern "Guard".</item>
+        </list>
+      </item><item>Item <b>FixtureData</b> - The fixture's master data.
+        <list type="bullet">
+          <item>Sub-Item <b>Nail</b>(NailNumber as integer) - A fixture nail's data. (Note: Nail is not a sub-item list and NailNumber is not and index.)</item>
+        </list>
+      </item><item>Item <b>Nail</b> - The fixture nail's master data.
+        <list type="bullet">
+          <item>Property <b>Number</b> as integer - The nail number.</item>
+          <item>Property <b>NetName</b> as string - The name of the contacted net.</item>
+          <item>Property <b>TestPointName</b> as string - The name of the contacted test point.</item>
+        </list>
+      </item><item>Item <b>TestResult</b> - The test result data.
+        <list type="bullet">
+          <item>Sub-Item <b>RunResult</b> - The result data of the last test run.</item>
+        </list>
+      </item><item>Item <b>RunResult</b> - The result data of a test run. Only the result data of the most recently executed project is available!
+        <list type="bullet">
+          <item>Sub-Item List <b>Steps</b>(Index as integer) - The test result data of a test step.</item>
+        </list>
+        <list type="bullet">
+          <item>Property <b>TotalResult</b> as ResultState - The total test result of the test run.</item>
+        </list>
+      </item><item>Item <b>Step</b> - The test result data of a test step.
+        <list type="bullet">
+          <item>Sub-Item List <b>Results</b>(Index as integer) - The test results of the step.</item>
+        </list>
+        <list type="bullet">
+          <item>Property <b>ResultState</b> as ResultState - The total result state of the step.</item>
+        </list>
+      </item><item>Item <b>Result</b> - The test result data of a test step.
+        <list type="bullet">
+          <item>Property <b>ResultState</b> as ResultState - The result state.</item>
+          <item>Property <b>BoardName</b> as string - The name of the tested board.</item>
+          <item>Property <b>BoardTypeName</b> as string - The name of the tested board type.</item>
+          <item>Property <b>TestedPart</b> as string - The name of the tested part.</item>
+          <item>Property <b>TestedPin</b> as string - The name of the tested pin.</item>
+          <item>Property <b>Variant</b> as string - The selected board variant.</item>
+          <item>Property <b>TestStepName</b> as string - The test step name.</item>
+          <item>Property <b>TestStepRecordID</b> as int - The record id of the test step (use as argument in TestData query).</item>
+          <item>Property <b>TestStepLogInfo</b> as string - The log info text of the test step.</item>
+          <item>Property <b>NominalValue</b> as double - The nominal value for the measurement.</item>
+          <item>Property <b>ResultValue</b> as double - The measurement value.</item>
+          <item>Property <b>ResultValueText</b> as string - The measurement value as formatted text.</item>
+          <item>Property <b>ResultValueLowerLimit</b> as double - The lower limit for a good measurement value.</item>
+          <item>Property <b>ResultValueUpperLimit</b> as double - The upper limit for a good measurement value.</item>
+          <item>Property <b>ResultValueUnit</b> as PhysicalUnit - The physical unit of the measurement value.</item>
+          <item>Property <b>ResultValueState</b> as ResultValueState - The state of the measurement.</item>
+          <item>Property <b>ResultInfo</b> as string - The remark text for the result.</item>
+          <item>Property <b>NodeA</b> as string - The first tested node (shorts test).</item>
+          <item>Property <b>NodeB</b> as string - The second tested node (shorts test).</item>
+          <item>Property <b>FixtureNail</b> as integer - The tested fixture nail (contact test).</item>
+        </list>
+        ResultState, ResultValueState and PhysicalUnit are members of TestFramework.PluginTestCell.TestResults.
+      </item>
+            </list>
+            </remarks>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.TestDevices">
+            <summary>
+            An object of this class acts as an interface between the test cell plugin and the test devices.
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestDevices.#ctor(TestFramework.PluginTestCell.TestCellEnvironment)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestDevices.Dispose">
+            <summary>
+            Releases the test devices object.
+            </summary>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.TestDevices.OperationResultLog">
+            <summary>
+            Operation result log.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestDevices.OperationResultLog.HasErrors">
+            <summary>
+            True, if the log contains error messages.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestDevices.OperationResultLog.HasWarnings">
+            <summary>
+            True, if the log contains warning messages.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestDevices.OperationResultLog.Log">
+            <summary>
+            Log of operation run.
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestDevices.RunSelftest">
+            <summary>
+            Runs a hardware selftest.
+            </summary>
+            <returns>The selftest result log</returns>
+            <remarks>Before running a selftest be sure that no unit under test is connected to the tester hardware (fixture is open).
+            Warning: a connection might skew the selftest results and/or damage the connected unit!</remarks>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestDevices.RunSelftest(System.String)">
+            <summary>
+            Runs a hardware selftest. ! Not yet implemented !
+            </summary>
+            <param name="options">Options</param>
+            <returns>The selftest result log</returns>
+            <remarks>Before running a selftest be sure that no unit under test is connected to the tester hardware (fixture is open).
+            Warning: a connection might skew the selftest results and/or damage the connected unit!</remarks>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestDevices.RunAutoAdjust">
+            <summary>
+            Runs a hardware auto adjustment.
+            </summary>
+            <returns>The adjustment result log</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestDevices.RunAutoAdjust(System.String)">
+            <summary>
+            Runs a hardware auto adjustment. ! Not yet implemented !
+            </summary>
+            <param name="options">Options</param>
+            <returns>The adjustment result log</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestDevices.RunCommand(System.String)">
+            <summary>
+            Runs a command. ! Not yet implemented !
+            </summary>
+            <param name="command">Command</param>
+            <returns>Result</returns>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.TestResults.NewTestResultRecordEventHandler">
+            <summary>
+            This event handler will be called when a new result record is available.
+            </summary>
+            <param name="TestResultRecord">Test result</param>
+            <remarks>
+            The event handler will be called immediately as soon as new result is available. 
+            Please note that a result could be revised later on by follow-up procedures (e.g. a retest).
+            </remarks>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.TestResults.TestRunFinishedEventHandler">
+            <summary>
+            This event handler will be called when the test run is finished.
+            </summary>
+            <param name="TotalTestState">Total test state</param>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.TestResults.ResultState">
+            <summary>
+            Result states.
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.ResultState.NoState">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.ResultState.Pass">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.ResultState.Fail">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.ResultState.Aborted">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.TestResults.ResultValueState">
+            <summary>
+            Result value states.
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.ResultValueState.Invalid">
+            <summary>
+            The result value itself is not valid
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.ResultValueState.Good">
+            <summary>
+            The result value itself is valid and within the allowed range
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.ResultValueState.Bad">
+            <summary>
+            The result value itself is valid but not within the allowed range
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.ResultValueState.BadLow">
+            <summary>
+            The result value itself is valid but too small
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.ResultValueState.BadHigh">
+            <summary>
+            The result value itself is valid but too big
+            </summary>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.TestResults.PhysicalUnit">
+            <summary>
+            Physical units.
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.PhysicalUnit.None">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.PhysicalUnit.Watt">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.PhysicalUnit.Volt">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.PhysicalUnit.Ampere">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.PhysicalUnit.Ohm">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.PhysicalUnit.Farad">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.PhysicalUnit.Henry">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.PhysicalUnit.Second">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.PhysicalUnit.Hertz">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.PhysicalUnit.Celsius">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.PhysicalUnit.Newton">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.TestResults.TestResultRecord">
+            <summary>
+            Base class for test results.
+            </summary>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.TestResults.TestResultRecord.RecordType">
+            <summary>
+            Test result record types.
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.TestResultRecord.RecordType.BeginProgram">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.TestResultRecord.RecordType.EndProgram">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.TestResultRecord.RecordType.BeginSection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.TestResultRecord.RecordType.EndSection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.TestResultRecord.RecordType.TestStep">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:TestFramework.PluginTestCell.TestResults.TestResultRecord.RecordType.TestStepItem">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestResultRecord.Type">
+            <summary>
+            Type of the record.
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestResults.TestResultRecord.#ctor(TestFramework.PluginTestCell.TestResults.TestResultRecord.RecordType)">
+            <summary>
+            
+            </summary>
+            <param name="Type">Record type</param>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestResultRecord.ResultID">
+            <summary>
+            Unique identifier of the result's source.
+            </summary>
+            <remarks>
+            Each result of a retest has the same identifier.
+            </remarks>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestResultRecord.RetestID">
+            <summary>
+            Number of retest producing this result
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestResultRecord.LogAlways">
+            <summary>
+            Log mode
+            </summary>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.TestResults.BeginProgramTestResultRecord">
+            <summary>
+            A result object of this class will be created when the test program starts.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.BeginProgramTestResultRecord.ProjectName">
+            <summary>
+            Name of the project.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.BeginProgramTestResultRecord.TestRunPrimaryKey">
+            <summary>
+            Primary key of the test run.
+            </summary>
+            <remarks>
+            This key refers to a row in the data base.
+            </remarks>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.TestResults.EndProgramTestResultRecord">
+            <summary>
+            A result object of this class will be created when the test program ends.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.EndProgramTestResultRecord.TestState">
+            <summary>
+            Total test result state.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.EndProgramTestResultRecord.RunTime">
+            <summary>
+            Total test run time.
+            </summary>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.TestResults.BeginSectionTestResultRecord">
+            <summary>
+            A result object of this class will be created when a test section starts.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.BeginSectionTestResultRecord.SectionName">
+            <summary>
+            Name of the test section.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.BeginSectionTestResultRecord.Retest">
+            <summary>
+            Notifies if a retest has been executed.
+            </summary>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.TestResults.EndSectionTestResultRecord">
+            <summary>
+            A result object of this class will be created when a test section ends.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.EndSectionTestResultRecord.ResultState">
+            <summary>
+            Result state of the test section.
+            </summary>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.TestResults.TestStepResultRecord">
+            <summary>
+            A result object of this class will be created when a test step has been executed.
+            </summary>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord">
+            <summary>
+            A test step's result log is build by objects of this class.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.TestStepRecordID">
+            <summary>
+            ID of the test step's data set.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.SubTestStepRecordID">
+            <summary>
+            ID of the sub test step's data set.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.TestStepName">
+            <summary>
+            Name of the test step.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.PartReferenceDesignator">
+            <summary>
+            Reference designator of the part under test
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.PartPinDesignator">
+            <summary>
+            Designator of the part's pin under test
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.TestedVariant">
+            <summary>
+            The name of the tested variant.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.TestStepResultLogInfo">
+            <summary>
+            Result log info text of the test step.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.ResultInfo">
+            <summary>
+            Result info text.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.ResultState">
+            <summary>
+            Result state of the test step.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.ResultValue">
+            <summary>
+            Result value.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.ResultValueLowerLimit">
+            <summary>
+            The result value's lower bound.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.ResultValueUpperLimit">
+            <summary>
+            The result value's upper bound.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.ResultNominalValue">
+            <summary>
+            The nominal value for the result value.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.ResultValueText">
+            <summary>
+            Result value as formatted text.
+            </summary>
+            <remarks>
+            The value will be represented in engineering notation and the physical unit will be added.
+            </remarks>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.ResultValueUnit">
+            <summary>
+            Physical unit of the result value.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.ResultValueState">
+            <summary>
+            State of the result value.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.ResultValueInfo">
+            <summary>
+            Result value info text.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.NodeAName">
+            <summary>
+            Name of node 'A'.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.NodeBName">
+            <summary>
+            Name of node 'B'.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.FixtureNailNumber">
+            <summary>
+            Number of fixture nail.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.BoardTypeName">
+            <summary>
+            Name of the board type.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.BoardMultiPanelID">
+            <summary>
+            Multi panel ID of the board.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.TestSectionName">
+            <summary>
+            Name of the test section.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.RunTime">
+            <summary>
+            Run time.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.StimulusChannels">
+            <summary>
+            The active stimulus channels.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.MeasurementChannels">
+            <summary>
+            The active measurement channels.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.GuardChannels">
+            <summary>
+            The active guard channels.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ItemTestResultRecord.Channels">
+            <summary>
+            All active channels.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.Item(System.Int32)">
+            <summary>
+            Test result record.
+            </summary>
+            <param name="i">Index</param>
+            <returns>The test result record.</returns>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.Count">
+            <summary>
+            Number of test result items.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.TestSectionName">
+            <summary>
+            Name of the test section.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.ResultState">
+            <summary>
+            Result state.
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestResults.TestStepResultRecord.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.TestResults.TestRunResult">
+            <summary>
+            An object of this class represents the results of a test run.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestRunResult.Count">
+            <summary>
+            Number of test result records.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestRunResult.Item(System.Int32)">
+            <summary>
+            Test result record.
+            </summary>
+            <param name="index">Index</param>
+            <returns>The test result record.</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestResults.TestRunResult.WriteToFolderXML(System.String)">
+            <summary>
+            Writes results to an XML file in the given folder. A unique file name will be created automatically.
+            </summary>
+            <param name="FolderPath">The folder path.</param>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestResults.TestRunResult.WriteFileXML(System.String)">
+            <summary>
+            Writes results to an XML file.
+            </summary>
+            <param name="FileName">The file name.</param>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestResults.TestRunResult.Finish">
+            <summary>
+            Finish wird normalerweise am Ende der Testausführung aufgerufen.
+            Wird der Testprogrammlauf vorzeitig abgebrochen, ist das nicht der Fall.
+            Finish wird deshalb auch von Count und Indexer aufgerufen.
+            </summary>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.TestResults.TestResult">
+            <summary>
+            Class of test results.
+            </summary>
+        </member>
+        <member name="E:TestFramework.PluginTestCell.TestResults.TestResult.NewTestResultRecord">
+            <summary>
+            This event handler will be called when a new result record is available.
+            </summary>
+        </member>
+        <member name="E:TestFramework.PluginTestCell.TestResults.TestResult.TestRunFinished">
+            <summary>
+            This event handler will be called when the test run is finished.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestResult.TotalTestState">
+            <summary>
+            Total test state.
+            </summary>
+        </member>
+        <member name="P:TestFramework.PluginTestCell.TestResults.TestResult.TestRunResult">
+            <summary>
+            Results of the latest test run.
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestResults.TestResult.#ctor(TestFramework.PluginTestCell.TestResults.TestResult.LinkMode,TestFramework.PluginTestCell.TestResults.ProjectTestResult)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestResults.TestResult.Finalize">
+            <summary>
+            Destructor
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestResults.TestResult.Dispose">
+            <summary>
+            Releases the test result object
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestResults.TestResult.Clear">
+            <summary>
+            Clears the test result.
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestResults.TestResult.ConnectToResultLog">
+            <summary>
+            Establish a connection between result log and result object.
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.TestResults.TestResult.DisconnectFromResultLog">
+            <summary>
+            Releases the connection between result log and result object. 
+            </summary>
+        </member>
+        <member name="T:TestFramework.PluginTestCell.UserManagement">
+            <summary>
+            This class acts as an interface between the test cell plugin and the TestFramework user management.
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.UserManagement.#ctor(TestFramework.PluginTestCell.TestCellEnvironment)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.UserManagement.GetUserName">
+            <summary>
+            Determines the current user's login name.
+            </summary>
+            <returns>The current user's login name</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.UserManagement.GetUserFullName">
+            <summary>
+            Determines the current user's full name.
+            </summary>
+            <returns>The current user's full name</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.UserManagement.Login(System.String,System.String)">
+            <summary>
+            Login to the TestFramework.
+            </summary>
+            <param name="user_name">User name</param>
+            <param name="password">Password</param>
+            <returns>True, if successfully logged in</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.UserManagement.Logout">
+            <summary>
+            Logout from the TestFramework.
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.UserManagement.ShowLoginDialog">
+            <summary>
+            Shows a login dialog to login to the TestFramework.
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.UserManagement.ChangePassword(System.String,System.String)">
+            <summary>
+            Changes the password of the current user.
+            </summary>
+            <param name="old_password">Old password</param>
+            <param name="new_password">New password</param>
+            <returns>True if the password has been successfully changed</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.UserManagement.ShowChangePasswordDialog">
+            <summary>
+            Shows a dialog to change the password of the current user.
+            </summary>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.UserManagement.IsPermitted(System.String)">
+            <summary>
+            Determines if the current user has the permission to perform a specific operation.
+            </summary>
+            <param name="operation">Operation name</param>
+            <returns>True if the required operation is permitted</returns>
+        </member>
+        <member name="M:TestFramework.PluginTestCell.UserManagement.IsAuthorisationSystemEnabled">
+            <summary>
+            Determines if the authorisation system is enabled.
+            </summary>
+            <returns>True if the authorisation system is enabled</returns>
+        </member>
+    </members>
+</doc>

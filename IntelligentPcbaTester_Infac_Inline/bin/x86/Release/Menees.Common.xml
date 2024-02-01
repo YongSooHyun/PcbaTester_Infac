@@ -1,0 +1,2827 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Menees.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Menees.ApplicationInfo">
+            <summary>
+            Provides information about the current application.
+            </summary>
+        </member>
+        <member name="P:Menees.ApplicationInfo.ApplicationName">
+            <summary>
+            Gets the application name.
+            </summary>
+        </member>
+        <member name="P:Menees.ApplicationInfo.BaseDirectory">
+            <summary>
+            Gets the base directory for the current application.
+            </summary>
+            <remarks>
+            This is usually the same as the <see cref="P:Menees.ApplicationInfo.ExecutableFile"/>'s directory, but it can be
+            different for applications using custom AppDomains (e.g., web apps running in IIS).
+            </remarks>
+        </member>
+        <member name="P:Menees.ApplicationInfo.ExecutableFile">
+            <summary>
+            Gets the full path for the executable file that started the application.
+            </summary>
+            <remarks>
+            This is similar to System.Windows.Forms.Application.ExecutablePath, except this supports paths
+            longer than MAX_PATH (260) and paths using a "\\?\" prefix (e.g., ASP.NET worker processes).
+            </remarks>
+        </member>
+        <member name="P:Menees.ApplicationInfo.ProcessId">
+            <summary>
+            Gets the current application's Windows process ID.
+            </summary>
+        </member>
+        <member name="P:Menees.ApplicationInfo.IsActivated">
+            <summary>
+            Gets whether the current application is activated per the lambda passed to <see cref="M:Menees.ApplicationInfo.Initialize(System.String,System.Reflection.Assembly,System.Func{System.Boolean})"/>.
+            </summary>
+        </member>
+        <member name="P:Menees.ApplicationInfo.IsDebugBuild">
+            <summary>
+            Gets whether the current application is running a debug build.
+            </summary>
+            <remarks>
+            This depends on the applicationAssembly parameter passed to <see cref="M:Menees.ApplicationInfo.Initialize(System.String,System.Reflection.Assembly,System.Func{System.Boolean})"/>.
+            If <see cref="M:Menees.ApplicationInfo.Initialize(System.String,System.Reflection.Assembly,System.Func{System.Boolean})"/>, hasn't been called, then this depends on the current assembly.
+            </remarks>
+        </member>
+        <member name="M:Menees.ApplicationInfo.Initialize(System.String,System.Reflection.Assembly,System.Func{System.Boolean})">
+            <summary>
+            Used to initialize the application's name, error handling, etc.
+            </summary>
+            <param name="applicationName">Pass null to use the current AppDomain's friendly name.</param>
+            <param name="applicationAssembly">The assembly that's initializing the application, typically the main executable.</param>
+            <param name="isActivated">A function to determine if <see cref="P:Menees.ApplicationInfo.IsActivated"/> should consider the application activated.</param>
+        </member>
+        <member name="M:Menees.ApplicationInfo.CreateUserSettingsStore">
+            <summary>
+            Creates a hierarchical store for loading and saving user-level settings for the current application.
+            </summary>
+            <returns>A new settings store.</returns>
+        </member>
+        <member name="M:Menees.ApplicationInfo.ShowUnhandledException(System.Exception,System.Action{System.String},System.Action{System.Exception})">
+            <summary>
+            Shows a single unhandled exception at a time.
+            </summary>
+            <param name="ex">The exception to show</param>
+            <param name="showExceptionMessage">The action to invoke for a simple "MessageBox" display.</param>
+            <param name="showExceptionCustom">The action to invoke for a custom exception display.</param>
+        </member>
+        <member name="P:Menees.ApplicationInfo.IsUserRunningAsAdministrator">
+            <summary>
+            Gets whether the current user is running in the Windows "Administrator" role.
+            </summary>
+        </member>
+        <member name="P:Menees.ApplicationInfo.IsWindows">
+            <summary>
+            Gets whether the current application is running on a Windows OS.
+            </summary>
+        </member>
+        <member name="T:Menees.CollectionUtility">
+            <summary>
+            Methods for collection handling.
+            </summary>
+        </member>
+        <member name="M:Menees.CollectionUtility.AddRange``1(System.Collections.Generic.ICollection{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Adds a <paramref name="source"/> collection into a <paramref name="target"/> collection.
+            </summary>
+            <typeparam name="T">The type of item to add.</typeparam>
+            <param name="target">The collection to add the items to.</param>
+            <param name="source">The collection to get the items from.</param>
+            <remarks>
+            The adding behavior depends on the <paramref name="target"/> collection's <see cref="M:System.Collections.Generic.ICollection`1.Add(`0)"/>
+            implemenation.  For example, if <paramref name="target"/> is a generic List, then this could add duplicates.
+            However, if <paramref name="target"/> is a generic HashSet, then this won't add duplicates.
+            </remarks>
+        </member>
+        <member name="M:Menees.CollectionUtility.AsEnumerable``1(``0)">
+            <summary>
+            Returns a collection containing only the specified value.
+            </summary>
+            <typeparam name="T">The type of value to contain.</typeparam>
+            <param name="value">The value to include in the returned collection.</param>
+            <returns>A collection containing <paramref name="value"/>.</returns>
+        </member>
+        <member name="M:Menees.CollectionUtility.AsReadOnly``2(System.Collections.Generic.IDictionary{``0,``1})">
+            <summary>
+            Gets a read-only dictionary.
+            </summary>
+            <param name="dictionary">The dictionary to wrap or return.  This must be non-null.</param>
+            <returns>If the original <paramref name="dictionary"/> is already read-only, this method
+            returns it as is.  If it is not read-only, this method returns a read-only wrapper around it.</returns>
+        </member>
+        <member name="M:Menees.CollectionUtility.AsReadOnly``1(System.Collections.Generic.ISet{``0})">
+            <summary>
+            Gets a read-only set.
+            </summary>
+            <param name="value">The set to wrap or return.  This must be non-null.</param>
+            <returns>If the original <paramref name="value"/> is already read-only, this method
+            returns it as is.  If it is not read-only, this method returns a read-only wrapper around it.</returns>
+        </member>
+        <member name="M:Menees.CollectionUtility.EmptyArray``1">
+            <summary>
+            Returns an empty array of the specified type.
+            </summary>
+            <typeparam name="TResult">The type of elements in the returned array.</typeparam>
+            <returns>An empty array of the specified type.</returns>
+            <remarks>
+            This method caches an empty array of each type requested, and it is more efficient
+            than creating empty array instances repeatedly.
+            <para/>
+            This method is similar to <see cref="M:System.Linq.Enumerable.Empty``1"/> but this returns
+            an array instead of just an <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </remarks>
+        </member>
+        <member name="M:Menees.CollectionUtility.IsNullOrEmpty``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Gets whether the specified collection is null or empty.
+            </summary>
+            <typeparam name="T">The type of element in the collection.</typeparam>
+            <param name="collection">The collection to check.</param>
+            <returns>True if <paramref name="collection"/> is null or doesn't contain any items.</returns>
+        </member>
+        <member name="T:Menees.Conditions">
+            <summary>
+            Provides several methods for checking preconditions and postconditions
+            (i.e., design-by-contract).
+            </summary>
+        </member>
+        <member name="M:Menees.Conditions.RequireArgument(System.Boolean,System.String)">
+            <summary>
+            Requires that the argument's state is valid (i.e., true).
+            </summary>
+            <param name="argState">The argument's state.</param>
+            <param name="explanation">The name of the arg to put in the exception.</param>
+            <exception cref="T:System.ArgumentException">If <paramref name="argState"/> is false.</exception>
+        </member>
+        <member name="M:Menees.Conditions.RequireArgument(System.Boolean,System.String,System.String)">
+            <summary>
+            Requires that the named argument's state is valid (i.e., true).
+            </summary>
+            <param name="argState">The argument's state.</param>
+            <param name="explanation">The explanation to put in the exception.</param>
+            <param name="argName">The name of the arg to put in the exception.</param>
+            <exception cref="T:System.ArgumentException">If <paramref name="argState"/> is false.</exception>
+        </member>
+        <member name="M:Menees.Conditions.RequireCollection``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <summary>
+            Makes sure a collection is non-null and non-empty.
+            </summary>
+            <typeparam name="T">The type of item in the collection.</typeparam>
+            <param name="arg">The collection to check.</param>
+            <param name="paramName">The name of the argument to put in the exception.</param>
+        </member>
+        <member name="M:Menees.Conditions.RequireReference``1(``0,System.String)">
+            <summary>
+            Requires that a reference is non-null.
+            </summary>
+            <param name="reference">The reference to check.</param>
+            <param name="argName">The arg name to put in the exception.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="reference"/> is null.</exception>
+        </member>
+        <member name="M:Menees.Conditions.RequireState(System.Boolean,System.String)">
+            <summary>
+            Requires that the given state is valid (i.e., true).
+            </summary>
+            <param name="state">The state to check.</param>
+            <param name="explanation">The explanation to put in the exception.</param>
+            <exception cref="T:System.InvalidOperationException">If <paramref name="state"/> is false.</exception>
+        </member>
+        <member name="M:Menees.Conditions.RequireString(System.String,System.String)">
+            <summary>
+            Requires that a string is non-null and non-empty.
+            </summary>
+            <param name="arg">The string to check.</param>
+            <param name="argName">The name of the arg to put in the exception.</param>
+            <exception cref="T:System.ArgumentException">If <paramref name="arg"/> is null or empty.</exception>
+        </member>
+        <member name="T:Menees.ConvertUtility">
+            <summary>
+            Methods for converting data types from one form to another.
+            </summary>
+        </member>
+        <member name="M:Menees.ConvertUtility.ConvertValue``1(System.Object)">
+            <summary>
+            Converts a value into the specified type.
+            </summary>
+            <typeparam name="T">The type to convert the value into.</typeparam>
+            <param name="value">The value to convert.</param>
+            <returns>The converted value.</returns>
+            <exception cref="T:System.InvalidCastException">If <paramref name="value"/>
+            can't be converted into type T.</exception>
+        </member>
+        <member name="M:Menees.ConvertUtility.ConvertValue(System.Object,System.Type)">
+            <summary>
+            Converts a value into the specified type.
+            </summary>
+            <param name="value">The value to convert.</param>
+            <param name="resultType">The type to convert the value into.</param>
+            <returns>The converted value.</returns>
+            <exception cref="T:System.InvalidCastException">If <paramref name="value"/>
+            can't be converted into type T.</exception>
+        </member>
+        <member name="M:Menees.ConvertUtility.IsNull(System.Object)">
+            <summary>
+            Gets whether a value is a null reference or DBNull.Value.
+            </summary>
+            <param name="value">The value to check.</param>
+            <returns>True if the value is null or DBNull.Value.  False otherwise.</returns>
+        </member>
+        <member name="M:Menees.ConvertUtility.ToBoolean(System.String)">
+            <summary>
+            Converts a string value to a bool.
+            </summary>
+            <param name="value">The string to convert.</param>
+            <returns>True if the string case-insensitively matches "True", "T", "Yes", "Y", or "1".  False otherwise.</returns>
+        </member>
+        <member name="M:Menees.ConvertUtility.ToBoolean(System.String,System.Boolean)">
+            <summary>
+            Converts a string value to a bool.
+            </summary>
+            <param name="value">The string to convert.</param>
+            <param name="defaultValue">The default value to use if the string can't be converted.</param>
+            <returns>
+            True if the string case-insensitively matches "True", "T", "Yes", "Y", or "1".
+            False if the string case-insensitively matches "False", "F", "No", "N", or "0".
+            If the value is not one of the true values and not one of the false values,
+            then this returns the defaultValue.  For example, ToBoolean("P", true) will return true,
+            and ToBoolean("Q", false) will return false.
+            </returns>
+        </member>
+        <member name="M:Menees.ConvertUtility.ToInt32(System.String,System.Int32)">
+            <summary>
+            Converts a string value to an int.
+            </summary>
+            <param name="value">The string to convert.</param>
+            <param name="defaultValue">The default value to use if the string can't be converted.</param>
+            <returns>The int value.</returns>
+        </member>
+        <member name="M:Menees.ConvertUtility.ToHex(System.Collections.Generic.IEnumerable{System.Byte},Menees.ToHexOptions)">
+            <summary>
+            Converts a sequence of bytes into hexadecimal nibbles with an optional "0x" prefix.
+            </summary>
+            <param name="value">The sequence of bytes to convert.</param>
+            <param name="options">Options affecting a "0x" prefix and whether to use lowercase hex characters.</param>
+            <returns>The encoded hex bytes.</returns>
+        </member>
+        <member name="M:Menees.ConvertUtility.FromHex(System.String,System.Boolean)">
+            <summary>
+            Tries to parse a string of hexadecimal characters into a byte array.
+            </summary>
+            <param name="value">A string of hex characters. This can optionally
+            start with a "0x" prefix and contain colons or whitespace.</param>
+            <param name="throwOnError">Whether an exception should be thrown for invalid input.
+            If false, then a null result will be returned for invalid input.
+            </param>
+            <exception cref="T:System.ArgumentException">Thrown if the input is invalid and
+            <paramref name="throwOnError"/> is true.</exception>
+            <returns>A byte array if <paramref name="value"/> can be parsed.
+            Or null if <paramref name="value"/>can't be parsed and <paramref name="throwOnError"/> is false.</returns>
+        </member>
+        <member name="M:Menees.ConvertUtility.RoundToSeconds(System.TimeSpan)">
+            <summary>
+            Rounds the fractional seconds from a TimeSpan value to the nearest whole second.
+            </summary>
+            <param name="value">The value to truncate.</param>
+            <returns>The value truncated to whole seconds.</returns>
+        </member>
+        <member name="M:Menees.ConvertUtility.TruncateToSeconds(System.TimeSpan)">
+            <summary>
+            Removes the fractional seconds from a TimeSpan value.
+            </summary>
+            <param name="value">The value to truncate.</param>
+            <returns>The value truncated to whole seconds.</returns>
+        </member>
+        <member name="T:Menees.CsvUtility">
+            <summary>
+            Methods for working with comma-separated, double-quote delimited data in "CSV" format.
+            </summary>
+        </member>
+        <member name="F:Menees.CsvUtility.FieldSeparator">
+            <summary>
+            A comma, which is used to separate CSV fields.
+            </summary>
+        </member>
+        <member name="F:Menees.CsvUtility.FieldDelimiter">
+            <summary>
+            A double quote, which is used to delimit CSV fields that contain special characters
+            such as comma, double quote, carriage return, and linefeed.
+            </summary>
+        </member>
+        <member name="M:Menees.CsvUtility.ReadLine(System.IO.TextReader)">
+            <summary>
+            Reads a line from the text reader and returns its field values.
+            </summary>
+            <param name="reader">The reader to read the next line from.</param>
+            <returns>The next line's trimmed field values if a line was read,
+            or null if no line was available.</returns>
+            <remarks>
+            If the line contains a quoted field value with embedded newlines,
+            then this will keep reading lines until the record is complete.
+            </remarks>
+        </member>
+        <member name="M:Menees.CsvUtility.ReadLine(System.String)">
+            <summary>
+            Reads a line of text and returns its trimmed field values.
+            </summary>
+            <param name="text">The text to parse.</param>
+            <returns>The line's trimmed field values.</returns>
+        </member>
+        <member name="M:Menees.CsvUtility.ReadLine(System.String,System.Boolean)">
+            <summary>
+            Reads a line of text and returns its field values.
+            </summary>
+            <param name="text">The text to parse.</param>
+            <param name="trimValues">Whether to trim each field value.</param>
+            <returns>The line's field values.</returns>
+        </member>
+        <member name="M:Menees.CsvUtility.ReadTable(System.String)">
+            <summary>
+            Loads a data table from the specified file.
+            </summary>
+            <remarks>
+            The first row is assumed to be a header row.
+            </remarks>
+            <param name="fileName">The file to load from.</param>
+            <returns>
+            If the file is non-empty, then this returns a new data table with the file's data loaded.
+            If the file is empty, then this returns null.
+            </returns>
+        </member>
+        <member name="M:Menees.CsvUtility.ReadTable(System.IO.TextReader)">
+            <summary>
+            Loads a data table from the specified reader.
+            </summary>
+            <remarks>
+            The first row is assumed to be a header row.
+            </remarks>
+            <param name="reader">The text reader to load from.</param>
+            <returns>
+            If data is found, then this returns a new data table with the reader's data loaded.
+            If no data is found, then this returns null.
+            </returns>
+        </member>
+        <member name="M:Menees.CsvUtility.ReadTable(System.IO.TextReader,System.Action{System.Data.DataTable})">
+            <summary>
+            Loads a data table from the specified reader and optionally allows
+            adjusting the table's columns prior to loading.
+            </summary>
+            <remarks>
+            The first row is assumed to be a header row.
+            </remarks>
+            <param name="reader">The text reader to load from.</param>
+            <param name="prepareToLoad">An optional action that is called after
+            the table's columns are added (as string columns) but before any data is
+            loaded.  This allows the column types to be changed and the table's
+            primary key to be set.  This parameter can be null.</param>
+            <returns>
+            If data is found, then this returns a new data table with the reader's data loaded.
+            If no data is found, then this returns null.
+            </returns>
+        </member>
+        <member name="M:Menees.CsvUtility.WriteValue(System.IO.TextWriter,System.String)">
+            <summary>
+            Writes a value and delimits it if necessary.
+            </summary>
+            <param name="writer">The writer to write to.</param>
+            <param name="value">The value to write.</param>
+        </member>
+        <member name="M:Menees.CsvUtility.WriteLine(System.IO.TextWriter,System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            Writes a line of values to a text writer.
+            </summary>
+            <param name="writer">The writer to write to.</param>
+            <param name="values">The values to write.</param>
+        </member>
+        <member name="M:Menees.CsvUtility.WriteLine(System.IO.TextWriter,System.Data.IDataRecord)">
+            <summary>
+            Writes a line containing a record's field values.
+            </summary>
+            <param name="writer">The writer to write to.</param>
+            <param name="record">The record to read the values from.</param>
+        </member>
+        <member name="M:Menees.CsvUtility.WriteLine(System.IO.TextWriter,System.Data.DataRow)">
+            <summary>
+            Writes a line containing a row's field values.
+            </summary>
+            <param name="writer">The writer to write to.</param>
+            <param name="row">The row to read the values from.</param>
+        </member>
+        <member name="M:Menees.CsvUtility.WriteTable(System.IO.TextWriter,System.Data.IDataReader)">
+            <summary>
+            Writes the current result set from a data reader.
+            </summary>
+            <remarks>
+            This will also write a header row using the field names.
+            </remarks>
+            <param name="writer">The writer to write to.</param>
+            <param name="reader">The reader to read from.</param>
+        </member>
+        <member name="M:Menees.CsvUtility.WriteTable(System.IO.TextWriter,System.Data.DataTable)">
+            <summary>
+            Writes a data table.
+            </summary>
+            <remarks>
+            This will also write a header row using the column captions.
+            </remarks>
+            <param name="writer">The writer to write to.</param>
+            <param name="table">The table to read from.</param>
+        </member>
+        <member name="M:Menees.CsvUtility.WriteTable(System.String,System.Data.IDataReader)">
+            <summary>
+            Writes the current result set from a data reader to the specified file.
+            </summary>
+            <remarks>
+            This will also write a header row using the field names.
+            </remarks>
+            <param name="fileName">The name of the file to write to.</param>
+            <param name="reader">The reader to read from.</param>
+        </member>
+        <member name="M:Menees.CsvUtility.WriteTable(System.String,System.Data.DataTable)">
+            <summary>
+            Writes a data table to the specified file.
+            </summary>
+            <remarks>
+            This will also write a header row using the column captions.
+            </remarks>
+            <param name="fileName">The name of the file to write to.</param>
+            <param name="table">The table to read from.</param>
+        </member>
+        <member name="T:Menees.Diagnostics.LogLevel">
+            <summary>
+            The supported logging levels for <see cref="M:Menees.Log.Write(Menees.Diagnostics.LogLevel,System.Object,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object})"/>.
+            </summary>
+            <devnote>
+            This is similar to .NET's TraceEventType, but the associated literal values are different.
+            </devnote>
+        </member>
+        <member name="F:Menees.Diagnostics.LogLevel.None">
+            <summary>
+            Non-logged message.
+            </summary>
+        </member>
+        <member name="F:Menees.Diagnostics.LogLevel.Debug">
+            <summary>
+            Debug trace message.
+            </summary>
+        </member>
+        <member name="F:Menees.Diagnostics.LogLevel.Info">
+            <summary>
+            Informational message.
+            </summary>
+        </member>
+        <member name="F:Menees.Diagnostics.LogLevel.Warning">
+            <summary>
+            Warning message about a non-critical problem.
+            </summary>
+        </member>
+        <member name="F:Menees.Diagnostics.LogLevel.Error">
+            <summary>
+            Recoverable error.
+            </summary>
+        </member>
+        <member name="F:Menees.Diagnostics.LogLevel.Fatal">
+            <summary>
+            Non-recoverable error (e.g., application crash).
+            </summary>
+        </member>
+        <member name="T:Menees.Diagnostics.GlobalLogContext">
+            <summary>
+            Provides the global log context properties for <see cref="P:Menees.Log.GlobalContext"/>.
+            </summary>
+        </member>
+        <member name="P:Menees.Diagnostics.GlobalLogContext.Item(System.String)">
+            <summary>
+            Gets or sets the specified key/value pair in the current context.
+            </summary>
+        </member>
+        <member name="M:Menees.Diagnostics.GlobalLogContext.Clear">
+            <summary>
+            Removes all entries from the current context.
+            </summary>
+        </member>
+        <member name="M:Menees.Diagnostics.GlobalLogContext.Remove(System.String)">
+            <summary>
+            Removes the specified key from the current context.
+            </summary>
+        </member>
+        <member name="M:Menees.Diagnostics.GlobalLogContext.ContainsKey(System.String)">
+            <summary>
+            Checks whether the context contains the specified key.
+            </summary>
+        </member>
+        <member name="M:Menees.Diagnostics.GlobalLogContext.TryGetValue``1(System.String,``0@)">
+            <summary>
+            Tries to get the value associated with the specified key.
+            </summary>
+        </member>
+        <member name="T:Menees.Diagnostics.ILogContext">
+            <summary>
+            Defines the API for <see cref="P:Menees.Log.GlobalContext"/> and <see cref="P:Menees.Log.ThreadContext"/>.
+            </summary>
+        </member>
+        <member name="P:Menees.Diagnostics.ILogContext.Item(System.String)">
+            <summary>
+            Gets or sets the specified key/value pair in the current context.
+            </summary>
+        </member>
+        <member name="M:Menees.Diagnostics.ILogContext.Clear">
+            <summary>
+            Removes all entries from the current context.
+            </summary>
+        </member>
+        <member name="M:Menees.Diagnostics.ILogContext.Remove(System.String)">
+            <summary>
+            Removes the specified key from the current context.
+            </summary>
+        </member>
+        <member name="M:Menees.Diagnostics.ILogContext.ContainsKey(System.String)">
+            <summary>
+            Checks whether the context contains the specified key.
+            </summary>
+        </member>
+        <member name="M:Menees.Diagnostics.ILogContext.TryGetValue``1(System.String,``0@)">
+            <summary>
+            Tries to get the value associated with the specified key.
+            </summary>
+        </member>
+        <member name="T:Menees.Diagnostics.Release">
+            <summary>
+            Represents a single release of an application or library.
+            </summary>
+        </member>
+        <member name="P:Menees.Diagnostics.Release.Name">
+            <summary>
+            Gets the name of the release.
+            </summary>
+        </member>
+        <member name="P:Menees.Diagnostics.Release.Version">
+            <summary>
+            Gets the version of the release.
+            </summary>
+        </member>
+        <member name="P:Menees.Diagnostics.Release.ReleasedUtc">
+            <summary>
+            Gets the UTC time of the release.
+            </summary>
+        </member>
+        <member name="P:Menees.Diagnostics.Release.HtmlUri">
+            <summary>
+            Gets the URI of the release's web page.
+            </summary>
+        </member>
+        <member name="M:Menees.Diagnostics.Release.FindGithubLatest(System.String,System.String)">
+            <summary>
+            Tries to get the latest release for the specified GitHub repository.
+            </summary>
+            <param name="repository">The name of a GitHub repository.</param>
+            <param name="repositoryOwner">The owner of the GitHub repository.</param>
+            <returns>The latest release info if found and parsed successfully; otherwise null.</returns>
+        </member>
+        <member name="M:Menees.Diagnostics.Release.ToString">
+            <summary>
+            Gets the <see cref="P:Menees.Diagnostics.Release.Name"/> of the release.
+            </summary>
+        </member>
+        <member name="M:Menees.Diagnostics.StackTraceUtility.GetFullName(System.Type,System.Boolean)">
+            <summary>
+            Gets a type's full name in C# format optionally including the generic arguments.
+            </summary>
+        </member>
+        <member name="T:Menees.Diagnostics.ThreadLogContext">
+            <summary>
+            Provides the current thread's log context properties for <see cref="P:Menees.Log.ThreadContext"/>.
+            </summary>
+        </member>
+        <member name="P:Menees.Diagnostics.ThreadLogContext.Item(System.String)">
+            <summary>
+            Gets or sets the specified key/value pair in the current context.
+            </summary>
+        </member>
+        <member name="M:Menees.Diagnostics.ThreadLogContext.Clear">
+            <summary>
+            Removes all entries from the current context.
+            </summary>
+        </member>
+        <member name="M:Menees.Diagnostics.ThreadLogContext.Remove(System.String)">
+            <summary>
+            Removes the specified key from the current context.
+            </summary>
+        </member>
+        <member name="M:Menees.Diagnostics.ThreadLogContext.ContainsKey(System.String)">
+            <summary>
+            Checks whether the context contains the specified key.
+            </summary>
+        </member>
+        <member name="M:Menees.Diagnostics.ThreadLogContext.TryGetValue``1(System.String,``0@)">
+            <summary>
+            Tries to get the value associated with the specified key.
+            </summary>
+        </member>
+        <member name="M:Menees.Diagnostics.ThreadLogContext.Push(System.String,System.Object)">
+            <summary>
+            Inserts a key/value pair into this context.
+            </summary>
+            <param name="key">The key to insert.</param>
+            <param name="value">The value to associate with the key.</param>
+            <returns>A disposable object that can be used to pop the new key/value pair out
+            and restore any previous value associated with the key.</returns>
+            <remarks>
+            Key/value pairs pushed into the thread context should always be strictly scoped.
+            In other words, the method that pushes a value into the thread context should
+            always pop it back out.  This Push method returns a disposable object that can be
+            used with C#'s using statement to guarantee that the key/value pair will be
+            added and removed correctly.
+            </remarks>
+            <example>
+            Pushing and popping a key/value pair.
+            <code>
+            using (Log.ThreadContext.Push("test", myTestObject))
+            {
+                // Any messages logged here will contain the "test" context data.
+            }
+            // Now the "test" thread context data will be restored to its previous value or removed.
+            </code>
+            </example>
+        </member>
+        <member name="T:Menees.Disposer">
+            <summary>
+            Provides a way to easily invoke a clean-up method from a using statement.
+            </summary>
+            <remarks>
+            This was inspired by a similar class in Jeffrey Richter's PowerThreading library.
+            </remarks>
+        </member>
+        <member name="M:Menees.Disposer.#ctor(System.Action)">
+            <summary>
+            Creates a new instance.
+            </summary>
+            <remarks>
+            See the <see cref="T:Menees.Disposer"/> class comments for an example of using an anonymous
+            dispose method.
+            </remarks>
+            <param name="disposeMethod">The method to invoke during disposal.</param>
+        </member>
+        <member name="P:Menees.Disposer.IsDisposed">
+            <summary>
+            Gets whether <see cref="M:Menees.Disposer.Dispose"/> has already been called on this instance.
+            </summary>
+        </member>
+        <member name="M:Menees.Disposer.Dispose">
+            <summary>
+            Calls the dispose method that was passed to the constructor.
+            </summary>
+        </member>
+        <member name="T:Menees.ToHexOptions">
+            <summary>
+            Options for <see cref="M:Menees.ConvertUtility.ToHex(System.Collections.Generic.IEnumerable{System.Byte},Menees.ToHexOptions)"/>.
+            </summary>
+        </member>
+        <member name="F:Menees.ToHexOptions.None">
+            <summary>
+            Default formatting (uppercase with no 0x prefix)
+            </summary>
+        </member>
+        <member name="F:Menees.ToHexOptions.Lowercase">
+            <summary>
+            Use lowercase hex characters
+            </summary>
+        </member>
+        <member name="F:Menees.ToHexOptions.Include0xPrefix">
+            <summary>
+            Adds a "0x" prefix to the output.
+            </summary>
+        </member>
+        <member name="T:Menees.ValidPathOptions">
+            <summary>
+            The supported options for <see cref="M:Menees.FileUtility.IsValidPath(System.String,Menees.ValidPathOptions)"/>.
+            </summary>
+        </member>
+        <member name="F:Menees.ValidPathOptions.None">
+            <summary>
+            Use the default behavior with no options.
+            </summary>
+        </member>
+        <member name="F:Menees.ValidPathOptions.AllowTrailingSeparator">
+            <summary>
+            Whether a path is allowed to end with a separator (e.g., if the caller knows they're validating a directory path).
+            </summary>
+        </member>
+        <member name="F:Menees.ValidPathOptions.AllowRelative">
+            <summary>
+            Whether paths can contain parts equal to "." or ".." and can omit a root (e.g., Drive: or \\Server\Share).
+            </summary>
+        </member>
+        <member name="F:Menees.ValidPathOptions.AllowLongPaths">
+            <summary>
+            Whether paths over MAX_PATH are allowed if prefixed with \\?\.
+            </summary>
+            <remarks>
+            When a long path is used, then '/' can't be used as a part separator, and the path can't be relative.
+            </remarks>
+        </member>
+        <member name="F:Menees.ValidPathOptions.AllowDevicePaths">
+            <summary>
+            Whether a prefix of "\\.\" can be used to reference device paths (e.g., \\.\PhysicalDisk1)
+            and whether drive names (e.g., C:) and UNC paths without a share can be used (e.g., \\Server).
+            </summary>
+        </member>
+        <member name="T:Menees.Exceptions">
+            <summary>
+            Helper methods for creating and logging new exceptions.
+            </summary>
+        </member>
+        <member name="M:Menees.Exceptions.NewArgumentException(System.String)">
+            <summary>
+            Creates and logs a new ArgumentException with the specified message.
+            </summary>
+            <param name="message">The error message.</param>
+            <returns>A new exception instance.</returns>
+        </member>
+        <member name="M:Menees.Exceptions.NewArgumentException(System.String,System.String)">
+            <summary>
+            Creates and logs a new ArgumentException with the specified message and argument name.
+            </summary>
+            <param name="message">The error message.</param>
+            <param name="argName">The argument name.</param>
+            <returns>A new exception instance.</returns>
+        </member>
+        <member name="M:Menees.Exceptions.NewArgumentException(System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Creates and logs a new ArgumentException with the specified message and context properties.
+            </summary>
+            <param name="message">The error message.</param>
+            <param name="contextProperties">Context information to log with the exception.</param>
+            <returns>A new exception instance.</returns>
+        </member>
+        <member name="M:Menees.Exceptions.NewArgumentException(System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Creates and logs a new ArgumentException with the specified message, argument name, and context properties.
+            </summary>
+            <param name="message">The error message.</param>
+            <param name="argName">The argument name.</param>
+            <param name="contextProperties">Context information to log with the exception.</param>
+            <returns>A new exception instance.</returns>
+        </member>
+        <member name="M:Menees.Exceptions.NewArgumentNullException(System.String)">
+            <summary>
+            Creates and logs a new ArgumentNullException.
+            </summary>
+            <param name="argName">The argument name.</param>
+            <returns>A new exception instance.</returns>
+        </member>
+        <member name="M:Menees.Exceptions.NewArgumentNullException(System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Creates and logs a new ArgumentNullException with the specified context properties.
+            </summary>
+            <param name="argName">The argument name.</param>
+            <param name="contextProperties">Context information to log with the exception.</param>
+            <returns>A new exception instance.</returns>
+        </member>
+        <member name="M:Menees.Exceptions.Log``1(``0)">
+            <summary>
+            Logs the given exception as an error.
+            </summary>
+            <typeparam name="T">The type of exception to log and return.</typeparam>
+            <param name="ex">The exception to log.
+            <para/>Note: The <see cref="P:System.Exception.Data"/> dictionary
+            may get modified for this exception.</param>
+            <returns>The exception passed in as <paramref name="ex"/>.</returns>
+            <remarks>
+            See <see cref="M:Menees.Exceptions.Log``1(``0,System.Type)"/> for an example and more information.
+            </remarks>
+        </member>
+        <member name="M:Menees.Exceptions.Log``1(``0,System.Type)">
+            <summary>
+            Logs the given exception as an error.
+            </summary>
+            <typeparam name="T">The type of exception to log and return.</typeparam>
+            <param name="ex">The exception to log.
+            <para/>Note: The <see cref="P:System.Exception.Data"/> dictionary
+            may get modified for this exception.</param>
+            <param name="category">The configuration category, which is typically the caller's type.</param>
+            <returns>The exception passed in as <paramref name="ex"/>.</returns>
+            <remarks>
+            Other methods in this class should be used if you're creating one of the following "typical"
+            exceptions:
+            <list type="table">
+                <listheader>
+                    <term>Exception Type</term>
+                    <description>Method</description>
+                </listheader>
+                <item>
+                    <term>ArgumentException</term>
+                    <description><see cref="M:Menees.Exceptions.NewArgumentException(System.String,System.String)"/></description>
+                </item>
+                <item>
+                    <term>ArgumentNullException</term>
+                    <description><see cref="M:Menees.Exceptions.NewArgumentNullException(System.String)"/></description>
+                </item>
+                <item>
+                    <term>InvalidOperationException</term>
+                    <description><see cref="M:Menees.Exceptions.NewInvalidOperationException(System.String)"/></description>
+                </item>
+            </list>
+            </remarks>
+            <example>
+            Using Exceptions.Log with a custom exception type.
+            <code>
+            if (badFormat)
+            {
+                throw Exceptions.Log(new FormatException(Properties.Resources.MyClass_BadFormat));
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:Menees.Exceptions.Log``1(``0,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs the given exception as an error.
+            </summary>
+            <typeparam name="T">The type of exception to log and return.</typeparam>
+            <param name="ex">The exception to log.
+            <param name="contextProperties">Context information to log with the exception.</param>
+            <para/>Note: The <see cref="P:System.Exception.Data"/> dictionary
+            may get modified for this exception.</param>
+            <returns>The exception passed in as <paramref name="ex"/>.</returns>
+            <remarks>
+            See <see cref="M:Menees.Exceptions.Log``1(``0,System.Type)"/> for an example and more information.
+            </remarks>
+        </member>
+        <member name="M:Menees.Exceptions.Log``1(``0,System.Type,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs the given exception as an error.
+            </summary>
+            <typeparam name="T">The type of exception to log and return.</typeparam>
+            <param name="ex">The exception to log.
+            <param name="category">The configuration category, which is typically the caller's type.</param>
+            <param name="contextProperties">Context information to log with the exception.</param>
+            <para/>Note: The <see cref="P:System.Exception.Data"/> dictionary
+            may get modified for this exception.</param>
+            <returns>The exception passed in as <paramref name="ex"/>.</returns>
+            <remarks>
+            See <see cref="M:Menees.Exceptions.Log``1(``0,System.Type)"/> for an example and more information.
+            </remarks>
+        </member>
+        <member name="M:Menees.Exceptions.NewInvalidOperationException(System.String)">
+            <summary>
+            Creates and logs a new InvalidOperationException with the specified message.
+            </summary>
+            <param name="message">The error message.</param>
+            <returns>A new exception instance.</returns>
+        </member>
+        <member name="M:Menees.Exceptions.NewInvalidOperationException(System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Creates and logs a new InvalidOperationException with the specified message and context properties.
+            </summary>
+            <param name="message">The error message.</param>
+            <param name="contextProperties">Context information to log with the exception.</param>
+            <returns>A new exception instance.</returns>
+        </member>
+        <member name="M:Menees.Exceptions.ForEach(System.Exception,System.Action{System.Exception,System.Int32})">
+            <summary>
+            Enumerates all of the exceptions in an exception chain including handling multiple
+            inner exceptions for <see cref="T:System.AggregateException"/>.
+            </summary>
+            <param name="ex">The root exception to start from.  <paramref name="action"/> will be called for this too.</param>
+            <param name="action">The action to invoke for the root exception and each inner exception.  This is passed the
+            exception and its 0-based depth (where 0 is the root exception).</param>
+        </member>
+        <member name="M:Menees.Exceptions.ForEach(System.Exception,System.Action{System.Exception,System.Int32,System.Exception})">
+            <summary>
+            Enumerates all of the exceptions in an exception chain including handling multiple
+            inner exceptions for <see cref="T:System.AggregateException"/>.
+            </summary>
+            <param name="ex">The root exception to start from.  <paramref name="action"/> will be called for this too.</param>
+            <param name="action">The action to invoke for the root exception and each inner exception.  This is passed the
+            exception, its 0-based depth (where 0 is the root exception), and the outer (i.e., parent) exception.</param>
+        </member>
+        <member name="M:Menees.Exceptions.GetMessage(System.Exception)">
+            <summary>
+            Builds a message from all of the exceptions in an exception tree including handling
+            multiple inner exceptions for <see cref="T:System.AggregateException"/>s.
+            </summary>
+            <param name="ex">The root exception to start from.</param>
+            <returns>A string containing the tab-indented messages from each exception where
+            the indention level is based on the exception's depth in the tree.</returns>
+        </member>
+        <member name="M:Menees.Exceptions.IsAccessException(System.Exception)">
+            <summary>
+            Gets whether an exception is an <see cref="T:System.IO.IOException"/>, <see cref="T:System.Security.SecurityException"/>,
+            or <see cref="T:System.UnauthorizedAccessException"/>.
+            </summary>
+            <param name="ex">The exception to check.</param>
+        </member>
+        <member name="T:Menees.FileUtility">
+            <summary>
+            Methods for file and file name processing.
+            </summary>
+        </member>
+        <member name="M:Menees.FileUtility.TryDeleteFile(System.String)">
+            <summary>
+            Tries to delete the specified file.
+            </summary>
+            <remarks>
+            This method differs from .NET's System.IO.File.Delete method because
+            this method will not raise an exception on failure.  This method simply
+            returns false on failure.  If you need more information about the reason of
+            the failure you can call <see cref="M:Menees.FileUtility.TryDeleteFile(System.String,System.Int32@)"/> or
+            <see cref="M:System.Runtime.InteropServices.Marshal.GetLastWin32Error"/>.
+            </remarks>
+            <param name="fileName">The name of the file to be deleted.</param>
+            <returns>True if successful.  False otherwise.</returns>
+        </member>
+        <member name="M:Menees.FileUtility.TryDeleteFile(System.String,System.Int32@)">
+            <summary>
+            Tries to delete the specified file and returns a Win32 error code if it is unsuccessful.
+            </summary>
+            <remarks>
+            This method differs from .NET's System.IO.File.Delete method because
+            this method will not raise an exception on failure.  This method simply
+            returns false on failure and will return the error code from
+            <see cref="M:System.Runtime.InteropServices.Marshal.GetLastWin32Error"/> as an out parameter. Then
+            you can throw a new Win32Exception if you need to.
+            </remarks>
+            <param name="fileName">The name of the file to be deleted.</param>
+            <param name="errorCode">The Win32 error code for deletion failure.</param>
+            <returns>True if successful.  False otherwise.</returns>
+        </member>
+        <member name="M:Menees.FileUtility.DeleteFile(System.String)">
+            <summary>
+            Deletes the specified file.
+            </summary>
+            <remarks>
+            This will not raise an exception for ERROR_FILE_NOT_FOUND, ERROR_PATH_NOT_FOUND,
+            or ERROR_INVALID_DRIVE errors.  All other Win32 error codes will raise a <see cref="T:System.ComponentModel.Win32Exception"/>.
+            </remarks>
+            <param name="fileName">The name of the file to delete.</param>
+        </member>
+        <member name="M:Menees.FileUtility.ExpandFileName(System.String)">
+            <summary>
+            Expands a file name to include a full path, expanding environment variables
+            and using the <see cref="T:Menees.ApplicationInfo"/>'s <see cref="P:Menees.ApplicationInfo.BaseDirectory"/>
+            if no directory is specified.
+            </summary>
+            <param name="fileName">The file name to expand.</param>
+            <returns>A full file name.</returns>
+        </member>
+        <member name="M:Menees.FileUtility.GetTempFileName(System.String)">
+            <summary>
+            Creates a unique file name using the specified extension and the system's temporary directory.
+            </summary>
+            <param name="extension">An extention to add to the file name.  This can be null or empty.</param>
+            <returns>A new temporary file name using the system's temporary directory.</returns>
+        </member>
+        <member name="M:Menees.FileUtility.GetTempFileName(System.String,System.String)">
+            <summary>
+            Creates a unique file name using the specified extension and directory.
+            </summary>
+            <param name="extension">An extention to add to the file name.  This can be null or empty.</param>
+            <param name="directory">The directory to create the file in.
+            If this is null or empty, then a new file name with no path will be returned.</param>
+            <returns>A new temporary file name.</returns>
+        </member>
+        <member name="M:Menees.FileUtility.IsReadOnlyFile(System.String)">
+            <summary>
+            Gets whether the file is read-only.
+            </summary>
+            <remarks>
+            This method only checks the read-only attribute.  It does not check security
+            or whether another user has an open handle to the file that would prevent
+            writes.
+            </remarks>
+            <param name="fileName">The file to check.</param>
+            <returns>True if the file's read-only attribute is set.  False otherwise.</returns>
+        </member>
+        <member name="M:Menees.FileUtility.TryGetExactPath(System.String,System.String@)">
+            <summary>
+            Gets the exact case used on the file system for an existing file or directory.
+            </summary>
+            <param name="path">A relative or absolute path.</param>
+            <param name="exactPath">The full path using the correct case if the path exists.  Otherwise, null.</param>
+            <returns>True if the exact path was found.  False otherwise.</returns>
+            <remarks>
+            This supports drive-lettered paths and UNC paths, but a UNC root
+            will be returned in title case (e.g., \\Server\Share).
+            </remarks>
+        </member>
+        <member name="M:Menees.FileUtility.IsValidName(System.String)">
+            <summary>
+            Gets whether the specified name is valid as a file name, folder name, or device name.
+            </summary>
+            <param name="pathPartName">The name of a file, folder, or device to check.</param>
+            <returns>True if the name is valid.  False otherwise.</returns>
+            <remarks>
+            This doesn't check existence.  It just checks for valid names that don't match Windows
+            reserved names (e.g., AUX, CON), don't match reserved names plus an extension (e.g., CON.txt),
+            and don't consist of all dots (e.g., "." and "..").
+            </remarks>
+        </member>
+        <member name="M:Menees.FileUtility.IsValidPath(System.String,Menees.ValidPathOptions)">
+            <summary>
+            Gets whether the specified path is valid but does not check its existence.
+            </summary>
+            <param name="path">The path to validate.</param>
+            <param name="options">Options that affect how the path is validated.</param>
+            <returns>True if the path is valid.  False otherwise.</returns>
+        </member>
+        <member name="T:Menees.ISettingsNode">
+            <summary>
+            Provides a generic interface for a single node in an <see cref="T:Menees.ISettingsStore"/>.
+            </summary>
+        </member>
+        <member name="P:Menees.ISettingsNode.NodeName">
+            <summary>
+            Gets the name of the current node.
+            </summary>
+        </member>
+        <member name="P:Menees.ISettingsNode.SettingCount">
+            <summary>
+            Gets the number of settings in the current node.
+            </summary>
+        </member>
+        <member name="P:Menees.ISettingsNode.SubNodeCount">
+            <summary>
+            Gets the number of sub-nodes of the current node.
+            </summary>
+        </member>
+        <member name="P:Menees.ISettingsNode.ParentNode">
+            <summary>
+            Gets the parent settings node.
+            </summary>
+        </member>
+        <member name="M:Menees.ISettingsNode.GetValue(System.String,System.String)">
+            <summary>
+            Gets a setting's value as a string.
+            </summary>
+            <param name="settingName">The name of a setting.</param>
+            <param name="defaultValue">The default value to return if the setting isn't found.</param>
+            <returns>The setting's current value or the default value.</returns>
+        </member>
+        <member name="M:Menees.ISettingsNode.GetValueN(System.String,System.String)">
+            <summary>
+            Gets a setting's value as a string.
+            </summary>
+            <param name="settingName">The name of a setting.</param>
+            <param name="defaultValue">The default value to return if the setting isn't found.</param>
+            <returns>The setting's current value or the default value.</returns>
+        </member>
+        <member name="M:Menees.ISettingsNode.SetValue(System.String,System.String)">
+            <summary>
+            Sets a setting's value as a string.
+            </summary>
+            <param name="settingName">The name of a new or existing setting.</param>
+            <param name="value">The new value for the setting.</param>
+        </member>
+        <member name="M:Menees.ISettingsNode.GetValue(System.String,System.Int32)">
+            <summary>
+            Gets a setting's value as an Int32.
+            </summary>
+            <param name="settingName">The name of a setting.</param>
+            <param name="defaultValue">The default value to return if the setting isn't found.</param>
+            <returns>The setting's current value or the default value.</returns>
+        </member>
+        <member name="M:Menees.ISettingsNode.SetValue(System.String,System.Int32)">
+            <summary>
+            Sets a setting's value as a Int32.
+            </summary>
+            <param name="settingName">The name of a new or existing setting.</param>
+            <param name="value">The new value for the setting.</param>
+        </member>
+        <member name="M:Menees.ISettingsNode.GetValue(System.String,System.Boolean)">
+            <summary>
+            Gets a setting's value as a boolean.
+            </summary>
+            <param name="settingName">The name of a setting.</param>
+            <param name="defaultValue">The default value to return if the setting isn't found.</param>
+            <returns>The setting's current value or the default value.</returns>
+        </member>
+        <member name="M:Menees.ISettingsNode.SetValue(System.String,System.Boolean)">
+            <summary>
+            Sets a setting's value as a Boolean.
+            </summary>
+            <param name="settingName">The name of a new or existing setting.</param>
+            <param name="value">The new value for the setting.</param>
+        </member>
+        <member name="M:Menees.ISettingsNode.GetValue``1(System.String,``0)">
+            <summary>
+            Gets a setting's value as an enum.
+            </summary>
+            <param name="settingName">The name of a setting.</param>
+            <param name="defaultValue">The default value to return if the setting isn't found.</param>
+            <returns>The setting's current value or the default value.</returns>
+        </member>
+        <member name="M:Menees.ISettingsNode.SetValue``1(System.String,``0)">
+            <summary>
+            Sets a setting's value as an enum.
+            </summary>
+            <param name="settingName">The name of a new or existing setting.</param>
+            <param name="value">The new value for the setting.</param>
+        </member>
+        <member name="M:Menees.ISettingsNode.GetSettingNames">
+            <summary>
+            Gets the names of all the settings in the current node.
+            </summary>
+            <returns>A collection of setting names.</returns>
+        </member>
+        <member name="M:Menees.ISettingsNode.DeleteSetting(System.String)">
+            <summary>
+            Deletes a setting from the current node.
+            </summary>
+            <param name="settingName">The name of a setting.</param>
+        </member>
+        <member name="M:Menees.ISettingsNode.GetSubNodeNames">
+            <summary>
+            Gets the names of all the sub-nodes of the current node.
+            </summary>
+            <returns>A collection of node names.</returns>
+        </member>
+        <member name="M:Menees.ISettingsNode.DeleteSubNode(System.String)">
+            <summary>
+            Recursively deletes the sub-node with the specified name.
+            </summary>
+            <param name="nodeNameOrPath">The name or '\'-separated path of a sub-node.</param>
+        </member>
+        <member name="M:Menees.ISettingsNode.GetSubNode(System.String)">
+            <summary>
+            Gets an existing sub-node or creates a new sub-node with the specified name.
+            </summary>
+            <param name="nodeNameOrPath">The name or '\'-separated path of a sub-node.</param>
+            <returns>An existing node if one is found or a new node if necessary.</returns>
+        </member>
+        <member name="M:Menees.ISettingsNode.TryGetSubNode(System.String)">
+            <summary>
+            Gets a sub-node if it already exists.
+            </summary>
+            <param name="nodeNameOrPath">The name or '\'-separated path of a sub-node.</param>
+            <returns>An existing node if one is found, or null otherwise.</returns>
+        </member>
+        <member name="T:Menees.ISettingsStore">
+            <summary>
+            Provides a generic interface for working with a hierarchy of <see cref="T:Menees.ISettingsNode"/>s.
+            </summary>
+        </member>
+        <member name="P:Menees.ISettingsStore.RootNode">
+            <summary>
+            Gets the root node in the store.
+            </summary>
+        </member>
+        <member name="M:Menees.ISettingsStore.Save">
+            <summary>
+            Saves any changes that have been made to settings and nodes.
+            </summary>
+        </member>
+        <member name="T:Menees.Log">
+            <summary>
+            Handles all logging operations.
+            </summary>
+        </member>
+        <member name="F:Menees.Log.EventIdPropertyName">
+            <summary>
+            The key name for an <see cref="T:System.Int32"/> event ID value passed in a "contextProperties"
+            parameter to <see cref="M:Menees.Log.Write(Menees.Diagnostics.LogLevel,System.Object,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object})"/>.
+            </summary>
+            <remarks>
+            If a key with this name is present in the properties dictionary of an event, then the event ID
+            will be passed as the "id" parameter to <see cref="T:System.Diagnostics.TraceSource"/>'s Trace methods.
+            </remarks>
+        </member>
+        <member name="P:Menees.Log.GlobalContext">
+            <summary>
+            Gets the global context for all logged messages.
+            </summary>
+            <remarks>
+            Key/value pairs added to this context will be recorded in all logged messages.
+            </remarks>
+        </member>
+        <member name="P:Menees.Log.ThreadContext">
+            <summary>
+            Gets the current thread's context for logged messages.
+            </summary>
+            <remarks>
+            Key/value pairs added to this context will be recorded in all messages logged
+            from the current thread.
+            </remarks>
+        </member>
+        <member name="P:Menees.Log.IsDebugEnabled">
+            <summary>
+            Gets whether Debug logging is enabled for the current log category.
+            </summary>
+        </member>
+        <member name="P:Menees.Log.IsInfoEnabled">
+            <summary>
+            Gets whether Info logging is enabled for the current log category.
+            </summary>
+        </member>
+        <member name="P:Menees.Log.IsWarningEnabled">
+            <summary>
+            Gets whether Warning logging is enabled for the current log category.
+            </summary>
+        </member>
+        <member name="P:Menees.Log.IsErrorEnabled">
+            <summary>
+            Gets whether Error logging is enabled for the current log category.
+            </summary>
+        </member>
+        <member name="P:Menees.Log.IsFatalEnabled">
+            <summary>
+            Gets whether Fatal logging is enabled for the current log category.
+            </summary>
+        </member>
+        <member name="P:Menees.Log.CategoryName">
+            <summary>
+            Gets the category name for the current log instance.
+            </summary>
+        </member>
+        <member name="P:Menees.Log.Listeners">
+            <summary>
+            Gets the collection of trace listeners for the current log instance.
+            </summary>
+        </member>
+        <member name="M:Menees.Log.GetLog(System.Type)">
+            <summary>
+            Gets the shared log instance where the category equals the type's full name.
+            </summary>
+            <param name="category">A type whose full name will be used as the log category.</param>
+            <returns>A new or existing log instance for the specified category.</returns>
+        </member>
+        <member name="M:Menees.Log.GetLog(System.String)">
+            <summary>
+            Gets the shared log instance for the specified category.
+            </summary>
+            <param name="category">A log category name.  Use '.'-separated identifiers to create a
+            hierarchy of log categories.</param>
+            <returns>A new or existing log instance for the specified category.</returns>
+        </member>
+        <member name="M:Menees.Log.Debug(System.Type,System.Object)">
+            <summary>
+            Logs a Debug message with the specified category and data.
+            </summary>
+            <param name="category">A type whose full name will be used as the log category.  This must be non-null.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+        </member>
+        <member name="M:Menees.Log.Debug(System.Type,System.Object,System.Exception)">
+            <summary>
+            Logs a Debug message with the specified category, data, and exception.
+            </summary>
+            <param name="category">A type whose full name will be used as the log category.  This must be non-null.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="ex">The exception associated with the message.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Debug(System.Type,System.Object,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs a Debug message with the specified category, data, and additional context properties.
+            </summary>
+            <param name="category">A type whose full name will be used as the log category.  This must be non-null.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="contextProperties">Message-specific context properties that will be
+            logged and merged with the <see cref="P:Menees.Log.GlobalContext"/> and <see cref="P:Menees.Log.ThreadContext"/>
+            properties.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Debug(System.Type,System.Object,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs a Debug message with the specified category, data, exception, and additional context properties.
+            </summary>
+            <param name="category">A type whose full name will be used as the log category.  This must be non-null.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="ex">The exception associated with the message.  This can be null.</param>
+            <param name="contextProperties">Message-specific context properties that will be
+            logged and merged with the <see cref="P:Menees.Log.GlobalContext"/> and <see cref="P:Menees.Log.ThreadContext"/>
+            properties.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Info(System.Type,System.Object)">
+            <summary>
+            Logs an Info message with the specified category and data.
+            </summary>
+            <param name="category">A type whose full name will be used as the log category.  This must be non-null.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+        </member>
+        <member name="M:Menees.Log.Info(System.Type,System.Object,System.Exception)">
+            <summary>
+            Logs an Info message with the specified category, data, and exception.
+            </summary>
+            <param name="category">A type whose full name will be used as the log category.  This must be non-null.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="ex">The exception associated with the message.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Info(System.Type,System.Object,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs an Info message with the specified category, data, and additional context properties.
+            </summary>
+            <param name="category">A type whose full name will be used as the log category.  This must be non-null.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="contextProperties">Message-specific context properties that will be
+            logged and merged with the <see cref="P:Menees.Log.GlobalContext"/> and <see cref="P:Menees.Log.ThreadContext"/>
+            properties.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Info(System.Type,System.Object,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs an Info message with the specified category, data, exception, and additional context properties.
+            </summary>
+            <param name="category">A type whose full name will be used as the log category.  This must be non-null.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="ex">The exception associated with the message.  This can be null.</param>
+            <param name="contextProperties">Message-specific context properties that will be
+            logged and merged with the <see cref="P:Menees.Log.GlobalContext"/> and <see cref="P:Menees.Log.ThreadContext"/>
+            properties.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Warning(System.Type,System.Object)">
+            <summary>
+            Logs a Warning message with the specified category and data.
+            </summary>
+            <param name="category">A type whose full name will be used as the log category.  This must be non-null.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+        </member>
+        <member name="M:Menees.Log.Warning(System.Type,System.Object,System.Exception)">
+            <summary>
+            Logs a Warning message with the specified category, data, and exception.
+            </summary>
+            <param name="category">A type whose full name will be used as the log category.  This must be non-null.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="ex">The exception associated with the message.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Warning(System.Type,System.Object,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs a Warning message with the specified category, data, and additional context properties.
+            </summary>
+            <param name="category">A type whose full name will be used as the log category.  This must be non-null.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="contextProperties">Message-specific context properties that will be
+            logged and merged with the <see cref="P:Menees.Log.GlobalContext"/> and <see cref="P:Menees.Log.ThreadContext"/>
+            properties.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Warning(System.Type,System.Object,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs a Warning message with the specified category, data, exception, and additional context properties.
+            </summary>
+            <param name="category">A type whose full name will be used as the log category.  This must be non-null.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="ex">The exception associated with the message.  This can be null.</param>
+            <param name="contextProperties">Message-specific context properties that will be
+            logged and merged with the <see cref="P:Menees.Log.GlobalContext"/> and <see cref="P:Menees.Log.ThreadContext"/>
+            properties.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Error(System.Type,System.Object)">
+            <summary>
+            Logs an Error message with the specified category and data.
+            </summary>
+            <param name="category">A type whose full name will be used as the log category.  This must be non-null.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+        </member>
+        <member name="M:Menees.Log.Error(System.Type,System.Object,System.Exception)">
+            <summary>
+            Logs an Error message with the specified category, data, and exception.
+            </summary>
+            <param name="category">A type whose full name will be used as the log category.  This must be non-null.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="ex">The exception associated with the message.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Error(System.Type,System.Object,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs an Error message with the specified category, data, and additional context properties.
+            </summary>
+            <param name="category">A type whose full name will be used as the log category.  This must be non-null.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="contextProperties">Message-specific context properties that will be
+            logged and merged with the <see cref="P:Menees.Log.GlobalContext"/> and <see cref="P:Menees.Log.ThreadContext"/>
+            properties.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Error(System.Type,System.Object,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs an Error message with the specified category, data, exception, and additional context properties.
+            </summary>
+            <param name="category">A type whose full name will be used as the log category.  This must be non-null.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="ex">The exception associated with the message.  This can be null.</param>
+            <param name="contextProperties">Message-specific context properties that will be
+            logged and merged with the <see cref="P:Menees.Log.GlobalContext"/> and <see cref="P:Menees.Log.ThreadContext"/>
+            properties.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Fatal(System.Type,System.Object)">
+            <summary>
+            Logs a Fatal message with the specified category and data.
+            </summary>
+            <param name="category">A type whose full name will be used as the log category.  This must be non-null.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+        </member>
+        <member name="M:Menees.Log.Fatal(System.Type,System.Object,System.Exception)">
+            <summary>
+            Logs a Fatal message with the specified category, data, and exception.
+            </summary>
+            <param name="category">A type whose full name will be used as the log category.  This must be non-null.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="ex">The exception associated with the message.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Fatal(System.Type,System.Object,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs a Fatal message with the specified category, data, and additional context properties.
+            </summary>
+            <param name="category">A type whose full name will be used as the log category.  This must be non-null.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="contextProperties">Message-specific context properties that will be
+            logged and merged with the <see cref="P:Menees.Log.GlobalContext"/> and <see cref="P:Menees.Log.ThreadContext"/>
+            properties.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Fatal(System.Type,System.Object,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs a Fatal message with the specified category, data, exception, and additional context properties.
+            </summary>
+            <param name="category">A type whose full name will be used as the log category.  This must be non-null.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="ex">The exception associated with the message.  This can be null.</param>
+            <param name="contextProperties">Message-specific context properties that will be
+            logged and merged with the <see cref="P:Menees.Log.GlobalContext"/> and <see cref="P:Menees.Log.ThreadContext"/>
+            properties.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Write(System.Type,Menees.Diagnostics.LogLevel,System.Object)">
+            <summary>
+            Logs a message with the specified category, level, and data.
+            </summary>
+            <param name="category">A type whose full name will be used as the log category.  This must be non-null.</param>
+            <param name="level">The severity level of the message.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+        </member>
+        <member name="M:Menees.Log.Write(System.Type,Menees.Diagnostics.LogLevel,System.Object,System.Exception)">
+            <summary>
+            Logs a message with the specified category, level, data, and exception.
+            </summary>
+            <param name="category">A type whose full name will be used as the log category.  This must be non-null.</param>
+            <param name="level">The severity level of the message.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="ex">The exception associated with the message.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Write(System.Type,Menees.Diagnostics.LogLevel,System.Object,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs a message with the specified category, level, data, and additional context properties.
+            </summary>
+            <param name="category">A type whose full name will be used as the log category.  This must be non-null.</param>
+            <param name="level">The severity level of the message.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="contextProperties">Message-specific context properties that will be
+            logged and merged with the <see cref="P:Menees.Log.GlobalContext"/> and <see cref="P:Menees.Log.ThreadContext"/>
+            properties.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Write(System.Type,Menees.Diagnostics.LogLevel,System.Object,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs a message with the specified category, level, data, exception, and additional context properties.
+            </summary>
+            <param name="category">A type whose full name will be used as the log category.  This must be non-null.</param>
+            <param name="level">The severity level of the message.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="ex">The exception associated with the message.  This can be null.</param>
+            <param name="contextProperties">Message-specific context properties that will be
+            logged and merged with the <see cref="P:Menees.Log.GlobalContext"/> and <see cref="P:Menees.Log.ThreadContext"/>
+            properties.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Debug(System.Object)">
+            <summary>
+            Logs a Debug message with the specified data.
+            </summary>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+        </member>
+        <member name="M:Menees.Log.Debug(System.Object,System.Exception)">
+            <summary>
+            Logs a Debug message with the specified data and exception.
+            </summary>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="ex">The exception associated with the message.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Debug(System.Object,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs a Debug message with the specified data and additional context properties.
+            </summary>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="contextProperties">Message-specific context properties that will be
+            logged and merged with the <see cref="P:Menees.Log.GlobalContext"/> and <see cref="P:Menees.Log.ThreadContext"/>
+            properties.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Debug(System.Object,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs a Debug message with the specified data, exception, and additional context properties.
+            </summary>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="ex">The exception associated with the message.  This can be null.</param>
+            <param name="contextProperties">Message-specific context properties that will be
+            logged and merged with the <see cref="P:Menees.Log.GlobalContext"/> and <see cref="P:Menees.Log.ThreadContext"/>
+            properties.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Info(System.Object)">
+            <summary>
+            Logs an Info message with the specified data.
+            </summary>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+        </member>
+        <member name="M:Menees.Log.Info(System.Object,System.Exception)">
+            <summary>
+            Logs an Info message with the specified data and exception.
+            </summary>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="ex">The exception associated with the message.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Info(System.Object,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs an Info message with the specified data and additional context properties.
+            </summary>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="contextProperties">Message-specific context properties that will be
+            logged and merged with the <see cref="P:Menees.Log.GlobalContext"/> and <see cref="P:Menees.Log.ThreadContext"/>
+            properties.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Info(System.Object,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs an Info message with the specified data, exception, and additional context properties.
+            </summary>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="ex">The exception associated with the message.  This can be null.</param>
+            <param name="contextProperties">Message-specific context properties that will be
+            logged and merged with the <see cref="P:Menees.Log.GlobalContext"/> and <see cref="P:Menees.Log.ThreadContext"/>
+            properties.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Warning(System.Object)">
+            <summary>
+            Logs a Warning message with the specified data.
+            </summary>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+        </member>
+        <member name="M:Menees.Log.Warning(System.Object,System.Exception)">
+            <summary>
+            Logs a Warning message with the specified data and exception.
+            </summary>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="ex">The exception associated with the message.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Warning(System.Object,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs a Warning message with the specified data and additional context properties.
+            </summary>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="contextProperties">Message-specific context properties that will be
+            logged and merged with the <see cref="P:Menees.Log.GlobalContext"/> and <see cref="P:Menees.Log.ThreadContext"/>
+            properties.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Warning(System.Object,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs a Warning message with the specified data, exception, and additional context properties.
+            </summary>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="ex">The exception associated with the message.  This can be null.</param>
+            <param name="contextProperties">Message-specific context properties that will be
+            logged and merged with the <see cref="P:Menees.Log.GlobalContext"/> and <see cref="P:Menees.Log.ThreadContext"/>
+            properties.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Error(System.Object)">
+            <summary>
+            Logs an Error message with the specified data.
+            </summary>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+        </member>
+        <member name="M:Menees.Log.Error(System.Object,System.Exception)">
+            <summary>
+            Logs an Error message with the specified data and exception.
+            </summary>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="ex">The exception associated with the message.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Error(System.Object,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs an Error message with the specified data and additional context properties.
+            </summary>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="contextProperties">Message-specific context properties that will be
+            logged and merged with the <see cref="P:Menees.Log.GlobalContext"/> and <see cref="P:Menees.Log.ThreadContext"/>
+            properties.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Error(System.Object,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs an Error message with the specified data, exception, and additional context properties.
+            </summary>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="ex">The exception associated with the message.  This can be null.</param>
+            <param name="contextProperties">Message-specific context properties that will be
+            logged and merged with the <see cref="P:Menees.Log.GlobalContext"/> and <see cref="P:Menees.Log.ThreadContext"/>
+            properties.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Fatal(System.Object)">
+            <summary>
+            Logs a Fatal message with the specified data.
+            </summary>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+        </member>
+        <member name="M:Menees.Log.Fatal(System.Object,System.Exception)">
+            <summary>
+            Logs a Fatal message with the specified data and exception.
+            </summary>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="ex">The exception associated with the message.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Fatal(System.Object,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs a Fatal message with the specified data and additional context properties.
+            </summary>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="contextProperties">Message-specific context properties that will be
+            logged and merged with the <see cref="P:Menees.Log.GlobalContext"/> and <see cref="P:Menees.Log.ThreadContext"/>
+            properties.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Fatal(System.Object,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs a Fatal message with the specified data, exception, and additional context properties.
+            </summary>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="ex">The exception associated with the message.  This can be null.</param>
+            <param name="contextProperties">Message-specific context properties that will be
+            logged and merged with the <see cref="P:Menees.Log.GlobalContext"/> and <see cref="P:Menees.Log.ThreadContext"/>
+            properties.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Write(Menees.Diagnostics.LogLevel,System.Object)">
+            <summary>
+            Logs a message with the specified level and data.
+            </summary>
+            <param name="level">The severity level of the message.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+        </member>
+        <member name="M:Menees.Log.Write(Menees.Diagnostics.LogLevel,System.Object,System.Exception)">
+            <summary>
+            Logs a message with the specified level, data, and exception.
+            </summary>
+            <param name="level">The severity level of the message.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="ex">The exception associated with the message.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Write(Menees.Diagnostics.LogLevel,System.Object,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs a message with the specified level, data, and additional context properties.
+            </summary>
+            <param name="level">The severity level of the message.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="contextProperties">Message-specific context properties that will be
+            logged and merged with the <see cref="P:Menees.Log.GlobalContext"/> and <see cref="P:Menees.Log.ThreadContext"/>
+            properties.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.Write(Menees.Diagnostics.LogLevel,System.Object,System.Exception,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Logs a message with the specified level, data, exception, and additional context properties.
+            </summary>
+            <param name="level">The severity level of the message.</param>
+            <param name="messageData">The message data.  This can be null.  If specified, this will be
+            rendered as text if necessary.</param>
+            <param name="ex">The exception associated with the message.  This can be null.</param>
+            <param name="contextProperties">Message-specific context properties that will be
+            logged and merged with the <see cref="P:Menees.Log.GlobalContext"/> and <see cref="P:Menees.Log.ThreadContext"/>
+            properties.  This can be null.</param>
+        </member>
+        <member name="M:Menees.Log.IsWriteEnabled(Menees.Diagnostics.LogLevel)">
+            <summary>
+            Gets whether the specified logging level is enabled for the current log category.
+            </summary>
+        </member>
+        <member name="T:Menees.ReadOnlySet`1">
+            <summary>
+            Provides a generic read-only set.
+            </summary>
+            <typeparam name="T">
+            The type of items in the set.
+            </typeparam>
+            <remarks>
+            An instance of the ReadOnlySet generic class is always read-only.
+            A set that is read-only is simply a set with a wrapper that prevents
+            modifying the set; therefore, if changes are made to the underlying
+            set, the read-only dictionary reflects those changes.  See
+            <see cref="T:System.Collections.Generic.HashSet`1"/> or <see cref="T:System.Collections.Generic.SortedSet`1"/>
+            for a modifiable version of this class.
+            </remarks>
+        </member>
+        <member name="M:Menees.ReadOnlySet`1.#ctor(System.Collections.Generic.ISet{`0})">
+            <summary>
+            Creates a new instance that wraps the supplied <paramref name="source"/>.
+            </summary>
+            <param name="source">The set to wrap.</param>
+        </member>
+        <member name="P:Menees.ReadOnlySet`1.Count">
+            <summary>
+            Gets the number of items in the set.
+            </summary>
+        </member>
+        <member name="P:Menees.ReadOnlySet`1.IsReadOnly">
+            <summary>
+            Gets whether this set is read-only, which will always return true.
+            </summary>
+        </member>
+        <member name="M:Menees.ReadOnlySet`1.IsProperSubsetOf(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Determines whether the current set is a proper (strict) subset of a specified collection.
+            </summary>
+        </member>
+        <member name="M:Menees.ReadOnlySet`1.IsProperSupersetOf(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Determines whether the current set is a proper (strict) superset of a specified collection.
+            </summary>
+        </member>
+        <member name="M:Menees.ReadOnlySet`1.IsSubsetOf(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Determines whether a set is a subset of a specified collection.
+            </summary>
+        </member>
+        <member name="M:Menees.ReadOnlySet`1.IsSupersetOf(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Determines whether the current set is a superset of a specified collection.
+            </summary>
+        </member>
+        <member name="M:Menees.ReadOnlySet`1.Overlaps(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Determines whether the current set overlaps with the specified collection.
+            </summary>
+        </member>
+        <member name="M:Menees.ReadOnlySet`1.SetEquals(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Determines whether the current set and the specified collection contain the same elements.
+            </summary>
+        </member>
+        <member name="M:Menees.ReadOnlySet`1.Contains(`0)">
+            <summary>
+            Determines whether the set contains a specific value.
+            </summary>
+        </member>
+        <member name="M:Menees.ReadOnlySet`1.CopyTo(`0[],System.Int32)">
+            <summary>
+            Copies the elements of the set to an array, starting at a particular array index.
+            </summary>
+        </member>
+        <member name="M:Menees.ReadOnlySet`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+        </member>
+        <member name="T:Menees.ReflectionUtility">
+            <summary>
+            Methods for getting metadata about assemblies, types, members, etc.
+            </summary>
+        </member>
+        <member name="M:Menees.ReflectionUtility.GetCopyright(System.Reflection.Assembly)">
+            <summary>
+            Gets the assembly's copyright information.
+            </summary>
+            <param name="assembly">The assembly to get the copyright from.</param>
+            <returns>User-friendly copyright information.</returns>
+        </member>
+        <member name="M:Menees.ReflectionUtility.GetVersion(System.Reflection.Assembly)">
+            <summary>
+            Gets the assembly's version.
+            </summary>
+            <param name="assembly">The assembly to get the version from</param>
+            <returns>The assembly version</returns>
+        </member>
+        <member name="M:Menees.ReflectionUtility.GetBuildTime(System.Reflection.Assembly)">
+            <summary>
+            Gets the UTC build timestamp from the assembly.
+            </summary>
+            <param name="assembly">The assembly to get the BuildTime metadata from.</param>
+            <returns>The assembly's build time as a UTC datetime if an <see cref="T:System.Reflection.AssemblyMetadataAttribute"/> is found
+            with Key="BuildTime" and Value equal to a parsable UTC datetime. Returns null otherwise.</returns>
+        </member>
+        <member name="M:Menees.ReflectionUtility.GetProductUrl(System.Reflection.Assembly)">
+            <summary>
+            Gets the ProductUrl from the assembly metadata.
+            </summary>
+            <param name="assembly">The assembly to get the ProductUrl metadata from.</param>
+            <returns>The assembly's build time as a Uri if an <see cref="T:System.Reflection.AssemblyMetadataAttribute"/> is found
+            with Key="ProductUrl" and Value equal to a parsable absolute Uri. Returns null otherwise.</returns>
+        </member>
+        <member name="M:Menees.ReflectionUtility.IsDebugBuild(System.Reflection.Assembly)">
+            <summary>
+            Gets whether the assembly was built with a debug configuration.
+            </summary>
+            <param name="assembly">The assembly to check.</param>
+            <returns>True if the <see cref="T:System.Reflection.AssemblyConfigurationAttribute"/> is present
+            and the configuration string contains "Debug". False otherwise.</returns>
+        </member>
+        <member name="T:Menees.SettingsEventArgs">
+            <summary>
+            The event arguments for loading and saving using an <see cref="T:Menees.ISettingsNode"/>.
+            </summary>
+        </member>
+        <member name="M:Menees.SettingsEventArgs.#ctor(Menees.ISettingsNode)">
+            <summary>
+            Creates a new instance for the specified settings node.
+            </summary>
+            <param name="settings">A settings node.</param>
+        </member>
+        <member name="P:Menees.SettingsEventArgs.SettingsNode">
+            <summary>
+            Returns the settings node to use for loading or saving.
+            </summary>
+        </member>
+        <member name="T:Menees.Shell.CommandLine">
+             <summary>
+             A general-purpose processor for command line arguments.
+             </summary>
+             <remarks>
+             This can be used from console applications, windows applications, and windows services.  It supports:
+             <list type="bullet">
+             <item><description>Flag switches (e.g., /b for true, /b- for false)</description></item>
+             <item><description>Associated value switches (e.g., /k:v, /k=v, /k v) with custom validation</description></item>
+             <item><description>Non-switched value arguments (e.g., source and destination for XCopy) with custom validation</description></item>
+             <item><description>Post-parsing custom validation logic</description></item>
+             <item><description>Using lambda expressions or anonymous delegates to define argument handling actions</description></item>
+             <item><description>Switches with multiple aliases (e.g., /Help and /?)</description></item>
+             <item><description>Switches that are required</description></item>
+             <item><description>Switches that allow multiple usage (e.g., specifying /target: multiple times)</description></item>
+             <item><description>Switch prefixes of '/' and '-'</description></item>
+             <item><description>Partial matching of switch names (e.g., /b for /binary if it is unambiguous)</description></item>
+             <item><description>Automatic generation of a formatted help message</description></item>
+             <item><description>Special handling for formatted output when the <see cref="T:System.Console"/> is being used</description></item>
+             </list>
+             <example>
+             How to use a CommandLine instance to process a collection of arguments.
+             <code>
+             bool isBinary = false;
+             string source = null;
+             List&lt;string> targets = new List&lt;string>();
+            
+             CommandLine cmdLine = new CommandLine(useConsole: true);
+             cmdLine.AddHeader(string.Format(CultureInfo.CurrentCulture, "Usage: {0} [/B] source /T:target [/T:...]", CommandLine.ExecutableFileName));
+             cmdLine.AddSwitch("Binary", "Indicates a binary file (or a text file if the flag is disabled).", flag => isBinary = flag);
+             cmdLine.AddSwitch("Target", "A target location to copy the source into.  Multiple target locations can be specified.",
+                 (value, errors) =>
+                 {
+                     if (!Directory.Exists(value))
+                     {
+                         errors.Add("Target location does not exist: " + value);
+                     }
+                     else
+                     {
+                         targets.Add(value);
+                     }
+                 },
+                 CommandLineSwitchOptions.Required | CommandLineSwitchOptions.AllowMultiple);
+             cmdLine.AddValueHandler((value, errors) =>
+                 {
+                     if (!string.IsNullOrEmpty(source))
+                     {
+                         errors.Add("Only a single source file can be specified.");
+                     }
+                     else if (!File.Exists(value))
+                     {
+                         errors.Add("Source does not exist: " + value);
+                     }
+                     else
+                     {
+                         source = value;
+                     }
+                 });
+             cmdLine.AddFinalValidation(errors =>
+                 {
+                     // Because we have a required, unnamed arg (source), we have to manually check for it.
+                     if (string.IsNullOrEmpty(source))
+                     {
+                         errors.Add("A source file is required.");
+                     }
+                 });
+            
+             var parseResult = cmdLine.Parse(args);
+             if (parseResult != CommandLineParseResult.Valid)
+             {
+                 // Let it write out the help or error message to the console.
+                 cmdLine.WriteMessage();
+             }
+             else
+             {
+                 // It parsed successfully, so use the options.
+             }
+             </code>
+             </example>
+             </remarks>
+        </member>
+        <member name="F:Menees.Shell.CommandLine.MaxLength">
+            <summary>
+            Gets the maximum length of a command line on the current version of Windows.
+            </summary>
+            <remarks>
+            On Windows Vista and earlier, the length of the arguments plus the length of the full path to the
+            executable must be less than 2080.  On Windows 7 and later, the length must be less than 32699.
+            See http://msdn.microsoft.com/en-us/library/system.diagnostics.processstartinfo.arguments.aspx
+            </remarks>
+        </member>
+        <member name="M:Menees.Shell.CommandLine.#ctor">
+            <summary>
+            Creates a new instance with <see cref="P:Menees.Shell.CommandLine.UseConsole"/> set based on whether
+            the current process can interact with the user and using the current culture's
+            case-insensitive comparer.
+            </summary>
+        </member>
+        <member name="M:Menees.Shell.CommandLine.#ctor(System.Boolean)">
+            <summary>
+            Creates a new instance using the specified <see cref="P:Menees.Shell.CommandLine.UseConsole"/> value
+            and using the current culture's case-insensitive comparer.
+            </summary>
+            <param name="useConsole">The value for the <see cref="P:Menees.Shell.CommandLine.UseConsole"/> property.</param>
+        </member>
+        <member name="M:Menees.Shell.CommandLine.#ctor(System.Boolean,System.StringComparer)">
+            <summary>
+            Creates a new instance using the specified <see cref="P:Menees.Shell.CommandLine.UseConsole"/> value
+            and using the specified comparer.
+            </summary>
+            <param name="useConsole">The value for the <see cref="P:Menees.Shell.CommandLine.UseConsole"/> property.</param>
+            <param name="comparer">The comparer to use with matching switches.</param>
+        </member>
+        <member name="P:Menees.Shell.CommandLine.ExecutableFileName">
+            <summary>
+            Gets the name of the .exe file (without the path) that started the current process.
+            </summary>
+        </member>
+        <member name="P:Menees.Shell.CommandLine.Arguments">
+            <summary>
+            Gets the command line arguments that were passed to the current process
+            (not including the <see cref="P:Menees.Shell.CommandLine.ExecutableFileName"/>).
+            </summary>
+        </member>
+        <member name="P:Menees.Shell.CommandLine.UseConsole">
+            <summary>
+            Gets whether the <see cref="T:System.Console"/> should be used to determine
+            <see cref="M:Menees.Shell.CommandLine.WriteMessage(System.IO.TextWriter,Menees.Shell.CommandLineWriteOptions)"/>
+            output width and as the default target for writing.
+            </summary>
+        </member>
+        <member name="P:Menees.Shell.CommandLine.Comparer">
+            <summary>
+            Gets the comparer used to check switches for equality.
+            </summary>
+        </member>
+        <member name="M:Menees.Shell.CommandLine.Parse(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IList{System.String},System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Parses the given collection of command line arguments into a list of values and a dictionary of switches.
+            </summary>
+            <remarks>
+            This method doesn't do any validation of the arguments.  It only categorizes them as values or switches
+            (i.e., unnamed or named arguments).
+            </remarks>
+            <param name="args">The arguments to parse</param>
+            <param name="values">The collection to add "unnamed" values to.</param>
+            <param name="switches">The collection to add "named" switch key/value pairs to.</param>
+        </member>
+        <member name="M:Menees.Shell.CommandLine.Split(System.String,System.Boolean)">
+            <summary>
+            Splits a full command line (including the program name) into a collection of arguments.
+            </summary>
+            <param name="commandLine">A full command line where the program name is the first
+            argument.  This can be obtained from Windows's GetCommandLineW API or from WMI's
+            Win32_Process class's CommandLine field.
+            </param>
+            <param name="includeProgramName">Whether the program name should be included
+            in the result collection.  Typically, this should be false since none of the other
+            <see cref="T:Menees.Shell.CommandLine"/> methods expect it.</param>
+            <returns>A collection of arguments that optionally includes the program name.</returns>
+        </member>
+        <member name="M:Menees.Shell.CommandLine.EncodeValue(System.Object)">
+            <summary>
+            Encodes a value using command line quoting and escaping rules.
+            </summary>
+            <param name="value">The value to encode.</param>
+            <returns>The encoded value.</returns>
+        </member>
+        <member name="M:Menees.Shell.CommandLine.EncodeSwitch(System.String,System.Object)">
+            <summary>
+            Encodes a name/value switch using command line quoting and escaping rules.
+            </summary>
+            <param name="name">The name of the switch.  This must be non-empty.
+            If it doesn't begin with a switch prefix character, then one will be added.</param>
+            <param name="value">The value for the switch.  This can be null.</param>
+            <returns>The encoded name and value.</returns>
+        </member>
+        <member name="M:Menees.Shell.CommandLine.Build(System.Object[])">
+            <summary>
+            Builds a command line after encoding each argument using the proper quoting and escaping rules.
+            </summary>
+            <param name="arguments">The arguments to encode.  Tuple&lt;string, object> and
+            KeyValuePair&lt;string, object> arguments will be encoded using <see cref="M:Menees.Shell.CommandLine.EncodeSwitch(System.String,System.Object)"/>.
+            All other arguments will be encoded using <see cref="M:Menees.Shell.CommandLine.EncodeValue(System.Object)"/>.</param>
+            <returns>The command line with space-separated arguments properly encoded.</returns>
+        </member>
+        <member name="M:Menees.Shell.CommandLine.AddSwitch(System.String,System.String,System.Action{System.Boolean})">
+            <summary>
+            Adds a flag switch.
+            </summary>
+            <param name="name">The name of the switch.</param>
+            <param name="description">The description of the switch to display in the generated help.</param>
+            <param name="handler">The action to execute to handle the switch value.</param>
+            <returns>The current instance.</returns>
+        </member>
+        <member name="M:Menees.Shell.CommandLine.AddSwitch(System.String,System.String,System.Action{System.Boolean},Menees.Shell.CommandLineSwitchOptions)">
+            <summary>
+            Adds a flag switch using the specified options.
+            </summary>
+            <param name="name">The name of the switch.</param>
+            <param name="description">The description of the switch to display in the generated help.</param>
+            <param name="handler">The action to execute to handle the switch value.</param>
+            <param name="options">Options that affect the switch's behavior.</param>
+            <returns>The current instance.</returns>
+        </member>
+        <member name="M:Menees.Shell.CommandLine.AddSwitch(System.String[],System.String,System.Action{System.Boolean})">
+            <summary>
+            Adds a flag switch with multiple names.
+            </summary>
+            <param name="names">The valid names (i.e., aliases) of the switch.</param>
+            <param name="description">The description of the switch to display in the generated help.</param>
+            <param name="handler">The action to execute to handle the switch value.</param>
+            <returns>The current instance.</returns>
+        </member>
+        <member name="M:Menees.Shell.CommandLine.AddSwitch(System.String[],System.String,System.Action{System.Boolean},Menees.Shell.CommandLineSwitchOptions)">
+            <summary>
+            Adds a flag switch with multiple names using the specified options.
+            </summary>
+            <param name="names">The valid names (i.e., aliases) of the switch.</param>
+            <param name="description">The description of the switch to display in the generated help.</param>
+            <param name="handler">The action to execute to handle the switch value.</param>
+            <param name="options">Options that affect the switch's behavior.</param>
+            <returns>The current instance.</returns>
+        </member>
+        <member name="M:Menees.Shell.CommandLine.AddSwitch(System.String,System.String,System.Action{System.String,System.Collections.Generic.IList{System.String}})">
+            <summary>
+            Adds an associated value switch.
+            </summary>
+            <param name="name">The name of the switch.</param>
+            <param name="description">The description of the switch to display in the generated help.</param>
+            <param name="handler">The action to execute to handle the switch value.</param>
+            <returns>The current instance.</returns>
+        </member>
+        <member name="M:Menees.Shell.CommandLine.AddSwitch(System.String,System.String,System.Action{System.String,System.Collections.Generic.IList{System.String}},Menees.Shell.CommandLineSwitchOptions)">
+            <summary>
+            Adds an associated value switch using the specified options.
+            </summary>
+            <param name="name">The name of the switch.</param>
+            <param name="description">The description of the switch to display in the generated help.</param>
+            <param name="handler">The action to execute to handle the switch value.</param>
+            <param name="options">Options that affect the switch's behavior.</param>
+            <returns>The current instance.</returns>
+        </member>
+        <member name="M:Menees.Shell.CommandLine.AddSwitch(System.String[],System.String,System.Action{System.String,System.Collections.Generic.IList{System.String}})">
+            <summary>
+            Adds an associated value switch with multiple names.
+            </summary>
+            <param name="names">The valid names (i.e., aliases) of the switch.</param>
+            <param name="description">The description of the switch to display in the generated help.</param>
+            <param name="handler">The action to execute to handle the switch value.</param>
+            <returns>The current instance.</returns>
+        </member>
+        <member name="M:Menees.Shell.CommandLine.AddSwitch(System.String[],System.String,System.Action{System.String,System.Collections.Generic.IList{System.String}},Menees.Shell.CommandLineSwitchOptions)">
+            <summary>
+            Adds an associated value switch with multiple names using the specified options.
+            </summary>
+            <param name="names">The valid names (i.e., aliases) of the switch.</param>
+            <param name="description">The description of the switch to display in the generated help.</param>
+            <param name="handler">The action to execute to handle the switch value.</param>
+            <param name="options">Options that affect the switch's behavior.</param>
+            <returns>The current instance.</returns>
+        </member>
+        <member name="M:Menees.Shell.CommandLine.AddHeader(System.String[])">
+            <summary>
+            Adds one or more header lines to the output of <see cref="M:Menees.Shell.CommandLine.WriteMessage(System.IO.TextWriter,Menees.Shell.CommandLineWriteOptions)"/>.
+            </summary>
+            <param name="lines">The lines to add.</param>
+            <returns>The current instance.</returns>
+        </member>
+        <member name="M:Menees.Shell.CommandLine.AddValueHandler(System.Action{System.String,System.Collections.Generic.IList{System.String}},System.Collections.Generic.KeyValuePair{System.String,System.String}[])">
+            <summary>
+            Adds the handler for command line values that are not associated with a switch.
+            </summary>
+            <param name="handler">The action to execute to handle the value.</param>
+            <param name="valueHelp">Value names and descriptions that should appear in the generated help message.</param>
+            <returns>The current instance.</returns>
+        </member>
+        <member name="M:Menees.Shell.CommandLine.AddFinalValidation(System.Action{System.Collections.Generic.IList{System.String}})">
+            <summary>
+            Adds a handler to be called after <see cref="M:Menees.Shell.CommandLine.Parse(System.Collections.Generic.IEnumerable{System.String})"/> has finished all arguments.
+            </summary>
+            <param name="handler">The action to execute to perform final validation.</param>
+            <returns>The current instance.</returns>
+        </member>
+        <member name="M:Menees.Shell.CommandLine.Parse">
+            <summary>
+            Parses the command line <see cref="P:Menees.Shell.CommandLine.Arguments"/> for the current process.
+            </summary>
+            <returns>The parsing result state.</returns>
+        </member>
+        <member name="M:Menees.Shell.CommandLine.Parse(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Parses the given collection of command line arguments.
+            </summary>
+            <returns>The parsing result state.</returns>
+        </member>
+        <member name="M:Menees.Shell.CommandLine.CreateMessage">
+            <summary>
+            Calls <see cref="M:Menees.Shell.CommandLine.WriteMessage(System.IO.TextWriter)"/> and returns the written text.
+            </summary>
+            <returns>The message written by <see cref="M:Menees.Shell.CommandLine.WriteMessage(System.IO.TextWriter)"/>.</returns>
+        </member>
+        <member name="M:Menees.Shell.CommandLine.WriteMessage">
+            <summary>
+            Writes the relevant message sections based on the last
+            <see cref="M:Menees.Shell.CommandLine.Parse(System.Collections.Generic.IEnumerable{System.String})"/> result to the
+            <see cref="T:System.Console"/>'s output or error stream.
+            </summary>
+        </member>
+        <member name="M:Menees.Shell.CommandLine.WriteMessage(System.IO.TextWriter)">
+            <summary>
+            Writes the relevant message sections based on the last
+            <see cref="M:Menees.Shell.CommandLine.Parse(System.Collections.Generic.IEnumerable{System.String})"/> result to the
+            specified writer.
+            </summary>
+            <param name="writer">The target to write to.</param>
+        </member>
+        <member name="M:Menees.Shell.CommandLine.WriteMessage(System.IO.TextWriter,Menees.Shell.CommandLineWriteOptions)">
+            <summary>
+            Writes one or more message sections to the specified writer.
+            </summary>
+            <param name="writer">The target to write to.</param>
+            <param name="options">Determines which message sections to write.</param>
+        </member>
+        <member name="T:Menees.Shell.ConsoleOutputBuffer">
+            <summary>
+            This class is used to capture the output of a console application.
+            </summary>
+        </member>
+        <member name="M:Menees.Shell.ConsoleOutputBuffer.#ctor(System.Diagnostics.ProcessStartInfo,System.Boolean)">
+            <summary>
+            Creates an instance for the specified process.
+            </summary>
+            <param name="startInfo">
+            The start information for the command-line process.  This instance will
+            be modified to redirect the console streams so the output can be
+            captured.
+            </param>
+            <param name="includeErrorStream">Whether the lines from the Process.StandardError stream should be included.</param>
+        </member>
+        <member name="M:Menees.Shell.ConsoleOutputBuffer.#ctor(System.Diagnostics.ProcessStartInfo,System.Boolean,System.TimeSpan)">
+            <summary>
+            Creates an instance for the specified process and waits a specified amount of time for it to finish.
+            </summary>
+            <param name="startInfo">
+            The start information for the command-line process.  This instance will
+            be modified to redirect the console streams so the output can be
+            captured.
+            </param>
+            <param name="includeErrorStream">Whether the lines from the Process.StandardError stream should be included.</param>
+            <param name="waitTime">The time to wait for the process to finish.
+            If the process fails to finish, then <see cref="P:Menees.Shell.ConsoleOutputBuffer.HasProcessExited"/>
+            will be set to false.
+            </param>
+        </member>
+        <member name="P:Menees.Shell.ConsoleOutputBuffer.ProcessExitCode">
+            <summary>
+            Gets the exit code of the process.
+            </summary>
+            <remarks>
+            If you specified a wait timeout to the constructor, then you must ensure
+            that <see cref="P:Menees.Shell.ConsoleOutputBuffer.HasProcessExited"/> is true before pulling this property.  If
+            <see cref="P:Menees.Shell.ConsoleOutputBuffer.HasProcessExited"/> is false, then this will throw an
+            <see cref="T:System.InvalidOperationException"/>.
+            </remarks>
+        </member>
+        <member name="P:Menees.Shell.ConsoleOutputBuffer.HasProcessExited">
+            <summary>
+            Gets whether the process has exited.
+            </summary>
+        </member>
+        <member name="M:Menees.Shell.ConsoleOutputBuffer.GetLines">
+            <summary>
+            Gets all of the console output lines.
+            </summary>
+            <returns>An array of console output lines.</returns>
+        </member>
+        <member name="M:Menees.Shell.ConsoleOutputBuffer.GetText">
+            <summary>
+            Gets all of the console output
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Menees.Shell.DialogFilterItem">
+            <summary>
+            Represents a single item in a shell Open or Save file dialog filter.
+            </summary>
+        </member>
+        <member name="M:Menees.Shell.DialogFilterItem.#ctor(System.String)">
+            <summary>
+            Creates a new instance for the specified extension using the shell's pluralized file type as the item name.
+            </summary>
+            <param name="extension">The extension to use.  A "*." or "." prefix is optional.</param>
+        </member>
+        <member name="M:Menees.Shell.DialogFilterItem.#ctor(System.String,System.Boolean)">
+            <summary>
+            Creates a new instance for the specified extension using the shell's file type as the item name.
+            </summary>
+            <param name="extension">The extension to use.  A "*." or "." prefix is optional.</param>
+            <param name="pluralize">Whether to pluralize the shell's file type.  This defaults to true.</param>
+        </member>
+        <member name="M:Menees.Shell.DialogFilterItem.#ctor(System.String,System.String,System.String[])">
+            <summary>
+            Creates a new instance using the specified item name and one or more extensions.
+            </summary>
+            <param name="itemName">The item name to use.</param>
+            <param name="firstExtension">The first extension to use.  A "*." or "." prefix is optional.</param>
+            <param name="otherExtensions">Zero or more other extensions.    A "*." or "." prefix is optional on each.</param>
+        </member>
+        <member name="P:Menees.Shell.DialogFilterItem.AllFiles">
+            <summary>
+            Gets an item that "filters" for all files.
+            </summary>
+        </member>
+        <member name="P:Menees.Shell.DialogFilterItem.ItemName">
+            <summary>
+            Gets the user-friendly description of the type of files being filtered to.
+            </summary>
+        </member>
+        <member name="P:Menees.Shell.DialogFilterItem.Masks">
+            <summary>
+            Gets the masks being used by this filter.
+            </summary>
+        </member>
+        <member name="M:Menees.Shell.DialogFilterItem.Join(Menees.Shell.DialogFilterItem[])">
+            <summary>
+            Joins zero or more filter items together.
+            </summary>
+            <param name="items">A collection of filter items to join together.</param>
+            <returns>A single filter string compatible with the shell's Open and Save dialog filters.</returns>
+        </member>
+        <member name="M:Menees.Shell.DialogFilterItem.ToString">
+            <summary>
+            Gets a string representation of the filter.
+            </summary>
+            <returns>A string like "ItemName (Masks)|Masks".</returns>
+        </member>
+        <member name="T:Menees.Shell.CommandLineParseResult">
+            <summary>
+            Defines the return states for <see cref="M:Menees.Shell.CommandLine.Parse(System.Collections.Generic.IEnumerable{System.String})"/>.
+            </summary>
+        </member>
+        <member name="F:Menees.Shell.CommandLineParseResult.Unknown">
+            <summary>
+            Unknown or unparsed.
+            </summary>
+        </member>
+        <member name="F:Menees.Shell.CommandLineParseResult.Valid">
+            <summary>
+            All arguments were valid.
+            </summary>
+        </member>
+        <member name="F:Menees.Shell.CommandLineParseResult.Invalid">
+            <summary>
+            One or more arguments were invalid.
+            </summary>
+        </member>
+        <member name="F:Menees.Shell.CommandLineParseResult.HelpRequested">
+            <summary>
+            The user requested help.
+            </summary>
+        </member>
+        <member name="T:Menees.Shell.CommandLineSwitchOptions">
+            <summary>
+            Defines the options for <see cref="T:Menees.Shell.CommandLine"/>'s AddSwitch methods.
+            </summary>
+        </member>
+        <member name="F:Menees.Shell.CommandLineSwitchOptions.None">
+            <summary>
+            Use the default switch behavior (i.e., optional and single use).
+            </summary>
+        </member>
+        <member name="F:Menees.Shell.CommandLineSwitchOptions.Required">
+            <summary>
+            The switch is required.
+            </summary>
+        </member>
+        <member name="F:Menees.Shell.CommandLineSwitchOptions.AllowMultiple">
+            <summary>
+            Allow multiple uses of the switch.
+            </summary>
+        </member>
+        <member name="T:Menees.Shell.CommandLineWriteOptions">
+            <summary>
+            Defines the options for <see cref="M:Menees.Shell.CommandLine.WriteMessage(System.IO.TextWriter,Menees.Shell.CommandLineWriteOptions)"/>.
+            </summary>
+        </member>
+        <member name="F:Menees.Shell.CommandLineWriteOptions.None">
+            <summary>
+            Don't write any output.
+            </summary>
+        </member>
+        <member name="F:Menees.Shell.CommandLineWriteOptions.Header">
+            <summary>
+            Write out the header.
+            </summary>
+        </member>
+        <member name="F:Menees.Shell.CommandLineWriteOptions.Error">
+            <summary>
+            Write out the error message.
+            </summary>
+        </member>
+        <member name="F:Menees.Shell.CommandLineWriteOptions.Help">
+            <summary>
+            Write out the help.
+            </summary>
+        </member>
+        <member name="T:Menees.Shell.IconOptions">
+            <summary>
+            Defines the options for <see cref="M:Menees.Shell.ShellUtility.GetFileTypeInfo(System.String,System.Boolean,Menees.Shell.IconOptions,System.Action{System.IntPtr})"/>.
+            </summary>
+            <remarks>
+            For more information see the Win32 SHGetFileInfo function documentation at
+            http://msdn.microsoft.com/en-us/library/windows/desktop/bb762179.aspx
+            </remarks>
+        </member>
+        <member name="F:Menees.Shell.IconOptions.None">
+            <summary>
+            No icon should be returned.
+            </summary>
+        </member>
+        <member name="F:Menees.Shell.IconOptions.Small">
+            <summary>
+            A small icon should be returned.  If the <see cref="F:Menees.Shell.IconOptions.ShellSize"/> option isn't specified,
+            then its size will equal <c>SystemInformation.SmallIconSize</c>, which is typically 16x16.
+            </summary>
+        </member>
+        <member name="F:Menees.Shell.IconOptions.Large">
+            <summary>
+            A large icon should be returned.  If the <see cref="F:Menees.Shell.IconOptions.ShellSize"/> option isn't specified,
+            then its size will equal <c>SystemInformation.IconSize</c>, which is typically 32x32.
+            </summary>
+        </member>
+        <member name="F:Menees.Shell.IconOptions.ShellSize">
+            <summary>
+            The returned icon should be sized based on the shell settings rather than the
+            <c>SystemInformation</c> settings.
+            </summary>
+        </member>
+        <member name="F:Menees.Shell.IconOptions.Open">
+            <summary>
+            The returned icon should be for the type's "Open" state, which can be different
+            from the default "Closed" state for container types (e.g., folders).
+            </summary>
+            <seealso cref="F:Menees.Shell.IconOptions.Folder"/>
+        </member>
+        <member name="F:Menees.Shell.IconOptions.Shortcut">
+            <summary>
+            The returned icon should have a shortcut link overlay applied to it.
+            </summary>
+        </member>
+        <member name="F:Menees.Shell.IconOptions.Selected">
+            <summary>
+            The returned icon should be blended with the system's highlight color.
+            </summary>
+        </member>
+        <member name="F:Menees.Shell.IconOptions.Folder">
+            <summary>
+            The returned icon should be for a folder instead of a file.  This is only used if the
+            "useExistingFile" parameter of <see cref="M:Menees.Shell.ShellUtility.GetFileTypeInfo(System.String,System.Boolean,Menees.Shell.IconOptions,System.Action{System.IntPtr})"/> is false.
+            </summary>
+        </member>
+        <member name="T:Menees.Shell.ShellUtility">
+            <summary>
+            Methods for working with the OS shell.
+            </summary>
+        </member>
+        <member name="M:Menees.Shell.ShellUtility.GetCopyrightInfo(System.Reflection.Assembly)">
+            <summary>
+            Gets the assembly's copyright in a displayable format (e.g., for an About box).
+            </summary>
+            <param name="assembly">The assembly to get the copyright from.</param>
+            <returns>User-friendly copyright information.</returns>
+            <remarks>
+            If a copyright isn't found in the passed-in assembly or if it is null or empty,
+            then the copyright information from the current assembly will be returned.
+            </remarks>
+        </member>
+        <member name="M:Menees.Shell.ShellUtility.GetFileTypeInfo(System.String,System.Boolean,Menees.Shell.IconOptions,System.Action{System.IntPtr})">
+            <summary>
+            Gets the shell's file type name and icon.
+            </summary>
+            <param name="fileName">A file name.  If <paramref name="useExistingFile"/> is true, then this should be
+            the full path to an existing file.  Otherwise, this can just be an extension (with leading period) to get
+            generic file type information.</param>
+            <param name="useExistingFile">If true, then the file specified by <paramref name="fileName"/> must exist,
+            and its icon will be extracted, which can be unique for some file types like .exe and .ico.  If false, then the
+            <paramref name="fileName"/> can just be an extension, and the file type's standard icon will be used.</param>
+            <param name="iconOptions">Options that determine the size and style of icon to get.</param>
+            <param name="useIconHandle">If <paramref name="iconOptions"/> is None, then this should be null.
+            Otherwise, this should be a delegate that converts the passed-in HICON into the desired icon type.
+            In Windows Forms, this can be done with a delegate like:
+            <c>hIcon => icon = (Icon)Icon.FromHandle(hIcon).Clone()</c>
+            In WPF, the icon handle can be converted using the Imaging.CreateBitmapSourceFromHIcon method.
+            <para/>
+            Note: The icon handle will be destroyed automatically when this method returns, so the delegate
+            must copy/clone the icon if it needs to use it later.
+            </param>
+            <returns>The shell's file type name (e.g., "Visual C# Source file" for a ".cs" file).</returns>
+        </member>
+        <member name="M:Menees.Shell.ShellUtility.GetVersionInfo(System.Reflection.Assembly)">
+            <summary>
+            Gets the assembly's version information in a displayable format (e.g., for an About box).
+            </summary>
+            <param name="assembly">The assembly to get the version information from.</param>
+            <returns>User-friendly version information.</returns>
+        </member>
+        <member name="M:Menees.Shell.ShellUtility.ShellExecute(System.Nullable{System.IntPtr},System.String)">
+            <summary>
+            Executes the default action on the specified file using the Windows shell.
+            </summary>
+            <param name="ownerHandle">The parent window handle to use for any error dialogs.</param>
+            <param name="fileName">The text or filename to execute.</param>
+            <returns>The process started by executing the file.</returns>
+            <exception cref="T:System.ComponentModel.Win32Exception">An error occurred when opening the associated file.</exception>
+        </member>
+        <member name="M:Menees.Shell.ShellUtility.ShellExecute(System.Nullable{System.IntPtr},System.String,System.String)">
+            <summary>
+            Executes an action on the specified file using the Windows shell.
+            </summary>
+            <param name="ownerHandle">The parent window handle to use for any error dialogs.</param>
+            <param name="fileName">The text or filename to execute.</param>
+            <param name="verb">The shell action that should be taken.  Pass an empty string for the default action.</param>
+            <returns>The process started by executing the file.</returns>
+            <exception cref="T:System.ComponentModel.Win32Exception">An error occurred when opening the associated file.</exception>
+        </member>
+        <member name="T:Menees.StringExtensions">
+            <summary>
+            Adds extension methods to <see cref="T:System.String"/>.
+            </summary>
+            <remarks>
+            These methods are properly annotated for nullable analysis, unlike string.IsNullOrEmpty in netstandard2.0 and net48 builds.
+            </remarks>
+        </member>
+        <member name="M:Menees.StringExtensions.IsBlank(System.String)">
+            <summary>
+            Shortcut for <see cref="M:System.String.IsNullOrWhiteSpace(System.String)"/>. Blank means "null, empty, or whitespace".
+            </summary>
+        </member>
+        <member name="M:Menees.StringExtensions.IsNotBlank(System.String)">
+            <summary>
+            Shortcut for NOT <see cref="M:System.String.IsNullOrWhiteSpace(System.String)"/>. Blank means "null, empty, or whitespace".
+            </summary>
+        </member>
+        <member name="M:Menees.StringExtensions.IsEmpty(System.String)">
+            <summary>
+            Shortcut for <see cref="M:System.String.IsNullOrEmpty(System.String)"/>.
+            </summary>
+        </member>
+        <member name="M:Menees.StringExtensions.IsNotEmpty(System.String)">
+            <summary>
+            Shortcut for NOT <see cref="M:System.String.IsNullOrEmpty(System.String)"/>.
+            </summary>
+        </member>
+        <member name="M:Menees.StringExtensions.IsWhiteSpace(System.String)">
+            <summary>
+            Shortcut for <see cref="M:System.String.IsNullOrWhiteSpace(System.String)"/>.
+            </summary>
+        </member>
+        <member name="M:Menees.StringExtensions.IsNotWhiteSpace(System.String)">
+            <summary>
+            Shortcut for NOT <see cref="M:System.String.IsNullOrWhiteSpace(System.String)"/>.
+            </summary>
+        </member>
+        <member name="T:Menees.TextUtility">
+            <summary>
+            Methods and properties for text processing.
+            </summary>
+        </member>
+        <member name="M:Menees.TextUtility.EnsureQuotes(System.String)">
+            <overloads>Ensures that the given text is quoted.</overloads>
+            <summary>
+            Ensures that the given text is quoted by '"' characters.
+            </summary>
+            <param name="text">The text to quote if necessary.</param>
+            <returns>The text enclosed in quotes.</returns>
+        </member>
+        <member name="M:Menees.TextUtility.EnsureQuotes(System.String,System.String)">
+            <summary>
+            Ensures that the given text has the specified quotes at the start and end.
+            </summary>
+            <param name="text">The text to quote if necessary.</param>
+            <param name="quote">The quote mark to use.</param>
+            <returns>The text enclosed in quotes.</returns>
+        </member>
+        <member name="M:Menees.TextUtility.EnsureQuotes(System.String,System.String,System.String)">
+            <summary>
+            Ensures that the given text has the specified quotes at the start and end.
+            </summary>
+            <param name="text">The text to quote if necessary.</param>
+            <param name="openQuote">The opening quote mark to use.</param>
+            <param name="closeQuote">The closing quote mark to use.</param>
+            <returns>The text enclosed in quotes.</returns>
+        </member>
+        <member name="M:Menees.TextUtility.GetPrintableCharacter(System.Char)">
+            <summary>
+            Replaces a character with its closest printable match.
+            </summary>
+            <remarks>
+            This method makes the following simple substitutions: \r is left arrow,
+            \n is down arrow, \t is right arrow, and null is "phi".  Vertical tabs and
+            form feeds are replaced as well as a few other Unicode characters
+            that normally render as multiple lines.
+            </remarks>
+            <param name="value">The character to evaluate.</param>
+            <returns>The best matching printable character.</returns>
+        </member>
+        <member name="M:Menees.TextUtility.Replace(System.String,System.String,System.String,System.StringComparison)">
+            <summary>
+            Replaces a substring within the given text using the given comparison type.
+            </summary>
+            <param name="text">The text to search.</param>
+            <param name="oldValue">The substring to search for.</param>
+            <param name="newValue">The string that should replace the substring.</param>
+            <param name="comparisonType">The type of string comparison to perform.</param>
+            <returns>The string with the substring instances replaced.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="text"/> or <paramref name="oldValue"/>
+            are null or empty.</exception>
+        </member>
+        <member name="M:Menees.TextUtility.ReplaceControlCharacters(System.String,System.Char)">
+            <summary>
+            Replaces the control characters in a string with the specified character.
+            </summary>
+            <param name="text">The text to update.</param>
+            <param name="replacement">The character to substitute for control characters.</param>
+            <returns>The text with the control characters replaced.</returns>
+        </member>
+        <member name="M:Menees.TextUtility.ReplaceControlCharacters(System.String)">
+            <summary>
+            Replaces the control characters in a string using <see cref="M:Menees.TextUtility.GetPrintableCharacter(System.Char)"/>.
+            </summary>
+            <param name="text">The text to update.</param>
+            <returns>The text with the control characters replaced.</returns>
+        </member>
+        <member name="M:Menees.TextUtility.SplitIntoTokens(System.String)">
+            <summary>
+            Tokenize the input string using a comma separator, a double quote delimiter, and trimming the resulting tokens.
+            </summary>
+            <param name="text">The text to tokenize.</param>
+            <returns>A list of tokens.</returns>
+        </member>
+        <member name="M:Menees.TextUtility.SplitIntoTokens(System.String,System.Char,System.Nullable{System.Char},System.Boolean)">
+            <summary>
+            Tokenize the input string using the specified separator (e.g., comma), delimiter (e.g., double quote),
+            and trimming options.
+            </summary>
+            <remarks>
+            It will tokenize a string like <c>"Test1","Test2", Test3, Test4</c> into:
+            <code>
+            Test1
+            Test2
+            Test3
+            Test4
+            </code>
+            </remarks>
+            <param name="text">The text to tokenize.</param>
+            <param name="separator">The token separator character.  Typically, a comma.</param>
+            <param name="delimiter">The token quote character.  Typically, a double quote.
+            This can be used to enclose tokens that contain the separator character.
+            To use this character inside a token, use it two consecutive times.
+            </param>
+            <param name="trimTokens">Whether the resulting tokens should have whitespace trimmed off.</param>
+            <returns>A list of tokens.</returns>
+        </member>
+        <member name="M:Menees.TextUtility.SplitIntoTokens(System.String,System.Char,System.Nullable{System.Char},System.Boolean,System.Collections.Generic.ICollection{System.String})">
+            <summary>
+            Tokenize the input string using the specified separator (e.g., comma), delimiter (e.g., double quote),
+            and trimming options and add the output tokens to the specified collection.
+            </summary>
+            <param name="text">The text to tokenize.</param>
+            <param name="separator">The token separator character.  Typically, a comma.</param>
+            <param name="delimiter">The token quote character.  Typically, a double quote.
+            This can be used to enclose tokens that contain the separator character.
+            To use this character inside a token, use it two consecutive times.
+            </param>
+            <param name="trimTokens">Whether the resulting tokens should have whitespace trimmed off.</param>
+            <param name="tokens">The collection to add the parsed tokens to.</param>
+            <returns>True if all of the tokens were properly delimited (or were not delimited).
+            False if the final token was open-delimited but never closed (which usually indicates a partial record).</returns>
+        </member>
+        <member name="M:Menees.TextUtility.SplitIntoTokens(System.String,System.Char,System.Nullable{System.Char},System.Action{System.String})">
+            <summary>
+            Tokenize the input string using the specified separator (e.g., comma), delimiter (e.g., double quote),
+            and trimming options and add the output tokens to the specified collection.
+            </summary>
+            <param name="text">The text to tokenize.</param>
+            <param name="separator">The token separator character.  Typically, a comma.</param>
+            <param name="delimiter">The token quote character.  Typically, a double quote.
+            This can be used to enclose tokens that contain the separator character.
+            To use this character inside a token, use it two consecutive times.
+            </param>
+            <param name="addToken">The action to invoke when a token has been matched and needs to be output.</param>
+            <returns>True if all of the tokens were properly delimited (or were not delimited).
+            False if the final token was open-delimited but never closed (which usually indicates a partial record).</returns>
+        </member>
+        <member name="M:Menees.TextUtility.StripQuotes(System.String)">
+            <overloads>Strips the quotes off of a string.</overloads>
+            <summary>
+            Strips the '"' quotes off of a string if they exist.
+            </summary>
+            <param name="text">The text to search.</param>
+            <returns>The text with the quotes removed.</returns>
+        </member>
+        <member name="M:Menees.TextUtility.StripQuotes(System.String,System.String)">
+            <summary>
+            Strips the specified quotes off of a string if they exist.
+            </summary>
+            <param name="text">The text to search.</param>
+            <param name="quote">The quote string.</param>
+            <returns>The text with the quotes removed.</returns>
+        </member>
+        <member name="M:Menees.TextUtility.StripQuotes(System.String,System.String,System.String)">
+            <summary>
+            Strips the opening and closing quotes off of a string if they exist.
+            </summary>
+            <param name="text">The text to search.</param>
+            <param name="openQuote">The opening quote string.</param>
+            <param name="closeQuote">The closing quote string.</param>
+            <returns>The text with the quotes removed.</returns>
+        </member>
+        <member name="M:Menees.TextUtility.MakePlural(System.String)">
+            <summary>
+            Gets the plural form of the specified word.
+            </summary>
+            <param name="word">The word to make plural.</param>
+        </member>
+        <member name="T:Menees.UriUtility">
+            <summary>
+            Methods for working with <see cref="T:System.Uri"/> instances.
+            </summary>
+        </member>
+        <member name="M:Menees.UriUtility.AppendToPath(System.Uri,System.String)">
+            <summary>
+            Clones the URI and then appends a file or sub-folder name to the new URI's Path.
+            </summary>
+            <param name="uri">The URI to append to.</param>
+            <param name="newPathPart">A new file or folder name to append.</param>
+            <returns>A new Uri if a path part is appended, or the original Uri if <paramref name="newPathPart"/> is null or empty.</returns>
+        </member>
+        <member name="T:Menees.XmlUtility">
+            <summary>
+            Methods and properties for XML processing.
+            </summary>
+        </member>
+        <member name="M:Menees.XmlUtility.CreateSchemaSet(System.Collections.Generic.IEnumerable{System.Xml.Linq.XElement})">
+            <summary>
+            Creates a new XmlSchemaSet from the XElement containing the schema.
+            </summary>
+            <param name="schemaElements">The XML elements containing the schemas.</param>
+            <returns>The new XmlSchema instance.</returns>
+            <remarks>
+            An XmlSchemaException will be thrown if an error occurs.
+            </remarks>
+        </member>
+        <member name="M:Menees.XmlUtility.CreateSchemaSet(System.Collections.Generic.IEnumerable{System.Xml.Linq.XElement},System.Collections.Generic.ICollection{System.Xml.Schema.ValidationEventArgs})">
+            <summary>
+             Creates a new XmlSchemaSet from the XElement containing the schema and stores
+             any errors and warnings in the specified collection.
+            </summary>
+            <param name="schemaElements">The XML elements containing the schemas.</param>
+            <param name="errors">The collection to add errors and warnings into.</param>
+            <returns>The new XmlSchemaSet instance.</returns>
+        </member>
+        <member name="M:Menees.XmlUtility.CreateSchemaSet(System.Collections.Generic.IEnumerable{System.Xml.Linq.XElement},System.Xml.Schema.ValidationEventHandler)">
+            <summary>
+            Creates a new XmlSchemaSet from the XElements containing the schemas using the specified handler.
+            </summary>
+            <param name="schemaElements">The XML elements containing the schemas.</param>
+            <param name="handler">The handler used to process errors and warnings.  This can be null,
+            which means an XmlSchemaException will be thrown if an error occurs.</param>
+            <returns>The new XmlSchemaSet instance.</returns>
+        </member>
+        <member name="M:Menees.XmlUtility.GetAttributeValue(System.Xml.Linq.XElement,System.Xml.Linq.XName)">
+            <summary>
+            Gets the specified attribute's value.
+            </summary>
+            <param name="element">The element to get the attribute from.</param>
+            <param name="name">The name of the attribute to read.</param>
+            <returns>The value of the attribute.  An <see cref="T:System.ArgumentException"/>
+            is thrown if the specified attribute isn't found.</returns>
+            <exception cref="T:System.ArgumentException">Throw if either of the arguments are null,
+            or if the specified attribute isn't found.</exception>
+        </member>
+        <member name="M:Menees.XmlUtility.GetAttributeValue(System.Xml.Linq.XElement,System.Xml.Linq.XName,System.String)">
+            <summary>
+            Gets the specified attribute's value or a default value if the attribute isn't present or is empty.
+            </summary>
+            <param name="element">The element to get the attribute from.</param>
+            <param name="name">The name of the attribute to read.</param>
+            <param name="defaultValue">The value to return if the attribute isn't found or has an empty value.</param>
+            <returns>The value of the attribute, or the default value if the attribute isn't found or has an empty value.</returns>
+        </member>
+        <member name="M:Menees.XmlUtility.GetAttributeValue(System.Xml.Linq.XElement,System.Xml.Linq.XName,System.Int32)">
+            <summary>
+            Gets the specified attribute's value or a default value if the attribute isn't present.
+            </summary>
+            <param name="element">The element to get the attribute from.</param>
+            <param name="name">The name of the attribute to read.</param>
+            <param name="defaultValue">The value to return if the attribute isn't found.</param>
+            <returns>The value of the attribute, or the default value if the attribute isn't found.</returns>
+        </member>
+        <member name="M:Menees.XmlUtility.GetAttributeValue(System.Xml.Linq.XElement,System.Xml.Linq.XName,System.Boolean)">
+            <summary>
+            Gets the specified attribute's value or a default value if the attribute isn't present.
+            </summary>
+            <param name="element">The element to get the attribute from.</param>
+            <param name="name">The name of the attribute to read.</param>
+            <param name="defaultValue">The value to return if the attribute isn't found.</param>
+            <returns>The value of the attribute, or the default value if the attribute isn't found.</returns>
+        </member>
+        <member name="M:Menees.XmlUtility.GetAttributeValue``1(System.Xml.Linq.XElement,System.Xml.Linq.XName,``0)">
+            <summary>
+            Gets the specified attribute's value or a default value if the attribute isn't present.
+            </summary>
+            <param name="element">The element to get the attribute from.</param>
+            <param name="name">The name of the attribute to read.</param>
+            <param name="defaultValue">The value to return if the attribute isn't found.</param>
+            <returns>The value of the attribute, or the default value if the attribute isn't found.</returns>
+        </member>
+        <member name="M:Menees.XmlUtility.GetAttributeValueN(System.Xml.Linq.XElement,System.Xml.Linq.XName,System.String)">
+            <summary>
+            Gets the specified attribute's value or a default value if the attribute isn't present or is empty.
+            </summary>
+            <param name="element">The element to get the attribute from.</param>
+            <param name="name">The name of the attribute to read.</param>
+            <param name="defaultValue">The value to return if the attribute isn't found or has an empty value.</param>
+            <returns>The value of the attribute, or the default value if the attribute isn't found or has an empty value.</returns>
+        </member>
+        <member name="M:Menees.XmlUtility.GetAttributeValueN(System.Xml.Linq.XElement,System.Xml.Linq.XName,System.String,System.Boolean)">
+            <summary>
+            Gets the specified attribute's value or a default value if the attribute isn't present.
+            </summary>
+            <param name="element">The element to get the attribute from.</param>
+            <param name="name">The name of the attribute to read.</param>
+            <param name="defaultValue">The value to return if the attribute isn't found.</param>
+            <param name="useDefaultIfEmptyValue">If the attribute is present but with an empty value,
+            then this parameter determines whether the <paramref name="defaultValue"/> should be
+            returned (if true) or the actual, empty attribute value should be returned (if false).
+            Normally, this should be true, but false is useful if you need to allow the user to explicitly
+            set an empty attribute value to override a non-empty default value.
+            </param>
+            <returns>The value of the attribute, or the default value if the attribute isn't found.</returns>
+        </member>
+        <member name="M:Menees.XmlUtility.RequireValidation(System.Xml.Linq.XElement,System.Xml.Schema.XmlSchemaSet)">
+            <summary>
+            Validates the XML using the given schemas and throws an XmlSchemaValidationException
+            if there are errors or warnings.
+            </summary>
+            <param name="xml">The XML to validate.</param>
+            <param name="schemas">The schemas to use for validation.</param>
+        </member>
+        <member name="M:Menees.XmlUtility.Validate(System.Xml.Linq.XElement,System.Xml.Schema.XmlSchemaSet)">
+            <summary>
+            Validates the XML using the given schema set.
+            </summary>
+            <param name="xml">The XML to validate.</param>
+            <param name="schemas">The schemas to use for validation.</param>
+            <returns>A list of validation errors and warnings.</returns>
+        </member>
+    </members>
+</doc>

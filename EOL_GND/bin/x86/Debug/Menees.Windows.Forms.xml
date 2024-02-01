@@ -1,0 +1,1634 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Menees.Windows.Forms</name>
+    </assembly>
+    <members>
+        <member name="F:Menees.Windows.Forms.AboutBox.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.AboutBox.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.AboutBox.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Menees.Windows.Forms.FindMode">
+            <summary>
+            The supported modes for <see cref="M:Menees.Windows.Forms.IFindTarget.Find(Menees.Windows.Forms.FindData,Menees.Windows.Forms.FindMode)"/>.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.Forms.FindMode.ShowDialog">
+            <summary>
+            Shows an <see cref="T:Menees.Windows.Forms.IFindDialog"/>.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.Forms.FindMode.FindNext">
+            <summary>
+            Finds the next instance or shows an <see cref="T:Menees.Windows.Forms.IFindDialog"/> if there is no <see cref="P:Menees.Windows.Forms.FindData.Text"/>.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.Forms.FindMode.FindPrevious">
+            <summary>
+            Finds the previous instance or shows an <see cref="T:Menees.Windows.Forms.IFindDialog"/> if there is no <see cref="P:Menees.Windows.Forms.FindData.Text"/>.
+            </summary>
+        </member>
+        <member name="T:Menees.Windows.Forms.ListViewColumnType">
+            <summary>
+            Defines the supported column types used in sorting.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.Forms.ListViewColumnType.String">
+            <summary>
+            A string column.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.Forms.ListViewColumnType.Number">
+            <summary>
+            A numeric column.  This can be an integer or floating-point type.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.Forms.ListViewColumnType.DateTime">
+            <summary>
+            A date/time column.
+            </summary>
+        </member>
+        <member name="T:Menees.Windows.Forms.ExtendedForm">
+            <summary>
+            Extends the base Form class to use the default system font at design-time and run-time.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedForm.#ctor">
+            <summary>
+            Creates a new instance.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.Forms.ExtendedForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Menees.Windows.Forms.ExtendedListView">
+            <summary>
+            A custom list view type that exposes methods for auto-sizing and sorting its columns.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.Forms.ExtendedListView.AutoSizeByData">
+            <summary>
+            Set ColumnHeader.Width to this to auto-size the column based on the text in the items.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.Forms.ExtendedListView.AutoSizeByHeader">
+            <summary>
+            Set ColumnHeader.Width to this to auto-size the column based on its header text.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.#ctor">
+            <summary>
+            Creates a new instance.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.ExtendedListView.HideSelection">
+            <summary>
+            Changes the inherited <see cref="P:System.Windows.Forms.ListView.HideSelection"/> property to default to false.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.ExtendedListView.FullRowSelect">
+            <summary>
+            Changes the inherited <see cref="P:System.Windows.Forms.ListView.FullRowSelect"/> property to default to true.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.ExtendedListView.MultiSelect">
+            <summary>
+            Changes the inherited <see cref="P:System.Windows.Forms.ListView.MultiSelect"/> property to default to false.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.ExtendedListView.View">
+            <summary>
+            Changes the inherited <see cref="P:System.Windows.Forms.ListView.View"/> property to default to "Details".
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.ExtendedListView.Capacity">
+            <summary>
+            Gets or sets the number of items that space is reserved for.
+            </summary>
+            <remarks>
+            This setting doesn't affect Items.Count.  It just tells the
+            Win32 ListView common control to pre-allocate buffers large
+            enough to allow a certain number of items to be added without
+            having to reallocate any internal lists.
+            </remarks>
+        </member>
+        <member name="P:Menees.Windows.Forms.ExtendedListView.VisibleItemCount">
+            <summary>
+            Returns the number of items that can be fully visible in the control.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.ExtendedListView.InDoubleClick">
+            <summary>
+            Gets whether a double-click event handler is currently being executed.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.ExtendedListView.AllowItemCheck">
+            <summary>
+            Gets or sets whether the user can change item checkboxes.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.BeginUpdate">
+            <summary>
+            See <see cref="M:System.Windows.Forms.ListView.BeginUpdate"/>.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.EndUpdate">
+            <summary>
+            See <see cref="M:System.Windows.Forms.ListView.EndUpdate"/>.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.SortColumn(System.Int32)">
+            <summary>
+            Sorts the specified column in ascending order.
+            </summary>
+            <param name="column">The index of the column to sort.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.SortColumn(System.Int32,System.Boolean)">
+            <summary>
+            Sorts the specified column in ascending or descending order.
+            </summary>
+            <param name="column">The index of the column to sort.</param>
+            <param name="ascending">True to sort ascending.  False to sort descending.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.Sort">
+            <summary>
+            Sorts using the current ListViewItemSorter.
+            </summary>
+            <remarks>
+            This method adds support for sorting a virtual list view by calling the
+            <see cref="M:Menees.Windows.Forms.ExtendedListView.OnVirtualSortColumn(System.Int32,System.Boolean,Menees.Windows.Forms.ListViewColumnType)"/> method.
+            </remarks>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.GetActualColumnWidth(System.Windows.Forms.ColumnHeader)">
+            <summary>
+            This returns the column width even inside of a BeginUpdate/EndUpdate pair.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.AutoSizeColumn(System.Windows.Forms.ColumnHeader)">
+            <summary>
+            Auto-sizes the column to fit both the header and data text.  This will grow or shrink the column as necessary.
+            </summary>
+            <param name="column">The column to auto-size.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.AutoSizeColumn(System.Windows.Forms.ColumnHeader,System.Boolean)">
+            <summary>
+            Auto-sizes the column to fit both the header and data text.
+            </summary>
+            <param name="column">The column to auto-size.</param>
+            <param name="allowShrinking">Whether the column should be allowed to get smaller.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.AutoSizeColumns">
+            <summary>
+            Auto-sizes all columns.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.InsertRange(System.Int32,System.Windows.Forms.ListViewItem[])">
+            <summary>
+            Inserts a range of items at the specified index.
+            </summary>
+            <param name="index">The index to start the insertion at.</param>
+            <param name="items">The array of items to insert.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.InsertRange(System.Int32,System.Windows.Forms.ListViewItem[],System.Boolean)">
+            <summary>
+            Inserts a range of items at the specified index optionally
+            in reverse order.
+            </summary>
+            <param name="index">The index to start the insertion at.</param>
+            <param name="items">The array of items to insert.</param>
+            <param name="reverseOrder">Whether the items should be inserted in reverse order.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.SaveAsText(System.String)">
+            <summary>
+            Saves the list contents to a tab-separated text file.
+            </summary>
+            <param name="fileName">The name of the file to save to.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.SaveAsText(System.String,System.String)">
+            <summary>
+            Saves the list contents to a token-separated text file.
+            </summary>
+            <param name="fileName">The name of the file to save to.</param>
+            <param name="separator">The separator string to put between each value in a row.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.GetAsText(System.String,System.Boolean)">
+            <summary>
+            Gets the list view data for all items as text.
+            </summary>
+            <param name="separator">The separator string to put between each value in a row.</param>
+            <param name="includeHeaders">Whether the column headers should be included.</param>
+            <returns>The text representation of the list view.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.GetAsText(System.String,System.Boolean,System.Collections.Generic.IEnumerable{System.Windows.Forms.ListViewItem},System.IO.TextWriter)">
+            <summary>
+            Gets the list view data for the selected items as text.
+            </summary>
+            <param name="separator">The separator string to put between each value in a row.</param>
+            <param name="includeHeaders">Whether the column headers should be included.</param>
+            <param name="items">The collection of ListViewItems to write.</param>
+            <param name="writer">The text writer to append to.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.SetPresortedOrder(System.Int32,System.Boolean)">
+            <summary>
+            Informs the ListView that you've initially populated it with a column in pre-sorted order.
+            </summary>
+            <remarks>
+            If you load a list in order, then this method allows you to tell the ListView control about
+            the pre-existing sort order without having to incur the overhead of an explicit <see cref="M:Menees.Windows.Forms.ExtendedListView.Sort"/>
+            operation.  Then when a user clicks on the header for the sorted column it can swap the
+            sort order instead of just re-sorting into the same order.
+            </remarks>
+            <param name="column">The column that the list entries are already sorted by.</param>
+            <param name="ascending">True if the column is sorted in ascending order.  False if it is in descending order.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.SetColumnType(System.Int32,Menees.Windows.Forms.ListViewColumnType)">
+            <summary>
+            Sets the column type for the specified column.  This is used for sorting.
+            </summary>
+            <param name="column">The column index.</param>
+            <param name="columnType">The column type.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.GetColumnType(System.Int32)">
+            <summary>
+            Determines the given column's type.
+            </summary>
+            <param name="column">The index of the column.</param>
+            <returns>The column's type.</returns>
+            <remarks>
+            By default, this assumes it is numeric if it is right-aligned,
+            which works for most cases.  Derived classes can change
+            this behavior if necessary by overriding this function.
+            </remarks>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.CompareItems(System.Windows.Forms.ListViewItem,System.Windows.Forms.ListViewItem,System.Int32,System.Boolean,Menees.Windows.Forms.ListViewColumnType)">
+            <summary>
+            Compares two <see cref="T:System.Windows.Forms.ListViewItem"/> instances during a sort.
+            </summary>
+            <param name="itemX">The left-hand item to compare.</param>
+            <param name="itemY">The right-hand item to compare.</param>
+            <param name="column">The column to compare for.</param>
+            <param name="ascending">Whether an ascending or decending sort is being done.</param>
+            <param name="columnType">The column's type based on the result of <see cref="M:Menees.Windows.Forms.ExtendedListView.GetColumnType(System.Int32)"/>.</param>
+            <returns>-1 if ItemX is less than ItemY.  0 if they're equal.  1 if ItemX is greater than ItemY.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.OnVirtualSortColumn(System.Int32,System.Boolean,Menees.Windows.Forms.ListViewColumnType)">
+            <summary>
+            Called from a virtual listview (i.e., <see cref="P:System.Windows.Forms.ListView.VirtualMode"/> is true) when a column header is clicked
+            or when <see cref="M:Menees.Windows.Forms.ExtendedListView.SortColumn(System.Int32,System.Boolean)"/> is called.
+            </summary>
+            <remarks>
+            You should not call this method from an override in a derived class.  All it does is throw an exception
+            saying that the derived class needs to provide the implementation for it.
+            </remarks>
+            <param name="column">The column to sort.</param>
+            <param name="ascending">Whether an ascending or decending sort should be done.</param>
+            <param name="columnType">The column's type based on the result of <see cref="M:Menees.Windows.Forms.ExtendedListView.GetColumnType(System.Int32)"/>.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.OnColumnClick(System.Windows.Forms.ColumnClickEventArgs)">
+            <summary>
+            Overriden to sort the column in a toggling manner like Explorer does.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.OnHandleCreated(System.EventArgs)">
+            <summary>
+            Overriden to set the capacity if necessary.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.WndProc(System.Windows.Forms.Message@)">
+            <summary>
+            Processes Windows messages.
+            </summary>
+            <param name="m">The Windows message to process.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.OnDoubleClick(System.EventArgs)">
+            <summary>
+            Called when a double-click event occurs.
+            </summary>
+            <param name="e">The event args.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.OnItemCheck(System.Windows.Forms.ItemCheckEventArgs)">
+            <summary>
+            Called when an item is checked.
+            </summary>
+            <param name="ice">The event args.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.OnMouseDown(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Called when a mouse button is pressed.
+            </summary>
+            <param name="e">The event args.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.OnMouseUp(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Called when a mouse button is released.
+            </summary>
+            <param name="e">The event args.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedListView.IndexOf(System.Windows.Forms.ListViewItem)">
+            <summary>
+            Used to find the new index for a ListViewItem after a sort
+            or any other operation that changes the virtual collection
+            of items.
+            </summary>
+            <remarks>
+            A derived class should override this to do an IndexOf on its
+            own collection of objects associated with the listview items.
+            <p/>
+            The Index property of the <paramref name="item"/> parameter
+            will still report the last index the item had before the collection
+            was changed.
+            </remarks>
+            <param name="item">
+            The listview item to lookup.  If you have
+            associated an object with the Tag property it will be available
+            so you can look it up in your own collection.
+            </param>
+            <returns>The new index where this listview item is located.</returns>
+        </member>
+        <member name="T:Menees.Windows.Forms.ExtendedPanel">
+            <summary>
+            A panel container that can paint a themed border.
+            </summary>
+            <remarks>
+            This is useful for containing a RichTextBox that has its BorderStyle set to None.
+            RichTextBox doesn't support a themed border in .NET, but if you set the RichTextBox's
+            border to None and embed it in an ExtendedPanel with UseVisualStyleBorder
+            set to true then it at least appears to use a themed border.
+            </remarks>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedPanel.#ctor">
+            <summary>
+            Creates a new instance.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.ExtendedPanel.UseVisualStyleBorder">
+            <summary>
+            Gets or sets whether the panel should use a themed border if the BorderStyle is None.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedPanel.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Handles the custom painting for the control.
+            </summary>
+            <param name="e">The paint event arguments.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedPanel.OnSystemColorsChanged(System.EventArgs)">
+            <summary>
+            Called when the system colors change.
+            </summary>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="T:Menees.Windows.Forms.ExtendedPropertyGrid">
+            <summary>
+            Adds commonly needed functionality to the Windows Forms PropertyGrid.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedPropertyGrid.#ctor">
+            <summary>
+            Creates a new instance.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedPropertyGrid.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            Creates a new instance for the specified container.
+            </summary>
+            <param name="container">The container for this component.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedPropertyGrid.SelectProperty(System.String)">
+            <summary>
+            Selects the specified property on the currently selected object.
+            </summary>
+            <param name="propertyName">The name of a property to select.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedPropertyGrid.RefreshProperties">
+            <summary>
+            Forces the grid to refresh itself in case properties were updated.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.Forms.ExtendedPropertyGrid.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedPropertyGrid.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedPropertyGrid.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Menees.Windows.Forms.ExtendedRichTextBox">
+            <summary>
+            Exposes additional properties and methods for a RichTextBox.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedRichTextBox.#ctor">
+            <summary>
+            Creates a new instance.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.ExtendedRichTextBox.Text">
+            <summary>
+            Gets or sets the current text in the rich text box.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.ExtendedRichTextBox.TabSpaces">
+            <summary>
+            Gets or sets the number of spaces a TAB character should be as wide as.  This only works for monospaced
+            fonts (e.g., Courier New).  Set to 0 to use the edit control's default tab stops.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.ExtendedRichTextBox.CanCut">
+            <summary>
+            Gets whether text can currently be cut.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.ExtendedRichTextBox.CanCopy">
+            <summary>
+            Gets whether text can currently be copied.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.ExtendedRichTextBox.CanPasteText">
+            <summary>
+            Gets whether text can currently be pasted.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.ExtendedRichTextBox.CaretPoint">
+            <summary>
+            Gets or sets the 0-based line and column for the current caret position.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.ExtendedRichTextBox.FirstVisibleLine">
+            <summary>
+            Gets the 0-based index of the uppermost visible line.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.ExtendedRichTextBox.LineCount">
+            <summary>
+            Gets the number of lines.  Always >= 1.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.ExtendedRichTextBox.PasteTextOnly">
+            <summary>
+            Gets or sets whether this control only allows plain text to be pasted
+            (i.e., not images, objects, or rich formatted text).
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.ExtendedRichTextBox.CanFind">
+            <summary>
+            Gets whether the <see cref="M:Menees.Windows.Forms.ExtendedRichTextBox.Find(Menees.Windows.Forms.FindData,Menees.Windows.Forms.FindMode)"/> method can be used.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.ExtendedRichTextBox.FindCaption">
+            <summary>
+            Gets or sets the caption to use for find operations.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedRichTextBox.GetCurrentLineText(System.Boolean)">
+            <summary>
+            Gets the current line of text that the cursor is on.
+            </summary>
+            <param name="selectLine">Whether the current line should be selected or not.</param>
+            <returns>The current line text.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedRichTextBox.GetLineIndex(System.Int32)">
+            <summary>
+            Gets the index of the first character of the specified line.
+            </summary>
+            <param name="lineNumber">The 0-based line index.</param>
+            <returns>The 0-based character index.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedRichTextBox.GetLineLength(System.Int32)">
+            <summary>
+            Gets the length, in characters, of the specified line.
+            </summary>
+            <param name="lineNumber">The 0-based line number.</param>
+            <returns>The line length.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedRichTextBox.GetLineFromChar(System.Int32)">
+            <summary>
+            Gets the index of the line that contains the specified character index.
+            </summary>
+            <param name="characterIndex">The 0-based character index.</param>
+            <returns>The 0-based line index.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedRichTextBox.Scroll(System.Int32,System.Int32)">
+            <summary>
+            Scrolls the text the specified number of characters horizontally and/or lines vertically.
+            </summary>
+            <param name="horizontalChars">The number of characters to scroll horizontally.</param>
+            <param name="verticalLines">The number of lines to scroll vertically.</param>
+            <returns>True for success.  False otherwise.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedRichTextBox.GotoLine(System.Int32,System.Boolean)">
+            <summary>
+            Moves the caret to the 0-based line number.
+            </summary>
+            <param name="lineNumber">The 0-based line number.</param>
+            <param name="selectLine">Whether the new line should be selected.</param>
+            <returns>True if successful.  False otherwise.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedRichTextBox.GetOleInterface">
+            <summary>
+            Gets an ITextDocument interface to the editor's contents.
+            </summary>
+            <returns>A Text Object Model interface.  The caller can cast the result to tom.ITextDocument
+            if they add a COM reference to msftedit.dll.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedRichTextBox.Find(Menees.Windows.Forms.FindData,Menees.Windows.Forms.FindMode)">
+            <summary>
+            Finds the specified text in the target.
+            </summary>
+            <param name="findData">The text to search for.</param>
+            <param name="findMode">Whether to find next, previous, or display a dialog.</param>
+            <returns>True if the find text was found and selected.  False otherwise.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedRichTextBox.OnEnabledChanged(System.EventArgs)">
+            <summary>
+            Called when the Enabled state has changed.
+            </summary>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedRichTextBox.OnFontChanged(System.EventArgs)">
+            <summary>
+            Called when the font has changed.
+            </summary>
+            <param name="e">The event arguments.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedRichTextBox.ProcessCmdKey(System.Windows.Forms.Message@,System.Windows.Forms.Keys)">
+            <summary>
+            Processes a command key message.
+            </summary>
+            <param name="m">The message to process.</param>
+            <param name="keyData">The key data.</param>
+            <returns>True if the control processed the key.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedRichTextBox.IsInputKey(System.Windows.Forms.Keys)">
+            <summary>
+            Determines whether the specified key is an input key or a special key that requires preprocessing
+            </summary>
+            <param name="keyData">A mask of Keys values.</param>
+            <returns>True if the specified key is an input key; otherwise, false.</returns>
+        </member>
+        <member name="T:Menees.Windows.Forms.ExtendedToolStrip">
+            <summary>
+            Exposes additional functionality for a ToolStrip.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedToolStrip.#ctor">
+            <summary>
+            Creates a new instance.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.ExtendedToolStrip.MouseActivateCausesClick">
+            <summary>
+            Gets or sets whether a mouse activation message will also send
+            the message on to child windows.
+            </summary>
+            <remarks>
+            This defaults to true, which allows a single click to activate the current window
+            and still be processed as a click by a child window.  Set this to false to get the
+            standard ToolStrip behavior, which won't pass a mouse click on to a child window
+            if the ToolStrip's parent window is initially inactive.
+            </remarks>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedToolStrip.WndProc(System.Windows.Forms.Message@)">
+            <summary>
+            Processes window messages.
+            </summary>
+        </member>
+        <member name="T:Menees.Windows.Forms.ExtendedUserControl">
+            <summary>
+            Extends the base UserControl class to use the default system font at design-time and run-time.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedUserControl.#ctor">
+            <summary>
+            Creates a new instance.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.Forms.ExtendedUserControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedUserControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.ExtendedUserControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Menees.Windows.Forms.FindData">
+            <summary>
+            Exposes standard find data.
+            </summary>
+            <remarks>
+            This class isn't sealed, so you can inherit from it
+            and add your own data members.  Then you can use a
+            custom IFindDialog implementation to edit your data.
+            </remarks>
+        </member>
+        <member name="M:Menees.Windows.Forms.FindData.#ctor">
+            <summary>
+            Creates a new instance.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.FindData.Text">
+            <summary>
+            Gets or sets the text to find.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.FindData.MatchCase">
+            <summary>
+            Gets or sets whether the search should be case-sensitive.
+            This defaults to false.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.FindData.SearchUp">
+            <summary>
+            Gets or sets whether the search should go down or up.
+            This defaults to false.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.FindData.ShowMessageIfNotFound">
+            <summary>
+            Gets or sets whether a message box should be shown if <see cref="P:Menees.Windows.Forms.FindData.Text"/> isn't found.
+            This defaults to true.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.FindData.CreateFindDialog">
+            <summary>
+            Gets or sets a function that should be used to create a custom find dialog.
+            If this is null, then a standard <see cref="T:Menees.Windows.Forms.FindDialog"/> is created.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.FindData.Caption">
+            <summary>
+            Gets or sets the caption to use for dialogs.
+            This defaults to "Find".
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.FindData.IsFoundIn(System.String)">
+            <summary>
+            Gets whether the current <see cref="P:Menees.Windows.Forms.FindData.Text"/> is found in <paramref name="value"/> using <see cref="P:Menees.Windows.Forms.FindData.MatchCase"/>.
+            </summary>
+            <param name="value">A text value to check.</param>
+            <returns>True if <paramref name="value"/> contains <see cref="P:Menees.Windows.Forms.FindData.Text"/> when using <see cref="P:Menees.Windows.Forms.FindData.MatchCase"/>.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.FindData.ReportNotFound(System.Windows.Forms.IWin32Window)">
+            <summary>
+            If <see cref="P:Menees.Windows.Forms.FindData.ShowMessageIfNotFound"/> is true, then this
+            reports that the find <see cref="P:Menees.Windows.Forms.FindData.Text"/> was not found.
+            </summary>
+            <param name="owner">The owner window for the message box.</param>
+        </member>
+        <member name="T:Menees.Windows.Forms.FindDialog">
+            <summary>
+            A standard Find dialog.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.FindDialog.#ctor">
+            <summary>
+            Creates a new instance.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.FindDialog.Execute(System.Windows.Forms.IWin32Window,Menees.Windows.Forms.FindData)">
+            <summary>
+            Used to display the Find dialog with the given data.
+            </summary>
+            <param name="owner">The dialog owner.</param>
+            <param name="data">The find data.</param>
+            <returns>True if OK was pressed.</returns>
+        </member>
+        <member name="F:Menees.Windows.Forms.FindDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.FindDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.FindDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Menees.Windows.Forms.Finder">
+            <summary>
+            Used as a base class for a generic "find" operation that supports FindNext and FindPrevious.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.Finder.Data">
+            <summary>
+            The find data.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.Finder.Find(System.Windows.Forms.IWin32Window,Menees.Windows.Forms.FindData,Menees.Windows.Forms.FindMode)">
+            <summary>
+            Starts a find operation using the specified find data.
+            </summary>
+            <param name="owner">The dialog owner.</param>
+            <param name="findData">The data to find.</param>
+            <param name="findMode">Whether to find next, previous, or display a dialog.</param>
+            <returns>True if the find text was found and selected.  False otherwise.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.Finder.OnDialogExecute(Menees.Windows.Forms.IFindDialog,System.Windows.Forms.IWin32Window,Menees.Windows.Forms.FindData)">
+            <summary>
+            Called to execute the dialog.  This allows you to do custom actions before
+            and after the dialog is executed.
+            </summary>
+            <param name="findDialog">The dialog to display.</param>
+            <param name="owner">The dialog owner.</param>
+            <param name="findData">The find data.</param>
+            <returns>True if OK was pressed.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.Finder.OnFindNext">
+            <summary>
+            Override to handle find next.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.Finder.OnFindPrevious">
+            <summary>
+            Override to handle find previous.
+            </summary>
+        </member>
+        <member name="T:Menees.Windows.Forms.FormSaver">
+            <summary>
+            Used to save and load a form's position and state.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.FormSaver.#ctor">
+            <summary>
+            Creates a new instance.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.FormSaver.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            Creates a new instance in the specified container.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.FormSaver.#ctor(System.Windows.Forms.ContainerControl)">
+            <summary>
+            Creates a new instance for the specified container control.
+            </summary>
+        </member>
+        <member name="E:Menees.Windows.Forms.FormSaver.LoadSettings">
+            <summary>
+            Called when settings are being loaded.
+            </summary>
+        </member>
+        <member name="E:Menees.Windows.Forms.FormSaver.SaveSettings">
+            <summary>
+            Called when settings are being saved.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.FormSaver.AutoLoad">
+            <summary>
+            Gets or sets whether the settings should automatically load when the form loads.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.FormSaver.AutoSave">
+            <summary>
+            Gets or sets whether the settings should automatically save when the form closes.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.FormSaver.AllowLoadMinimized">
+            <summary>
+            Gets or sets whether the form should be allowed to load minimized.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.FormSaver.SettingsNodeName">
+            <summary>
+            Gets or sets the node where settings should be saved.  This can be empty.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.FormSaver.ContainerControl">
+            <summary>
+            Gets or sets the form to save the settings for.  This must be set.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.FormSaver.Site">
+            <summary>
+            Gets or sets the site for the current component.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.FormSaver.Load">
+            <summary>
+            Used to explicitly load the form's settings if <see cref="P:Menees.Windows.Forms.FormSaver.AutoLoad"/> is false.
+            </summary>
+            <returns>True if the previous settings were re-loaded;
+            False if no previous settings existed.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.FormSaver.Save">
+            <summary>
+            Used to explicitly save the form's settings if <see cref="P:Menees.Windows.Forms.FormSaver.AutoSave"/> is false.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.Forms.FormSaver.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.FormSaver.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.FormSaver.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.Forms.InputDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.InputDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.InputDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Menees.Windows.Forms.IFindDialog">
+            <summary>
+            Provides a generic interface to a Find dialog.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.IFindDialog.Execute(System.Windows.Forms.IWin32Window,Menees.Windows.Forms.FindData)">
+            <summary>
+            Used to display the find dialog with the given data.
+            </summary>
+            <param name="owner">The dialog owner.</param>
+            <param name="data">The find data.</param>
+            <returns>True if OK was pressed.</returns>
+        </member>
+        <member name="T:Menees.Windows.Forms.IFindTarget">
+            <summary>
+            Provides a generic interface to a find target (e.g., a custom control or a window).
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.IFindTarget.CanFind">
+            <summary>
+            Gets whether the <see cref="M:Menees.Windows.Forms.IFindTarget.Find(Menees.Windows.Forms.FindData,Menees.Windows.Forms.FindMode)"/> method can be used.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.IFindTarget.FindCaption">
+            <summary>
+            Gets the caption to use for dialogs displayed for this find target.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.IFindTarget.Find(Menees.Windows.Forms.FindData,Menees.Windows.Forms.FindMode)">
+            <summary>
+            Finds the specified text in the target.
+            </summary>
+            <param name="findData">The text to search for.</param>
+            <param name="findMode">Whether to find next, previous, or display a dialog.</param>
+            <returns>True if the find text was found and selected.  False otherwise.</returns>
+        </member>
+        <member name="T:Menees.Windows.Forms.MdiTab">
+            <summary>
+            A single tab in an <see cref="T:Menees.Windows.Forms.MdiTabStrip"/>.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.MdiTab.AssociatedForm">
+            <summary>
+            Gets the form associated with the current tab.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.MdiTab.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Overrides <see cref="M:System.Windows.Forms.ToolStripButton.OnPaint(System.Windows.Forms.PaintEventArgs)"/>.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.MdiTab.OnMouseDown(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Overrides <see cref="M:System.Windows.Forms.ToolStripItem.OnMouseDown(System.Windows.Forms.MouseEventArgs)"/>.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.MdiTab.OnMouseUp(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Overrides <see cref="M:System.Windows.Forms.ToolStripItem.OnMouseUp(System.Windows.Forms.MouseEventArgs)"/>.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.MdiTab.OnMouseEnter(System.EventArgs)">
+            <summary>
+            Overrides <see cref="M:System.Windows.Forms.ToolStripItem.OnMouseEnter(System.EventArgs)"/>.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.MdiTab.OnMouseMove(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Overrides <see cref="M:System.Windows.Forms.ToolStripItem.OnMouseMove(System.Windows.Forms.MouseEventArgs)"/>.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.MdiTab.OnMouseLeave(System.EventArgs)">
+            <summary>
+            Overrides <see cref="M:System.Windows.Forms.ToolStripItem.OnMouseLeave(System.EventArgs)"/>.
+            </summary>
+        </member>
+        <member name="T:Menees.Windows.Forms.MdiTabStrip">
+            <summary>
+            Displays an <see cref="T:Menees.Windows.Forms.MdiTab"/> for each MDI child form.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.MdiTabStrip.#ctor">
+            <summary>
+            Creates a new instance.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.MdiTabStrip.AllowDrop">
+            <summary>
+            Gets or sets a value indicating whether drag-and-drop item reordering is allowed.
+            </summary>
+            <remarks>
+            This defaults to true so tab items can be reordered by the user via drag-and-drop.
+            It is hidden at a design-time because it shouldn't be changed for MdiTabStrips.
+            </remarks>
+        </member>
+        <member name="P:Menees.Windows.Forms.MdiTabStrip.AllowItemReorder">
+            <summary>
+            Gets or sets a value indicating whether tabs can be reordered when ALT is pressed.
+            </summary>
+            <remarks>
+            This defaults to false because its drag-and-drop is incompatible with our standard
+            drag-and-drop (because AllowItemReorder will let you drag items to other ToolStrips).
+            It is hidden at a design-time because it shouldn't be changed for MdiTabStrips.
+            </remarks>
+        </member>
+        <member name="P:Menees.Windows.Forms.MdiTabStrip.GripStyle">
+            <summary>
+            Gets or sets whether the move handle is visible or hidden.
+            </summary>
+            <remarks>
+            This defaults to Hidden, which is opposite of how it defaults in the base ToolStrip.
+            </remarks>
+        </member>
+        <member name="P:Menees.Windows.Forms.MdiTabStrip.RenderMode">
+            <summary>
+            Gets or sets how the tab strip is rendered.
+            </summary>
+            <remarks>
+            This class always uses a custom renderer, so the RenderMode property
+            should not be changed.
+            </remarks>
+        </member>
+        <member name="P:Menees.Windows.Forms.MdiTabStrip.UseFormIconAsNewTabImage">
+            <summary>
+            Gets or sets whether the image for a new tab should be extracted from the form's icon.
+            </summary>
+            <remarks>
+            This defaults to true.  Set it to false if you want to manually set each tab's image.
+            </remarks>
+        </member>
+        <member name="P:Menees.Windows.Forms.MdiTabStrip.Tabs">
+            <summary>
+            Gets the current collection of tabs.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.MdiTabStrip.BeginUpdate">
+            <summary>
+            Prevents the tab strip from updating until <see cref="M:Menees.Windows.Forms.MdiTabStrip.EndUpdate"/> is called.
+            </summary>
+            <remarks>
+            This is useful when adding or removing many forms at once.  You should use
+            a try..finally block to make sure EndUpdate gets called.
+            </remarks>
+        </member>
+        <member name="M:Menees.Windows.Forms.MdiTabStrip.EndUpdate">
+            <summary>
+            Resumes updating the tab strip after being suspended by the <see cref="M:Menees.Windows.Forms.MdiTabStrip.BeginUpdate"/> method.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.MdiTabStrip.CloseActiveTab">
+            <summary>
+            Closes the tab (and form) for the active MDI child form.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.MdiTabStrip.CloseAllButActiveTab">
+            <summary>
+            Closes every tab (and form) except the one for the active MDI child form.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.MdiTabStrip.FindActiveTab">
+            <summary>
+            Finds the tab for the active MDI child form.
+            </summary>
+            <returns>The active tab, or null if there is no active child form.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.MdiTabStrip.FindTab(System.Windows.Forms.Form)">
+            <summary>
+            Finds the tab for the specified MDI child form.
+            </summary>
+            <param name="form">The form to get the tab for.</param>
+            <returns>The tab for the specified form, or null if no tab exists for the form
+            (e.g., if the form is closed).</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.MdiTabStrip.FindTabAtScreenPoint(System.Drawing.Point)">
+            <summary>
+            Gets the tab at the specified screen point (e.g., <see cref="P:System.Windows.Forms.Cursor.Position"/>).
+            </summary>
+            <param name="point">The screen point to look under.</param>
+            <returns>The tab under the specified point or null.</returns>
+            <remarks>
+            This method is useful for preventing the opening of a context menu strip
+            unless the mouse cursor is currently over a tab.
+            </remarks>
+        </member>
+        <member name="M:Menees.Windows.Forms.MdiTabStrip.OnParentChanged(System.EventArgs)">
+            <summary>
+            Overrides <see cref="M:System.Windows.Forms.Control.OnParentChanged(System.EventArgs)"/>.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.MdiTabStrip.OnEnabledChanged(System.EventArgs)">
+            <summary>
+            Overrides <see cref="M:System.Windows.Forms.Control.OnEnabledChanged(System.EventArgs)"/>.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.Forms.MdiTabStrip.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.MdiTabStrip.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.MdiTabStrip.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Menees.Windows.Forms.OutputWindow">
+            <summary>
+            A read-only output window that supports rich text.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.OutputWindow.#ctor">
+            <summary>
+            Creates a new instance.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.OutputWindow.CanFind">
+            <summary>
+            Gets whether the <see cref="M:Menees.Windows.Forms.OutputWindow.Find(Menees.Windows.Forms.FindData,Menees.Windows.Forms.FindMode)"/> method can be used.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.OutputWindow.FindCaption">
+            <summary>
+            Gets or sets the caption to use for find operations.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.OutputWindow.HasSelection">
+            <summary>
+            Gets whether any text is currently selected in the output window.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.OutputWindow.HasText">
+            <summary>
+            Gets whether any text is currently in the output window.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.OutputWindow.IsFocused">
+            <summary>
+            Gets whether the output window currently has focus.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.OutputWindow.OwnerWindow">
+            <summary>
+            Gets the form that owns the output window.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.OutputWindow.SelectedText">
+            <summary>
+            Gets the currently selected text in the output window.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.OutputWindow.WordWrap">
+            <summary>
+            Gets or sets whether the output window content should word wrap.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.OutputWindow.BorderStyle">
+            <summary>
+            Gets or sets the border style of the window.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.OutputWindow.RemoveLinePrefix">
+            <summary>
+            Gets or sets a delegate that can remove a custom line prefix after a line is double-clicked
+            and before the line's file reference is parsed and opened.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.OutputWindow.IndentWidth">
+            <summary>
+            Gets or sets the pixel width of each output window indent and tab stop.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.OutputWindow.Append(System.String,System.Drawing.Color,System.Int32,System.Boolean,System.Guid)">
+            <summary>
+            Appends formatted text to the output.
+            </summary>
+            <param name="message">The text to append.</param>
+            <param name="color">The text color.</param>
+            <param name="indentLevel">The indent level.</param>
+            <param name="highlight">Whether this line should be considered a highlight.</param>
+            <param name="outputId">A guid to uniquely identify this message.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.OutputWindow.Clear">
+            <summary>
+            Clears the output window.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.OutputWindow.Copy">
+            <summary>
+            Copies the currently selected text to the clipboard.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.OutputWindow.Find(Menees.Windows.Forms.FindData,Menees.Windows.Forms.FindMode)">
+            <summary>
+            Finds the specified text in the output window.
+            </summary>
+            <param name="findData">The text to search for.</param>
+            <param name="findMode">Whether to find next, previous, or display a dialog.</param>
+            <returns>True if the find text was found and selected.  False otherwise.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.OutputWindow.FindNextHighlightPosition(System.Boolean,System.Boolean)">
+            <summary>
+            Finds the next highlight position.
+            </summary>
+            <param name="searchForward">Whether to search forward/down (if true) or backward/up (if false).</param>
+            <param name="moveCurrentPosition">Whether to move and scroll to the next highlight if found.</param>
+            <returns>True if the next highlight was found.  False otherwise.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.OutputWindow.FindOutput(System.Guid,System.Boolean)">
+            <summary>
+            Finds the output entry with the specified guid.
+            </summary>
+            <param name="outputId">A guid that identifies an appended message.</param>
+            <param name="moveCurrentPosition">Whether to move and scroll to the matched output if found.</param>
+            <returns>True if the specified output was found.  False otherwise.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.OutputWindow.SaveContent(System.String,System.Boolean)">
+            <summary>
+            Saves the output window contents to a file.
+            </summary>
+            <param name="fileName">The name of the file to save to.</param>
+            <param name="asRichText">True to save as rich text (RTF) or false to save as plain text.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.OutputWindow.SelectAll">
+            <summary>
+            Selects all the text in the output window.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.OutputWindow.OnContextMenuStripChanged(System.EventArgs)">
+            <summary>
+            Called when the control's context menu strip has changed.
+            </summary>
+        </member>
+        <member name="T:Menees.Windows.Forms.OutputWindow.ComInterfaceRef`1">
+            <summary>
+            This is a disposable type so we can deterministically release a COM
+            reference as soon as we're done with it.  Otherwise, we end up with
+            COM objects that outlive the context they're running in, and Visual
+            Studio raises "DisconnectedContext was detected" MDA warnings in
+            the debugger.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.Forms.OutputWindow.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.OutputWindow.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.OutputWindow.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Menees.Windows.Forms.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.Properties.Resources.AboutBoxBanner">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.Properties.Resources.CloseBlack">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.Properties.Resources.CloseGray">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="T:Menees.Windows.Forms.RecentItemClickEventArgs">
+            <summary>
+            The arguments for the <see cref="T:Menees.Windows.Forms.RecentItemList"/>'s <see cref="E:Menees.Windows.Forms.RecentItemList.ItemClick"/> event.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.RecentItemClickEventArgs.Item">
+            <summary>
+            Gets the item that was clicked.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.RecentItemClickEventArgs.Values">
+            <summary>
+            Gets the values associated with the clicked item.
+            </summary>
+        </member>
+        <member name="T:Menees.Windows.Forms.RecentItemList">
+            <summary>
+            Used to manage a list of recent items (e.g., files, projects, directories).
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.RecentItemList.#ctor">
+            <summary>
+            Creates a new instance.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.RecentItemList.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            Creates a new instance for the specified container.
+            </summary>
+        </member>
+        <member name="E:Menees.Windows.Forms.RecentItemList.ItemClick">
+            <summary>
+            Called when a "recent item" menu item is clicked.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.RecentItemList.MaxItemCount">
+            <summary>
+            Gets or sets the maximum number of recent items to manage.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.RecentItemList.SettingsNodeName">
+            <summary>
+            Gets or sets the node name where recent item settings should be saved.  This must be non-empty.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.RecentItemList.FormSaver">
+            <summary>
+            Gets or sets the <see cref="P:Menees.Windows.Forms.RecentItemList.FormSaver"/> object used to save and load settings.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.RecentItemList.MenuItem">
+            <summary>
+            Gets or sets the menu item that should contain the recent items.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.RecentItemList.ContextMenuStrip">
+            <summary>
+            Gets or sets the context menu that should contain the recent items.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.RecentItemList.Count">
+            <summary>
+            Gets the current number of items.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.RecentItemList.Items">
+            <summary>
+            Gets or sets the list of items as a collection of strings.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.RecentItemList.Item(System.Int32)">
+            <summary>
+            Gets the item for the specified index.
+            </summary>
+            <param name="index">The 0-based index of an item.</param>
+            <returns>The requested item.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.RecentItemList.IsNoneMenuItem(System.Windows.Forms.ToolStripMenuItem)">
+            <summary>
+            Gets whether the specified menu item is a dummy "&lt;None&gt;" menu item.
+            </summary>
+            <remarks>
+            This is useful in advanced scenarios where a parent form needs to disable
+            a menu recursively (e.g., if it's switching from one "editor" to another)
+            and then re-enable it later.  The "None" menu items should never be enabled.
+            </remarks>
+        </member>
+        <member name="M:Menees.Windows.Forms.RecentItemList.Add(System.String)">
+            <summary>
+            Adds an item to the list.
+            </summary>
+            <param name="item">The item to add.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.RecentItemList.Add(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Adds an item to the list along with associated values.
+            </summary>
+            <param name="item">The item to add.</param>
+            <param name="values">An optional array of values to associate with the item.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.RecentItemList.Remove(System.String)">
+            <summary>
+            Removes an item from the list.
+            </summary>
+            <param name="item">The item to remove.</param>
+            <returns>True if the item was found and removed.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.RecentItemList.IndexOf(System.String)">
+            <summary>
+            Gets the 0-based index of an item.
+            </summary>
+            <param name="item">An item to lookup.</param>
+            <returns>The 0-based index of an item, or -1 if the item isn't found.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.RecentItemList.Clear">
+            <summary>
+            Removes all items from the list.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.RecentItemList.Load(Menees.ISettingsNode)">
+            <summary>
+            Loads the recent item settings.
+            </summary>
+            <param name="baseNode">The base settings node to look for <see cref="P:Menees.Windows.Forms.RecentItemList.SettingsNodeName"/> under.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.RecentItemList.Save(Menees.ISettingsNode)">
+            <summary>
+            Saves the recent item settings.
+            </summary>
+            <param name="baseNode">The base settings node to look for <see cref="P:Menees.Windows.Forms.RecentItemList.SettingsNodeName"/> under.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.RecentItemList.GetItemValues(System.String)">
+            <summary>
+            Gets the values associated with an item.
+            </summary>
+            <param name="item">An item to lookup.</param>
+            <returns>The values associated with the item.  This can be null.</returns>
+        </member>
+        <member name="F:Menees.Windows.Forms.RecentItemList.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.RecentItemList.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.RecentItemList.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Menees.Windows.Forms.TextBoxFinder">
+            <summary>
+            Handles Find opertions for a TextBox.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.TextBoxFinder.#ctor(System.Windows.Forms.TextBoxBase)">
+            <summary>
+            Creates a new instance.
+            </summary>
+            <param name="textBox">The <see cref="T:System.Windows.Forms.TextBox"/>
+            or <see cref="T:System.Windows.Forms.RichTextBox"/> control to search in.</param>
+        </member>
+        <member name="P:Menees.Windows.Forms.TextBoxFinder.TextBox">
+            <summary>
+            Gets or sets the TextBoxBase to search in.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.TextBoxFinder.OnDialogExecute(Menees.Windows.Forms.IFindDialog,System.Windows.Forms.IWin32Window,Menees.Windows.Forms.FindData)">
+            <summary>
+            Handles displaying the find dialog.
+            </summary>
+            <param name="findDialog">The dialog to display.</param>
+            <param name="owner">The dialog owner.</param>
+            <param name="findData">The find data.</param>
+            <returns>True if the user pressed OK.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.TextBoxFinder.OnFindNext">
+            <summary>
+            Finds the next instance.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.TextBoxFinder.OnFindPrevious">
+            <summary>
+            Finds the previous instance.
+            </summary>
+        </member>
+        <member name="T:Menees.Windows.Forms.WaitCursor">
+            <summary>
+            An object that can be used to specify a "wait" cursor during long operations.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.WaitCursor.#ctor(System.Windows.Forms.Control)">
+            <summary>
+            Creates a new instance for the specified control.
+            </summary>
+            <param name="control">The control whose Cursor property should be changed.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.WaitCursor.Close">
+            <summary>
+            Closes the cursor and returns it to its previous state.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.WaitCursor.Dispose">
+            <summary>
+            Calls <see cref="M:Menees.Windows.Forms.WaitCursor.Close"/>.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.WaitCursor.Refresh">
+            <summary>
+            Re-sets the wait cursor.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.WaitCursor.ShowDefaultCursor">
+            <summary>
+            Changes the cursor back to the default cursor regardless of nested WaitCursor levels.
+            </summary>
+        </member>
+        <member name="T:Menees.Windows.Forms.WindowsUtility">
+            <summary>
+            Methods and properties for Windows applications.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.WindowsUtility.ClipboardContainsText">
+            <summary>
+            Gets whether the clipboard currently contains text data.
+            </summary>
+        </member>
+        <member name="P:Menees.Windows.Forms.WindowsUtility.AreVisualStylesEnabled">
+            <summary>
+            Gets whether visual styles are currently enabled.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.Forms.WindowsUtility.InitializeApplication(System.String,System.Action{System.Exception},System.Reflection.Assembly)">
+            <summary>
+            Initializes the application's name and sets up a handler to report uncaught
+            exceptions.
+            </summary>
+            <param name="applicationName">The name of the application to pass to <see cref="M:Menees.ApplicationInfo.Initialize(System.String,System.Reflection.Assembly,System.Func{System.Boolean})"/>.</param>
+            <param name="showException">The action to call when an exception needs to be shown.  This can be null,
+            which will cause <see cref="M:Menees.Windows.Forms.WindowsUtility.ShowError(System.Windows.Forms.IWin32Window,System.String)"/> to be called.</param>
+            <param name="applicationAssembly">The assembly that's initializing the application, typically the main executable.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.WindowsUtility.SelectFolder(System.Windows.Forms.IWin32Window,System.String,System.String)">
+            <summary>
+            Selects a file system path and allows the user to type in a path if necessary.
+            </summary>
+            <param name="owner">The owner of the displayed modal dialog.</param>
+            <param name="title">A short title for the path being selected.</param>
+            <param name="initialFolder">The initial path to select.</param>
+            <returns>The path the user selected if they pressed OK.  Null otherwise (e.g., the user canceled).</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.WindowsUtility.ShellExecute(System.Windows.Forms.IWin32Window,System.String)">
+            <summary>
+            Executes the default action on the specified file using the Windows shell.
+            </summary>
+            <param name="owner">The parent window for any error dialogs.</param>
+            <param name="fileName">The text or filename to execute.</param>
+            <returns>Whether the file was opened/executed successfully.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.WindowsUtility.ShellExecute(System.Windows.Forms.IWin32Window,System.String,System.String)">
+            <summary>
+            Executes an action on the specified file using the Windows shell.
+            </summary>
+            <param name="owner">The parent window for any error dialogs.</param>
+            <param name="fileName">The text or filename to execute.</param>
+            <param name="verb">The shell action that should be taken.  Pass an empty string for the default action.</param>
+            <returns>The process started by executing the file.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.WindowsUtility.ShowAboutBox(System.Windows.Forms.IWin32Window,System.Reflection.Assembly,System.String)">
+            <summary>
+            Displays a standard "About" dialog for the current application assembly.
+            </summary>
+            <remarks>
+            At application startup, you should call the <see cref="M:Menees.Windows.Forms.WindowsUtility.InitializeApplication(System.String,System.Action{System.Exception},System.Reflection.Assembly)"/>
+            method to set the current application's name, which will be displayed in the
+            About box.
+            </remarks>
+            <param name="owner">The owner of the displayed modal dialog.</param>
+            <param name="mainAssembly">The main assembly for the application,
+            which the version and copyright information will be read from.</param>
+            <param name="repository">The name of a GitHub repository. If null, then
+            <see cref="P:Menees.ApplicationInfo.ApplicationName"/> is used.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.WindowsUtility.ShowInputBox(System.Windows.Forms.IWin32Window,System.String)">
+            <summary>
+            Shows an input box for a single value.
+            </summary>
+            <param name="owner">The owner of the displayed modal dialog.</param>
+            <param name="prompt">The message to prompt with (up to 4 lines long).</param>
+            <returns>The user-entered value if they pressed OK, or null if Cancel was pressed.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.WindowsUtility.ShowInputBox(System.Windows.Forms.IWin32Window,System.String,System.String,System.String,System.Nullable{System.Int32},System.Func{System.String,System.String})">
+            <summary>
+            Shows an input box for a single value with validation.
+            </summary>
+            <param name="owner">The owner of the displayed modal dialog.</param>
+            <param name="prompt">The message to prompt with (up to 4 lines long).</param>
+            <param name="title">The caption of the displayed dialog.  This can be null
+            to use the application name as the title.</param>
+            <param name="defaultValue">The initial value of the input field.</param>
+            <param name="maxLength">The maximum length of the input field in characters.
+            This can be null to use the default maximum length limit.</param>
+            <param name="validate">An optional function to validate the input.  This can be null.
+            The function should return a null if the input passes validation, and it should return an error
+            message to display to the end user if the input fails validation.</param>
+            <returns>The user-entered value if they pressed OK, or null if Cancel was pressed.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.WindowsUtility.ShowError(System.Windows.Forms.IWin32Window,System.String)">
+            <summary>
+            Displays an error message in a MessageBox.
+            </summary>
+            <param name="owner">The dialog owner window.  This can be null to use the desktop as the owner.</param>
+            <param name="message">The message to display.</param>
+        </member>
+        <member name="M:Menees.Windows.Forms.WindowsUtility.GetSmallIconImage(System.Drawing.Icon)">
+            <summary>
+            Extracts a <see cref="P:System.Windows.Forms.SystemInformation.SmallIconSize"/> (typically 16x16) image from the specified icon.
+            </summary>
+            <param name="icon">An icon, which can contain multiple image sizes.</param>
+            <returns>A small image either extracted from <paramref name="icon"/> or drawn scaled onto a new bitmap.</returns>
+        </member>
+        <member name="M:Menees.Windows.Forms.WindowsUtility.SetMdiClientBorderStyle(System.Windows.Forms.Form,System.Windows.Forms.BorderStyle)">
+            <summary>
+            Changes the border style for .NET's MDI client area.
+            </summary>
+            <param name="form">An MDI container form.</param>
+            <param name="borderStyle">The desired border style.</param>
+        </member>
+    </members>
+</doc>

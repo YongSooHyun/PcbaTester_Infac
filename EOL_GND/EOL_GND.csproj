@@ -1,0 +1,938 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4D54DFF3-E40D-44BB-84B5-8338BA4E88DE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EOL_GND</RootNamespace>
+    <AssemblyName>EOL_GND</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;MOTION</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>signing_key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>app_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>EOL_GND.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ivi.Visa, Version=5.11.0.0, Culture=neutral, PublicKeyToken=a128c98f1d7717c1, processorArchitecture=MSIL" />
+    <Reference Include="Keysight.Visa, Version=18.2.0.0, Culture=neutral, PublicKeyToken=7a01cdb2a9131f73, processorArchitecture=MSIL" />
+    <Reference Include="Menees.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=47808368f4c49fe0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Menees.Common.5.1.2\lib\net48\Menees.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Menees.Diffs, Version=5.1.2.0, Culture=neutral, PublicKeyToken=47808368f4c49fe0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Menees.Diffs.5.1.2\lib\net48\Menees.Diffs.dll</HintPath>
+    </Reference>
+    <Reference Include="Menees.Diffs.Windows.Forms, Version=5.1.2.0, Culture=neutral, PublicKeyToken=47808368f4c49fe0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Menees.Diffs.Windows.Forms.5.1.2\lib\net48\Menees.Diffs.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Menees.Windows, Version=5.1.2.0, Culture=neutral, PublicKeyToken=47808368f4c49fe0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Menees.Windows.5.1.2\lib\net48\Menees.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Menees.Windows.Forms, Version=5.1.2.0, Culture=neutral, PublicKeyToken=47808368f4c49fe0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Menees.Windows.Forms.5.1.2\lib\net48\Menees.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\ObjectListView.Official.2.9.1\lib\net20\ObjectListView.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TestFramework.Common, Version=1.1.0.42, Culture=neutral, PublicKeyToken=91d36d3ec2aa0933, processorArchitecture=MSIL" />
+    <Reference Include="TestFramework.PluginTestCell, Version=1.8.0.51, Culture=neutral, PublicKeyToken=84276bb520253941, processorArchitecture=MSIL" />
+    <Reference Include="TestFramework.VirtualTestSets.TestSet_A1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=499c14d56e3b0373, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\AppSettings.cs" />
+    <Compile Include="Common\LicenseManager.cs" />
+    <Compile Include="Common\Logger.cs" />
+    <Compile Include="Common\MultimediaTimer.cs" />
+    <Compile Include="Common\Utils.cs" />
+    <Compile Include="DbcParser\Dbc.cs" />
+    <Compile Include="DbcParser\DbcBuilder.cs" />
+    <Compile Include="DbcParser\DbcParser.cs" />
+    <Compile Include="DbcParser\Extensions.cs" />
+    <Compile Include="DbcParser\Helpers.cs" />
+    <Compile Include="DbcParser\IDbcBuilder.cs" />
+    <Compile Include="DbcParser\Model\MultiplexingInfo.cs" />
+    <Compile Include="DbcParser\Model\Node.cs" />
+    <Compile Include="DbcParser\Packer.cs" />
+    <Compile Include="DbcParser\Parser.cs" />
+    <Compile Include="DbcParser\Parsers\CommentLineParser.cs" />
+    <Compile Include="DbcParser\Parsers\IgnoreLineParser.cs" />
+    <Compile Include="DbcParser\Parsers\ILineParser.cs" />
+    <Compile Include="DbcParser\Parsers\MessageLineParser.cs" />
+    <Compile Include="DbcParser\Parsers\NodeLineParser.cs" />
+    <Compile Include="DbcParser\Parsers\SignalLineParser.cs" />
+    <Compile Include="DbcParser\Parsers\UnknownLineParser.cs" />
+    <Compile Include="DbcParser\Parsers\ValueTableLineParser.cs" />
+    <Compile Include="Device\AlphaMotion\pmiMApi.cs" />
+    <Compile Include="Device\AlphaMotion\pmiMApiDefs.cs" />
+    <Compile Include="Device\AmplifierDevice.cs" />
+    <Compile Include="Device\CanDevice.cs" />
+    <Compile Include="Device\GloquadSeccDevice.cs" />
+    <Compile Include="Device\DioDevice.cs" />
+    <Compile Include="Device\DmmDevice.cs" />
+    <Compile Include="Device\KeysightEdu33210SeriesDevice.cs" />
+    <Compile Include="Device\ElozDevice.cs" />
+    <Compile Include="Device\Fluke884xADevice.cs" />
+    <Compile Include="Device\KeysightInfiniiVision3000TXDevice.cs" />
+    <Compile Include="Device\Keysight33502ADevice.cs" />
+    <Compile Include="Device\KeysightTruevoltSeriesDevice.cs" />
+    <Compile Include="Device\LinDevice.cs" />
+    <Compile Include="Device\MightyZap.cs" />
+    <Compile Include="Device\MkSeriesDevice.cs" />
+    <Compile Include="Device\OscopeDevice.cs" />
+    <Compile Include="Device\PeakCAN\PCAN-ISO-TP_2016.cs" />
+    <Compile Include="Device\PeakCAN\PCAN-UDS_2013.cs" />
+    <Compile Include="Device\PeakCAN\PCANBasic.cs" />
+    <Compile Include="Device\PeakCAN\PeakCanDevice.cs" />
+    <Compile Include="Device\PeakLIN\PeakLinDevice.cs" />
+    <Compile Include="Device\PeakLIN\PLinApi.cs" />
+    <Compile Include="Device\SerialPortDevice.cs" />
+    <Compile Include="Device\UsbCamera.cs" />
+    <Compile Include="DiffMatchPatch\DiffMatchPatch.cs" />
+    <Compile Include="DiffMatchPatch\tests\DiffMatchPatchTest.cs" />
+    <Compile Include="DiffMatchPatch\tests\Speedtest.cs" />
+    <Compile Include="Model\BoardVariant.cs" />
+    <Compile Include="Model\ChangeHistory.cs" />
+    <Compile Include="Model\ChangeRecord.cs" />
+    <Compile Include="Model\ComponentModel\CanSignalsConverter.cs" />
+    <Compile Include="Model\ComponentModel\CanSignalsEditor.cs" />
+    <Compile Include="Model\ComponentModel\VariantArrayEditor.cs" />
+    <Compile Include="Model\DeviceSettings\AmplifierDeviceSetting.cs" />
+    <Compile Include="Model\ComponentModel\PhysicalValueStaticConverter.cs" />
+    <Compile Include="Model\ComponentModel\StringArrayConverter.cs" />
+    <Compile Include="Model\ComponentModel\IntArrayConverter.cs" />
+    <Compile Include="Model\ComponentModel\LinBaudrateConverter.cs" />
+    <Compile Include="Model\ComponentModel\ByteHexConverter.cs" />
+    <Compile Include="Model\DeviceSettings\GloquadSeccDeviceSetting.cs" />
+    <Compile Include="Model\DeviceSettings\SerialPortSetting.cs" />
+    <Compile Include="Model\EolAlphaMotionStep.cs" />
+    <Compile Include="Model\EolAmplifierStep.cs" />
+    <Compile Include="Model\EolElozVoltmeterStep.cs" />
+    <Compile Include="Model\EolGloquadEvseStep.cs" />
+    <Compile Include="Model\EolLinStep.cs" />
+    <Compile Include="Model\DeviceSettings\LinDeviceSetting.cs" />
+    <Compile Include="Model\ComponentModel\ByteArrayEditor.cs" />
+    <Compile Include="Model\ComponentModel\CanMessageNameConverter.cs" />
+    <Compile Include="Model\ComponentModel\CanMessageNameEditor.cs" />
+    <Compile Include="Model\ComponentModel\CanSignalNameConverter.cs" />
+    <Compile Include="Model\ComponentModel\CanSignalNameEditor.cs" />
+    <Compile Include="Model\ComponentModel\HexByteArrayConverter.cs" />
+    <Compile Include="Model\ComponentModel\UShortHexConverter.cs" />
+    <Compile Include="Model\ComponentModel\CanIdConverter.cs" />
+    <Compile Include="Model\ComponentModel\DescEnumConverter.cs" />
+    <Compile Include="Model\ComponentModel\ImageFileNameEditor.cs" />
+    <Compile Include="Model\DBC\DbcManager.cs" />
+    <Compile Include="Model\DBC\DbcMessage.cs" />
+    <Compile Include="Model\DBC\DbcSignal.cs" />
+    <Compile Include="Model\EolAbortStep.cs" />
+    <Compile Include="Model\EolCanStep.cs" />
+    <Compile Include="Model\EolDummyStep.cs" />
+    <Compile Include="Model\EolElozRelayStep.cs" />
+    <Compile Include="Model\EolElozStimulusStep.cs" />
+    <Compile Include="Model\EolMightyZapStep.cs" />
+    <Compile Include="Model\EolSerialPortStep.cs" />
+    <Compile Include="Model\OscopeAcquireSettings.cs" />
+    <Compile Include="Model\OscopeDvmSettings.cs" />
+    <Compile Include="Device\OscopeScpiSample.cs" />
+    <Compile Include="Device\SerialDevice.cs" />
+    <Compile Include="Device\TestDevice.cs" />
+    <Compile Include="Device\OdaExSeriesDevice.cs" />
+    <Compile Include="Device\PowerDevice.cs" />
+    <Compile Include="Device\VisaDevice.cs" />
+    <Compile Include="Device\WaveformGeneratorDevice.cs" />
+    <Compile Include="Model\ComponentModel\TestChannelEditor.cs" />
+    <Compile Include="Model\ComponentModel\DeviceNameConverter.cs" />
+    <Compile Include="Model\ComponentModel\DioCommandListEditor.cs" />
+    <Compile Include="Model\ComponentModel\ParameterNameConverter.cs" />
+    <Compile Include="Model\DeviceSettings\DeviceSetting.cs" />
+    <Compile Include="Model\ComponentModel\DioCommandListConverter.cs" />
+    <Compile Include="Model\DeviceSettings\DioDeviceSetting.cs" />
+    <Compile Include="Model\DeviceSettings\DmmDeviceSetting.cs" />
+    <Compile Include="Model\EolDioStep.cs" />
+    <Compile Include="Model\EolDmmStep.cs" />
+    <Compile Include="Model\EolOscopeStep.cs" />
+    <Compile Include="Model\EolSequence.cs" />
+    <Compile Include="Model\EolWaveformGeneratorStep.cs" />
+    <Compile Include="Model\ComponentModel\IntListConverter.cs" />
+    <Compile Include="Model\OscopeDeviceSetting.cs" />
+    <Compile Include="Model\ComponentModel\PhysicalValueDynamicConverter.cs" />
+    <Compile Include="Model\OscopeChannelSettings.cs" />
+    <Compile Include="Model\OscopeDisplaySettings.cs" />
+    <Compile Include="Model\OscopeMeasurementSettings.cs" />
+    <Compile Include="Model\OscopeTimebaseSettings.cs" />
+    <Compile Include="Model\OscopeTriggerSettings.cs" />
+    <Compile Include="Model\DeviceSettings\CanDeviceSetting.cs" />
+    <Compile Include="Model\DeviceSettings\PowerDeviceSetting.cs" />
+    <Compile Include="Model\ComponentModel\TestModeConverter.cs" />
+    <Compile Include="Model\TestResultRecordData.cs" />
+    <Compile Include="Model\DeviceSettings\VisaDeviceSetting.cs" />
+    <Compile Include="Model\DeviceSettings\SerialDeviceSetting.cs" />
+    <Compile Include="Model\DeviceSettings\DeviceSettingsManager.cs" />
+    <Compile Include="Model\EolPowerStep.cs" />
+    <Compile Include="Model\EolStep.cs" />
+    <Compile Include="Model\StepCategoryInfo.cs" />
+    <Compile Include="Model\DeviceSettings\WaveformGeneratorDeviceSetting.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserManager.cs" />
+    <Compile Include="Model\UserPermission.cs" />
+    <Compile Include="NullFX.CRC\Crc16.cs" />
+    <Compile Include="NullFX.CRC\Crc16Algorithm.cs" />
+    <Compile Include="NullFX.CRC\Crc32.cs" />
+    <Compile Include="NullFX.CRC\Crc8.cs" />
+    <Compile Include="NullFX.CRC\UnknownAlgorithmException.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\CanSignalsEditorViewModel.cs" />
+    <Compile Include="ViewModel\ChangeHistoryViewModel.cs" />
+    <Compile Include="ViewModel\UserEditorViewModel.cs" />
+    <Compile Include="ViewModel\TestSettingsViewModel.cs" />
+    <Compile Include="ViewModel\SerialPortSettingsViewModel.cs" />
+    <Compile Include="ViewModel\GloquadSeccDeviceSettingsViewModel.cs" />
+    <Compile Include="ViewModel\LinDeviceSettingsViewModel.cs" />
+    <Compile Include="ViewModel\DbcEditorViewModel.cs" />
+    <Compile Include="ViewModel\DeviceSettingsViewModel.cs" />
+    <Compile Include="ViewModel\DioCommandsViewModel.cs" />
+    <Compile Include="ViewModel\DmmDeviceSettingsViewModel.cs" />
+    <Compile Include="ViewModel\OscopeDeviceSettingsViewModel.cs" />
+    <Compile Include="ViewModel\DioDeviceSettingsViewModel.cs" />
+    <Compile Include="ViewModel\CanDeviceSettingsViewModel.cs" />
+    <Compile Include="ViewModel\AmplifierDeviceSettingsViewModel.cs" />
+    <Compile Include="ViewModel\GeneralSettingsViewModel.cs" />
+    <Compile Include="ViewModel\WaveformGenDeviceSettingsViewModel.cs" />
+    <Compile Include="ViewModel\SequenceViewModel.cs" />
+    <Compile Include="ViewModel\PowerDeviceSettingsViewModel.cs" />
+    <Compile Include="ViewModel\StepCreationViewModel.cs" />
+    <Compile Include="ViewModel\StepEditViewModel.cs" />
+    <Compile Include="View\ByteArrayEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ByteArrayEditorForm.Designer.cs">
+      <DependentUpon>ByteArrayEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CameraViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CameraViewer.Designer.cs">
+      <DependentUpon>CameraViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\RunOptionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\RunOptionsForm.Designer.cs">
+      <DependentUpon>RunOptionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\VariantEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\VariantEditorForm.Designer.cs">
+      <DependentUpon>VariantEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CanSignalsEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CanSignalsEditorForm.Designer.cs">
+      <DependentUpon>CanSignalsEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChangeHistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ChangeHistoryForm.Designer.cs">
+      <DependentUpon>ChangeHistoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChangeRemarksForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ChangeRemarksForm.Designer.cs">
+      <DependentUpon>ChangeRemarksForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\DiffForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DiffForm.Designer.cs">
+      <DependentUpon>DiffForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ImageViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ImageViewer.Designer.cs">
+      <DependentUpon>ImageViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MultiBoardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MultiBoardForm.Designer.cs">
+      <DependentUpon>MultiBoardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SequenceOptionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SequenceOptionsForm.Designer.cs">
+      <DependentUpon>SequenceOptionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TestSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TestSettingsForm.Designer.cs">
+      <DependentUpon>TestSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SerialPortSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SerialPortSettingsForm.Designer.cs">
+      <DependentUpon>SerialPortSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\GloquadSeccDeviceSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GloquadSeccDeviceSettingsForm.Designer.cs">
+      <DependentUpon>GloquadSeccDeviceSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FindReplaceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FindReplaceForm.Designer.cs">
+      <DependentUpon>FindReplaceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\LicenseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LicenseForm.Designer.cs">
+      <DependentUpon>LicenseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\LinDeviceSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LinDeviceSettingsForm.Designer.cs">
+      <DependentUpon>LinDeviceSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\DbcEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DbcEditorForm.Designer.cs">
+      <DependentUpon>DbcEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\DeviceSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DeviceSettingsForm.Designer.cs">
+      <DependentUpon>DeviceSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\DioCommandsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DioCommandsForm.Designer.cs">
+      <DependentUpon>DioCommandsForm.cs</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Resources\PublicKey.skf" />
+    <None Include="Script\eol_run.cs" />
+    <None Include="Script\ExampleExternalDeviceVoltage.CS" />
+    <Compile Include="View\PasswordChangeSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PasswordChangeSettingsForm.Designer.cs">
+      <DependentUpon>PasswordChangeSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\OscopeDeviceSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\OscopeDeviceSettingsForm.Designer.cs">
+      <DependentUpon>OscopeDeviceSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\DioDeviceSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DioDeviceSettingsForm.Designer.cs">
+      <DependentUpon>DioDeviceSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CanDeviceSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CanDeviceSettingsForm.Designer.cs">
+      <DependentUpon>CanDeviceSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\PropertyChangeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PropertyChangeForm.Designer.cs">
+      <DependentUpon>PropertyChangeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AmplifierDeviceSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AmplifierDeviceSettingsForm.Designer.cs">
+      <DependentUpon>AmplifierDeviceSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\DmmDeviceSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DmmDeviceSettingsForm.Designer.cs">
+      <DependentUpon>DmmDeviceSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\StepIdForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\StepIdForm.Designer.cs">
+      <DependentUpon>StepIdForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TextProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\TextViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TextViewer.Designer.cs">
+      <DependentUpon>TextViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ToolStripTextProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\GeneralSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\GeneralSettingsForm.Designer.cs">
+      <DependentUpon>GeneralSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\UserEditorForm.Designer.cs">
+      <DependentUpon>UserEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\VersionHistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\VersionHistoryForm.Designer.cs">
+      <DependentUpon>VersionHistoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\WaveformGenSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\WaveformGenSettingsForm.Designer.cs">
+      <DependentUpon>WaveformGenSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SequenceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SequenceForm.Designer.cs">
+      <DependentUpon>SequenceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\PowerDeviceSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PowerDeviceSettingsForm.Designer.cs">
+      <DependentUpon>PowerDeviceSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\StepCreationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\StepCreationForm.Designer.cs">
+      <DependentUpon>StepCreationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\StepEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\StepEditForm.Designer.cs">
+      <DependentUpon>StepEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TransparentControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="signing_key.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ByteArrayEditorForm.resx">
+      <DependentUpon>ByteArrayEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CameraViewer.resx">
+      <DependentUpon>CameraViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\RunOptionsForm.resx">
+      <DependentUpon>RunOptionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\VariantEditorForm.resx">
+      <DependentUpon>VariantEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CanSignalsEditorForm.resx">
+      <DependentUpon>CanSignalsEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ChangeHistoryForm.resx">
+      <DependentUpon>ChangeHistoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ChangeRemarksForm.resx">
+      <DependentUpon>ChangeRemarksForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DiffForm.resx">
+      <DependentUpon>DiffForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ImageViewer.resx">
+      <DependentUpon>ImageViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MultiBoardForm.resx">
+      <DependentUpon>MultiBoardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SequenceOptionsForm.resx">
+      <DependentUpon>SequenceOptionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TestSettingsForm.resx">
+      <DependentUpon>TestSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SerialPortSettingsForm.resx">
+      <DependentUpon>SerialPortSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GloquadSeccDeviceSettingsForm.resx">
+      <DependentUpon>GloquadSeccDeviceSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FindReplaceForm.resx">
+      <DependentUpon>FindReplaceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LicenseForm.resx">
+      <DependentUpon>LicenseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LinDeviceSettingsForm.resx">
+      <DependentUpon>LinDeviceSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DbcEditorForm.resx">
+      <DependentUpon>DbcEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DeviceSettingsForm.resx">
+      <DependentUpon>DeviceSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DioCommandsForm.resx">
+      <DependentUpon>DioCommandsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PasswordChangeSettingsForm.resx">
+      <DependentUpon>PasswordChangeSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\OscopeDeviceSettingsForm.resx">
+      <DependentUpon>OscopeDeviceSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DioDeviceSettingsForm.resx">
+      <DependentUpon>DioDeviceSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CanDeviceSettingsForm.resx">
+      <DependentUpon>CanDeviceSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PropertyChangeForm.resx">
+      <DependentUpon>PropertyChangeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AmplifierDeviceSettingsForm.resx">
+      <DependentUpon>AmplifierDeviceSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DmmDeviceSettingsForm.resx">
+      <DependentUpon>DmmDeviceSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\StepIdForm.resx">
+      <DependentUpon>StepIdForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\GeneralSettingsForm.resx">
+      <DependentUpon>GeneralSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TextViewer.resx">
+      <DependentUpon>TextViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserEditorForm.resx">
+      <DependentUpon>UserEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\VersionHistoryForm.resx">
+      <DependentUpon>VersionHistoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\WaveformGenSettingsForm.resx">
+      <DependentUpon>WaveformGenSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SequenceForm.resx">
+      <DependentUpon>SequenceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PowerDeviceSettingsForm.resx">
+      <DependentUpon>PowerDeviceSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\StepCreationForm.resx">
+      <DependentUpon>StepCreationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\StepEditForm.resx">
+      <DependentUpon>StepEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\file_open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play_all.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\step_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\step_remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sort_number.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\log.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\log_clear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dmm-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\oscilloscope-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\power-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\relay-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\waveform-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ok-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ok-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.csproj">
+      <Project>{26c5f25f-b450-4caf-ad8b-b8d11ae73457}</Project>
+      <Name>Be.Windows.Forms.HexBox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\E100RC_ProductionDLL\E100RC_ProductionDLL.csproj">
+      <Project>{caa73d1e-ef7e-4a8c-a5c5-7b2a637ddd4e}</Project>
+      <Name>E100RC_ProductionDLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InfoBox\InfoBox.csproj">
+      <Project>{18b58ca4-e470-4eb4-ac2b-52becafe0b53}</Project>
+      <Name>InfoBox</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\empty-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\link-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\link-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\microchip-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\microchip-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\microchip-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\microchip-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\can-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\can-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\can-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\can-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lin-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lin-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lin-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lin-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dmm_fluke_8845a-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dmm_keysight_34465a-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\oscope_keysight_infiniivision3024t-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\power_oda_ex-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wgen_keysight_edu33212a-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minus-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minus-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save-as-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stimulus-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DLL\PCAN-ISO-TP\x64\PCAN-ISO-TP.dll" />
+    <None Include="DLL\PCAN-ISO-TP\x86\PCAN-ISO-TP.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DLL\PCAN-UDS\x64\PCAN-UDS.dll" />
+    <None Include="DLL\PCAN-UDS\x86\PCAN-UDS.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\abort-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\null-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copy-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paste-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\voltmeter-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\power_mk_p-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\csv-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\csv-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\amp_keysight_33502A-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\can_peak_pcie_fd-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lin_peak-usb-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\certificate-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app_icon.ico" />
+    <Content Include="DiffMatchPatch\tests\Speedtest1.txt" />
+    <Content Include="DiffMatchPatch\tests\Speedtest2.txt" />
+    <None Include="Resources\category-32.png" />
+    <None Include="Resources\category-16.png" />
+    <None Include="Resources\transparent_bg.png" />
+    <None Include="Resources\history-32.png" />
+    <None Include="Resources\user_color-32.png" />
+    <None Include="Resources\user_black-32.png" />
+    <None Include="Resources\logout-32.png" />
+    <None Include="Resources\lock.png" />
+    <None Include="DLL\HKMC_AdvancedSeedKey_Win32_ICCU.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="DLL\HKMC_AdvancedSeedKey_Win32_SX2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\servo-256.png" />
+    <None Include="Resources\mighty_zap-256.png" />
+    <None Include="Resources\multi_board-32.png" />
+    <None Include="Resources\options-32.png" />
+    <None Include="Resources\serial_port-256.png" />
+    <None Include="Resources\gloquad_secc.png" />
+    <None Include="Resources\information-32.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

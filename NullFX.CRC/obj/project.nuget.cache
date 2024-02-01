@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "Woj3qgrf6UYP5VM1UB3aYRrsUAEr4gM3tgD6AVw4jp5as76KGtTXaOyx9L9/vGK4K5tDz3/fTTQuPNV/XaNklQ==",
+  "success": false,
+  "projectFilePath": "E:\\Project\\ICT_Project\\IntelligentPcbaTester_Infac_Inline\\NullFX.CRC\\NullFX.CRC.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1105",
+      "level": "Error",
+      "message": "Unable to read project information for 'NullFX.CRC': '#{RELEASE_VERSION}#' is not a valid version string.\r\nParameter name: value"
+    }
+  ]
+}

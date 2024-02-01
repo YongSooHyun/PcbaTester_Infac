@@ -1,0 +1,6 @@
+E:\Project\ICT_Project\IntelligentPcbaTester_Infac_Inline\CasRnf32NET\bin\Debug\CasRnf32NET.dll
+E:\Project\ICT_Project\IntelligentPcbaTester_Infac_Inline\CasRnf32NET\bin\Debug\CasRnf32NET.pdb
+E:\Project\ICT_Project\IntelligentPcbaTester_Infac_Inline\CasRnf32NET\obj\Debug\CasRnf32NET.csproj.AssemblyReference.cache
+E:\Project\ICT_Project\IntelligentPcbaTester_Infac_Inline\CasRnf32NET\obj\Debug\CasRnf32NET.csproj.CoreCompileInputs.cache
+E:\Project\ICT_Project\IntelligentPcbaTester_Infac_Inline\CasRnf32NET\obj\Debug\CasRnf32NET.dll
+E:\Project\ICT_Project\IntelligentPcbaTester_Infac_Inline\CasRnf32NET\obj\Debug\CasRnf32NET.pdb

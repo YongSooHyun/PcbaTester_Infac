@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="IntelligentPcbaTester">
+  <Path>D:\ICT_Projects\MQ4_PHEV_OBC_CONTROL.prj</Path>
+  <Model>MQ4_PHEV_OBC_CONTROL</Model>
+  <FIDs>
+    <int>1</int>
+  </FIDs>
+  <Panel>2</Panel>
+  <Board1Checked>true</Board1Checked>
+  <Board2Checked>true</Board2Checked>
+  <Board3Checked>false</Board3Checked>
+  <Board4Checked>false</Board4Checked>
+  <TwoBoardsLeftRight>true</TwoBoardsLeftRight>
+  <BottomBoardFirst>false</BottomBoardFirst>
+  <MultiPanelBarcodeType>None</MultiPanelBarcodeType>
+  <IctProjectName>INFAC_MQ4_36KW_PHEV_OBC_CONTROL_V24_0601 (1)</IctProjectName>
+  <IctMasterGoodSerialNumber>FD5MJ023267B</IctMasterGoodSerialNumber>
+  <IctMasterGoodProjectName>INFAC_MQ4_36KW_PHEV_OBC_CONTROL_V24_0601 (1)</IctMasterGoodProjectName>
+  <IctMasterFailSerialNumber>FD5PJ02300FB</IctMasterFailSerialNumber>
+  <IctMasterFailProjectName>INFAC_MQ4_36KW_PHEV_OBC_CONTROL_V24_0601 (1)</IctMasterFailProjectName>
+  <IctVariantName>MQ4</IctVariantName>
+  <IctUnpowerEnabled>true</IctUnpowerEnabled>
+  <IctUnpowerSectionTitle>ICT</IctUnpowerSectionTitle>
+  <IctUnpowerSectionName>ICT-unpowered</IctUnpowerSectionName>
+  <IctUnpowerRetryEnabled>true</IctUnpowerRetryEnabled>
+  <IctUnpowerPressDown>true</IctUnpowerPressDown>
+  <IctUnpowerRunOrder>1</IctUnpowerRunOrder>
+  <IctUnpowerIsEOL>false</IctUnpowerIsEOL>
+  <IctPowerEnabled>false</IctPowerEnabled>
+  <IctPowerSectionTitle />
+  <IctPowerSectionName />
+  <IctPowerRetryEnabled>true</IctPowerRetryEnabled>
+  <IctPowerPressDown>false</IctPowerPressDown>
+  <IctPowerRunOrder>2</IctPowerRunOrder>
+  <IctPowerIsEOL>false</IctPowerIsEOL>
+  <NovaEnabled>true</NovaEnabled>
+  <NovaSectionTitle>ISP</NovaSectionTitle>
+  <NovaSectionName>ICT-ISP-TEST</NovaSectionName>
+  <NovaRetryEnabled>true</NovaRetryEnabled>
+  <NovaPressDown>false</NovaPressDown>
+  <NovaRunOrder>3</NovaRunOrder>
+  <NovaIsEOL>true</NovaIsEOL>
+  <JtagEnabled>true</JtagEnabled>
+  <JtagSectionTitle>EOL</JtagSectionTitle>
+  <JtagSectionName>ICT-EOL</JtagSectionName>
+  <JtagRetryEnabled>false</JtagRetryEnabled>
+  <JtagPressDown>false</JtagPressDown>
+  <JtagRunOrder>4</JtagRunOrder>
+  <JtagIsEOL>true</JtagIsEOL>
+  <JtagProjectName />
+  <FunctionEnabled>true</FunctionEnabled>
+  <FunctionSectionTitle>ISP</FunctionSectionTitle>
+  <FunctionSectionName>ISP-MASS</FunctionSectionName>
+  <FunctionRetryEnabled>true</FunctionRetryEnabled>
+  <FunctionPressDown>false</FunctionPressDown>
+  <FunctionRunOrder>5</FunctionRunOrder>
+  <FunctionIsEOL>true</FunctionIsEOL>
+  <EolEnabled>true</EolEnabled>
+  <EolSectionTitle>EOL</EolSectionTitle>
+  <EolSectionName>EOL-VersionCheck</EolSectionName>
+  <EolRetryEnabled>true</EolRetryEnabled>
+  <EolPressDown>false</EolPressDown>
+  <EolRunOrder>6</EolRunOrder>
+  <EolIsEOL>true</EolIsEOL>
+  <Ext1Enabled>true</Ext1Enabled>
+  <Ext1SectionTitle>ICT</Ext1SectionTitle>
+  <Ext1SectionName>ICT-Shorts</Ext1SectionName>
+  <Ext1RetryEnabled>true</Ext1RetryEnabled>
+  <Ext1PressDown>true</Ext1PressDown>
+  <Ext1RunOrder>7</Ext1RunOrder>
+  <Ext1IsEOL>true</Ext1IsEOL>
+  <Ext2Enabled>false</Ext2Enabled>
+  <Ext2SectionTitle />
+  <Ext2SectionName />
+  <Ext2RetryEnabled>true</Ext2RetryEnabled>
+  <Ext2PressDown>false</Ext2PressDown>
+  <Ext2RunOrder>8</Ext2RunOrder>
+  <Ext2IsEOL>false</Ext2IsEOL>
+  <GrpFiles>
+    <GrpInfo>
+      <Channel>1</Channel>
+      <GrpFilePath />
+      <ImportFilePath />
+      <RunOrder>1</RunOrder>
+      <Crc>0</Crc>
+      <CheckForMes>false</CheckForMes>
+    </GrpInfo>
+    <GrpInfo>
+      <Channel>1</Channel>
+      <GrpFilePath />
+      <ImportFilePath />
+      <RunOrder>2</RunOrder>
+      <Crc>0</Crc>
+      <CheckForMes>false</CheckForMes>
+    </GrpInfo>
+    <GrpInfo>
+      <Channel>1</Channel>
+      <GrpFilePath />
+      <ImportFilePath />
+      <RunOrder>3</RunOrder>
+      <Crc>0</Crc>
+      <CheckForMes>false</CheckForMes>
+    </GrpInfo>
+    <GrpInfo>
+      <Channel>2</Channel>
+      <GrpFilePath />
+      <ImportFilePath />
+      <RunOrder>1</RunOrder>
+      <Crc>0</Crc>
+      <CheckForMes>false</CheckForMes>
+    </GrpInfo>
+    <GrpInfo>
+      <Channel>2</Channel>
+      <GrpFilePath />
+      <ImportFilePath />
+      <RunOrder>2</RunOrder>
+      <Crc>0</Crc>
+      <CheckForMes>false</CheckForMes>
+    </GrpInfo>
+    <GrpInfo>
+      <Channel>2</Channel>
+      <GrpFilePath />
+      <ImportFilePath />
+      <RunOrder>3</RunOrder>
+      <Crc>0</Crc>
+      <CheckForMes>false</CheckForMes>
+    </GrpInfo>
+    <GrpInfo>
+      <Channel>3</Channel>
+      <GrpFilePath>C:\Users\user\Documents\NovaFlash\Projects\MQ4\MQ4_ConBrd_Test_v08(Default).grp</GrpFilePath>
+      <ImportFilePath>C:\Users\user\Documents\NovaFlash\Projects\MQ4\MQ4_ConBrd_Test_v08.s19</ImportFilePath>
+      <RunOrder>1</RunOrder>
+      <Crc>1877745093</Crc>
+      <CheckForMes>false</CheckForMes>
+    </GrpInfo>
+    <GrpInfo>
+      <Channel>3</Channel>
+      <GrpFilePath>C:\Users\user\Documents\NovaFlash\Projects\MQ4\MQ4PHEV20MY_OBC_MQPOOSM0R2(0xA8FBC7D1) - Default.grp</GrpFilePath>
+      <ImportFilePath>C:\Users\user\Documents\NovaFlash\Projects\MQ4\MQ4PHEV20MY_OBC_MQPOOSM0R2(0xA8FBC7D1).s19</ImportFilePath>
+      <RunOrder>2</RunOrder>
+      <Crc>4134274410</Crc>
+      <CheckForMes>false</CheckForMes>
+    </GrpInfo>
+    <GrpInfo>
+      <Channel>3</Channel>
+      <GrpFilePath />
+      <ImportFilePath />
+      <RunOrder>3</RunOrder>
+      <Crc>0</Crc>
+      <CheckForMes>false</CheckForMes>
+    </GrpInfo>
+    <GrpInfo>
+      <Channel>4</Channel>
+      <GrpFilePath>C:\Users\user\Documents\NovaFlash\Projects\MQ4\MQ4_ConBrd_Test_v08(Default).grp</GrpFilePath>
+      <ImportFilePath>C:\Users\user\Documents\NovaFlash\Projects\MQ4\MQ4_ConBrd_Test_v08.s19</ImportFilePath>
+      <RunOrder>1</RunOrder>
+      <Crc>1877745093</Crc>
+      <CheckForMes>false</CheckForMes>
+    </GrpInfo>
+    <GrpInfo>
+      <Channel>4</Channel>
+      <GrpFilePath>C:\Users\user\Documents\NovaFlash\Projects\MQ4\MQ4PHEV20MY_OBC_MQPOOSM0R2(0xA8FBC7D1) - Default.grp</GrpFilePath>
+      <ImportFilePath>C:\Users\user\Documents\NovaFlash\Projects\MQ4\MQ4PHEV20MY_OBC_MQPOOSM0R2(0xA8FBC7D1).s19</ImportFilePath>
+      <RunOrder>2</RunOrder>
+      <Crc>4134274410</Crc>
+      <CheckForMes>false</CheckForMes>
+    </GrpInfo>
+    <GrpInfo>
+      <Channel>4</Channel>
+      <GrpFilePath />
+      <ImportFilePath />
+      <RunOrder>3</RunOrder>
+      <Crc>0</Crc>
+      <CheckForMes>false</CheckForMes>
+    </GrpInfo>
+  </GrpFiles>
+  <Power1Voltage>0</Power1Voltage>
+  <Power1Current>0</Power1Current>
+  <Power1Enabled>true</Power1Enabled>
+  <Power2Voltage>0</Power2Voltage>
+  <Power2Current>0</Power2Current>
+  <Power2Enabled>true</Power2Enabled>
+  <PcbInfoFile />
+</TestProject>

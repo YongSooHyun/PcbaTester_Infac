@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>2.3.0 [2023-10-30]
+  - 추가: AbortOnFail 스텝의 AbortCondition에 지정한 스텝부터의 결과 체크 조건 추가
+  - 수정: StringArrayConverter 오류(빈 문자열을 string[1]로 변환) 수정
+2.2.0 [2023-10-27]
+  - 추가: Variant 설정 기능 추가
+  - 변경: 스텝의 ExecuteMode에 OK/NG 마스터 옵션 추가
+2.1.2 [2023-10-04]
+  - 수정: 오실로스코프 측정 시 Source2 디스플레이 오류 수정
+2.1.1 [2023-09-26]
+  - 추가: ImageViewer Copy, SaveAs 콘텍스트 메뉴
+  - 수정: 테스트 강제종료 시 eloZ1 UnstimulateAll, Relay All Off 되도록 함
+2.1.0 [2023-09-20]
+  - 추가: 오실로스코프 스크린 다운로드 후 윈도우에 보여주는 옵션
+  - 추가: 스텝 Ctrl+C &amp; Ctrl+V 시 선택된 스텝이 없으면 제일 아래에 추가
+  - 추가: Message 대화상자에 Hotkey 추가
+2.0.1 [2023-09-18]
+  - 수정: Context Menu Shortcut에 의한 시퀀스 편집 시 사용자 권한 제어
+2.0.0 [2023-09-09]
+  - 추가: 사용자 관리 기능
+  - 추가: EOL파일 로딩 및 저장 시 변경 이력 자동 저장(확장자 .chhist)
+1.20.0 [2023-08-16]
+  - 추가: Waveform Generator, DMM 스텝에 화면 다운로드 기능 추가
+  - 변경: 시퀀스에서 스텝 추가 시 현재 선택된 스텝의 아래에 추가되도록 함
+1.19.2 [2023-08-02]
+  - 수정: VISA 디바이스 액세스 시 NotConnectedMessage 또는 ERROR_CONN_LOST 오류 수정
+1.19.1 [2023-07-21]
+  - 추가: CAN 메시지를 ISO TP 기능 이용해 전송 가능하도록 함
+  - 추가: 스텝 실행 조건을 설정하는 항목(ExecuteMode) 추가
+1.19.0 [2023-07-16]
+  - 추가: CAN 메시지 전송 시 시그널 리스트 설정 가능하도록 함
+1.18.1 [2023-07-16]
+  - 수정: Fluke DMM Config 시 간헐적 에러 수정(기능 선택 명령 축약형으로 바꿈)
+1.18.0 [2023-06-30]
+  - 추가: Keysight Truevolt Series DMM 지원 추가
+1.17.0 [2023-06-12]
+  - 추가: 스텝에 InvertResult (테스트 결과 반전) 옵션 추가
+1.16.4 [2023-05-18]
+  - 변경: 시퀀스 실행 시 리스트 뷰 업데이트 속도 올리기 위한 코드 적용
+1.16.3 [2023-04-25]
+  - 변경: JumpTo를 지정한 횟수만큼 반복한 이후에도 JumpTo 조건이 성립하면 AbortOnFail 항목이 True일 때 테스트 중지
+1.16.2 [2023-04-20]
+  - 변경: Fluke DMM의 Function2 None 설정 문자열을 "NONE"에서 "NON"으로 변경(Syntax Error 수정을 위해)
+1.16.1 [2023-04-05]
+  - 변경: CAN 메시지 읽을 때 데이터 비교하여 불일치 시 에러처리 하지 않고 다음 메시지 읽어 검사
+  - 변경: CAN 신호 읽기 종료 조건 신호 값에 AdditionalSignal 값 더해서 계산
+1.16.0 [2023-03-29]
+  - 추가: Master 보드 여부 저장 기능
+  - 추가: Master 보드이면 스텝의 AbortOnFail, AbortStep 에 대한 체크를 하지 않음(JumpTo 기능은 작동)
+1.15.0 [2023-03-27]
+  - 추가: Multi Board를 위한 시퀀스 생성 기능 추가
+1.14.1 [2023-03-25]
+  - 수정: Progress Visible 상태 설정 오류 수정
+1.14.0 [2023-03-24]
+  - 추가: Waveform Generator 스텝에 AM 기능 추가
+  - 추가: CPK 계산
+1.13.2 [2023-03-22]
+  - 변경: 테스트 속도를 높이기 위해 초기에 표시하는 칼럼 수 변경, Enabled &amp; Spec 스텝만 표시하도록 함
+  - 수정: App 설정 로딩 오류 시 LogError 호출로 인한 Initialize 에러 수정
+1.13.1 [2023-03-17]
+  - 수정: CAN 수신 데이터 표시 에러(뒤에 0 표시) 수정
+1.13.0 [2023-03-16]
+  - 추가: App 로그 타깃, 레벨 설정 기능
+1.12.0 [2023-03-15]
+  - 추가: 글로쿼드텍 MAC Addr 파일에 저장
+1.11.3 [2023-03-15]
+  - 변경: 로그파일이름 기존과 같게 변경, EOL 스펙 로그 내용 형식 기존처럼 변경
+1.11.2 [2023-03-08]
+  - 변경: 로그 메시지 날짜별로 파일에 출력하도록 함
+1.11.1 [2023-02-24]
+  - 수정: 테스트 실행 시 결과가 두번 추가되던 오류 수정
+1.11.0 [2023-02-24]
+  - 추가: 스코프 BeginCapture, EndCapture 기능 추가
+1.10.2 [2023-02-23]
+  - 변경: DMM 연결이 끊기는 문제 해결을 위해 DMM, Power 이용 전 *IDN? 실행 및 오류 시 재연결
+1.10.1 [2023-02-21]
+  - 변경: DMM 통신 오류를 제거하기 위해, 통신 오류 발생 시 Reconnect 후 다시 시도
+1.10.0 [2023-02-21]
+  - 추가: 스펙 로그 항목만 보여주는 기능 추가
+  - 변경: DMM Standby 방지를 위해 Display OFF 하지 않음
+1.9.1 [2023-02-20]
+  - 변경: DMM 에러 수정을 위해 *OPC? 명령 제거
+1.9.0 [2023-02-15]
+  - 추가: Power 스텝 MeasureCurrent 메서드에 Correction 기능 추가
+1.8.0 [2023-02-06]
+  - 추가: 스텝에 AbortOnFail 항목을 추가하여 실행결과가 FAIL이면 전체 테스트를 종료할 수 있게 함
+  - 추가: 시퀀스 옵션을 추가하여 시퀀스 실행 중단 시 Cleanup 스텝들을 실행할 수 있도록 함
+  - 추가: CAN/LIN Read, ReadDataByIdentifier 인 경우 CAN ID, 응답 등의 데이터가 Min, Max, Measured 에 표시되도록 함
+1.7.1 [2023-01-31]
+  - 수정: 스텝의 IgnoreResult 설정이 True로 되어있을 때 스텝 결과가 FAIL인 경우 전체 테스트 중지 옵션 에러 수정
+  - 수정: 자동실행 중지 시 스크립트 최종결과에 반영하도록 함
+  - 수정: 테스트가 에러 발생으로 중지되어도 생산프로그램에서 로깅되도록 함
+1.7.0 [2023-01-29]
+  - 추가: 스텝 편집 윈도우에서 여러번 실행하여 통계치 출력
+  - 추가: 자동으로 할당되는 스텝 유일 Id 도입
+  - 추가: Abort 스텝에 JumpTo 액션 추가
+  - 변경: Abort 스텝에서 실행할 스텝 지정에 스텝 Id 사용하도록 변경(기존에는 스텝 No 사용)
+  - 추가: CAN 스텝에 WritePeriodic 메서드(Cycle에 따른 주기적 전송) 추가
+1.6.2 [2023-01-27]
+  - 변경: DIO 명령 편집 쉽도록 UI 업그레이드
+1.6.1 [2023-01-20]
+  - 변경: Fluke 8845A/8846A DMM을 LAN으로 연결 가능하도록 함
+1.6.0 [2023-01-18]
+  - 변경: 경과시간 초로 표시, 경과시간/퍼센트 글자 크기 더 크게 함
+  - 추가: Settings/Test 페이지 추가 -&gt; 테스트 스텝 FAIL 시 전체 테스트 종료 옵션 추가
+  - 수정: 테스트 진행 퍼센트 표시 오류(Disabled된 스텝 반영 안 함) 수정
+1.5.1 [2023-01-13]
+  - 수정: DMM 스텝 실행 시 나타나는 간헐적 Syntax Error 오류 수정
+1.5.0 [2023-01-12]
+  - 추가: Disabled된 스텝들을 보여주지 않는 기능 추가(Show Enabled Steps Only 버튼)
+1.4.0 [2023-01-09]
+  - 추가: GloquadTech SECC 디바이스 스텝
+  - 추가: SerialPort 디바이스 스텝(로깅 기능)
+  - 수정: 스텝 결과 값이 없어도 SpecLog에 Unit 표시되도록 함
+1.3.0 [2023-01-08]
+  - 추가: UDS WriteDataByIdentifier 기능 추가
+  - 추가: 스텝 실행 결과를 시퀀스 결과에 반영하지 않을 수 있는 옵션 추가(IgnoreResult)
+1.2.0 [2023-01-05]
+  - 추가: Version History
+  - 추가: UDS ReadDataByIdentifier DID=0xF1B1 인 경우 MES ROM ID가 저장되어 있으면 그것과 비교
+  - 추가: MES ROM ID 저장, 불러오기 API</value>
+  </data>
+</root>

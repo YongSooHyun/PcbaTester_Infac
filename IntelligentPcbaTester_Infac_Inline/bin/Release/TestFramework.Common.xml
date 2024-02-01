@@ -1,0 +1,1065 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TestFramework.Common</name>
+    </assembly>
+    <members>
+        <member name="T:TestFramework.Common.Text">
+            <summary>
+            Text
+            </summary>
+        </member>
+        <member name="T:TestFramework.Common.Text.Styling">
+            <summary>
+            Text styling
+            </summary>
+            <remarks>
+            This class provides methods to deal with texts extended by 'style tags'.
+            A style tag defines the appearance of a text portion.
+            A style tag is framed by braces.
+            Each style tag can contain one or more style definitions.
+            Style definitions are separated by semi colons.
+            The definitions of a style tag are valid for the following text up to the next style tag.
+            An empty style tag cancels all style definitions.
+            If a brace should be part of the normal text it needs to be doubled.<para/>
+            <para/>
+            Styles:<para/>
+            bold<para/>
+            italic<para/>
+            underline<para/>
+            color:&lt;ColorDefinition&gt;<para/>
+            forecolor:&lt;ColorDefinition&gt;<para/>
+            backcolor:&lt;ColorDefinition&gt;<para/>
+            size:&lt;FontSize&gt;<para/>
+            <para/>
+            'color' is an abbreviation of 'forecolor'.
+            ColorDefinition is one of the following color names: red, blue, green, yellow, black or white.
+            Alternatively a RGB definition can be used: (&lt;red value&gt;,&lt;green value&gt;,&lt;blue value&gt;).
+            The color value must be in the range from 0 and 255.
+            The font size is set as a percentage size of the default font size.
+            "size:200" means double size.
+            </remarks>
+            <example>
+            <code>
+            "normal text {color:red}red text {bold}bold text {color:blue;bold}bold text in blue {}normal text"
+            "normal text {size:200}text with double size {size:50}text with half size {}normal text"
+            "normal text {color:(128,128,128);backcolor:yellow}gray text on yellow background {}normal text"
+            "normal text with an open brace {{ and a close brace }}"
+            </code>
+            </example>
+            
+        </member>
+        <member name="T:TestFramework.Common.Text.Styling.StyleTag">
+            <summary>
+            Style tag
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Text.Styling.StyleTag.ForeColor">
+            <summary>
+            The fore color defined for the text portion.
+            If the value is null the default fore color should be used.
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Text.Styling.StyleTag.BackColor">
+            <summary>
+            The back color defined for the text portion.
+            If the value is null the default back color should be used.
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Text.Styling.StyleTag.FontSizeFactor">
+            <summary>
+            The font size factor defined for the text portion.
+            The default font size should be multiplied with this factor.
+            If the value is null the default fonts size should be used.
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Text.Styling.StyleTag.FontStyle">
+            <summary>
+            The font style defined for the text portion.
+            If the value is null the default font style should be used.
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Text.Styling.StyleTag.Text">
+            <summary>
+            The text portion.
+            </summary>
+        </member>
+        <member name="M:TestFramework.Common.Text.Styling.StyleTag.#ctor(System.Nullable{System.Drawing.Color},System.Nullable{System.Drawing.Color},System.Nullable{System.Single},System.Nullable{System.Drawing.FontStyle},System.String)">
+            <summary>
+            Creates a style tag instance
+            </summary>
+            <param name="ForeColor">The fore color defined for the text portion.</param>
+            <param name="BackColor">The back color defined for the text portion.</param>
+            <param name="FontSizeFactor">The font size factor defined for the text portion.</param>
+            <param name="FontStyle">The font style defined for the text portion.</param>
+            <param name="Text">The text portion</param>
+        </member>
+        <member name="M:TestFramework.Common.Text.Styling.ParseExtendedText(System.String)">
+            <summary>
+            Creates a list of style tag objects out of a text extended by style tags.
+            </summary>
+            <param name="extended_text">Extended text.</param>
+            <returns>List of style tags</returns>
+            <remarks>The text will be split into text portions for each style definition.
+            For each portion a style tag with according style parameters will be created.
+            For text portions without style definitions a style tag will be created also,
+            with all style parameters set to null.
+            Processing the style tags allows to apply the individual style of each text portion.
+            Joining the texts of all style tags will create the plain original text.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.Common.Text.Styling.RemoveStyleTags(System.String)">
+            <summary>
+            Removes all style tags an returns the unformatted plain text.
+            </summary>
+            <param name="extended_text">Extended text.</param>
+            <returns>Plain text</returns>
+        </member>
+        <member name="T:TestFramework.Common.Convert">
+            <summary>
+            Conversion
+            </summary>
+        </member>
+        <member name="M:TestFramework.Common.Convert.ConvertFromEng(System.String)">
+            <summary>
+            Converts a string with a number in engineering notation to a number.
+            </summary>
+            <param name="Number">Number string to convert</param>
+            <returns>Number value</returns>
+            <remarks>If the Number string does not a contain a valid number, the returned value might be 0. In no case an exception will be thrown.</remarks>
+        </member>
+        <member name="M:TestFramework.Common.Convert.ConvertToEng(System.Double)">
+            <summary>
+            Converts a number to a string in engineering notation.
+            </summary>
+            <param name="Number">Number to convert</param>
+            <returns>Number string in engineering notation</returns>
+        </member>
+        <member name="M:TestFramework.Common.Convert.ConvertToEng(System.Double,System.String,System.String,System.String)">
+            <summary>
+            Converts a number to a string in engineering notation.
+            </summary>
+            <param name="Number">Number to convert</param>
+            <param name="Invalid">Returned string if Number is NaN</param>
+            <param name="PositiveOutOfRange">Returned string if Number is max double or positive infinity</param>
+            <param name="NegativeOutOfRange">Returned string if Number is min double or negative infinity</param>
+            <returns>Number string in engineering notation</returns>
+        </member>
+        <member name="T:TestFramework.Common.StatusLogging.Log">
+            <summary>
+            Global log to note status messages and status changes. See also 'LogRecorder'.
+            </summary>
+        </member>
+        <member name="T:TestFramework.Common.StatusLogging.Log.TextFormat">
+            <summary>
+            Test format.
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.StatusLogging.Log.TextFormat.PlainText">
+            <summary>
+            Plain text.
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.StatusLogging.Log.TextFormat.ExtendedStyle">
+            <summary>
+            Text extended by style tags. See also 'TestFramework.Common.Text.Styling'.
+            </summary>
+        </member>
+        <member name="M:TestFramework.Common.StatusLogging.Log.Note(System.String)">
+            <summary>
+            Sends a message to all connected LogRecorders (requests 'display on screen' and 'write to log file').
+            </summary>
+            <param name="Message">Message text in extended style format. See also 'TestFramework.Common.Text.Styling'.</param>
+            <remarks>
+            Example for a text in extended style format:
+            "normal text {color:red}red text {italic}italic text {color:blue;bold;size:200}double sized bold text in blue {}normal text"
+            See also 'TestFramework.Common.Text.Styling'.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.Common.StatusLogging.Log.Note(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Sends a message to all connected LogRecorders.
+            </summary>
+            <param name="Message">Message text in extended style format. See also 'TestFramework.Common.Text.Styling'.</param>
+            <param name="DisplayOnScreen">True: requests the message to be displayed on screen.</param>
+            <param name="WriteToLogFile">True: requests the message to be written into the log file.</param>
+        </member>
+        <member name="M:TestFramework.Common.StatusLogging.Log.Note(System.String,TestFramework.Common.StatusLogging.Log.TextFormat)">
+            <summary>
+            Sends a message to all connected LogRecorders.
+            </summary>
+            <param name="Message">Message text.</param>
+            <param name="Format">Format of the message text.</param>
+        </member>
+        <member name="M:TestFramework.Common.StatusLogging.Log.Note(System.String,TestFramework.Common.StatusLogging.Log.TextFormat,System.Boolean,System.Boolean)">
+            <summary>
+            Sends a message to all connected LogRecorders.
+            </summary>
+            <param name="Message">Message text in extended style format. See also 'TestFramework.Common.Text.Styling'.</param>
+            <param name="Format">Format of the message text.</param>
+            <param name="DisplayOnScreen">True: requests the message to be displayed on screen.</param>
+            <param name="WriteToLogFile">True: requests the message to be written into the log file.</param>
+        </member>
+        <member name="M:TestFramework.Common.StatusLogging.Log.SetStatus(System.String)">
+            <summary>
+            Sends a status change to all connected LogRecorders.
+            </summary>
+            <param name="Status">Status text.</param>
+        </member>
+        <member name="M:TestFramework.Common.StatusLogging.Log.SetStatus(System.String,System.Boolean)">
+            <summary>
+            Sends a status change to all connected LogRecorders.
+            </summary>
+            <param name="Status">Status text.</param>
+            <param name="Blinking">True: status display is blinking.</param>
+        </member>
+        <member name="M:TestFramework.Common.StatusLogging.Log.SetStatus(System.String,System.Drawing.Color,System.Drawing.Color)">
+            <summary>
+            Sends a status change to all connected LogRecorders.
+            </summary>
+            <param name="Status">Status text.</param>
+            <param name="ForeColor">Fore color of the status display.</param>
+            <param name="BackColor">Back color of the status display.</param>
+        </member>
+        <member name="M:TestFramework.Common.StatusLogging.Log.SetStatus(System.String,System.Drawing.Color,System.Drawing.Color,System.Boolean)">
+            <summary>
+            Sends a status change to all connected LogRecorders.
+            </summary>
+            <param name="Status">Status text.</param>
+            <param name="ForeColor">Fore color of the status display.</param>
+            <param name="BackColor">Back color of the status display.</param>
+            <param name="Blinking">True: status display is blinking.</param>
+        </member>
+        <member name="M:TestFramework.Common.StatusLogging.Log.SetStatus(System.String,System.String)">
+            <summary>
+            Sends a status change to all connected LogRecorders.
+            </summary>
+            <param name="Status">Status text.</param>
+            <param name="Color">Fore color and back color in extended style format. Example: "ForeColor:Yellow;BackColor:Blue".</param>
+            <remarks>
+            The key words in extended style format are not case sensitive.
+            ForeColor:&lt;token&lt;ColorName&lt;token&gt;
+            BackColor:&lt;token&lt;ColorName&lt;token&gt;
+            
+            ColorNames:
+            red
+            blue
+            green
+            yellow
+            black
+            white
+            or as RGB definition:
+            (&lt;token&lt;red value&lt;token&gt;,&lt;token&lt;green value&lt;token&gt;,&lt;token&lt;blue value&lt;token&gt;)
+            The color value must be between 0 and 255.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.Common.StatusLogging.Log.SetStatus(System.String,System.String,System.Boolean)">
+            <summary>
+            Sends a status change to all connected LogRecorders.
+            </summary>
+            <param name="Status">Status text.</param>
+            <param name="Color">Fore color and back color in extended style format. Example: "ForeColor:Yellow;BackColor:Blue".</param>
+            <param name="Blinking">True: status display is blinking.</param>
+            <remarks>
+            The key words in extended style format are not case sensitive.
+            ForeColor:&lt;token&lt;ColorName&lt;token&gt;
+            BackColor:&lt;token&lt;ColorName&lt;token&gt;
+            
+            ColorNames:
+            red
+            blue
+            green
+            yellow
+            black
+            white
+            or as RGB definition:
+            (&lt;token&lt;red value&lt;token&gt;,&lt;token&lt;green value&lt;token&gt;,&lt;token&lt;blue value&lt;token&gt;)
+            The color value must be between 0 and 255.
+            </remarks>
+        </member>
+        <member name="T:TestFramework.Common.StatusLogging.LogRecorder">
+            <summary>
+            Status log recorders are receiving and handling status log messages and status change messages.
+            </summary>
+        </member>
+        <member name="E:TestFramework.Common.StatusLogging.LogRecorder.MessageReceived">
+            <summary>
+            Status message received event handler.
+            </summary>
+        </member>
+        <member name="E:TestFramework.Common.StatusLogging.LogRecorder.StatusChanged">
+            <summary>
+            Status changed event handler.
+            </summary>
+        </member>
+        <member name="T:TestFramework.Common.StatusLogging.LogRecorder.MessageReceivedEventArgs">
+            <summary>
+            Argument for the event handler 'MessageReceived'.
+            </summary>
+        </member>
+        <member name="P:TestFramework.Common.StatusLogging.LogRecorder.MessageReceivedEventArgs.Format">
+            <summary>
+            The format of the message text.
+            </summary>
+        </member>
+        <member name="M:TestFramework.Common.StatusLogging.LogRecorder.MessageReceivedEventArgs.GetMessage(TestFramework.Common.StatusLogging.Log.TextFormat)">
+            <summary>
+            Gets the message text.
+            </summary>
+            <param name="Format">The format of the returned text.</param>
+            <returns>The message text</returns>
+        </member>
+        <member name="P:TestFramework.Common.StatusLogging.LogRecorder.MessageReceivedEventArgs.DisplayOnScreen">
+            <summary>
+            Request to display the message on screen.
+            </summary>
+        </member>
+        <member name="P:TestFramework.Common.StatusLogging.LogRecorder.MessageReceivedEventArgs.WriteToLogFile">
+            <summary>
+            Request to write the message into the log file.
+            </summary>
+        </member>
+        <member name="P:TestFramework.Common.StatusLogging.LogRecorder.MessageReceivedEventArgs.TimeReceived">
+            <summary>
+            The time that the message has been received.
+            </summary>
+        </member>
+        <member name="T:TestFramework.Common.StatusLogging.LogRecorder.StatusChangedEventArgs">
+            <summary>
+            Argument for the event handler 'StatusChanged'.
+            </summary>
+        </member>
+        <member name="P:TestFramework.Common.StatusLogging.LogRecorder.StatusChangedEventArgs.Status">
+            <summary>
+            The status message.
+            </summary>
+        </member>
+        <member name="P:TestFramework.Common.StatusLogging.LogRecorder.StatusChangedEventArgs.ForeColor">
+            <summary>
+            The fore color the status message should be displayed in.
+            </summary>
+        </member>
+        <member name="P:TestFramework.Common.StatusLogging.LogRecorder.StatusChangedEventArgs.BackColor">
+            <summary>
+            The back color the status message should be displayed in.
+            </summary>
+        </member>
+        <member name="P:TestFramework.Common.StatusLogging.LogRecorder.StatusChangedEventArgs.Blinking">
+            <summary>
+            If true, the status message should be displayed blinking.
+            </summary>
+        </member>
+        <member name="P:TestFramework.Common.StatusLogging.LogRecorder.StatusChangedEventArgs.TimeReceived">
+            <summary>
+            The time that the message has been received.
+            </summary>
+        </member>
+        <member name="T:TestFramework.Common.GlobalStorage">
+            <summary>
+            Global storage for data exchange between plugins.
+            </summary>
+        </member>
+        <member name="T:TestFramework.Common.GlobalStorage.ChangeType">
+            <summary>
+            Storage change type.
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.GlobalStorage.ChangeType.ItemCreated">
+            <summary>
+            Item created.
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.GlobalStorage.ChangeType.ItemModified">
+            <summary>
+            Item modified.
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.GlobalStorage.ChangeType.ItemRemoved">
+            <summary>
+            Item removed.
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.GlobalStorage.ChangeType.StorageCleared">
+            <summary>
+            Storage cleared.
+            </summary>
+        </member>
+        <member name="M:TestFramework.Common.GlobalStorage.#ctor">
+            <summary>
+            A storage object can not be created.
+            </summary>
+        </member>
+        <member name="M:TestFramework.Common.GlobalStorage.Create(System.String)">
+            <summary>
+            Creates a storage space.
+            </summary>
+            <param name="name">Name of the storage space</param>
+            <remarks>The name must be unique.</remarks>
+        </member>
+        <member name="M:TestFramework.Common.GlobalStorage.Exists(System.String)">
+            <summary>
+            Determines if a storage space with the given name exists.
+            </summary>
+            <param name="name">Name of a storage space</param>
+            <returns>True if a storage space with the given name exists</returns>
+        </member>
+        <member name="M:TestFramework.Common.GlobalStorage.Set(System.String,System.Object)">
+            <summary>
+            Assigns an item to a storage space.
+            </summary>
+            <param name="name">Name of the storage space</param>
+            <param name="item">Item to be assigned</param>
+            <remarks>A copy ('clone') of the item will be stored.</remarks>
+        </member>
+        <member name="M:TestFramework.Common.GlobalStorage.Set(System.String,System.ICloneable)">
+            <summary>
+            Assigns an item to a storage space.
+            </summary>
+            <param name="name">Name of the storage space</param>
+            <param name="item">Item to be assigned</param>
+            <remarks>A copy ('clone') of the item will be stored.</remarks>
+        </member>
+        <member name="M:TestFramework.Common.GlobalStorage.Get(System.String)">
+            <summary>
+            Retrieves an item from the storage.
+            </summary>
+            <param name="name">Name of the storage space</param>
+            <returns>The stored item</returns>
+            <remarks>A copy ('clone') of the stored item will be returned.</remarks>
+        </member>
+        <member name="M:TestFramework.Common.GlobalStorage.Remove(System.String)">
+            <summary>
+            Removes a storage space from the storage.
+            </summary>
+            <param name="name">Name of the storage space</param>
+        </member>
+        <member name="M:TestFramework.Common.GlobalStorage.Clear">
+            <summary>
+            Clears the whole storage.
+            </summary>
+        </member>
+        <member name="M:TestFramework.Common.GlobalStorage.GetItemNames">
+            <summary>
+            Retrieves a list of all storage space names.
+            </summary>
+            <returns>The list of all storage space names</returns>
+        </member>
+        <member name="T:TestFramework.Common.Dialog">
+            <summary>
+            User interaction
+            </summary>
+        </member>
+        <member name="T:TestFramework.Common.Dialog.InputBoxResult">
+            <summary>
+            Input box result
+            </summary>
+        </member>
+        <member name="T:TestFramework.Common.Dialog.InputBoxResult.ReturnCode">
+            <summary>
+            Return codes of input boxes
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.InputBoxResult.ReturnCode.OK">
+            <summary>
+            OK button pressed
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.InputBoxResult.ReturnCode.Cancel">
+            <summary>
+            Cancel button pressed
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.InputBoxResult.Return">
+            <summary>
+            Return code
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.InputBoxResult.Text">
+            <summary>
+            Input text
+            </summary>
+        </member>
+        <member name="P:TestFramework.Common.Dialog.InputBoxResult.IsOk">
+            <summary>
+            True, if the return code is OK
+            </summary>
+        </member>
+        <member name="T:TestFramework.Common.Dialog.InputBox">
+            <summary>
+            Input dialog box
+            </summary>
+        </member>
+        <member name="M:TestFramework.Common.Dialog.InputBox.Show(System.String)">
+            <summary>
+            Show input box
+            </summary>
+            <param name="Prompt">Prompt</param>
+            <returns>Input result</returns>
+        </member>
+        <member name="M:TestFramework.Common.Dialog.InputBox.Show(System.String,System.String)">
+            <summary>
+            Show input box
+            </summary>
+            <param name="Prompt">Prompt</param>
+            <param name="Title">Dialog title</param>
+            <returns>Input result</returns>
+        </member>
+        <member name="M:TestFramework.Common.Dialog.InputBox.Show(System.String,System.String,System.String)">
+            <summary>
+            Show input box
+            </summary>
+            <param name="Prompt">Prompt</param>
+            <param name="Title">Dialog title</param>
+            <param name="DefaultInput">Default input</param>
+            <returns>Input result</returns>
+        </member>
+        <member name="M:TestFramework.Common.Dialog.InputBox.Show(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Show input box
+            </summary>
+            <param name="Prompt">Prompt</param>
+            <param name="Title">Dialog title</param>
+            <param name="DefaultInput">Default input</param>
+            <param name="ToolTipOkButton">Tool tip text for the OK button</param>
+            <param name="ToolTipCancelButton">Tool tip text for the Cancel button</param>
+            <returns>Input result</returns>
+        </member>
+        <member name="M:TestFramework.Common.Dialog.InputBox.Show(System.String,System.String,System.String,System.String,System.String,System.Drawing.Color)">
+            <summary>
+            Show input box
+            </summary>
+            <param name="Prompt">Prompt</param>
+            <param name="Title">Dialog title</param>
+            <param name="DefaultInput">Default input</param>
+            <param name="ToolTipOkButton">Tool tip text for the OK button</param>
+            <param name="ToolTipCancelButton">Tool tip text for the Cancel button</param>
+            <param name="BackColor">Back color of the input dialog box</param>
+            <returns>Input result</returns>
+        </member>
+        <member name="M:TestFramework.Common.Dialog.InputBox.Show(System.String,System.String,System.String,System.String,System.String,System.Drawing.Color,System.Int32,System.Int32)">
+            <summary>
+            Show input box
+            </summary>
+            <param name="Prompt">Prompt</param>
+            <param name="Title">Dialog title</param>
+            <param name="DefaultInput">Default input</param>
+            <param name="ToolTipOkButton">Tool tip text for the OK button</param>
+            <param name="ToolTipCancelButton">Tool tip text for the Cancel button</param>
+            <param name="BackColor">Back color of the input dialog box</param>
+            <param name="PosX">X position of the dialog window</param>
+            <param name="PosY">Y position of the dialog window</param>
+            <returns>Input result</returns>
+        </member>
+        <member name="T:TestFramework.Common.Dialog.SelectionBoxResult">
+            <summary>
+            Selection box result
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.SelectionBoxResult.Index">
+            <summary>
+            Selected index
+            </summary>
+        </member>
+        <member name="T:TestFramework.Common.Dialog.SelectionBox">
+            <summary>
+            Selection dialog box
+            </summary>
+        </member>
+        <member name="T:TestFramework.Common.Dialog.SelectionBox.DisplayMode">
+            <summary>
+            Selection display mode
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.SelectionBox.DisplayMode.Icons">
+            <summary>
+            Display icons with item names.
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.SelectionBox.DisplayMode.SingleColumnList">
+            <summary>
+            Display a single column with all item names.
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.SelectionBox.DisplayMode.MultiColumnList">
+            <summary>
+            Display columns with all item names.
+            </summary>
+        </member>
+        <member name="M:TestFramework.Common.Dialog.SelectionBox.Show(System.String,System.String,System.String[])">
+            <summary>
+            Show selection box
+            </summary>
+            <param name="Prompt">Prompt</param>
+            <param name="Title">Dialog title</param>
+            <param name="SelectionItems">Selection items</param>
+            <returns>Input result</returns>
+        </member>
+        <member name="M:TestFramework.Common.Dialog.SelectionBox.Show(System.String,System.String,System.String[],System.String)">
+            <summary>
+            Show selection box
+            </summary>
+            <param name="Prompt">Prompt</param>
+            <param name="Title">Dialog title</param>
+            <param name="SelectionItems">Selection items</param>
+            <param name="SelectedItem">Default selection</param>
+            <returns>Input result</returns>
+        </member>
+        <member name="M:TestFramework.Common.Dialog.SelectionBox.Show(System.String,System.String,System.String[],System.String,TestFramework.Common.Dialog.SelectionBox.DisplayMode)">
+            <summary>
+            Show selection box
+            </summary>
+            <param name="Prompt">Prompt</param>
+            <param name="Title">Dialog title</param>
+            <param name="SelectionItems">Selection items</param>
+            <param name="SelectedItem">Default selection</param>
+            <param name="SelectionDisplayMode">Selection display mode</param>
+            <returns>Input result</returns>
+        </member>
+        <member name="M:TestFramework.Common.Dialog.SelectionBox.Show(System.String,System.String,System.String[],System.String,TestFramework.Common.Dialog.SelectionBox.DisplayMode,System.String,System.String)">
+            <summary>
+            Show selection box
+            </summary>
+            <param name="Prompt">Prompt</param>
+            <param name="Title">Dialog title</param>
+            <param name="SelectionItems">Selection items</param>
+            <param name="SelectedItem">Default selection</param>
+            <param name="SelectionDisplayMode">Selection display mode</param>
+            <param name="ToolTipOkButton">Tool tip text for the OK button</param>
+            <param name="ToolTipCancelButton">Tool tip text for the Cancel button</param>
+            <returns>Input result</returns>
+        </member>
+        <member name="M:TestFramework.Common.Dialog.SelectionBox.Show(System.String,System.String,System.String[],System.String,TestFramework.Common.Dialog.SelectionBox.DisplayMode,System.String,System.String,System.Drawing.Color)">
+            <summary>
+            Show selection box
+            </summary>
+            <param name="Prompt">Prompt</param>
+            <param name="Title">Dialog title</param>
+            <param name="SelectionItems">Selection items</param>
+            <param name="SelectedItem">Default selection</param>
+            <param name="SelectionDisplayMode">Selection display mode</param>
+            <param name="ToolTipOkButton">Tool tip text for the OK button</param>
+            <param name="ToolTipCancelButton">Tool tip text for the Cancel button</param>
+            <param name="BackColor">Back color of the input dialog box</param>
+            <returns>Input result</returns>
+        </member>
+        <member name="M:TestFramework.Common.Dialog.SelectionBox.Show(System.String,System.String,System.String[],TestFramework.Common.Dialog.SelectionBox.DisplayMode,System.String,System.String,System.String,System.Drawing.Color,System.Int32,System.Int32)">
+            <summary>
+            Show selection box
+            </summary>
+            <param name="Prompt">Prompt</param>
+            <param name="Title">Dialog title</param>
+            <param name="SelectionItems">Selection items</param>
+            <param name="SelectedItem">Default selection</param>
+            <param name="SelectionDisplayMode">Selection display mode</param>
+            <param name="ToolTipOkButton">Tool tip text for the OK button</param>
+            <param name="ToolTipCancelButton">Tool tip text for the Cancel button</param>
+            <param name="BackColor">Back color of the input dialog box</param>
+            <param name="PosX">X position of the dialog window</param>
+            <param name="PosY">Y position of the dialog window</param>
+            <returns>Input result</returns>
+        </member>
+        <member name="T:TestFramework.Common.Dialog.DecisionButtons">
+            <summary>
+            Available buttons in decision dialog
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.DecisionButtons.YesNo">
+            <summary>
+            'Yes' button and 'No' button
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.DecisionButtons.YesCancel">
+            <summary>
+            'Yes' button and 'Cancel' button
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.DecisionButtons.YesNoCancel">
+            <summary>
+            'Yes' button, 'No' button and 'Cancel' button
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.DecisionButtons.OKCancel">
+            <summary>
+            'OK' button and 'Cancel' button
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.DecisionButtons.RetryCancel">
+            <summary>
+            'Retry' button and 'Cancel' button
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.DecisionButtons.AbortIgnoreRetry">
+            <summary>
+            'Abort' button, 'Ignore' button and 'Retry' button
+            </summary>
+        </member>
+        <member name="T:TestFramework.Common.Dialog.DecisionIcons">
+            <summary>
+            Icon shown in decision dialog
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.DecisionIcons.None">
+            <summary>
+            No icon
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.DecisionIcons.Information">
+            <summary>
+            Information icon
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.DecisionIcons.Warning">
+            <summary>
+            Warning icon
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.DecisionIcons.Error">
+            <summary>
+             Error icon
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.DecisionIcons.Stop">
+            <summary>
+             Stop icon
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.DecisionIcons.Question">
+            <summary>
+             Question icon
+            </summary>
+        </member>
+        <member name="T:TestFramework.Common.Dialog.DecisionReturnCode">
+            <summary>
+            Return codes of decision boxes
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.DecisionReturnCode.Yes">
+            <summary>
+            'Yes' button pressed
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.DecisionReturnCode.No">
+            <summary>
+            'No' button pressed
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.DecisionReturnCode.Cancel">
+            <summary>
+            'Cancel' button pressed
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.DecisionReturnCode.OK">
+            <summary>
+            'OK' button pressed
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.DecisionReturnCode.Abort">
+            <summary>
+            'Abort' button pressed
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.DecisionReturnCode.Retry">
+            <summary>
+            'Retry' button pressed
+            </summary>
+        </member>
+        <member name="F:TestFramework.Common.Dialog.DecisionReturnCode.Ignore">
+            <summary>
+            'Ignore' button pressed
+            </summary>
+        </member>
+        <member name="T:TestFramework.Common.Dialog.DecisionBox">
+            <summary>
+            Decision dialog box
+            </summary>
+        </member>
+        <member name="M:TestFramework.Common.Dialog.DecisionBox.Show(System.String)">
+            <summary>
+            Show decision box
+            </summary>
+            <param name="Prompt">Prompt</param>
+            <returns>The decision return code</returns>
+        </member>
+        <member name="M:TestFramework.Common.Dialog.DecisionBox.Show(System.String,System.String)">
+            <summary>
+            Show message box
+            </summary>
+            <param name="Prompt">Prompt</param>
+            <param name="Title">Dialog title</param>
+            <returns>The decision return code</returns>
+        </member>
+        <member name="M:TestFramework.Common.Dialog.DecisionBox.Show(System.String,System.String,TestFramework.Common.Dialog.DecisionButtons)">
+            <summary>
+            Show message box
+            </summary>
+            <param name="Prompt">Prompt</param>
+            <param name="Title">Dialog title</param>
+            <param name="Buttons">Visible buttons</param>
+            <returns>The decision return code</returns>
+        </member>
+        <member name="M:TestFramework.Common.Dialog.DecisionBox.Show(System.String,System.String,TestFramework.Common.Dialog.DecisionButtons,System.Int32)">
+            <summary>
+            Show message box
+            </summary>
+            <param name="Prompt">Prompt</param>
+            <param name="Title">Dialog title</param>
+            <param name="Buttons">Visible buttons</param>
+            <param name="DefaultButton">Default button [1,2,3]</param>
+            <returns>The decision return code</returns>
+        </member>
+        <member name="M:TestFramework.Common.Dialog.DecisionBox.Show(System.String,System.String,TestFramework.Common.Dialog.DecisionButtons,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Show message box
+            </summary>
+            <param name="Prompt">Prompt</param>
+            <param name="Title">Dialog title</param>
+            <param name="Buttons">Visible buttons</param>
+            <param name="DefaultButton">Default button [1,2,3]</param>
+            <param name="ToolTipButton1">Tool tip text for the 'Yes' button</param>
+            <param name="ToolTipButton2">Tool tip text for the 'No' button</param>
+            <param name="ToolTipButton3">Tool tip text for the 'Cancel' button</param>
+            <returns>The decision return code</returns>
+        </member>
+        <member name="M:TestFramework.Common.Dialog.DecisionBox.Show(System.String,System.String,TestFramework.Common.Dialog.DecisionButtons,System.Int32,System.String,System.String,System.String,TestFramework.Common.Dialog.DecisionIcons)">
+            <summary>
+            Show message box
+            </summary>
+            <param name="Prompt">Prompt</param>
+            <param name="Title">Dialog title</param>
+            <param name="Buttons">Visible buttons</param>
+            <param name="DefaultButton">Default button [1,2,3]</param>
+            <param name="ToolTipButton1">Tool tip text for the 'Yes' button</param>
+            <param name="ToolTipButton2">Tool tip text for the 'No' button</param>
+            <param name="ToolTipButton3">Tool tip text for the 'Cancel' button</param>
+            <param name="Icon">Icon</param>
+            <returns>The decision return code</returns>
+        </member>
+        <member name="M:TestFramework.Common.Dialog.DecisionBox.Show(System.String,System.String,TestFramework.Common.Dialog.DecisionButtons,System.Int32,System.String,System.String,System.String,TestFramework.Common.Dialog.DecisionIcons,System.Drawing.Color)">
+            <summary>
+            Show message box
+            </summary>
+            <param name="Prompt">Prompt</param>
+            <param name="Title">Dialog title</param>
+            <param name="Buttons">Visible buttons</param>
+            <param name="DefaultButton">Default button [1,2,3]</param>
+            <param name="ToolTipButton1">Tool tip text for the 'Yes' button</param>
+            <param name="ToolTipButton2">Tool tip text for the 'No' button</param>
+            <param name="ToolTipButton3">Tool tip text for the 'Cancel' button</param>
+            <param name="Icon">Icon</param>
+            <param name="BackColor">Back color of the input dialog box</param>
+            <returns>The decision return code</returns>
+        </member>
+        <member name="M:TestFramework.Common.Dialog.DecisionBox.Show(System.String,System.String,TestFramework.Common.Dialog.DecisionButtons,System.Int32,System.String,System.String,System.String,TestFramework.Common.Dialog.DecisionIcons,System.Drawing.Color,System.Int32,System.Int32)">
+            <summary>
+            Show message box
+            </summary>
+            <param name="Prompt">Prompt</param>
+            <param name="Title">Dialog title</param>
+            <param name="Buttons">Visible buttons</param>
+            <param name="DefaultButton">Default button [1,2,3]</param>
+            <param name="ToolTipButton1">Tool tip text for the 'Yes' button</param>
+            <param name="ToolTipButton2">Tool tip text for the 'No' button</param>
+            <param name="ToolTipButton3">Tool tip text for the 'Cancel' button</param>
+            <param name="Icon">Icon</param>
+            <param name="BackColor">Back color of the input dialog box</param>
+            <param name="PosX">X position of the dialog window</param>
+            <param name="PosY">Y position of the dialog window</param>
+            <returns>The decision return code</returns>
+        </member>
+        <member name="T:TestFramework.Common.Dialog.MessageBox">
+            <summary>
+            Message dialog box
+            </summary>
+        </member>
+        <member name="M:TestFramework.Common.Dialog.MessageBox.Show(System.String)">
+            <summary>
+            Show message box
+            </summary>
+            <param name="Prompt">Prompt</param>
+        </member>
+        <member name="M:TestFramework.Common.Dialog.MessageBox.Show(System.String,System.String)">
+            <summary>
+            Show message box
+            </summary>
+            <param name="Prompt">Prompt</param>
+            <param name="Title">Dialog title</param>
+        </member>
+        <member name="M:TestFramework.Common.Dialog.MessageBox.Show(System.String,System.String,System.String)">
+            <summary>
+            Show message box
+            </summary>
+            <param name="Prompt">Prompt</param>
+            <param name="Title">Dialog title</param>
+            <param name="ToolTipOkButton">Tool tip text for the OK button</param>
+        </member>
+        <member name="M:TestFramework.Common.Dialog.MessageBox.Show(System.String,System.String,System.String,System.Drawing.Color)">
+            <summary>
+            Show message box
+            </summary>
+            <param name="Prompt">Prompt</param>
+            <param name="Title">Dialog title</param>
+            <param name="ToolTipOkButton">Tool tip text for the OK button</param>
+            <param name="BackColor">Back color of the input dialog box</param>
+        </member>
+        <member name="M:TestFramework.Common.Dialog.MessageBox.Show(System.String,System.String,System.String,System.Drawing.Color,System.Int32,System.Int32)">
+            <summary>
+            Show message box
+            </summary>
+            <param name="Prompt">Prompt</param>
+            <param name="Title">Dialog title</param>
+            <param name="ToolTipOkButton">Tool tip text for the OK button</param>
+            <param name="BackColor">Back color of the input dialog box</param>
+            <param name="PosX">X position of the dialog window</param>
+            <param name="PosY">Y position of the dialog window</param>
+        </member>
+        <member name="T:TestFramework.Common.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:TestFramework.Common.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:TestFramework.Common.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:TestFramework.Common.Properties.Resources.AccessDenied">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:TestFramework.Common.Properties.Resources.Cancel">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:TestFramework.Common.Properties.Resources.ClearLog">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:TestFramework.Common.Properties.Resources.Decision">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:TestFramework.Common.Properties.Resources.Error">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:TestFramework.Common.Properties.Resources.Information">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:TestFramework.Common.Properties.Resources.No">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:TestFramework.Common.Properties.Resources.Null_Big">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:TestFramework.Common.Properties.Resources.Ok_Big">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:TestFramework.Common.Properties.Resources.Question">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:TestFramework.Common.Properties.Resources.Retry_Big">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:TestFramework.Common.Properties.Resources.Return_Big">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:TestFramework.Common.Properties.Resources.Warning">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="F:CommonUtilities.DecisionBoxForm.components">
+            <summary>
+            Erforderliche Designervariable.
+            </summary>
+        </member>
+        <member name="M:CommonUtilities.DecisionBoxForm.Dispose(System.Boolean)">
+            <summary>
+            Verwendete Ressourcen bereinigen.
+            </summary>
+            <param name="disposing">True, wenn verwaltete Ressourcen gelöscht werden sollen; andernfalls False.</param>
+        </member>
+        <member name="M:CommonUtilities.DecisionBoxForm.InitializeComponent">
+            <summary>
+            Erforderliche Methode für die Designerunterstützung.
+            Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+            </summary>
+        </member>
+        <member name="F:CommonUtilities.MessageBoxForm.components">
+            <summary>
+            Erforderliche Designervariable.
+            </summary>
+        </member>
+        <member name="M:CommonUtilities.MessageBoxForm.Dispose(System.Boolean)">
+            <summary>
+            Verwendete Ressourcen bereinigen.
+            </summary>
+            <param name="disposing">True, wenn verwaltete Ressourcen gelöscht werden sollen; andernfalls False.</param>
+        </member>
+        <member name="M:CommonUtilities.MessageBoxForm.InitializeComponent">
+            <summary>
+            Erforderliche Methode für die Designerunterstützung.
+            Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+            </summary>
+        </member>
+        <member name="F:CommonUtilities.InputBoxForm.components">
+            <summary>
+            Erforderliche Designervariable.
+            </summary>
+        </member>
+        <member name="M:CommonUtilities.InputBoxForm.Dispose(System.Boolean)">
+            <summary>
+            Verwendete Ressourcen bereinigen.
+            </summary>
+            <param name="disposing">True, wenn verwaltete Ressourcen gelöscht werden sollen; andernfalls False.</param>
+        </member>
+        <member name="M:CommonUtilities.InputBoxForm.InitializeComponent">
+            <summary>
+            Erforderliche Methode für die Designerunterstützung.
+            Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+            </summary>
+        </member>
+        <member name="F:CommonUtilities.InputSelectionBoxForm.components">
+            <summary>
+            Erforderliche Designervariable.
+            </summary>
+        </member>
+        <member name="M:CommonUtilities.InputSelectionBoxForm.Dispose(System.Boolean)">
+            <summary>
+            Verwendete Ressourcen bereinigen.
+            </summary>
+            <param name="disposing">True, wenn verwaltete Ressourcen gelöscht werden sollen; andernfalls False.</param>
+        </member>
+        <member name="M:CommonUtilities.InputSelectionBoxForm.InitializeComponent">
+            <summary>
+            Erforderliche Methode für die Designerunterstützung.
+            Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
+            </summary>
+        </member>
+    </members>
+</doc>

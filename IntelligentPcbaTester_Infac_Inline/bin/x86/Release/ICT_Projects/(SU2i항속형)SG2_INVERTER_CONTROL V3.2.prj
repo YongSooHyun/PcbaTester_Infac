@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="IntelligentPcbaTester">
+  <Path>D:\ICT_Projects\(SU2i항속형)SG2_INVERTER_CONTROL V3.2.prj</Path>
+  <Model>SG2_INVERTER_CONTROL</Model>
+  <FIDs>
+    <int>2</int>
+  </FIDs>
+  <Panel>1</Panel>
+  <Board1Checked>true</Board1Checked>
+  <Board2Checked>false</Board2Checked>
+  <Board3Checked>false</Board3Checked>
+  <Board4Checked>false</Board4Checked>
+  <TwoBoardsLeftRight>true</TwoBoardsLeftRight>
+  <BottomBoardFirst>false</BottomBoardFirst>
+  <MultiPanelBarcodeType>None</MultiPanelBarcodeType>
+  <IctProjectName>INFAC-SG2-V32-20230116</IctProjectName>
+  <IctMasterGoodSerialNumber />
+  <IctMasterGoodProjectName />
+  <IctMasterFailSerialNumber />
+  <IctMasterFailProjectName />
+  <IctVariantName>SU2ih</IctVariantName>
+  <IctUnpowerEnabled>true</IctUnpowerEnabled>
+  <IctUnpowerSectionTitle>ICT</IctUnpowerSectionTitle>
+  <IctUnpowerSectionName>ICT-unpowered</IctUnpowerSectionName>
+  <IctUnpowerRetryEnabled>true</IctUnpowerRetryEnabled>
+  <IctUnpowerPressDown>true</IctUnpowerPressDown>
+  <IctUnpowerRunOrder>1</IctUnpowerRunOrder>
+  <IctUnpowerIsEOL>false</IctUnpowerIsEOL>
+  <IctPowerEnabled>true</IctPowerEnabled>
+  <IctPowerSectionTitle />
+  <IctPowerSectionName />
+  <IctPowerRetryEnabled>true</IctPowerRetryEnabled>
+  <IctPowerPressDown>false</IctPowerPressDown>
+  <IctPowerRunOrder>2</IctPowerRunOrder>
+  <IctPowerIsEOL>false</IctPowerIsEOL>
+  <NovaEnabled>true</NovaEnabled>
+  <NovaSectionTitle />
+  <NovaSectionName />
+  <NovaRetryEnabled>true</NovaRetryEnabled>
+  <NovaPressDown>false</NovaPressDown>
+  <NovaRunOrder>3</NovaRunOrder>
+  <NovaIsEOL>false</NovaIsEOL>
+  <JtagEnabled>true</JtagEnabled>
+  <JtagSectionTitle>EOL</JtagSectionTitle>
+  <JtagSectionName>ICT-EOL</JtagSectionName>
+  <JtagRetryEnabled>false</JtagRetryEnabled>
+  <JtagPressDown>true</JtagPressDown>
+  <JtagRunOrder>4</JtagRunOrder>
+  <JtagIsEOL>true</JtagIsEOL>
+  <JtagProjectName />
+  <FunctionEnabled>true</FunctionEnabled>
+  <FunctionSectionTitle />
+  <FunctionSectionName />
+  <FunctionRetryEnabled>true</FunctionRetryEnabled>
+  <FunctionPressDown>false</FunctionPressDown>
+  <FunctionRunOrder>5</FunctionRunOrder>
+  <FunctionIsEOL>true</FunctionIsEOL>
+  <EolEnabled>true</EolEnabled>
+  <EolSectionTitle />
+  <EolSectionName />
+  <EolRetryEnabled>true</EolRetryEnabled>
+  <EolPressDown>false</EolPressDown>
+  <EolRunOrder>6</EolRunOrder>
+  <EolIsEOL>true</EolIsEOL>
+  <GrpFiles>
+    <GrpInfo>
+      <Channel>1</Channel>
+      <FilePath>C:\Users\user\Documents\NovaFlash\Projects\230503_SU2iE5MCU34jvC03.grp</FilePath>
+      <RunOrder>1</RunOrder>
+      <GrpCrc>0</GrpCrc>
+      <DataCrc>2127389316</DataCrc>
+      <MesCrc>0</MesCrc>
+    </GrpInfo>
+    <GrpInfo>
+      <Channel>1</Channel>
+      <FilePath />
+      <RunOrder>2</RunOrder>
+      <GrpCrc>0</GrpCrc>
+      <DataCrc>0</DataCrc>
+      <MesCrc>0</MesCrc>
+    </GrpInfo>
+    <GrpInfo>
+      <Channel>1</Channel>
+      <FilePath />
+      <RunOrder>3</RunOrder>
+      <GrpCrc>0</GrpCrc>
+      <DataCrc>0</DataCrc>
+      <MesCrc>0</MesCrc>
+    </GrpInfo>
+    <GrpInfo>
+      <Channel>2</Channel>
+      <FilePath />
+      <RunOrder>1</RunOrder>
+      <GrpCrc>0</GrpCrc>
+      <DataCrc>0</DataCrc>
+      <MesCrc>0</MesCrc>
+    </GrpInfo>
+    <GrpInfo>
+      <Channel>2</Channel>
+      <FilePath />
+      <RunOrder>2</RunOrder>
+      <GrpCrc>0</GrpCrc>
+      <DataCrc>0</DataCrc>
+      <MesCrc>0</MesCrc>
+    </GrpInfo>
+    <GrpInfo>
+      <Channel>2</Channel>
+      <FilePath />
+      <RunOrder>3</RunOrder>
+      <GrpCrc>0</GrpCrc>
+      <DataCrc>0</DataCrc>
+      <MesCrc>0</MesCrc>
+    </GrpInfo>
+    <GrpInfo>
+      <Channel>3</Channel>
+      <FilePath />
+      <RunOrder>1</RunOrder>
+      <GrpCrc>0</GrpCrc>
+      <DataCrc>0</DataCrc>
+      <MesCrc>0</MesCrc>
+    </GrpInfo>
+    <GrpInfo>
+      <Channel>3</Channel>
+      <FilePath />
+      <RunOrder>2</RunOrder>
+      <GrpCrc>0</GrpCrc>
+      <DataCrc>0</DataCrc>
+      <MesCrc>0</MesCrc>
+    </GrpInfo>
+    <GrpInfo>
+      <Channel>3</Channel>
+      <FilePath />
+      <RunOrder>3</RunOrder>
+      <GrpCrc>0</GrpCrc>
+      <DataCrc>0</DataCrc>
+      <MesCrc>0</MesCrc>
+    </GrpInfo>
+    <GrpInfo>
+      <Channel>4</Channel>
+      <FilePath />
+      <RunOrder>1</RunOrder>
+      <GrpCrc>0</GrpCrc>
+      <DataCrc>0</DataCrc>
+      <MesCrc>0</MesCrc>
+    </GrpInfo>
+    <GrpInfo>
+      <Channel>4</Channel>
+      <FilePath />
+      <RunOrder>2</RunOrder>
+      <GrpCrc>0</GrpCrc>
+      <DataCrc>0</DataCrc>
+      <MesCrc>0</MesCrc>
+    </GrpInfo>
+    <GrpInfo>
+      <Channel>4</Channel>
+      <FilePath />
+      <RunOrder>3</RunOrder>
+      <GrpCrc>0</GrpCrc>
+      <DataCrc>0</DataCrc>
+      <MesCrc>0</MesCrc>
+    </GrpInfo>
+  </GrpFiles>
+  <Power1Voltage>0</Power1Voltage>
+  <Power1Current>0</Power1Current>
+  <Power1Enabled>true</Power1Enabled>
+  <Power2Voltage>0</Power2Voltage>
+  <Power2Current>0</Power2Current>
+  <Power2Enabled>true</Power2Enabled>
+  <PcbInfoFile />
+</TestProject>

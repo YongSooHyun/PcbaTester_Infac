@@ -1,0 +1,512 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TestFramework.TestDevices</name>
+    </assembly>
+    <members>
+        <member name="T:TestFramework.TestDevices.TesterController">
+            <summary>
+            An object of this class gives access to the tester controller.
+            </summary>
+        </member>
+        <member name="T:TestFramework.TestDevices.TesterController.EvaluationModes">
+            <summary>
+            The evaluation modes of plugin test methods.
+            </summary>
+        </member>
+        <member name="F:TestFramework.TestDevices.TesterController.EvaluationModes.EarlyEvaluation">
+            <summary>
+            This option must be used if a plugin test method calls Apply or reads results within the Execute method.
+            </summary>
+        </member>
+        <member name="F:TestFramework.TestDevices.TesterController.EvaluationModes.LateEvaluation">
+            <summary>
+            This option can be used if a plugin test method does not call Apply and reads results only within the Evaluate method.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.TesterController.ResourceRequest(System.Int32,TestFramework.TestDevices.TesterController.EvaluationModes)">
+            <summary>
+            Requests for the resource 'tester controller'.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="EvaluationMode">Evaluation mode of the plugin test method</param>
+            <remarks >
+            EarlyEvaluation might reduce the performance, thus this mode should only be used when needed.
+            It is always required if a plugin test method calls Apply or reads results within the Execute method.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.TesterController.ResourceRequest(System.Int32)">
+            <summary>
+            Requests for the resource 'tester controller'.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.TesterController.GetDevice(System.Int32)">
+            <summary>
+            Gives access to the tester controller.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <returns>A tester controller object</returns>
+            <remarks>The tester controller is present by default, therefore no resource request is necessary.</remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.TesterController.#ctor(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.TesterController.Dispose">
+            <summary>
+            Releases the tester controller object.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.TesterController.Apply">
+            <summary>
+            Applies all previously defined settings and commands. 
+            </summary>
+            <remarks>
+            If this method should be called within the Execute method of a plugin test method, 
+            the evaluation mode of the tester controller needs to be set to EarlyEvaluation.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.TesterController.Z(System.Object)">
+            <summary>
+            Do not use. For internal purposes only.
+            </summary>
+            <param name="arg">arg</param>
+            <returns>object</returns>
+        </member>
+        <member name="T:TestFramework.TestDevices.RelayMatrix">
+            <summary>
+            An object of this class gives access to the relay matrix.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.RelayMatrix.ResourceRequest(System.Int32)">
+            <summary>
+            Requests for the resource 'relay matrix'.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.RelayMatrix.GetDevice(System.Int32)">
+            <summary>
+            Gives access to the requested relay matrix.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <returns>A relay matrix object</returns>
+        </member>
+        <member name="M:TestFramework.TestDevices.RelayMatrix.#ctor(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.RelayMatrix.Dispose">
+            <summary>
+            Releases the relay matrix object.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.RelayMatrix.ConnectRailToChannel(System.UInt32,System.UInt32)">
+            <summary>
+            Sets the close flag for the relay connecting a rail with a test channel.
+            </summary>
+            <param name="Rail">Rail number [1..4]</param>
+            <param name="TestChannel">Test channel number</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.RelayMatrix.ConnectRailToChannel(System.UInt32,System.String)">
+            <summary>
+            Sets the close flag for the relay connecting a rail with a test channel.
+            </summary>
+            <param name="Rail">Rail number [1..4]</param>
+            <param name="TestChannelName">Name of the test channel property</param>
+            <remarks>
+            All test channels listed within the test channel property will be connected with the rail.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.RelayMatrix.DisconnectRailFromChannel(System.UInt32,System.UInt32)">
+            <summary>
+            Sets the open flag for the relay connecting a rail with a test channels.
+            </summary>
+            <param name="Rail">Rail number [1..4]</param>
+            <param name="TestChannel">Test channel number</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.RelayMatrix.DisconnectRailFromChannel(System.UInt32,System.String)">
+            <summary>
+            Sets the open flag for the relay connecting a rail with a test channels.
+            </summary>
+            <param name="Rail">Rail number [1..4]</param>
+            <param name="TestChannelName">Name of the test channel property</param>
+            <remarks>
+            All test channels listed within the test channel property will be disconnected from the rail.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.RelayMatrix.ClearConnections">
+            <summary>
+            Sets the open flag for all relays.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.RelayMatrix.ConnectRailToBus(System.UInt32,System.UInt32)">
+            <summary>
+            Sets the close flag for the relays connecting rail and bus.
+            </summary>
+            <param name="Rail">Rail number [1..4]</param>
+            <param name="Bus">Bus number [1..8]</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.RelayMatrix.DisconnectRailFromBus(System.UInt32,System.UInt32)">
+            <summary>
+            Sets the open flag for the relays connecting rail and bus.
+            </summary>
+            <param name="Rail">Rail number [1..4]</param>
+            <param name="Bus">Bus number [1..8]</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.RelayMatrix.ConnectBusToChannel(System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            Sets the close flag for the relays connecting a bus with a test channel.
+            </summary>
+            <param name="Bus">Bus number [1..8]</param>
+            <param name="Rail">Rail number [1..4]</param>
+            <param name="TestChannel">Test channel number</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.RelayMatrix.ConnectBusToChannel(System.UInt32,System.UInt32,System.String)">
+            <summary>
+            Sets the close flag for the relays connecting a bus with a test channel.
+            </summary>
+            <param name="Bus">Bus number [1..8]</param>
+            <param name="Rail">Rail number [1..4]</param>
+            <param name="TestChannelName">Name of the test channel property</param>
+            <remarks>
+            All test channels listed within the test channel property will be connected with the bus.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.RelayMatrix.ConnectBusIO">
+            <summary>
+            Sets the close flag for all relays connecting the bus with the I/O socket.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.RelayMatrix.ConnectBusIO(System.UInt32)">
+            <summary>
+            Sets the close flag for the relay connecting the bus with the I/O socket.
+            </summary>
+            <param name="Bus">Bus number [1..8]</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.RelayMatrix.DisconnectBusIO">
+            <summary>
+            Sets the open flag for all relays connecting the bus with the I/O socket.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.RelayMatrix.DisconnectBusIO(System.UInt32)">
+            <summary>
+            Sets the open flag for the relay connecting the bus with the I/O socket.
+            </summary>
+            <param name="Bus">Bus number [1..8]</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.RelayMatrix.CommitConnections">
+            <summary>
+            Collects all close and open flags and makes them effective.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.RelayMatrix.Z(System.Object)">
+            <summary>
+            Do not use. For internal purposes only.
+            </summary>
+            <param name="arg">arg</param>
+            <returns>object</returns>
+        </member>
+        <member name="T:TestFramework.TestDevices.TimerUnit">
+            <summary>
+            An object of this class gives access to the timer unit.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.TimerUnit.ResourceRequest(System.Int32)">
+            <summary>
+            Requests for the resource 'timer unit'
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.TimerUnit.GetDevice(System.Int32)">
+            <summary>
+            Gives access to the requested timer unit.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <returns>A timer unit object</returns>
+        </member>
+        <member name="M:TestFramework.TestDevices.TimerUnit.#ctor(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.TimerUnit.Dispose">
+            <summary>
+            Releases the timer unit object.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.TimerUnit.GenerateDelay(System.Double)">
+            <summary>
+            Causes the test process to wait a specified time.
+            </summary>
+            <param name="Seconds">Wait time</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.TimerUnit.TriggerSingleStimulation(System.Double,System.Double,System.Double,System.UInt32)">
+            <summary>
+            Triggers a single stimulation with several measurements.
+            </summary>
+            <param name="DischargeTime">Discharge time</param>
+            <param name="MeasurementDelay">Measurement delay</param>
+            <param name="MeasurementPeriod">Measurement period</param>
+            <param name="MeasurementCount">Measurement count</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.TimerUnit.TriggerSingleStimulation(System.Double,System.Double)">
+            <summary>
+            Triggers a single stimulation with a single measurement.
+            </summary>
+            <param name="DischargeTime">Discharge time</param>
+            <param name="MeasurementDelay">Measurement delay</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.TimerUnit.GetSingleStimulationCapabilities(System.Int32,System.Double,System.Double,System.Double,System.UInt32,System.Double@,System.Double@,System.Double@,System.UInt32@)">
+            <summary>
+            Determines the timer capabilities.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="DischargeTime">Intended discharge time</param>
+            <param name="MeasurementDelay">Intended measurement delay</param>
+            <param name="MeasurementPeriod">Intended measurement period</param>
+            <param name="MeasurementCount">Measurement count</param>
+            <param name="ActualDischargeTime">Actual discharge time</param>
+            <param name="ActualMeasurementDelay">Actual measurement delay</param>
+            <param name="ActualMeasurementPeriod">Actual measurement period</param>
+            <param name="ActualMeasurementCount">Actual measurement count</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.TimerUnit.Z(System.Object)">
+            <summary>
+            Do not use. For internal purposes only.
+            </summary>
+            <param name="arg">arg</param>
+            <returns>object</returns>
+        </member>
+        <member name="T:TestFramework.TestDevices.StimulusUnit">
+            <summary>
+            An object of this class gives access to the stimulus unit.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.ResourceRequest(System.Int32,System.UInt32)">
+            <summary>
+            Requests for the resource 'stimulus unit'.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="DeviceCount">Number of requested devices</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.GetDevice(System.Int32)">
+            <summary>
+            Gives access to the requested stimulus unit.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <returns>A stimulus unit</returns>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.Dispose">
+            <summary>
+            Releases the stimulus unit object.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.ConnectForce(System.UInt32,System.UInt32)">
+            <summary>
+            Sets the close flag for the relays connecting bus with stimulus force ports.
+            </summary>
+            <param name="BusHigh">Number of the high bus [1..8] - 0 selects no bus</param>
+            <param name="BusLow">Number of the low bus [1..8] - 0 selects no bus</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.DisconnectForce(System.UInt32,System.UInt32)">
+            <summary>
+            Sets the open flag for the relays connecting bus with stimulus force ports.
+            </summary>
+            <param name="BusHigh">Number of the high bus [1..8] - 0 selects no bus</param>
+            <param name="BusLow">Number of the low bus [1..8] - 0 selects no bus</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.ConnectSense(System.UInt32,System.UInt32)">
+            <summary>
+            Sets the close flag for the relays connecting bus with stimulus sense ports.
+            </summary>
+            <param name="BusHigh">Number of the high bus [1..8] - 0 selects no bus</param>
+            <param name="BusLow">Number of the low bus [1..8] - 0 selects no bus</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.DisconnectSense(System.UInt32,System.UInt32)">
+            <summary>
+            Sets the open flag for the relays connecting bus with stimulus sense ports.
+            </summary>
+            <param name="BusHigh">Number of the high bus [1..8] - 0 selects no bus</param>
+            <param name="BusLow">Number of the low bus [1..8] - 0 selects no bus</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.CommitConnections">
+            <summary>
+            Collects all close and open flags and makes them effective.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.ClearConnections">
+            <summary>
+            Sets the open flag for all relays.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.SetupStaticStimulation(System.Double,System.Double)">
+            <summary>
+            Sets the parameters for a static stimulation.
+            </summary>
+            <param name="Current">Stimulation current</param>
+            <param name="Voltage">Stimulation voltage</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.SetupStaticStimulation(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Sets the parameters for a static stimulation.
+            </summary>
+            <param name="Current">Stimulation current</param>
+            <param name="Voltage">Stimulation voltage</param>
+            <param name="CurrentMeasurementRange">Current measurement range</param>
+            <param name="VoltageMeasurementRange">Voltage measurement range</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.GetStaticStimulationCapabilities(System.Int32,System.Double,System.Double,System.Double@,System.Double@)">
+            <summary>
+            Determines the stimulus capabilities.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="Current">Intended stimulation current</param>
+            <param name="Voltage">Intended stimulation voltage</param>
+            <param name="ActualCurrent">Actual stimulation current</param>
+            <param name="ActualVoltage">Actual stimulation voltage</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.GetStaticStimulationCapabilities(System.Int32,System.Double,System.Double,System.Double,System.Double,System.Double@,System.Double@,System.Double@,System.Double@)">
+            <summary>
+            Determines the stimulus capabilities.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="Current">Intended stimulation current</param>
+            <param name="Voltage">Intended stimulation voltage</param>
+            <param name="CurrentMeasurementRange">Intended current measurement range</param>
+            <param name="VoltageMeasurementRange">Intended voltage measurement range</param>
+            <param name="ActualCurrent">Actual stimulation current</param>
+            <param name="ActualVoltage">Actual stimulation voltage</param>
+            <param name="ActualCurrentMeasurementRange">Actual current measurement range</param>
+            <param name="ActualVoltageMeasurementRange">Actual voltage measurement range</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.SetupPermanentStimulation(System.Double,System.Double)">
+            <summary>
+            Sets the parameters for a permanent stimulation.
+            </summary>
+            <param name="Current">Stimulation current</param>
+            <param name="Voltage">Stimulation voltage</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.SetupPermanentStimulation(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Sets the parameters for a permanent stimulation.
+            </summary>
+            <param name="Current">Stimulation current</param>
+            <param name="Voltage">Stimulation voltage</param>
+            <param name="CurrentMeasurementRange">Current measurement range</param>
+            <param name="VoltageMeasurementRange">Voltage measurement range</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.GetPermanentStimulationCapabilities(System.Int32,System.Double,System.Double,System.Double@,System.Double@)">
+            <summary>
+            Determines the stimulus capabilities.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="Current">Intended stimulation current</param>
+            <param name="Voltage">Intended stimulation voltage</param>
+            <param name="ActualCurrent">Actual stimulation current</param>
+            <param name="ActualVoltage">Actual stimulation voltage</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.GetPermanentStimulationCapabilities(System.Int32,System.Double,System.Double,System.Double,System.Double,System.Double@,System.Double@,System.Double@,System.Double@)">
+            <summary>
+            Determines the stimulus capabilities.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="Current">Intended stimulation current</param>
+            <param name="Voltage">Intended stimulation voltage</param>
+            <param name="CurrentMeasurementRange">Intended current measurement range</param>
+            <param name="VoltageMeasurementRange">Intended voltage measurement range</param>
+            <param name="ActualCurrent">Actual stimulation current</param>
+            <param name="ActualVoltage">Actual stimulation voltage</param>
+            <param name="ActualCurrentMeasurementRange">Actual current measurement range</param>
+            <param name="ActualVoltageMeasurementRange">Actual voltage measurement range</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.GetStimulationTimingCapabilities(System.Int32,System.Double,System.Double,System.Double,System.UInt32,System.Double@,System.Double@,System.Double@,System.UInt32@)">
+            <summary>
+            Determines the timing capabilities.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="DischargeTime">Intended discharge time</param>
+            <param name="MeasurementDelay">Intended measurement delay</param>
+            <param name="MeasurementPeriod">Intended measurement period</param>
+            <param name="MeasurementCount">Measurement count</param>
+            <param name="ActualDischargeTime">Actual discharge time</param>
+            <param name="ActualMeasurementDelay">Actual measurement delay</param>
+            <param name="ActualMeasurementPeriod">Actual measurement period</param>
+            <param name="ActualMeasurementCount">Actual measurement count</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.TriggerMeasurement(System.Int32)">
+            <summary>
+            Triggers a single measurement.
+            </summary>
+            <param name="MeasurementID">Measurement ID</param>
+            <remarks>
+            All requested measurements must be identified by a unique number, the 'Measurement ID'.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.RequestMeasurementResult(System.Int32,System.UInt32)">
+            <summary>
+            Requests for multiple measurement results.
+            </summary>
+            <param name="MeasurementID">Measurement ID</param>
+            <param name="MeasurementCount">Number of measurements</param>
+            <remarks>
+            All requested measurements must be identified by a unique number, the 'Measurement ID'.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.RequestMeasurementResult(System.Int32)">
+            <summary>
+            Requests for a single measurement result.
+            </summary>
+            <param name="MeasurementID">Measurement ID</param>
+            <remarks>
+            All requested measurements must be identified by a unique number, the 'Measurement ID'.
+            </remarks>
+        </member>
+        <member name="T:TestFramework.TestDevices.StimulusUnit.MeasurementResult">
+            <summary>
+            An object of this class gives access to the measurement results.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.MeasurementResult.Dispose">
+            <summary>
+            Releases the measurement result object.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.MeasurementResult.ReceiveMeasurementResult(System.Int32,System.UInt32,System.Double[]@,System.Double[]@)">
+            <summary>
+            Fetches multiple measurement results.
+            </summary>
+            <param name="MeasurementID">Measurement ID</param>
+            <param name="MeasurementCount">Number of measurements</param>
+            <param name="Current">Measured current</param>
+            <param name="Voltage">Measured voltage</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.MeasurementResult.ReceiveMeasurementResult(System.Int32,System.Double@,System.Double@)">
+            <summary>
+            Fetches a single measurement result.
+            </summary>
+            <param name="MeasurementID">Measurement ID</param>
+            <param name="Current">Measured current</param>
+            <param name="Voltage">Measured voltage</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.GetMeasurementResult(System.Int32)">
+            <summary>
+            Gives access to the measurement result.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <returns>The measurement result object</returns>
+        </member>
+        <member name="M:TestFramework.TestDevices.StimulusUnit.Z(System.Object)">
+            <summary>
+            Do not use. For internal purposes only.
+            </summary>
+            <param name="arg">arg</param>
+            <returns>object</returns>
+        </member>
+    </members>
+</doc>

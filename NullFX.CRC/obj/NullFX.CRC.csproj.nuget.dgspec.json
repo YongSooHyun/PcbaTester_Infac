@@ -1,0 +1,26 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\Project\\ICT_Project\\IntelligentPcbaTester_Infac_Inline\\NullFX.CRC\\NullFX.CRC.csproj": {}
+  },
+  "projects": {
+    "E:\\Project\\ICT_Project\\IntelligentPcbaTester_Infac_Inline\\NullFX.CRC\\NullFX.CRC.csproj": {
+      "restore": {
+        "projectUniqueName": "E:\\Project\\ICT_Project\\IntelligentPcbaTester_Infac_Inline\\NullFX.CRC\\NullFX.CRC.csproj",
+        "projectPath": "E:\\Project\\ICT_Project\\IntelligentPcbaTester_Infac_Inline\\NullFX.CRC\\NullFX.CRC.csproj",
+        "packagesPath": "C:\\Users\\Jinyeong\\.nuget\\packages\\",
+        "outputPath": "E:\\Project\\ICT_Project\\IntelligentPcbaTester_Infac_Inline\\NullFX.CRC\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Jinyeong\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\Matrox Imaging\\MIL\\MIL.NET\\NuGet": {},
+          "https://api.nuget.org/v3/index.json": {}
+        }
+      }
+    }
+  }
+}

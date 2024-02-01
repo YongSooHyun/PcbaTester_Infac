@@ -1,0 +1,462 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TestFramework.TestDevices.PowerUpUnit</name>
+    </assembly>
+    <members>
+        <member name="T:TestFramework.TestDevices.PowerUpUnit">
+            <summary>
+            
+            </summary>
+            <summary>
+            
+            </summary>
+            <summary>
+            The class power up unit.
+            </summary>
+        </member>
+        <member name="T:TestFramework.TestDevices.PowerUpUnit.AuxiliarySwitchUnit">
+            <summary>
+            An object of this class gives access to the auxiliary switch unit.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.AuxiliarySwitchUnit.ResourceRequest(System.Int32,System.UInt32)">
+            <summary>
+            Requests for the resource 'auxiliary switch'.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="DeviceID">Device number of the Power Up Unit</param>
+            <remarks>
+            The Power Up Units are consecutive numbered starting with 1.
+            'DeviceID' selects the Power Up Unit to which the auxiliary switch belongs.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.AuxiliarySwitchUnit.GetDevice(System.Int32,System.UInt32)">
+            <summary>
+            Gives access to the requested auxiliary switch unit.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="DeviceID">Device number of the Power Up Unit</param>
+            <returns>An auxiliary switch unit</returns>
+            <remarks>
+            The Power Up Units are consecutive numbered starting with 1.
+            'DeviceID' selects the Power Up Unit to which the auxiliary switch belongs.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.AuxiliarySwitchUnit.#ctor(System.Int32,System.Int32)">
+            <summary>
+            An object of this class gives access to the auxiliary switch unit.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="DeviceID">Device number of the Power Up Unit</param>
+            <remarks>
+            The Power Up Units are consecutive numbered starting with 1.
+            'DeviceID' selects the Power Up Unit to which the auxiliary switch belongs.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.AuxiliarySwitchUnit.Dispose">
+            <summary>
+            Releases the auxiliary switch unit object.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.AuxiliarySwitchUnit.GetSlotNumber">
+            <summary>
+            Gets the slot number of the power up unit device.
+            </summary>
+            <returns>The slot number</returns>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.AuxiliarySwitchUnit.CloseRelay(System.Int32)">
+            <summary>
+            Sets the close flag for a relay of the auxiliary switch.
+            </summary>
+            <param name="RelayNumber">[1..8] The number of the relay to be switched</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.AuxiliarySwitchUnit.OpenRelay(System.Int32)">
+            <summary>
+            Sets the open flag for a relay of the auxiliary switch.
+            </summary>
+            <param name="RelayNumber">[1..8] The number of the relay to be switched</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.AuxiliarySwitchUnit.CommitConnections">
+            <summary>
+            Collects all close and open flags and makes them effective.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.AuxiliarySwitchUnit.Z(System.Object)">
+            <summary>
+            Do not use. For internal purposes only.
+            </summary>
+            <param name="arg">arg</param>
+            <returns>object</returns>
+        </member>
+        <member name="T:TestFramework.TestDevices.PowerUpUnit.DigitalIOUnit">
+            <summary>
+            An object of this class gives access to the digital I/O unit.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.DigitalIOUnit.ResourceRequest(System.Int32,System.UInt32)">
+            <summary>
+            Requests for the resource 'digital I/O unit'.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="DeviceID">Device number of the Power Up Unit</param>
+            <remarks>
+            The Power Up Units are consecutive numbered starting with 1.
+            'DeviceID' selects the Power Up Unit to which the digital I/O belongs.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.DigitalIOUnit.GetDevice(System.Int32,System.UInt32)">
+            <summary>
+            Gives access to the requested digital I/O unit.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="DeviceID">Device number of the Power Up Unit</param>
+            <returns>A digital I/O unit</returns>
+            <remarks>
+            The Power Up Units are consecutive numbered starting with 1.
+            'DeviceID' selects the Power Up Unit to which the digital I/O belongs.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.DigitalIOUnit.#ctor(System.Int32,System.Int32)">
+            <summary>
+            An object of this class gives access to the digital I/O unit.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="DeviceID">Device number of the Power Up Unit</param>
+            <remarks>
+            The Power Up Units are consecutive numbered starting with 1.
+            'DeviceID' selects the Power Up Unit to which the digital I/O belongs.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.DigitalIOUnit.Dispose">
+            <summary>
+            Releases the digital I/O unit object.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.DigitalIOUnit.GetSlotNumber">
+            <summary>
+            Gets the slot number of the power up unit device.
+            </summary>
+            <returns>The slot number</returns>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.DigitalIOUnit.SetSignals(System.Byte)">
+            <summary>
+            Sets the output signals.
+            </summary>
+            <param name="Signals">Signals</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.DigitalIOUnit.ConnectInput(System.Int32)">
+            <summary>
+            Sets the close flag for the relays connecting the digital input channel with the connector.
+            </summary>
+            <param name="Channel">[1..8] The number of the channel to be connected</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.DigitalIOUnit.DisconnectInput(System.Int32)">
+            <summary>
+            Sets the open flag for the relays connecting the digital input channel with the connector.
+            </summary>
+            <param name="Channel">[1..8] The number of the channel to be connected</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.DigitalIOUnit.ConnectOutput(System.Int32)">
+            <summary>
+            Sets the close flag for the relays connecting the digital output channel with the connector.
+            </summary>
+            <param name="Channel">[1..8] The number of the channel to be connected</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.DigitalIOUnit.DisconnectOutput(System.Int32)">
+            <summary>
+            Sets the open flag for the relays connecting the digital output channel with the connector.
+            </summary>
+            <param name="Channel">[1..8] The number of the channel to be connected</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.DigitalIOUnit.CommitConnections">
+            <summary>
+            Collects all close and open flags and makes them effective.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.DigitalIOUnit.TriggerReadInput(System.Int32)">
+            <summary>
+            Triggers a single input read operation.
+            </summary>
+            <param name="InputID">Input ID</param>
+            <remarks>
+            All requested read operations must be identified by a unique number, the 'Input ID'.
+            </remarks>
+        </member>
+        <member name="T:TestFramework.TestDevices.PowerUpUnit.DigitalIOUnit.Input">
+            <summary>
+            An object of this class gives access to the input signals.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.DigitalIOUnit.Input.Dispose">
+            <summary>
+            Releases the input object.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.DigitalIOUnit.Input.ReceiveInput(System.Int32,System.Byte@)">
+            <summary>
+            Fetches the input of all channels.
+            </summary>
+            <param name="InputID">Input ID</param>
+            <param name="Signals">Signals</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.DigitalIOUnit.GetInput(System.Int32)">
+            <summary>
+            Gives access to the input signals.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <returns>The input object</returns>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.DigitalIOUnit.Z(System.Object)">
+            <summary>
+            Do not use. For internal purposes only.
+            </summary>
+            <param name="arg">arg</param>
+            <returns>object</returns>
+        </member>
+        <member name="T:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit">
+            <summary>
+            An object of this class gives access to the power supply unit.
+            </summary>
+        </member>
+        <member name="F:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.ChannelCount">
+            <summary>
+            Number of sub-units
+            </summary>
+        </member>
+        <member name="T:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.OperationMode">
+            <summary>
+            Operation modes of the power supply unit.
+            </summary>
+        </member>
+        <member name="F:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.OperationMode.SeparateChannels">
+            <summary>
+            The channels are operating separately.
+            </summary>
+        </member>
+        <member name="F:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.OperationMode.ChannelsInParallel">
+            <summary>
+            The channels are switched in parallel.
+            </summary>
+        </member>
+        <member name="F:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.OperationMode.ChannelsInSeries">
+            <summary>
+            The channels are switched in series.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.ResourceRequest(System.Int32,System.UInt32)">
+            <summary>
+            Requests for the resource 'power supply'.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="DeviceID">Device number of the Power Up Unit</param>
+            <remarks>
+            The Power Up Units are consecutive numbered starting with 1.
+            'DeviceID' selects the Power Up Unit to which the power supply belongs.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.GetDevice(System.Int32,System.UInt32)">
+            <summary>
+            Gives access to the requested power supply unit.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="DeviceID">Device number of the Power Up Unit</param>
+            <returns>A power supply unit</returns>
+            <remarks>
+            The Power Up Units are consecutive numbered starting with 1.
+            'DeviceID' selects the Power Up Unit to which the power supply belongs.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.#ctor(System.Int32,System.Int32)">
+            <summary>
+            An object of this class gives access to the power supply unit.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="DeviceID">Device number of the Power Up Unit</param>
+            <remarks>
+            The Power Up Units are consecutive numbered starting with 1.
+            'DeviceID' selects the Power Up Unit to which the power supply belongs.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.Dispose">
+            <summary>
+            Releases the power supply unit object.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.GetSlotNumber">
+            <summary>
+            Gets the slot number of the power up unit device.
+            </summary>
+            <returns>The slot number</returns>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.SetOperationMode(TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.OperationMode)">
+            <summary>
+            Sets the operation mode of the power supply.
+            </summary>
+            <param name="Mode">Operation mode</param>
+            <remarks>
+            If the channels are switched in series or in parallel, only the connections of first channel are active.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.Connect(System.Int32)">
+            <summary>
+            Sets the close flag for the relays connecting the power supply with the connector.
+            </summary>
+            <param name="Channel">[1..2] The power supply channel to be connected</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.Disconnect(System.Int32)">
+            <summary>
+            Sets the open flag for the relays connecting the power supply with the connector.
+            </summary>
+            <param name="Channel">[1..2] The power supply channel to be disconnected</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.CommitConnections">
+            <summary>
+            Collects all close and open flags and makes them effective.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.EnableOutput(System.Int32)">
+            <summary>
+            Enables the output.
+            </summary>
+            <param name="Channel">[1..2] The power supply channel to be enabled</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.DisableOutput(System.Int32)">
+            <summary>
+            Disables the output.
+            </summary>
+            <param name="Channel">[1..2] The power supply channel to be disabled</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.SetupOutput(System.Int32,System.Int32,System.Double)">
+            <summary>
+            Sets the parameters for the output.
+            </summary>
+            <param name="Channel">[1..2] Power supply channel</param>
+            <param name="CurrentRange">Output current range index (1..5)</param>
+            <param name="Voltage">Output voltage</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.SetupOutput(System.Int32,System.Double,System.Double)">
+            <summary>
+            Sets the parameters for the output.
+            </summary>
+            <param name="Channel">[1..2] Power supply channel</param>
+            <param name="Current">Output current (the next higher current range will be selected)</param>
+            <param name="Voltage">Output voltage</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.GetOutputCapabilities(System.Int32,TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.OperationMode,System.Double,System.Double,System.Double@,System.Double@)">
+            <summary>
+            Gets the output capabilities depending on the operation mode.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="Mode">Operation mode</param>
+            <param name="Current">Output current</param>
+            <param name="Voltage">Output voltage</param>
+            <param name="ActualCurrentRange">Actual output current range</param>
+            <param name="ActualVoltage">Actual output voltage</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.GetOutputCapabilities(System.Int32,TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.OperationMode,System.Double,System.Double,System.Double@,System.Boolean@,System.Double@)">
+            <summary>
+            Gets the output capabilities depending on the operation mode.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="Mode">Operation mode</param>
+            <param name="Current">Output current</param>
+            <param name="Voltage">Output voltage</param>
+            <param name="ActualCurrentRange">Actual output current range</param>
+            <param name="CurrentRangeClipped">True if the current range is clipped due to the requested voltage</param>
+            <param name="ActualVoltage">Actual output voltage</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.GetOutputCapabilities(System.Int32,TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.OperationMode,System.Int32,System.Double,System.Double@,System.Double@)">
+            <summary>
+            Gets the output capabilities depending on the operation mode.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="Mode">Operation mode</param>
+            <param name="CurrentRange">Output current range</param>
+            <param name="Voltage">Output voltage</param>
+            <param name="ActualCurrentRange">Actual output current range</param>
+            <param name="ActualVoltage">Actual output voltage</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.GetOutputCapabilities(System.Int32,TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.OperationMode,System.Int32,System.Double,System.Double@,System.Boolean@,System.Double@)">
+            <summary>
+            Gets the output capabilities depending on the operation mode.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="Mode">Operation mode</param>
+            <param name="CurrentRange">Output current range</param>
+            <param name="Voltage">Output voltage</param>
+            <param name="ActualCurrentRange">Actual output current range</param>
+            <param name="CurrentRangeClipped">True if the current range is clipped due to the requested voltage</param>
+            <param name="ActualVoltage">Actual output voltage</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.TriggerMeasurement(System.Int32)">
+            <summary>
+            Triggers a single measurement.
+            </summary>
+            <param name="MeasurementID">Measurement ID</param>
+            <remarks>
+            All requested measurements must be identified by a unique number, the 'Measurement ID'.
+            </remarks>
+        </member>
+        <member name="T:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.MeasurementResult">
+            <summary>
+            An object of this class gives access to the measurement results.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.MeasurementResult.Dispose">
+            <summary>
+            Releases the measurement result object.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.MeasurementResult.ReceiveMeasurementResult(System.Int32,System.Double[]@,System.Double[]@)">
+            <summary>
+            Fetches the measurement result of all sub-units.
+            </summary>
+            <param name="MeasurementID">Measurement ID</param>
+            <param name="Current">Measured current</param>
+            <param name="Voltage">Measured voltage</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.MeasurementResult.ReceiveMeasurementResult(System.Int32,System.UInt32,System.Double@,System.Double@)">
+            <summary>
+            Fetches the measurement result of a particular sub-unit.
+            </summary>
+            <param name="MeasurementID">Measurement ID</param>
+            <param name="Channel">[1..2] Power supply sub-unit</param>
+            <param name="Current">Measured current</param>
+            <param name="Voltage">Measured voltage</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.MeasurementResult.ReceiveMeasurementResult(System.Int32,System.Double[]@,System.Double[]@,System.Int32@)">
+            <summary>
+            ! Not yet implemented !
+            </summary>
+            <param name="MeasurementID">Measurement ID</param>
+            <param name="Current">Measured current</param>
+            <param name="Voltage">Measured voltage</param>
+            <param name="Status">Status flags</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.MeasurementResult.ReceiveMeasurementResult(System.Int32,System.UInt32,System.Double@,System.Double@,System.Int32@)">
+            <summary>
+            ! Not yet implemented !
+            </summary>
+            <param name="MeasurementID">Measurement ID</param>
+            <param name="Channel">[1..2] Power supply sub-unit</param>
+            <param name="Current">Measured current</param>
+            <param name="Voltage">Measured voltage</param>
+            <param name="Status">Status flags</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.GetMeasurementResult(System.Int32)">
+            <summary>
+            Gives access to the measurement result.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <returns>The measurement result object</returns>
+        </member>
+        <member name="M:TestFramework.TestDevices.PowerUpUnit.PowerSupplyUnit.Z(System.Object)">
+            <summary>
+            Do not use. For internal purposes only.
+            </summary>
+            <param name="arg">arg</param>
+            <returns>object</returns>
+        </member>
+    </members>
+</doc>

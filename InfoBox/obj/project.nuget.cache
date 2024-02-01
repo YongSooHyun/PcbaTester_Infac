@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "RytJYxBFgQKUJgTeXqlpEjdFShXnx+rxXGEZccq79r4RQZ4Zj2KnHmKx9yZgSnq1jEC9NFtHIIuFNYJgy1BKxw==",
+  "success": true,
+  "projectFilePath": "C:\\OperationService\\IntelligentPcbaTester_Infac_Inline\\InfoBox\\InfoBox.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\OperationService\\.nuget\\packages\\microsoft.build.tasks.git\\1.1.1\\microsoft.build.tasks.git.1.1.1.nupkg.sha512",
+    "C:\\Users\\OperationService\\.nuget\\packages\\microsoft.sourcelink.common\\1.1.1\\microsoft.sourcelink.common.1.1.1.nupkg.sha512",
+    "C:\\Users\\OperationService\\.nuget\\packages\\microsoft.sourcelink.github\\1.1.1\\microsoft.sourcelink.github.1.1.1.nupkg.sha512",
+    "C:\\Users\\OperationService\\.nuget\\packages\\nuget.commandline\\6.3.3\\nuget.commandline.6.3.3.nupkg.sha512"
+  ],
+  "logs": []
+}

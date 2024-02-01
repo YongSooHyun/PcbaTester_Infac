@@ -1,0 +1,34 @@
+{
+  "version": 3,
+  "targets": {},
+  "libraries": {},
+  "projectFileDependencyGroups": {},
+  "packageFolders": {
+    "C:\\Users\\Jinyeong\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "restore": {
+      "projectUniqueName": "E:\\Project\\ICT_Project\\IntelligentPcbaTester_Infac_Inline\\NullFX.CRC\\NullFX.CRC.csproj",
+      "projectPath": "E:\\Project\\ICT_Project\\IntelligentPcbaTester_Infac_Inline\\NullFX.CRC\\NullFX.CRC.csproj",
+      "packagesPath": "C:\\Users\\Jinyeong\\.nuget\\packages\\",
+      "outputPath": "E:\\Project\\ICT_Project\\IntelligentPcbaTester_Infac_Inline\\NullFX.CRC\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Jinyeong\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\Matrox Imaging\\MIL\\MIL.NET\\NuGet": {},
+        "https://api.nuget.org/v3/index.json": {}
+      }
+    }
+  },
+  "logs": [
+    {
+      "code": "NU1105",
+      "level": "Error",
+      "message": "Unable to read project information for 'NullFX.CRC': '#{RELEASE_VERSION}#' is not a valid version string.\r\nParameter name: value"
+    }
+  ]
+}

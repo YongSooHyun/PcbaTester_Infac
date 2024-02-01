@@ -1,0 +1,2327 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>InfoBox</name>
+    </assembly>
+    <members>
+        <member name="T:InfoBox.AsyncResultCallback">
+            <summary>
+            Delegate used when a box is closed to inform the caller.
+            </summary>
+            <param name="result">The result.</param>
+        </member>
+        <member name="T:InfoBox.InformationBoxScope">
+            <summary>
+            Represents the scope of a set of parameters for the InformationBoxes.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxScope.scopesStack">
+            <summary>
+            Stack of all scopes
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxScope.definedParameters">
+            <summary>
+            Contains the parameters defined within the scope
+            </summary>
+        </member>
+        <member name="M:InfoBox.InformationBoxScope.#ctor(InfoBox.InformationBoxScopeParameters)">
+            <summary>
+            Initializes a new instance of the <see cref="T:InfoBox.InformationBoxScope"/> class.
+            </summary>
+            <param name="parameters">The parameters.</param>
+        </member>
+        <member name="M:InfoBox.InformationBoxScope.#ctor(InfoBox.InformationBoxScopeParameters,InfoBox.InformationBoxScopeBehavior)">
+            <summary>
+            Initializes a new instance of the <see cref="T:InfoBox.InformationBoxScope"/> class.
+            </summary>
+            <param name="parameters">The parameters.</param>
+            <param name="behavior">The behavior.</param>
+        </member>
+        <member name="M:InfoBox.InformationBoxScope.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:InfoBox.InformationBoxScope"/> class.
+            </summary>
+        </member>
+        <member name="P:InfoBox.InformationBoxScope.Parameters">
+            <summary>
+            Gets the parameters.
+            </summary>
+            <value>The parameters.</value>
+        </member>
+        <member name="P:InfoBox.InformationBoxScope.Current">
+            <summary>
+            Gets the current scope.
+            </summary>
+            <value>The current.</value>
+        </member>
+        <member name="P:InfoBox.InformationBoxScope.EffectiveParameters">
+            <summary>
+            Gets or sets the effective parameters.
+            </summary>
+            <value>The effective parameters.</value>
+        </member>
+        <member name="M:InfoBox.InformationBoxScope.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:InfoBox.InformationBoxScope.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="T:InfoBox.InformationBoxScopeBehavior">
+            <summary>
+            Specifies constants defining how the new scope treats the parameters of the parent scopes.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxScopeBehavior.None">
+            <summary>
+            Parent parameters are ignored.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxScopeBehavior.InheritParent">
+            <summary>
+            The parameters of the direct parent are taken into account.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxScopeBehavior.InheritAll">
+            <summary>
+            The parameters of all active scopes are taken into account.
+            </summary>
+        </member>
+        <member name="T:InfoBox.InformationBoxScopeParameters">
+            <summary>
+            Contains the parameters used by a specific scope.
+            </summary>
+        </member>
+        <member name="P:InfoBox.InformationBoxScopeParameters.AutoClose">
+            <summary>
+            Gets or sets the auto close.
+            </summary>
+            <value>The auto close.</value>
+        </member>
+        <member name="P:InfoBox.InformationBoxScopeParameters.AutoSizeMode">
+            <summary>
+            Gets or sets the auto size mode.
+            </summary>
+            <value>The auto size mode.</value>
+        </member>
+        <member name="P:InfoBox.InformationBoxScopeParameters.Behavior">
+            <summary>
+            Gets or sets the behavior.
+            </summary>
+            <value>The behavior.</value>
+        </member>
+        <member name="P:InfoBox.InformationBoxScopeParameters.Buttons">
+            <summary>
+            Gets or sets the buttons.
+            </summary>
+            <value>The buttons.</value>
+        </member>
+        <member name="P:InfoBox.InformationBoxScopeParameters.Layout">
+            <summary>
+            Gets or sets the layout.
+            </summary>
+            <value>The layout.</value>
+        </member>
+        <member name="P:InfoBox.InformationBoxScopeParameters.CheckBox">
+            <summary>
+            Gets or sets the checkbox.
+            </summary>
+            <value>The checkbox.</value>
+        </member>
+        <member name="P:InfoBox.InformationBoxScopeParameters.DefaultButton">
+            <summary>
+            Gets or sets the default button.
+            </summary>
+            <value>The default button.</value>
+        </member>
+        <member name="P:InfoBox.InformationBoxScopeParameters.Icon">
+            <summary>
+            Gets or sets the icon.
+            </summary>
+            <value>The main icon.</value>
+        </member>
+        <member name="P:InfoBox.InformationBoxScopeParameters.TitleIcon">
+            <summary>
+            Gets or sets the title icon.
+            </summary>
+            <value>The title icon.</value>
+        </member>
+        <member name="P:InfoBox.InformationBoxScopeParameters.CustomIcon">
+            <summary>
+            Gets or sets the custom icon.
+            </summary>
+            <value>The custom icon.</value>
+        </member>
+        <member name="P:InfoBox.InformationBoxScopeParameters.Opacity">
+            <summary>
+            Gets or sets the opacity.
+            </summary>
+            <value>The opacity.</value>
+        </member>
+        <member name="P:InfoBox.InformationBoxScopeParameters.Position">
+            <summary>
+            Gets or sets the position.
+            </summary>
+            <value>The position.</value>
+        </member>
+        <member name="P:InfoBox.InformationBoxScopeParameters.Style">
+            <summary>
+            Gets or sets the style.
+            </summary>
+            <value>The style.</value>
+        </member>
+        <member name="P:InfoBox.InformationBoxScopeParameters.TitleIconStyle">
+            <summary>
+            Gets or sets the title icon style.
+            </summary>
+            <value>The title icon style.</value>
+        </member>
+        <member name="P:InfoBox.InformationBoxScopeParameters.Help">
+            <summary>
+            Gets or sets the help.
+            </summary>
+            <value>The help value.</value>
+        </member>
+        <member name="P:InfoBox.InformationBoxScopeParameters.HelpNavigator">
+            <summary>
+            Gets or sets the help navigator.
+            </summary>
+            <value>The help navigator.</value>
+        </member>
+        <member name="P:InfoBox.InformationBoxScopeParameters.Design">
+            <summary>
+            Gets or sets the design.
+            </summary>
+            <value>The design.</value>
+        </member>
+        <member name="P:InfoBox.InformationBoxScopeParameters.Order">
+            <summary>
+            Gets or sets the order.
+            </summary>
+            <value>The order.</value>
+        </member>
+        <member name="P:InfoBox.InformationBoxScopeParameters.Sound">
+            <summary>
+            Gets or sets the sound.
+            </summary>
+            <value>The sound.</value>
+        </member>
+        <member name="M:InfoBox.InformationBoxScopeParameters.Merge(InfoBox.InformationBoxScopeParameters)">
+            <summary>
+            Merges the specified parameters.
+            </summary>
+            <param name="parameters">The parameters.</param>
+            <returns>The result of the merge operation </returns>
+        </member>
+        <member name="M:InfoBox.InformationBoxScopeParameters.Equals(System.Object)">
+            <summary>
+            Indicates whether this instance and a specified object are equal.
+            </summary>
+            <param name="obj">Another object to compare to.</param>
+            <returns>
+            true if <paramref name="obj"/> and this instance are the same type and represent the same value; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:InfoBox.InformationBoxScopeParameters.GetHashCode">
+            <summary>
+            Returns the hash code for this instance.
+            </summary>
+            <returns>
+            A 32-bit signed integer that is the hash code for this instance.
+            </returns>
+        </member>
+        <member name="M:InfoBox.InformationBoxScopeParameters.op_Equality(InfoBox.InformationBoxScopeParameters,InfoBox.InformationBoxScopeParameters)">
+            <summary>
+            Implements the operator ==.
+            </summary>
+            <param name="parameter1">The first parameter1.</param>
+            <param name="parameter2">The parameter2.</param>
+            <returns>The result of the operator.</returns>
+        </member>
+        <member name="M:InfoBox.InformationBoxScopeParameters.op_Inequality(InfoBox.InformationBoxScopeParameters,InfoBox.InformationBoxScopeParameters)">
+            <summary>
+            Implements the operator !=.
+            </summary>
+            <param name="parameter1">The parameter1.</param>
+            <param name="parameter2">The parameter2.</param>
+            <returns>The result of the operator.</returns>
+        </member>
+        <member name="T:InfoBox.Controls.Button">
+            <summary>
+            Glass button
+            </summary>
+            <summary>
+            A button with a glass look and feel
+            </summary>
+        </member>
+        <member name="F:InfoBox.Controls.Button.sideBorder">
+            <summary>
+            Contains the side borders
+            </summary>
+        </member>
+        <member name="F:InfoBox.Controls.Button.sideBorderBottomColor">
+            <summary>
+            Contains the side border bottom column
+            </summary>
+        </member>
+        <member name="F:InfoBox.Controls.Button.sideBorderTopColor">
+            <summary>
+            Contains the side border top column
+            </summary>
+        </member>
+        <member name="F:InfoBox.Controls.Button.sideBorderWidth">
+            <summary>
+            Contains the side border width
+            </summary>
+        </member>
+        <member name="F:InfoBox.Controls.Button.pushed">
+            <summary>
+            Flag for the pushed state
+            </summary>
+        </member>
+        <member name="F:InfoBox.Controls.Button.hover">
+            <summary>
+            Flag for the hover state
+            </summary>
+        </member>
+        <member name="F:InfoBox.Controls.Button.persistantMode">
+            <summary>
+            Flag for the pushed persistant mode
+            </summary>
+        </member>
+        <member name="F:InfoBox.Controls.Button.alphaChannelCoeff">
+            <summary>
+            Value of the alpha channel
+            </summary>
+        </member>
+        <member name="F:InfoBox.Controls.Button.textAlign">
+            <summary>
+            Text alignment
+            </summary>
+        </member>
+        <member name="F:InfoBox.Controls.Button.disabledForeColor">
+            <summary>
+            Fore color used for the disabled state
+            </summary>
+        </member>
+        <member name="M:InfoBox.Controls.Button.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:InfoBox.Controls.Button"/> class.
+            </summary>
+        </member>
+        <member name="M:InfoBox.Controls.Button.Control_GotFocus(System.Object,System.EventArgs)">
+            <summary>
+            Handles the GotFocus event of the Control control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:InfoBox.Controls.Button.Control_LostFocus(System.Object,System.EventArgs)">
+            <summary>
+            Handles the LostFocus event of the Control control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:InfoBox.Controls.Button.ProcessMnemonic(System.Char)">
+            <summary>
+            Processes a mnemonic character.
+            </summary>
+            <param name="charCode">The character to process.</param>
+            <returns>
+            true if the character was processed as a mnemonic by the control; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:InfoBox.Controls.Button.FocusableControl_ChangeUICues(System.Object,System.Windows.Forms.UICuesEventArgs)">
+            <summary>
+            Handles the ChangeUICues event of the FocusableControl control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.UICuesEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="E:InfoBox.Controls.Button.Click">
+            <summary>
+            Event raised when button is clicked
+            </summary>
+        </member>
+        <member name="P:InfoBox.Controls.Button.SideBorder">
+            <summary>
+            Gets or sets if a custom border is shown on the sides of the control
+            </summary>
+            <value>The side border.</value>
+        </member>
+        <member name="P:InfoBox.Controls.Button.SideBorderWidth">
+            <summary>
+            Gets or sets the border width
+            </summary>
+            <value>The width of the side border.</value>
+        </member>
+        <member name="P:InfoBox.Controls.Button.SideBorderTopColor">
+            <summary>
+            Gets or sets the top border color
+            </summary>
+            <value>The top color of the side border.</value>
+        </member>
+        <member name="P:InfoBox.Controls.Button.SideBorderBottomColor">
+            <summary>
+            Gets or sets the bottom border color
+            </summary>
+            <value>The bottom color of the side border.</value>
+        </member>
+        <member name="P:InfoBox.Controls.Button.DisabledForeColor">
+            <summary>
+            Gets or sets the text color when the button is disabled
+            </summary>
+        </member>
+        <member name="P:InfoBox.Controls.Button.TextAlign">
+            <summary>
+            Gets or sets the alignment of the text
+            </summary>
+        </member>
+        <member name="P:InfoBox.Controls.Button.Text">
+            <summary>
+            Gets or sets the button text
+            </summary>
+        </member>
+        <member name="P:InfoBox.Controls.Button.PersistantMode">
+            <summary>
+            Gets or sets a value indicating whether the button remains clicked after mouse button is released.
+            </summary>
+            <value><c>true</c> if the button remains clicked after mouse button is released; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:InfoBox.Controls.Button.Pushed">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:InfoBox.Controls.Button"/> is pushed.
+            </summary>
+            <value><c>true</c> if pushed; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:InfoBox.Controls.Button.OnClick(System.EventArgs)">
+            <summary>
+            When button is clicked
+            </summary>
+            <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="M:InfoBox.Controls.Button.OnPaintBackground(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Paints the background
+            </summary>
+            <param name="pevent">A <see cref="T:System.Windows.Forms.PaintEventArgs"></see> that contains information about the control to paint.</param>
+        </member>
+        <member name="M:InfoBox.Controls.Button.OnNewForeColor(System.Object,System.EventArgs)">
+            <summary>
+            When forecolor is changed
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:InfoBox.Controls.Button.OnEnabledChanged(System.Object,System.EventArgs)">
+            <summary>
+            When the 'Enabled' property is changed
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:InfoBox.Controls.Button.OnTextEnter(System.Object,System.EventArgs)">
+            <summary>
+            When mouse enters the button
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:InfoBox.Controls.Button.OnTextLeave(System.Object,System.EventArgs)">
+            <summary>
+            When mouse leaves the button
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:InfoBox.Controls.Button.OnTextDown(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            When user clicks on the button
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.MouseEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:InfoBox.Controls.Button.OnTextUp(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            When user release the mouse button
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.MouseEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:InfoBox.Controls.Button.OnFadeTick(System.Object,System.EventArgs)">
+            <summary>
+            Called when [fade tick].
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:InfoBox.Controls.Button.ClickPressed">
+            <summary>
+            Click pressed.
+            </summary>
+        </member>
+        <member name="M:InfoBox.Controls.Button.ClickReleased">
+            <summary>
+            Click released.
+            </summary>
+        </member>
+        <member name="M:InfoBox.Controls.Button.RefreshLabelColor">
+            <summary>
+            Sets the text forecolor
+            </summary>
+        </member>
+        <member name="F:InfoBox.Controls.Button.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:InfoBox.Controls.Button.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:InfoBox.Controls.Button.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:InfoBox.Controls.Button.buttonText">
+            <summary>
+            Inner label for the button
+            </summary>
+        </member>
+        <member name="F:InfoBox.Controls.Button.timerFade">
+            <summary>
+            Inner timer for effects
+            </summary>
+        </member>
+        <member name="T:InfoBox.Controls.PaintingEngine">
+            <summary>
+            Contains methods to paint the glass effect.
+            </summary>
+        </member>
+        <member name="M:InfoBox.Controls.PaintingEngine.#ctor">
+            <summary>
+            Private constructor
+            </summary>
+        </member>
+        <member name="M:InfoBox.Controls.PaintingEngine.PaintGlassEffect(System.Drawing.Graphics,System.Drawing.Color,System.Int32,System.Int32)">
+            <summary>
+            Paints a glass effect on graphics using the width width, the height height and the pColor color
+            </summary>
+            <param name="graphics">Graphics to paint into</param>
+            <param name="color">Base color of the glass effect</param>
+            <param name="width">Width of the effect</param>
+            <param name="height">Height of the effect</param>
+        </member>
+        <member name="M:InfoBox.Controls.PaintingEngine.PaintGradientBorders(System.Drawing.Graphics,System.Drawing.Color,System.Drawing.Color,System.Int32,System.Int32,System.Int32,InfoBox.Controls.SideBorder)">
+            <summary>
+            Paints borders on sides on selected sides of the zone delimited by width and height
+            </summary>
+            <param name="graphics">Graphics to paint into</param>
+            <param name="topColor">Top color of the border</param>
+            <param name="bottomColor">Bottom color of the border</param>
+            <param name="width">Width of the control</param>
+            <param name="height">Height of the control</param>
+            <param name="borderWidth">Width of the border</param>
+            <param name="sides">Represents on which sides are the borders</param>
+        </member>
+        <member name="M:InfoBox.Controls.PaintingEngine.PaintHoverEffect(System.Drawing.Graphics,System.Drawing.Color,System.Drawing.Color,System.Drawing.Color,System.Drawing.Color,System.Int32,System.Int32)">
+            <summary>
+            Paints an hover effect according the provided position ans style
+            </summary>
+            <param name="graphics">The graphics.</param>
+            <param name="outerColor">Outer color of the effect</param>
+            <param name="middleColor">Middle color of the effect</param>
+            <param name="innerColor">Inner color of the effect</param>
+            <param name="lightColor">Color of the light effect</param>
+            <param name="width">Width of the control (for centering purpose)</param>
+            <param name="height">Height of the control (for centering purpose)</param>
+        </member>
+        <member name="M:InfoBox.Controls.PaintingEngine.PaintPushedEffect(System.Drawing.Graphics,System.Int32,System.Int32)">
+            <summary>
+            Paints an pushed effect according the provided position ans style
+            </summary>
+            <param name="graphics">Graphics to paint into</param>
+            <param name="width">Width of the control (for centering purposes)</param>
+            <param name="height">Height of the control (for centering purposes)</param>
+        </member>
+        <member name="T:InfoBox.Controls.Label">
+            <summary>
+            Glass label
+            </summary>
+            <summary>
+            A label with a glass look and feel
+            </summary>
+        </member>
+        <member name="F:InfoBox.Controls.Label.disabledForeColor">
+            <summary>
+            Fore color used for the disabled state
+            </summary>
+        </member>
+        <member name="F:InfoBox.Controls.Label.textAlign">
+            <summary>
+            Text alignment
+            </summary>
+        </member>
+        <member name="M:InfoBox.Controls.Label.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:InfoBox.Controls.Label"/> class.
+            </summary>
+        </member>
+        <member name="P:InfoBox.Controls.Label.DisabledForeColor">
+            <summary>
+            Gets or sets the text color when the label is disabled
+            </summary>
+            <value>The color of the disabled fore.</value>
+        </member>
+        <member name="P:InfoBox.Controls.Label.TextAlign">
+            <summary>
+            Gets or sets the alignment of the text
+            </summary>
+            <value>The text align.</value>
+        </member>
+        <member name="P:InfoBox.Controls.Label.Text">
+            <summary>
+            Gets or sets the label text
+            </summary>
+            <value></value>
+            <returns>A <see cref="T:System.String"></see>.</returns>
+        </member>
+        <member name="M:InfoBox.Controls.Label.RefreshLabelColor">
+            <summary>
+            Sets the text forecolor
+            </summary>
+        </member>
+        <member name="M:InfoBox.Controls.Label.OnNewForeColor(System.Object,System.EventArgs)">
+            <summary>
+            When forecolor is changed
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:InfoBox.Controls.Label.OnEnabledChanged(System.Object,System.EventArgs)">
+            <summary>
+            When the 'Enabled' property is changed
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:InfoBox.Controls.Label.LabelText_MouseDown(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Handles the MouseDown event of the labelText control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.MouseEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:InfoBox.Controls.Label.LabelText_MouseMove(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Handles the MouseMove event of the labelText control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.MouseEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:InfoBox.Controls.Label.LabelText_MouseUp(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Handles the MouseUp event of the labelText control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.MouseEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="F:InfoBox.Controls.Label.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:InfoBox.Controls.Label.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:InfoBox.Controls.Label.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:InfoBox.Controls.Panel">
+            <summary>
+            Panel is a panel with a glass look and feel
+            </summary>
+        </member>
+        <member name="F:InfoBox.Controls.Panel.sideBorder">
+            <summary>
+            Contains the side borders
+            </summary>
+        </member>
+        <member name="F:InfoBox.Controls.Panel.sideBorderBottomColor">
+            <summary>
+            Contains the side border bottom column
+            </summary>
+        </member>
+        <member name="F:InfoBox.Controls.Panel.sideBorderTopColor">
+            <summary>
+            Contains the side border top column
+            </summary>
+        </member>
+        <member name="F:InfoBox.Controls.Panel.sideBorderWidth">
+            <summary>
+            Contains the side border width
+            </summary>
+        </member>
+        <member name="M:InfoBox.Controls.Panel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:InfoBox.Controls.Panel"/> class.
+            </summary>
+        </member>
+        <member name="P:InfoBox.Controls.Panel.SideBorder">
+            <summary>
+            Gets or sets if a custom border is shown on the sides of the control
+            </summary>
+            <value>The side border.</value>
+        </member>
+        <member name="P:InfoBox.Controls.Panel.SideBorderWidth">
+            <summary>
+            Gets or sets the border width
+            </summary>
+            <value>The width of the side border.</value>
+        </member>
+        <member name="P:InfoBox.Controls.Panel.SideBorderTopColor">
+            <summary>
+            Gets or sets the top border color
+            </summary>
+            <value>The top color of the side border.</value>
+        </member>
+        <member name="P:InfoBox.Controls.Panel.SideBorderBottomColor">
+            <summary>
+            Gets or sets the bottom border color
+            </summary>
+            <value>The bottom color of the side border.</value>
+        </member>
+        <member name="M:InfoBox.Controls.Panel.OnPaintBackground(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Paints the background of the control.
+            </summary>
+            <param name="e">A <see cref="T:System.Windows.Forms.PaintEventArgs"></see> that contains information about the control to paint.</param>
+        </member>
+        <member name="T:InfoBox.Controls.SideBorder">
+            <summary>
+            Represents which side borders are displayed.
+            </summary>
+        </member>
+        <member name="F:InfoBox.Controls.SideBorder.None">
+            <summary>
+            No border for the panel
+            </summary>
+        </member>
+        <member name="F:InfoBox.Controls.SideBorder.Right">
+            <summary>
+            Right side only
+            </summary>
+        </member>
+        <member name="F:InfoBox.Controls.SideBorder.Left">
+            <summary>
+            Left side only
+            </summary>
+        </member>
+        <member name="F:InfoBox.Controls.SideBorder.Both">
+            <summary>
+            Both sides (left and right)
+            </summary>
+        </member>
+        <member name="T:InfoBox.IconType">
+            <summary>
+            Specifies constants defining which source to use for the icon.
+            </summary>
+        </member>
+        <member name="F:InfoBox.IconType.Internal">
+            <summary>
+            Uses internal icons
+            </summary>
+        </member>
+        <member name="F:InfoBox.IconType.UserDefined">
+            <summary>
+            Uses an icon specified by the client.
+            </summary>
+        </member>
+        <member name="T:InfoBox.InformationBoxAutoSizeMode">
+            <summary>
+            Specifies constants defining which mode is used for autosizing the <see cref="T:InfoBox.InformationBox"/>.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxAutoSizeMode.MinimumWidth">
+            <summary>
+            Adjust the height and text to have the highest <see cref="T:InfoBox.InformationBox"/> possible. Existing line breaks are ignored.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxAutoSizeMode.MinimumHeight">
+            <summary>
+            Adjust the width and text to have the widest <see cref="T:InfoBox.InformationBox"/> possible. Existing line breaks are ignored.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxAutoSizeMode.None">
+            <summary>
+            The <see cref="T:InfoBox.InformationBox"/> will be set according to existing line breaks.
+            </summary>
+        </member>
+        <member name="T:InfoBox.InformationBoxBehavior">
+            <summary>
+            Specifies constants defining how is displayed the <see cref="T:InfoBox.InformationBox"/>.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxBehavior.Modal">
+            <summary>
+            The InformationBox is displayed as a modal (blocking) window (default).
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxBehavior.Modeless">
+            <summary>
+            The InformationBox is displayed as a modeless (non-blocking) window.
+            </summary>
+        </member>
+        <member name="T:InfoBox.InformationBoxButtons">
+            <summary>
+            Specifies constants defining which buttons to display on an <see cref="T:InfoBox.InformationBoxForm" />.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxButtons.AbortRetryIgnore">
+            <summary>
+            The message box contains Abort, Retry, and Ignore buttons.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxButtons.OK">
+            <summary>
+            The message box contains an OK button.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxButtons.OKCancel">
+            <summary>
+            The message box contains OK and Cancel buttons.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxButtons.RetryCancel">
+            <summary>
+            The message box contains Retry and Cancel buttons.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxButtons.YesNo">
+            <summary>
+            The message box contains Yes and No buttons.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxButtons.YesNoCancel">
+            <summary>
+            The message box contains Yes, No, and Cancel buttons.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxButtons.YesNoUser1">
+            <summary>
+            The message box contains Yes, No, and a user-defined buttons.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxButtons.OKCancelUser1">
+            <summary>
+            The message box contains OK, Cancel, and a user-defined buttons.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxButtons.User1User2">
+            <summary>
+            The message box contains two user-defined buttons.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxButtons.User1">
+            <summary>
+            The message box contains one user-defined button.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxButtons.User1User2User3">
+            <summary>
+            The message box contains three user-defined buttons.
+            </summary>
+        </member>
+        <member name="T:InfoBox.InformationBoxButtonsLayout">
+            <summary>
+            Specifies constants defining how to place buttons on the <see cref="T:InfoBox.InformationBox"/>.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxButtonsLayout.GroupLeft">
+            <summary>
+            Buttons are grouped on the left side.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxButtonsLayout.GroupMiddle">
+            <summary>
+            Buttons are grouped in the middle.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxButtonsLayout.GroupRight">
+            <summary>
+            Buttons are grouped on the right side.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxButtonsLayout.Separate">
+            <summary>
+            Spacing is constant between the buttons and the edges of the <see cref="T:InfoBox.InformationBox"/>.
+            </summary>
+        </member>
+        <member name="T:InfoBox.InformationBoxCheckBox">
+            <summary>
+            Specifies constants defining whether the "Do not show this dialog again" checkbox is displayed or not.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxCheckBox.Show">
+            <summary>
+            The checkbox will be displayed.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxCheckBox.Checked">
+            <summary>
+            Initial unchecked state (default value).
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxCheckBox.RightAligned">
+            <summary>
+            The checkbox is right aligned.
+            </summary>
+        </member>
+        <member name="T:InfoBox.InformationBoxDefaultButton">
+            <summary>
+            Specifies constants defining the default button on a <see cref="T:InfoBox.InformationBoxForm"/>.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxDefaultButton.Button1">
+            <summary>
+            The first button on the message box is the default button.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxDefaultButton.Button2">
+            <summary>
+            The second button on the message box is the default button. 
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxDefaultButton.Button3">
+            <summary>
+            The third button on the message box is the default button.
+            </summary>
+        </member>
+        <member name="T:InfoBox.InformationBoxIcon">
+            <summary>
+            Contains all possible values for the InformationBox icon.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxIcon.Asterisk">
+            <summary>
+            Asterisk icon
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxIcon.Error">
+            <summary>
+            Error icon
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxIcon.Exclamation">
+            <summary>
+            Exclamation icon
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxIcon.Hand">
+            <summary>
+            Hand icon.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxIcon.Information">
+            <summary>
+            Information icon
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxIcon.None">
+            <summary>
+            Do not show an icon
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxIcon.Question">
+            <summary>
+            Question icon
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxIcon.Stop">
+            <summary>
+            Stop icon.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxIcon.Warning">
+            <summary>
+            Warning icon
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxIcon.Success">
+            <summary>
+            Success icon
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxIcon.Fax">
+            <summary>
+            A fax icon
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxIcon.Gamepad">
+            <summary>
+            Gamepad icon
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxIcon.Joystick">
+            <summary>
+            Joystick icon
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxIcon.Keys">
+            <summary>
+            Keys icon.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxIcon.Locker">
+            <summary>
+            Locker icon
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxIcon.Phone">
+            <summary>
+            Phone icon
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxIcon.Printer">
+            <summary>
+            Printer icon
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxIcon.Scanner">
+            <summary>
+            Scanner icon
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxIcon.Speakers">
+            <summary>
+            Speakers icon
+            </summary>
+        </member>
+        <member name="T:InfoBox.InformationBoxInitialization">
+            <summary>
+            Specify constants defining how to initialize the <see cref="T:InfoBox.InformationBox"/>.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxInitialization.FromParametersOnly">
+            <summary>
+            The <see cref="T:InfoBox.InformationBox"/> is initialized from the parameters only. All scopes are ignored.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxInitialization.FromScopeAndParameters">
+            <summary>
+            The <see cref="T:InfoBox.InformationBox"/> is first initialized from the current scope (if available) and then from the supplied parameters.
+            </summary>
+        </member>
+        <member name="T:InfoBox.InformationBoxMessageCategory">
+            <summary>
+            Specifies constants defining the sound category of the message.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxMessageCategory.Asterisk">
+            <summary>
+            Asterisk sound
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxMessageCategory.Exclamation">
+            <summary>
+            Exclamation sound
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxMessageCategory.Hand">
+            <summary>
+            Hand sound
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxMessageCategory.Other">
+            <summary>
+            Other sound
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxMessageCategory.Question">
+            <summary>
+            Question sound
+            </summary>
+        </member>
+        <member name="T:InfoBox.InformationBoxOpacity">
+            <summary>
+            Specifies constants defining the opacity of the <see cref="T:InfoBox.InformationBoxForm" />.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxOpacity.Faded10">
+            <summary>
+            Opacity is at 10%
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxOpacity.Faded20">
+            <summary>
+            Opacity is at 20%
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxOpacity.Faded30">
+            <summary>
+            Opacity is at 30%
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxOpacity.Faded40">
+            <summary>
+            Opacity is at 40%
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxOpacity.Faded50">
+            <summary>
+            Opacity is at 50%
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxOpacity.Faded60">
+            <summary>
+            Opacity is at 60%
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxOpacity.Faded70">
+            <summary>
+            Opacity is at 70%
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxOpacity.Faded80">
+            <summary>
+            Opacity is at 80%
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxOpacity.Faded90">
+            <summary>
+            Opacity is at 90%
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxOpacity.NoFade">
+            <summary>
+            Opacity is at 100%
+            </summary>
+        </member>
+        <member name="T:InfoBox.InformationBoxOrder">
+            <summary>
+            Specifies constants defining the z-order of the <see cref="T:InfoBox.InformationBox"/>.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxOrder.Default">
+            <summary>
+            Default position.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxOrder.TopMost">
+            <summary>
+            Sets the <see cref="T:InfoBox.InformationBox"/> as the top most window.
+            </summary>
+        </member>
+        <member name="T:InfoBox.InformationBoxPosition">
+            <summary>
+            Specifies constants defining the position of the <see cref="T:InfoBox.InformationBox"/>.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxPosition.CenterOnParent">
+            <summary>
+            the <see cref="T:InfoBox.InformationBox"/> will be centered on the parent window. This is the default value. Only for modal behavior.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxPosition.CenterOnScreen">
+            <summary>
+            the <see cref="T:InfoBox.InformationBox"/> will be centered on the screen.
+            </summary>
+        </member>
+        <member name="T:InfoBox.InformationBoxResult">
+            <summary>
+            Contains all possible values for the Show return value. Identifies which button was clicked.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxResult.Abort">
+            <summary>
+            The dialog box return value is Abort (usually sent from a button labeled Abort).
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxResult.Cancel">
+            <summary>
+            The dialog box return value is Cancel (usually sent from a button labeled Cancel).
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxResult.Ignore">
+            <summary>
+            The dialog box return value is Ignore (usually sent from a button labeled Ignore).
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxResult.No">
+            <summary>
+            The dialog box return value is No (usually sent from a button labeled No).
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxResult.None">
+            <summary>
+            Nothing is returned from the dialog box. This means that the modal dialog continues running.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxResult.OK">
+            <summary>
+            The dialog box return value is OK (usually sent from a button labeled OK).
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxResult.Retry">
+            <summary>
+            The dialog box return value is Retry (usually sent from a button labeled Retry).
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxResult.Yes">
+            <summary>
+            The dialog box return value is Yes (usually sent from a button labeled Yes).
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxResult.User1">
+            <summary>
+            The dialog box return value is User1 (usually sent from the first user-defined button).
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxResult.User2">
+            <summary>
+            The dialog box return value is User2 (usually sent from the second user-defined button).
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxResult.User3">
+            <summary>
+            The dialog box return value is User3 (usually sent from the third user-defined button).
+            </summary>
+        </member>
+        <member name="T:InfoBox.InformationBoxSound">
+            <summary>
+            Specifies constants defining whether sound will be played on opening
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxSound.Default">
+            <summary>
+            The default system sound.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxSound.None">
+            <summary>
+            Does not play default sound.
+            </summary>
+        </member>
+        <member name="T:InfoBox.InformationBoxStyle">
+            <summary>
+            Specifies constants defining which visual style will be used
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxStyle.Standard">
+            <summary>
+            Default skin
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxStyle.Modern">
+            <summary>
+            Modern skin with glass style buttons
+            </summary>
+        </member>
+        <member name="T:InfoBox.InformationBoxTitleIconStyle">
+            <summary>
+            Specifies constants defining which icon is displayed on the title bar.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxTitleIconStyle.None">
+            <summary>
+            No title icon.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxTitleIconStyle.SameAsBox">
+            <summary>
+            Use the icon displayed in the box.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxTitleIconStyle.Custom">
+            <summary>
+            Use a custom icon.
+            </summary>
+        </member>
+        <member name="T:InfoBox.InformationBoxForm">
+            <summary>
+            Displays a message box that can contain text, buttons, and symbols that inform and instruct the user.
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.IconPanelWidth">
+            <summary>
+            Width of the icon panel
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.BorderPadding">
+            <summary>
+            Padding for the borders
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.callback">
+            <summary>
+            Contains the callback used to inform the caller of a modeless box
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.buttonUser1Text">
+            <summary>
+            Text for the first user button
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.buttonUser2Text">
+            <summary>
+            Text for the second user button
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.buttonUser3Text">
+            <summary>
+            Text for the third user button
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.helpFile">
+            <summary>
+            Help file associated to the help button
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.helpTopic">
+            <summary>
+            Help topic associated to the help button
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.doNotShowAgainText">
+            <summary>
+            Text for the "Do not show again" checkbox
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.measureGraphics">
+            <summary>
+            Contains the graphics used to measure the strings
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.activeForm">
+            <summary>
+            Contains a reference to the active form
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.result">
+            <summary>
+            Result corresponding the clicked button
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.icon">
+            <summary>
+            Main icon of the form
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.customIcon">
+            <summary>
+            Custom icon
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.buttons">
+            <summary>
+            Buttons displayed on the form
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.defaultButton">
+            <summary>
+            Default button
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.buttonsLayout">
+            <summary>
+            Buttons layout
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.autoSizeMode">
+            <summary>
+            Contains the autosize mode
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.position">
+            <summary>
+            Contains the box initial position
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.checkBox">
+            <summary>
+            Contains a value defining whether displaying the checkbox or not
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.style">
+            <summary>
+            Contains the style of the box
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.autoClose">
+            <summary>
+            Contains the autoclose parameters
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.design">
+            <summary>
+            Contains the design parameters
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.titleStyle">
+            <summary>
+            Contains the style of the title
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.titleIcon">
+            <summary>
+            Contains the title icon
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.behavior">
+            <summary>
+            Contains if the box is modal or not
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.opacity">
+            <summary>
+            Contains the opacity of the form
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.iconType">
+            <summary>
+            Contains the icon type
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.internalText">
+            <summary>
+            Contains the text
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.showHelpButton">
+            <summary>
+            Contains if the help button should be displayed
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.helpNavigator">
+            <summary>
+            Help navigator associated to the help button
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.mouseDown">
+            <summary>
+            Contains whether a mouse button is down
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.lastPointerPosition">
+            <summary>
+            Last stored pointer position
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.elapsedTime">
+            <summary>
+            Elapsed time for the autoclose
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.order">
+            <summary>
+            Z-Order of the form
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.sound">
+            <summary>
+            Sound to play on opening
+            </summary>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.#ctor(System.String,System.String,System.String,System.String,InfoBox.InformationBoxInitialization,InfoBox.InformationBoxButtons,InfoBox.InformationBoxIcon,System.Drawing.Icon,InfoBox.InformationBoxDefaultButton,System.String[],InfoBox.InformationBoxButtonsLayout,InfoBox.InformationBoxAutoSizeMode,InfoBox.InformationBoxPosition,System.Boolean,System.Windows.Forms.HelpNavigator,InfoBox.InformationBoxCheckBox,System.String,InfoBox.InformationBoxStyle,InfoBox.AutoCloseParameters,InfoBox.DesignParameters,InfoBox.InformationBoxTitleIconStyle,InfoBox.InformationBoxTitleIcon,System.Nullable{System.Windows.Forms.MessageBoxButtons},System.Nullable{System.Windows.Forms.MessageBoxIcon},System.Nullable{System.Windows.Forms.MessageBoxDefaultButton},InfoBox.InformationBoxBehavior,InfoBox.AsyncResultCallback,InfoBox.InformationBoxOpacity,System.Windows.Forms.Form,InfoBox.InformationBoxOrder,InfoBox.InformationBoxSound)">
+            <summary>
+            Initializes a new instance of the <see cref="T:InfoBox.InformationBoxForm"/> class using the specified text.
+            </summary>
+            <param name="text">The text.</param>
+            <param name="title">The title.</param>
+            <param name="helpFile">The help file.</param>
+            <param name="helpTopic">The help topic.</param>
+            <param name="initialization">The initialization.</param>
+            <param name="buttons">The buttons.</param>
+            <param name="icon">The icon.</param>
+            <param name="customIcon">The custom icon.</param>
+            <param name="defaultButton">The default button.</param>
+            <param name="customButtons">The custom buttons.</param>
+            <param name="buttonsLayout">The buttons layout.</param>
+            <param name="autoSizeMode">The auto size mode.</param>
+            <param name="position">The position.</param>
+            <param name="showHelpButton">if set to <c>true</c> shows help button.</param>
+            <param name="helpNavigator">The help navigator.</param>
+            <param name="showDoNotShowAgainCheckBox">if set to <c>true</c> shows the do not show again check box.</param>
+            <param name="doNotShowAgainText">If not null, the value will replace the default text for the "Do not show again" checkbox.</param>
+            <param name="style">The style.</param>
+            <param name="autoClose">The auto close configuration.</param>
+            <param name="design">The design.</param>
+            <param name="titleStyle">The title style.</param>
+            <param name="titleIcon">The title icon.</param>
+            <param name="legacyButtons">The legacy buttons.</param>
+            <param name="legacyIcon">The legacy icon.</param>
+            <param name="legacyDefaultButton">The legacy default button.</param>
+            <param name="behavior">The behavior.</param>
+            <param name="callback">The callback.</param>
+            <param name="opacity">The opacity.</param>
+            <param name="parent">The parent form.</param>
+            <param name="order">The z-order</param>
+            <param name="sound">The sound</param>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.#ctor(System.String,System.Object[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:InfoBox.InformationBoxForm"/> class.
+            </summary>
+            <param name="text">The text of the box.</param>
+            <param name="parameters">The parameters.</param>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.Show">
+            <summary>
+            Shows this InformationBox.
+            </summary>
+            <returns>The result corresponding to the button clicked</returns>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.Show(System.Windows.Forms.CheckState@)">
+            <summary>
+            Shows this InformationBox.
+            </summary>
+            <param name="state">The state of the checkbox.</param>
+            <returns>The result corresponding to the button clicked</returns>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.PlaySound">
+            <summary>
+            Plays the sound associated with the icon type.
+            </summary>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.LoadCurrentScope">
+            <summary>
+            Loads the current scope.
+            </summary>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.SetAutoClose">
+            <summary>
+            Sets the auto close parameters.
+            </summary>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.SetOpacity">
+            <summary>
+            Sets the opacity.
+            </summary>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.SetWindowStyle">
+            <summary>
+            Sets the window style.
+            </summary>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.SetCheckBox">
+            <summary>
+            Sets the check box.
+            </summary>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.SetPosition">
+            <summary>
+            Sets the position.
+            </summary>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.SetFocus">
+            <summary>
+            Sets the focus.
+            </summary>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.SetLayout">
+            <summary>
+            Sets the layout.
+            </summary>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.SetButtonsLayout">
+            <summary>
+            Sets the buttons layout.
+            </summary>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.SetIcon">
+            <summary>
+            Sets the icon.
+            </summary>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.SetOrder">
+            <summary>
+            Sets the order.
+            </summary>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.SetText">
+            <summary>
+            Sets the text.
+            </summary>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.SetButtons">
+            <summary>
+            Sets the buttons, order of addition is respected.
+            </summary>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.SetButtonsSize">
+            <summary>
+            Sets the buttons size.
+            </summary>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.AddButton(System.String,System.String)">
+            <summary>
+            Adds the button.
+            </summary>
+            <param name="name">The name of the button.</param>
+            <param name="text">The text of the button.</param>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.HandleButton(System.Windows.Forms.Control)">
+            <summary>
+            Handles the buttons.
+            </summary>
+            <param name="sender">The sender.</param>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.OpenHelp">
+            <summary>
+            Opens the help.
+            </summary>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.Button_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Click event of the buttons.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.InformationBox_FormClosed(System.Object,System.Windows.Forms.FormClosedEventArgs)">
+            <summary>
+            Handles the FormClosed event of the InformationBox control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.FormClosedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.PnlForm_Paint(System.Object,System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Handles the Paint event of the pnlForm control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.PaintEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.LblTitle_MouseDown(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Handles the MouseDown event of the lblTitle control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.MouseEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.LblTitle_MouseMove(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Handles the MouseMove event of the lblTitle control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.MouseEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.LblTitle_MouseUp(System.Object,System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Handles the MouseUp event of the lblTitle control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.MouseEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.InformationBoxForm_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            Handles the KeyDown event of the InformationBoxForm control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.KeyEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.TmrAutoClose_Tick(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Tick event of the tmrAutoClose control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="F:InfoBox.InformationBoxForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:InfoBox.InformationBoxForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:InfoBox.InformationBox">
+            <summary>
+            Displays a message box that can contain text, buttons, and symbols that inform and instruct the user.
+            </summary>
+        </member>
+        <member name="M:InfoBox.InformationBox.Show(System.String,System.Object[])">
+            <summary>
+            Displays a message box with the specified text and parameters.
+            <list type="table">
+                <listheader><term>If the type of the parameter is</term>
+                            <description>The value will be used as</description>
+                </listheader>
+                <item>
+                    <term><see cref="T:System.String"/></term>
+                    <description>the title of the <see cref="T:InfoBox.InformationBox"/> for the first string, the second string for the help file name, and the third one for the help topic id</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxButtons"/></term>
+                    <description>which buttons to display on the <see cref="T:InfoBox.InformationBox"/>.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxIcon"/></term>
+                    <description>which predefined icon to use for the <see cref="T:InfoBox.InformationBoxIcon"/>.</description>
+                </item>
+                <item>
+                    <term><see cref="T:System.Drawing.Icon"/></term>
+                    <description>the icon to use for the <see cref="T:InfoBox.InformationBox"/>.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxDefaultButton"/></term>
+                    <description>which button to set as default for the <see cref="T:InfoBox.InformationBox"/>.</description>
+                </item>
+                <item>
+                    <term><see cref="T:System.String"/>[]</term>
+                    <description>the text for the custom buttons of the <see cref="T:InfoBox.InformationBox"/>.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxBehavior"/></term>
+                    <description>the modal/modeless state of the <see cref="T:InfoBox.InformationBox"/>.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxButtonsLayout"/></term>
+                    <description>the layout for the buttons of the <see cref="T:InfoBox.InformationBox"/>.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxAutoSizeMode"/></term>
+                    <description>how the <see cref="T:InfoBox.InformationBox"/> will resize itself according to the text.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxPosition"/></term>
+                    <description>where the <see cref="T:InfoBox.InformationBox"/> will appear on the screen.</description>
+                </item>
+                <item>
+                    <term><see cref="T:System.Boolean"/></term>
+                    <description>whether the help button is displayed or not.</description>
+                </item>
+                <item>
+                    <term><see cref="T:System.Windows.Forms.HelpNavigator"/></term>
+                    <description>the Help content. You can use the following values for navigator: TableOfContents, Find, Index, or Topic.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxCheckBox"/></term>
+                    <description>whether the "Do not show this dialog again" checkbox is displayed or not.</description>
+                </item>
+                <item>
+                    <term><see cref="T:System.String"/></term>
+                    <description>Text to use instead of the default "Do not show again"</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.AutoCloseParameters"/></term>
+                    <description>The parameters for the auto-close feature.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.DesignParameters"/></term>
+                    <description>the parameters for the design (colors).</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxTitleIconStyle"/></term>
+                    <description>which icon will be displayed in the title bar.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxTitleIcon"/></term>
+                    <description>the custom icon that will be displayed in the title bar.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxOpacity"/></term>
+                    <description>the opacity of the <see cref="T:InfoBox.InformationBox"/>.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxSound"/></term>
+                    <description>the sound played upon display of the <see cref="T:InfoBox.InformationBox"/>.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.AsyncResultCallback"/></term>
+                    <description>a method that will be called when a modeless dialog is closed.</description>
+                </item>
+                <item>
+                    <term>A MessageBox enum value</term>
+                    <description>the value for the corresponding <see cref="T:InfoBox.InformationBox"/> enum value.</description>
+                </item>
+                <item>
+                    <term>A Form instance</term>
+                    <description>the parent of the <see cref="T:InfoBox.InformationBox"/>.</description>
+                </item>
+            </list>
+            </summary>
+            <param name="text">The text to display in the message box.</param>
+            <param name="parameters">The parameters of the message box.</param>
+            <returns>One of the <see cref="T:InfoBox.InformationBoxResult"/> values.</returns>
+        </member>
+        <member name="M:InfoBox.InformationBox.Show(System.String,System.String,System.String,System.String,InfoBox.InformationBoxInitialization,InfoBox.InformationBoxButtons,InfoBox.InformationBoxIcon,System.Drawing.Icon,InfoBox.InformationBoxDefaultButton,System.String[],InfoBox.InformationBoxButtonsLayout,InfoBox.InformationBoxAutoSizeMode,InfoBox.InformationBoxPosition,System.Boolean,System.Windows.Forms.HelpNavigator,InfoBox.InformationBoxCheckBox,System.String,InfoBox.InformationBoxStyle,InfoBox.AutoCloseParameters,InfoBox.DesignParameters,InfoBox.InformationBoxTitleIconStyle,InfoBox.InformationBoxTitleIcon,System.Nullable{System.Windows.Forms.MessageBoxButtons},System.Nullable{System.Windows.Forms.MessageBoxIcon},System.Nullable{System.Windows.Forms.MessageBoxDefaultButton},InfoBox.InformationBoxBehavior,InfoBox.AsyncResultCallback,InfoBox.InformationBoxOpacity,System.Windows.Forms.Form,InfoBox.InformationBoxOrder,InfoBox.InformationBoxSound)">
+            <summary>
+            Displays a message box with the specified text and parameters.
+            </summary>
+            <param name="text">The text.</param>
+            <param name="title">The title.</param>
+            <param name="helpFile">The help file.</param>
+            <param name="helpTopic">The help topic.</param>
+            <param name="initialization">The initialization.</param>
+            <param name="buttons">The buttons.</param>
+            <param name="icon">The icon.</param>
+            <param name="customIcon">The custom icon.</param>
+            <param name="defaultButton">The default button.</param>
+            <param name="customButtons">The custom buttons.</param>
+            <param name="buttonsLayout">The buttons layout.</param>
+            <param name="autoSizeMode">The auto size mode.</param>
+            <param name="position">The position.</param>
+            <param name="showHelpButton">if set to <c>true</c> shows help button.</param>
+            <param name="helpNavigator">The help navigator.</param>
+            <param name="showDoNotShowAgainCheckBox">if set to <c>true</c> shows the do not show again check box.</param>
+            <param name="doNotShowAgainText">If not null, the value will replace the default text for the "Do not show again" checkbox.</param>
+            <param name="style">The style.</param>
+            <param name="autoClose">The auto close configuration.</param>
+            <param name="design">The design.</param>
+            <param name="titleStyle">The title style.</param>
+            <param name="titleIcon">The title icon.</param>
+            <param name="legacyButtons">The legacy buttons.</param>
+            <param name="legacyIcon">The legacy icon.</param>
+            <param name="legacyDefaultButton">The legacy default button.</param>
+            <param name="behavior">The behavior.</param>
+            <param name="callback">The callback.</param>
+            <param name="opacity">The opacity.</param>
+            <param name="parent">The parent form.</param>
+            <param name="order">The z-order</param>
+            <param name="sound">The sound configuration</param>
+            <returns>One of the <see cref="T:InfoBox.InformationBoxResult"/> values.</returns>
+        </member>
+        <member name="M:InfoBox.InformationBox.Show(System.String,System.Windows.Forms.CheckState@,System.Object[])">
+            <summary>
+            Displays a message box with the specified text and parameters.
+            <list type="table">
+                <listheader><term>If the type of the parameter is</term>
+                            <description>The value will be used as</description>
+                </listheader>
+                <item>
+                    <term><see cref="T:System.String"/></term>
+                    <description>the title of the <see cref="T:InfoBox.InformationBox"/> for the first string, the second string for the help file name, and the third one for the help topic id</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxButtons"/></term>
+                    <description>which buttons to display on the <see cref="T:InfoBox.InformationBox"/>.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxIcon"/></term>
+                    <description>which predefined icon to use for the <see cref="T:InfoBox.InformationBoxIcon"/>.</description>
+                </item>
+                <item>
+                    <term><see cref="T:System.Drawing.Icon"/></term>
+                    <description>the icon to use for the <see cref="T:InfoBox.InformationBox"/>.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxDefaultButton"/></term>
+                    <description>which button to set as default for the <see cref="T:InfoBox.InformationBox"/>.</description>
+                </item>
+                <item>
+                    <term><see cref="T:System.String"/>[]</term>
+                    <description>the text for the custom buttons of the <see cref="T:InfoBox.InformationBox"/>.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxBehavior"/></term>
+                    <description>the modal/modeless state of the <see cref="T:InfoBox.InformationBox"/>.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxButtonsLayout"/></term>
+                    <description>the layout for the buttons of the <see cref="T:InfoBox.InformationBox"/>.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxAutoSizeMode"/></term>
+                    <description>how the <see cref="T:InfoBox.InformationBox"/> will resize itself according to the text.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxPosition"/></term>
+                    <description>where the <see cref="T:InfoBox.InformationBox"/> will appear on the screen.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxOrder"/></term>
+                    <description>how the <see cref="T:InfoBox.InformationBox"/> will appear on the screen compared to the other forms.</description>
+                </item>
+                <item>
+                    <term><see cref="T:System.Boolean"/></term>
+                    <description>whether the help button is displayed or not.</description>
+                </item>
+                <item>
+                    <term><see cref="T:System.Windows.Forms.HelpNavigator"/></term>
+                    <description>the Help content. You can use the following values for navigator: TableOfContents, Find, Index, or Topic.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxCheckBox"/></term>
+                    <description>whether the "Do not show this dialog again" checkbox is displayed or not.</description>
+                </item>
+                <item>
+                    <term><see cref="T:System.String"/></term>
+                    <description>Text to use instead of the default "Do not show again"</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.AutoCloseParameters"/></term>
+                    <description>the parameters for the auto-close feature.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.DesignParameters"/></term>
+                    <description>the parameters for the design (colors).</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxTitleIconStyle"/></term>
+                    <description>which icon will be displayed in the title bar.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxTitleIcon"/></term>
+                    <description>the custom icon that will be displayed in the title bar.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxOpacity"/></term>
+                    <description>the opacity of the <see cref="T:InfoBox.InformationBox"/>.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxSound"/></term>
+                    <description>whether the sound of the <see cref="T:InfoBox.InformationBox"/> should be played.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.AsyncResultCallback"/></term>
+                    <description>a method that will be called when a modeless dialog is closed.</description>
+                </item>
+                <item>
+                    <term>A MessageBox enum value</term>
+                    <description>the value for the corresponding <see cref="T:InfoBox.InformationBox"/> enum value.</description>
+                </item>
+                <item>
+                    <term>A Form instance</term>
+                    <description>the parent of the <see cref="T:InfoBox.InformationBox"/>.</description>
+                </item>
+                <item>
+                    <term>A Form instance</term>
+                    <description>the parent of the <see cref="T:InfoBox.InformationBox"/>.</description>
+                </item>
+                <item>
+                    <term><see cref="T:InfoBox.InformationBoxOrder"/></term>
+                    <description>how the <see cref="T:InfoBox.InformationBox"/> will appear on the screen compared to the other forms.</description>
+                </item>
+            </list>
+            </summary>
+            <param name="text">The text to display in the message box.</param>
+            <param name="checkBoxState">The final value of the "Do not show this dialog again" checkbox.</param>
+            <param name="parameters">The parameters of the message box.</param>
+            <returns>
+            One of the <see cref="T:InfoBox.InformationBoxResult"/> values.
+            </returns>
+        </member>
+        <member name="M:InfoBox.InformationBox.Show(System.String,System.Windows.Forms.CheckState@,System.String,System.String,System.String,InfoBox.InformationBoxInitialization,InfoBox.InformationBoxButtons,InfoBox.InformationBoxIcon,System.Drawing.Icon,InfoBox.InformationBoxDefaultButton,System.String[],InfoBox.InformationBoxButtonsLayout,InfoBox.InformationBoxAutoSizeMode,InfoBox.InformationBoxPosition,System.Boolean,System.Windows.Forms.HelpNavigator,InfoBox.InformationBoxCheckBox,System.String,InfoBox.InformationBoxStyle,InfoBox.AutoCloseParameters,InfoBox.DesignParameters,InfoBox.InformationBoxTitleIconStyle,InfoBox.InformationBoxTitleIcon,System.Nullable{System.Windows.Forms.MessageBoxButtons},System.Nullable{System.Windows.Forms.MessageBoxIcon},System.Nullable{System.Windows.Forms.MessageBoxDefaultButton},InfoBox.InformationBoxBehavior,InfoBox.AsyncResultCallback,InfoBox.InformationBoxOpacity,System.Windows.Forms.Form,InfoBox.InformationBoxOrder,InfoBox.InformationBoxSound)">
+            <summary>
+            Displays a message box with the specified text and parameters.
+            </summary>
+            <param name="text">The text.</param>
+            <param name="checkBoxState">The final value of the "Do not show this dialog again" checkbox.</param>
+            <param name="title">The title.</param>
+            <param name="helpFile">The help file.</param>
+            <param name="helpTopic">The help topic.</param>
+            <param name="initialization">The initialization.</param>
+            <param name="buttons">The buttons.</param>
+            <param name="icon">The icon.</param>
+            <param name="customIcon">The custom icon.</param>
+            <param name="defaultButton">The default button.</param>
+            <param name="customButtons">The custom buttons.</param>
+            <param name="buttonsLayout">The buttons layout.</param>
+            <param name="autoSizeMode">The auto size mode.</param>
+            <param name="position">The position.</param>
+            <param name="showHelpButton">if set to <c>true</c> shows help button.</param>
+            <param name="helpNavigator">The help navigator.</param>
+            <param name="showDoNotShowAgainCheckBox">if set to <c>true</c> shows the do not show again check box.</param>
+            <param name="doNotShowAgainText">If not null, the value will replace the default text for the "Do not show again" checkbox.</param>
+            <param name="style">The style.</param>
+            <param name="autoClose">The auto close configuration.</param>
+            <param name="design">The design.</param>
+            <param name="titleStyle">The title style.</param>
+            <param name="titleIcon">The title icon.</param>
+            <param name="legacyButtons">The legacy buttons.</param>
+            <param name="legacyIcon">The legacy icon.</param>
+            <param name="legacyDefaultButton">The legacy default button.</param>
+            <param name="behavior">The behavior.</param>
+            <param name="callback">The callback.</param>
+            <param name="opacity">The opacity.</param>
+            <param name="parent">The parent form.</param>
+            <param name="order">The z-order</param>
+            <param name="sound">The sound configuration</param>
+            <returns>
+            One of the <see cref="T:InfoBox.InformationBoxResult"/> values.
+            </returns>
+        </member>
+        <member name="T:InfoBox.AutoCloseDefinedParameters">
+            <summary>
+            Defines constant representing the parameters specified for the auto-close feature.
+            </summary>
+        </member>
+        <member name="F:InfoBox.AutoCloseDefinedParameters.Button">
+            <summary>
+            The button to use is defined.
+            </summary>
+        </member>
+        <member name="F:InfoBox.AutoCloseDefinedParameters.TimeOnly">
+            <summary>
+            Only the time to wait is defined.
+            </summary>
+        </member>
+        <member name="F:InfoBox.AutoCloseDefinedParameters.Result">
+            <summary>
+            The InformationBoxResult is defined.
+            </summary>
+        </member>
+        <member name="T:InfoBox.Internals.IconHelper">
+            <summary>
+            Contains utility methods related to icons
+            </summary>
+        </member>
+        <member name="M:InfoBox.Internals.IconHelper.FromEnum(InfoBox.InformationBoxIcon)">
+            <summary>
+            Return the <see cref="T:System.Drawing.Icon"/> associated with the specified <see cref="T:InfoBox.InformationBoxIcon"/>.
+            </summary>
+            <param name="iconType">Type of the icon.</param>
+            <returns>An icon corresponding to the iconType</returns>
+        </member>
+        <member name="M:InfoBox.Internals.IconHelper.GetCategory(InfoBox.InformationBoxIcon)">
+            <summary>
+            Gets the category of the icon.
+            </summary>
+            <param name="iconType">Type of the icon.</param>
+            <returns>A message category corresponding to the iconType</returns>
+        </member>
+        <member name="T:InfoBox.Internals.MessageBoxEnumConverter">
+            <summary>
+            Contains methods to convert from MessageBox enums to InformationBox enums.
+            </summary>
+        </member>
+        <member name="M:InfoBox.Internals.MessageBoxEnumConverter.Parse(System.Windows.Forms.MessageBoxButtons)">
+            <summary>
+            Parses the specified MessageBoxButtons value.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>The converted value</returns>
+        </member>
+        <member name="M:InfoBox.Internals.MessageBoxEnumConverter.Parse(System.Windows.Forms.MessageBoxIcon)">
+            <summary>
+            Parses the specified MessageBoxIcon value.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>The converted value</returns>
+        </member>
+        <member name="M:InfoBox.Internals.MessageBoxEnumConverter.Parse(System.Windows.Forms.MessageBoxDefaultButton)">
+            <summary>
+            Parses the specified MessageBoxDefaultButton value.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>The converted value</returns>
+        </member>
+        <member name="T:InfoBox.AutoCloseParameters">
+            <summary>
+            Contains the parameters used for the auto-close feature.
+            </summary>
+        </member>
+        <member name="M:InfoBox.AutoCloseParameters.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:InfoBox.AutoCloseParameters"/> class using time as the number of seconds before autoclosing.
+            </summary>
+            <param name="time">The time to wait.</param>
+        </member>
+        <member name="M:InfoBox.AutoCloseParameters.#ctor(InfoBox.InformationBoxDefaultButton)">
+            <summary>
+            Initializes a new instance of the <see cref="T:InfoBox.AutoCloseParameters"/> class using buttonToUse as the button that will be used for auto-closing.
+            </summary>
+            <param name="buttonToUse">The button to use.</param>
+        </member>
+        <member name="M:InfoBox.AutoCloseParameters.#ctor(System.Int32,InfoBox.InformationBoxDefaultButton)">
+            <summary>
+            Initializes a new instance of the <see cref="T:InfoBox.AutoCloseParameters"/> class using time as the number of seconds before autoclosing, and buttonToUse as the button that will be used for auto-closing.
+            </summary>
+            <param name="time">The time to wait.</param>
+            <param name="buttonToUse">The button to use.</param>
+        </member>
+        <member name="M:InfoBox.AutoCloseParameters.#ctor(InfoBox.InformationBoxResult)">
+            <summary>
+            Initializes a new instance of the <see cref="T:InfoBox.AutoCloseParameters"/> class using result as the InformationBoxResult that will be used as the return.
+            </summary>
+            <param name="result">The result.</param>
+        </member>
+        <member name="M:InfoBox.AutoCloseParameters.#ctor(System.Int32,InfoBox.InformationBoxResult)">
+            <summary>
+            Initializes a new instance of the <see cref="T:InfoBox.AutoCloseParameters"/> class using time as the number of seconds before autoclosing, and result as the InformationBoxResult that will be used as the return.
+            </summary>
+            <param name="time">The time to wait.</param>
+            <param name="result">The result to use.</param>
+        </member>
+        <member name="P:InfoBox.AutoCloseParameters.Default">
+            <summary>
+            Gets the default AutoCloseParameters.
+            </summary>
+            <value>The default AutoCloseParameters.</value>
+        </member>
+        <member name="P:InfoBox.AutoCloseParameters.Seconds">
+            <summary>
+            Gets the seconds.
+            </summary>
+            <value>The seconds.</value>
+        </member>
+        <member name="P:InfoBox.AutoCloseParameters.DefaultButton">
+            <summary>
+            Gets the default button.
+            </summary>
+            <value>The default button.</value>
+        </member>
+        <member name="P:InfoBox.AutoCloseParameters.Result">
+            <summary>
+            Gets the result.
+            </summary>
+            <value>The result.</value>
+        </member>
+        <member name="P:InfoBox.AutoCloseParameters.Mode">
+            <summary>
+            Gets the mode.
+            </summary>
+            <value>The autoclose mode.</value>
+        </member>
+        <member name="M:InfoBox.AutoCloseParameters.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object"/> to compare with the current <see cref="T:System.Object"/>.</param>
+            <returns>
+            true if the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>; otherwise, false.
+            </returns>
+            <exception cref="T:System.NullReferenceException">The <paramref name="obj"/> parameter is null.</exception>
+        </member>
+        <member name="M:InfoBox.AutoCloseParameters.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <returns>
+            A hash code for the current <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="T:InfoBox.DesignParameters">
+            <summary>
+            Contains the values of the design parameters.
+            </summary>
+        </member>
+        <member name="M:InfoBox.DesignParameters.#ctor(System.Drawing.Color,System.Drawing.Color)">
+            <summary>
+            Initializes a new instance of the <see cref="T:InfoBox.DesignParameters"/> class.
+            </summary>
+            <param name="formBackColor">BackColor of the form.</param>
+            <param name="barsBackColor">BackColor of the bars.</param>
+        </member>
+        <member name="P:InfoBox.DesignParameters.FormBackColor">
+            <summary>
+            Gets the back color of the form.
+            </summary>
+            <value>The back color of the form.</value>
+        </member>
+        <member name="P:InfoBox.DesignParameters.BarsBackColor">
+            <summary>
+            Gets the back color of the bars.
+            </summary>
+            <value>The back color of the bars.</value>
+        </member>
+        <member name="M:InfoBox.DesignParameters.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object"/> to compare with the current <see cref="T:System.Object"/>.</param>
+            <returns>
+            true if the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>; otherwise, false.
+            </returns>
+            <exception cref="T:System.NullReferenceException">The <paramref name="obj"/> parameter is null.</exception>
+        </member>
+        <member name="M:InfoBox.DesignParameters.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type.
+            </summary>
+            <returns>
+            A hash code for the current <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="T:InfoBox.InformationBoxTitleIcon">
+            <summary>
+            Represents the icon for the title bar
+            </summary>
+        </member>
+        <member name="F:InfoBox.InformationBoxTitleIcon.icon">
+            <summary>
+            The title icon file
+            </summary>
+        </member>
+        <member name="M:InfoBox.InformationBoxTitleIcon.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:InfoBox.InformationBoxTitleIcon"/> class.
+            </summary>
+            <param name="fileName">Name of the file.</param>
+        </member>
+        <member name="M:InfoBox.InformationBoxTitleIcon.#ctor(System.Drawing.Icon)">
+            <summary>
+            Initializes a new instance of the <see cref="T:InfoBox.InformationBoxTitleIcon"/> class.
+            </summary>
+            <param name="icon">The title icon.</param>
+        </member>
+        <member name="P:InfoBox.InformationBoxTitleIcon.Icon">
+            <summary>
+            Gets the icon.
+            </summary>
+            <value>The title icon.</value>
+        </member>
+        <member name="T:InfoBox.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.IconBlank">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.IconError">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.IconFax">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.IconGamepad">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.IconGood">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.IconInfo">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.IconJoystick">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.IconKeys">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.IconLocker">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.IconPhone">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.IconPrinter">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.IconQuestion">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.IconScanner">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.IconSpeakers">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.IconWarning">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.LabelAbort">
+            <summary>
+              Looks up a localized string similar to Abort.
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.LabelCancel">
+            <summary>
+              Looks up a localized string similar to Cancel.
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.LabelDoNotShow">
+            <summary>
+              Looks up a localized string similar to Do not show this dialog again.
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.LabelHelp">
+            <summary>
+              Looks up a localized string similar to Help.
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.LabelIgnore">
+            <summary>
+              Looks up a localized string similar to Ignore.
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.LabelNo">
+            <summary>
+              Looks up a localized string similar to No.
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.LabelOK">
+            <summary>
+              Looks up a localized string similar to OK.
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.LabelRetry">
+            <summary>
+              Looks up a localized string similar to Retry.
+            </summary>
+        </member>
+        <member name="P:InfoBox.Properties.Resources.LabelYes">
+            <summary>
+              Looks up a localized string similar to Yes.
+            </summary>
+        </member>
+    </members>
+</doc>

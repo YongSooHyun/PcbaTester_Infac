@@ -1,0 +1,407 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TestFramework.TestDevices.MeasurementUnit</name>
+    </assembly>
+    <members>
+        <member name="T:TestFramework.TestDevices.MeasurementUnit">
+            <summary>
+            An object of this class gives access to the measurement unit.
+            </summary>
+            <summary>
+            An object of this class gives access to the measurement unit.
+            </summary>
+        </member>
+        <member name="T:TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule">
+            <summary>
+            The frequency counter module class.
+            </summary>
+        </member>
+        <member name="T:TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.MeasuringRange">
+            <summary>
+            Input voltage range
+            </summary>
+        </member>
+        <member name="F:TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.MeasuringRange.Plus_Minus_5_25V">
+            <summary>
+            Plus minus 5.25V voltage range
+            </summary>
+        </member>
+        <member name="F:TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.MeasuringRange.Plus_Minus_30V">
+            <summary>
+            Plus minus 30V voltage range
+            </summary>
+        </member>
+        <member name="T:TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.TriggerLevel">
+            <summary>
+            Trigger level
+            </summary>
+        </member>
+        <member name="F:TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.TriggerLevel.Level_0_V">
+            <summary>
+            0V trigger level
+            </summary>
+        </member>
+        <member name="F:TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.TriggerLevel.Level_800_mV">
+            <summary>
+            800mV trigger level (requires voltage range 5.25V)
+            </summary>
+        </member>
+        <member name="F:TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.TriggerLevel.Level_2_V">
+            <summary>
+            2V trigger level (requires voltage range 5.25V)
+            </summary>
+        </member>
+        <member name="F:TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.TriggerLevel.Level_4_6_V">
+            <summary>
+            4.6V trigger level (requires voltage range 30V)
+            </summary>
+        </member>
+        <member name="F:TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.TriggerLevel.Level_10_V">
+            <summary>
+            10V trigger level (requires voltage range 30V)
+            </summary>
+        </member>
+        <member name="F:TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.TriggerLevel.Auto">
+            <summary>
+            Automatic trigger level
+            </summary>
+        </member>
+        <member name="T:TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.GateTime">
+            <summary>
+            Gate time
+            </summary>
+        </member>
+        <member name="F:TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.GateTime.Time_10_ms">
+            <summary>
+            Gate time 10ms
+            </summary>
+        </member>
+        <member name="F:TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.GateTime.Time_100_ms">
+            <summary>
+            Gate time 100ms
+            </summary>
+        </member>
+        <member name="F:TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.GateTime.Time_1_s">
+            <summary>
+            Gate time 1s
+            </summary>
+        </member>
+        <member name="F:TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.GateTime.Time_10_s">
+            <summary>
+            Gate time 10s
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.ConnectFront">
+            <summary>
+            Sets the close flag for the relays connecting the front connector with the measurement ports.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.DisconnectFront">
+            <summary>
+            Sets the open flag for the relays connecting the front connector with the measurement ports.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.Setup(TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.MeasuringRange,TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.TriggerLevel,TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.GateTime,System.Boolean)">
+            <summary>
+            Sets the parameters for measurement.
+            </summary>
+            <param name="MeasuringRange">Measuring range</param>
+            <param name="TriggerLevel">Trigger level</param>
+            <param name="GateTime">Gate time</param>
+            <param name="LowPass">True: low pass is active</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.TriggerMeasurement(System.Int32)">
+            <summary>
+            Triggers a single measurement.
+            </summary>
+            <param name="MeasurementID">Measurement ID</param>
+            <remarks>
+            All requested measurements must be identified by a unique number, the 'Measurement ID'.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.RequestMeasurementResult(System.Int32)">
+            <summary>
+            Requests for a single measurement result.
+            </summary>
+            <param name="MeasurementID">Measurement ID</param>
+        </member>
+        <member name="T:TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.MeasurementResult">
+            <summary>
+            An object of this class gives access to the measurement results.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.MeasurementResult.Dispose">
+            <summary>
+            Releases the measurement result object.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.MeasurementResult.ReceiveMeasurementResult(System.Int32,System.Double@)">
+            <summary>
+            Fetches a single measurement result.
+            </summary>
+            <param name="MeasurementID">Measurement ID</param>
+            <param name="Frequency">Measured frequency</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.FrequencyCounterModule.GetMeasurementResult(System.Int32)">
+            <summary>
+            Gives access to the measurement result.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <returns>The measurement result object</returns>
+        </member>
+        <member name="T:TestFramework.TestDevices.MeasurementUnit.FrontEndFunctionModule">
+            <summary>
+            The front end function module class.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.FrontEndFunctionModule.Select(System.Int32)">
+            <summary>
+            Selects a front end function.
+            </summary>
+            <param name="FunctionID">The function ID</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.FrontEndFunctionModule.Clear">
+            <summary>
+            Clears the front end function selection.
+            </summary>
+        </member>
+        <member name="T:TestFramework.TestDevices.MeasurementUnit.VoltmeterModule">
+            <summary>
+            The voltmeter module class.
+            </summary>
+        </member>
+        <member name="T:TestFramework.TestDevices.MeasurementUnit.VoltmeterModule.MeasuringRange">
+            <summary>
+            Measuring range
+            </summary>
+        </member>
+        <member name="F:TestFramework.TestDevices.MeasurementUnit.VoltmeterModule.MeasuringRange.Maximum_100V">
+            <summary>
+            100V measuring range
+            </summary>
+        </member>
+        <member name="F:TestFramework.TestDevices.MeasurementUnit.VoltmeterModule.MeasuringRange.Maximum_10V">
+            <summary>
+            10V measuring range
+            </summary>
+        </member>
+        <member name="F:TestFramework.TestDevices.MeasurementUnit.VoltmeterModule.MeasuringRange.Maximum_1V">
+            <summary>
+            1V measuring range
+            </summary>
+        </member>
+        <member name="F:TestFramework.TestDevices.MeasurementUnit.VoltmeterModule.MeasuringRange.Maximum_100mV">
+            <summary>
+            100mV measuring range
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.VoltmeterModule.ConnectSense(System.UInt32,System.UInt32)">
+            <summary>
+            Sets the close flag for the relays connecting bus with measurement ports.
+            </summary>
+            <param name="BusHigh">Number of the high bus</param>
+            <param name="BusLow">Number of the low bus</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.VoltmeterModule.DisconnectSense(System.UInt32,System.UInt32)">
+            <summary>
+            Sets the open flag for the relays connecting bus with measurement ports.
+            </summary>
+            <param name="BusHigh">Number of the high bus</param>
+            <param name="BusLow">Number of the low bus</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.VoltmeterModule.ConnectFront">
+            <summary>
+            Sets the close flag for the relays connecting the front connector with measurement ports.
+            </summary>
+            <remarks>
+            If the measurement ports should be connected with the front connector all intern connections will be opened.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.VoltmeterModule.DisconnectFront">
+            <summary>
+            Sets the open flag for the relays connecting the front connector with measurement ports.
+            </summary>
+            <remarks>
+            If the measurement ports should be connected with the front connector all intern connections will be opened.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.VoltmeterModule.SetupMeasurement(System.Double)">
+            <summary>
+            Sets the parameters for measurement.
+            </summary>
+            <param name="MaximumVoltage">Maximum voltage</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.VoltmeterModule.SetupMeasurement(TestFramework.TestDevices.MeasurementUnit.VoltmeterModule.MeasuringRange)">
+            <summary>
+            Sets the parameters for measurement.
+            </summary>
+            <param name="MeasuringRange">Measuring range</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.VoltmeterModule.GetMeasurementCapabilities(System.Int32,System.Double,System.Double@)">
+            <summary>
+            Determines the measurement capabilities.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="MaximumVoltage">Expected measurement voltage</param>
+            <param name="ActualMeasuringRange">Actual measuring range</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.VoltmeterModule.GetMeasurementTimingCapabilities(System.Int32,System.Double,System.Double,System.UInt32,System.Double@,System.Double@,System.UInt32@)">
+            <summary>
+            Determines the timing capabilities.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="MeasurementDelay">Intended measurement delay</param>
+            <param name="MeasurementPeriod">Intended measurement period</param>
+            <param name="MeasurementCount">Measurement count</param>
+            <param name="ActualMeasurementDelay">Actual measurement delay</param>
+            <param name="ActualMeasurementPeriod">Actual measurement period</param>
+            <param name="ActualMeasurementCount">Actual measurement count</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.VoltmeterModule.TriggerMeasurement(System.Int32)">
+            <summary>
+            Triggers a single measurement.
+            </summary>
+            <param name="MeasurementID">Measurement ID</param>
+            <remarks>
+            All requested measurements must be identified by a unique number, the 'Measurement ID'.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.VoltmeterModule.RequestMeasurementResult(System.Int32,System.UInt32)">
+            <summary>
+            Requests for multiple measurement results.
+            </summary>
+            <param name="MeasurementID">Measurement ID</param>
+            <param name="MeasurementCount">Number of measurements</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.VoltmeterModule.RequestMeasurementResult(System.Int32)">
+            <summary>
+            Requests for a single measurement result.
+            </summary>
+            <param name="MeasurementID">Measurement ID</param>
+        </member>
+        <member name="T:TestFramework.TestDevices.MeasurementUnit.VoltmeterModule.MeasurementResult">
+            <summary>
+            An object of this class gives access to the measurement results.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.VoltmeterModule.MeasurementResult.Dispose">
+            <summary>
+            Releases the measurement result object.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.VoltmeterModule.MeasurementResult.ReceiveMeasurementResult(System.Int32,System.UInt32,System.Double[]@)">
+            <summary>
+            Fetches multiple measurement results.
+            </summary>
+            <param name="MeasurementID">Measurement ID</param>
+            <param name="MeasurementCount">Number of measurements</param>
+            <param name="Voltage">Measured voltage</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.VoltmeterModule.MeasurementResult.ReceiveMeasurementResult(System.Int32,System.Double@)">
+            <summary>
+            Fetches a single measurement result.
+            </summary>
+            <param name="MeasurementID">Measurement ID</param>
+            <param name="Voltage">Measured voltage</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.VoltmeterModule.GetMeasurementResult(System.Int32)">
+            <summary>
+            Gives access to the measurement result.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <returns>The measurement result object</returns>
+        </member>
+        <member name="F:TestFramework.TestDevices.MeasurementUnit.Voltmeter">
+            <summary>
+            The voltmeter module.
+            </summary>
+        </member>
+        <member name="F:TestFramework.TestDevices.MeasurementUnit.FrequencyCounter">
+            <summary>
+            The frequency counter module.
+            </summary>
+        </member>
+        <member name="F:TestFramework.TestDevices.MeasurementUnit.FrontEndFunction">
+            <summary>
+            The front end function module.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.ResourceRequest(System.Int32,System.UInt32)">
+            <summary>
+            Requests for the resource 'measurement unit'.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="DeviceCount">Number of requested devices</param>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.SpecificResourceRequest(System.Int32,System.UInt32)">
+            <summary>
+            Requests for the resource 'measurement unit'.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="DeviceID">ID of the requested device</param>
+            <remarks>
+            The devices are consecutive numbered starting with 1.
+            This number is used as 'Device ID'.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.GetDevice(System.Int32)">
+            <summary>
+            Gives access to the requested measurement unit.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <returns>A measurement unit</returns>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.GetDevice(System.Int32,System.UInt32)">
+            <summary>
+            Gives access to the requested measurement unit.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="DeviceID">Device number of the measurement unit</param>
+            <returns>A measurement unit</returns>
+            <remarks>
+            The measurement units are consecutive numbered starting with 1.
+            'DeviceID' selects the measurement unit.
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.#ctor(System.Int32,System.Int32)">
+            <summary>
+            An object of this class gives access to the measurement unit.
+            </summary>
+            <param name="ProcessID">ID of the current test process</param>
+            <param name="DeviceID">Device ID</param>
+            <remarks>
+            The device ID must be unique for each device. Devices are consecutive numbered starting with 0.
+            Note: for the user devices are numbered starting with 1!
+            </remarks>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.Dispose">
+            <summary>
+            Releases the measurement unit object.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.GetSlotNumber">
+            <summary>
+            Gets the slot number of the device.
+            </summary>
+            <returns>The slot number</returns>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.CommitConnections">
+            <summary>
+            Collects all close and open flags and makes them effective.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.ClearConnections">
+            <summary>
+            Sets the open flag for all relays.
+            </summary>
+        </member>
+        <member name="M:TestFramework.TestDevices.MeasurementUnit.Z(System.Object)">
+            <summary>
+            Do not use. For internal purposes only.
+            </summary>
+            <param name="arg">arg</param>
+            <returns>object</returns>
+        </member>
+    </members>
+</doc>

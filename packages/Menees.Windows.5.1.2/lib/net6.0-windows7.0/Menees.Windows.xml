@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Menees.Windows</name>
+    </assembly>
+    <members>
+        <member name="T:Menees.Windows.ComUtility">
+            <summary>
+            Helper methods for working with COM objects via dynamic dispatch.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.ComUtility.CreateInstance(System.String)">
+            <summary>
+            Creates a new instance of an object via its ProgId and ensures it
+            is accessible via C#'s dynamic keyword.
+            </summary>
+            <param name="progId">The ProgId of the type to create.</param>
+            <returns>A new dynamic instance.</returns>
+        </member>
+        <member name="M:Menees.Windows.ComUtility.FinalRelease(System.Object)">
+            <summary>
+            Performs the final release on a COM object's runtime callable wrapper (RCW).
+            </summary>
+            <param name="instance">The instance to release.</param>
+            <returns>
+            The new value of the reference count of the RCW associated with <paramref name="instance"/>,
+            which is 0 (zero) if the release is successful.
+            </returns>
+        </member>
+        <member name="T:Menees.Windows.ShowWindowCommand">
+            <summary>
+            The commands supported by <see cref="M:Menees.Windows.HandleUtility.PostShowWindowCommand(System.IntPtr,Menees.Windows.ShowWindowCommand)"/>.
+            </summary>
+            <remarks>
+            These commands are defined by the ShowWindow API:
+            https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-showwindow#parameters
+            </remarks>
+        </member>
+        <member name="F:Menees.Windows.ShowWindowCommand.Hide">
+            <summary>
+            Hides the window and activates another window.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.ShowWindowCommand.ShowNormal">
+            <summary>
+            Activates and displays a window. If the window is minimized or maximized, the system restores it to its original
+            size and position. An application should specify this flag when displaying the window for the first time.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.ShowWindowCommand.ShowMinimized">
+            <summary>
+            Activates the window and displays it as a minimized window.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.ShowWindowCommand.ShowMaximized">
+            <summary>
+            Activates the window and displays it as a maximized window.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.ShowWindowCommand.Maximize">
+            <summary>
+            Maximizes the specified window.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.ShowWindowCommand.ShowNoActivate">
+            <summary>
+            Displays a window in its most recent size and position. This value is similar to <see cref="F:Menees.Windows.ShowWindowCommand.ShowNormal"/>,
+            except that the window is not activated.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.ShowWindowCommand.Show">
+            <summary>
+            Activates the window and displays it in its current size and position.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.ShowWindowCommand.Minimize">
+            <summary>
+            Minimizes the specified window and activates the next top-level window in the Z order.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.ShowWindowCommand.ShowMinNoActive">
+            <summary>
+            Displays the window as a minimized window. This value is similar to <see cref="F:Menees.Windows.ShowWindowCommand.ShowMinimized"/>,
+            except the window is not activated.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.ShowWindowCommand.ShowNA">
+            <summary>
+            Displays the window in its current size and position. This value is similar to <see cref="F:Menees.Windows.ShowWindowCommand.Show"/>,
+            except that the window is not activated.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.ShowWindowCommand.Restore">
+            <summary>
+            Activates and displays the window. If the window is minimized or maximized, the system restores it to its
+            original size and position. An application should specify this flag when restoring a minimized window.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.ShowWindowCommand.ShowDefault">
+            <summary>
+            Sets the show state based on the SW_ value specified in the STARTUPINFO structure passed to the
+            CreateProcess function by the program that started the application.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.ShowWindowCommand.ForceMinimize">
+            <summary>
+            Minimizes a window, even if the thread that owns the window is not responding.
+            This flag should only be used when minimizing windows from a different thread.
+            </summary>
+        </member>
+        <member name="T:Menees.Windows.HandleUtility">
+            <summary>
+            Methods for working with windows and dialogs using an IntPtr window handle.
+            </summary>
+            <remarks>
+            This provides low-level APIs that need to be shared with Menees.Windows.Forms
+            and Menees.Windows.Presentation.
+            </remarks>
+        </member>
+        <member name="P:Menees.Windows.HandleUtility.IsApplicationActivated">
+            <summary>
+            Gets whether the current application is active (i.e., owns the foreground window).
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.HandleUtility.PostShowWindowCommand(System.IntPtr,Menees.Windows.ShowWindowCommand)">
+            <summary>
+            Sets the show state of a window without waiting for the operation to complete by
+            posting a ShowWindow command to the message queue of the given window.
+            </summary>
+            <param name="hWnd">The handle of the window to post to.</param>
+            <param name="command">The command to post.</param>
+            <returns>True if the command was posted; false otherwise.</returns>
+        </member>
+        <member name="M:Menees.Windows.HandleUtility.SelectFolder(System.Nullable{System.IntPtr},System.String,System.String)">
+            <summary>
+            Selects a file system path and allows the user to type in a path if necessary.
+            </summary>
+            <param name="ownerHandle">The handle of the owner of the displayed modal dialog.</param>
+            <param name="title">A short description of the path being selected.</param>
+            <param name="initialFolder">The initial path to select.</param>
+            <returns>The path the user selected if they pressed OK.  Null otherwise (e.g., the user canceled).</returns>
+        </member>
+        <member name="T:Menees.Windows.VisualStudioUtility">
+            <summary>
+            Used to open files in Visual Studio and locate its executables.
+            </summary>
+        </member>
+        <member name="F:Menees.Windows.VisualStudioUtility.VS2017MajorVersion">
+            <summary>
+            VS 2017 is version 15, and it includes MSBuild v15.
+            </summary>
+        </member>
+        <member name="M:Menees.Windows.VisualStudioUtility.OpenFile(System.String,System.String)">
+            <summary>
+            Opens a file in Visual Studio.
+            </summary>
+            <param name="fileName">The full path to a file to open.</param>
+            <param name="fileLineNumber">The 1-based line number to go to in the file.</param>
+            <returns>True if it was successful.  False if the file couldn't be opened in Visual Studio.</returns>
+            <remarks>
+            Using WindowsUtility.ShellExecute, it's very easy to open a file that's associated
+            with Visual Studio.  But to force a file open in Visual Studio and then
+            jump to a specific line number is a lot more work.
+            <para/>
+            The bulk of the code for this class was shamelessly pulled from FxCop 1.35's
+            Microsoft.FxCop.UI.FxCopUI class (in FxCop.exe) using Reflector and the
+            FileDisassembler add-in.  Then it was updated to use C# 4's dynamic keyword
+            to make the run-time invocation easier. Then I had to muck with it even more
+            to make it work in .NET Core 3.1.
+            </remarks>
+        </member>
+        <member name="M:Menees.Windows.VisualStudioUtility.ResolvePath(System.Func{System.Version,System.String},System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Uses the VS SetupConfiguration COM API to resolve a path to a version-specific executable like DevEnv.exe or MSBuild.exe.
+            </summary>
+            <param name="buildVersionPath">Used to build a version-specific path to try to resolve.</param>
+            <param name="minMajorVersion">The minimum major version to look for. This defaults to <see cref="F:Menees.Windows.VisualStudioUtility.VS2017MajorVersion"/>.</param>
+            <param name="maxMajorVersion">The maximum major version to look for. This defaults to <see cref="F:System.Int32.MaxValue"/>.</param>
+            <param name="resolvedPathMustExist">Whether the resolved version-specific path must exist. This defaults to false.</param>
+            <returns>The resolved path for the highest matched version or null if no version was matched.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,12 @@
+E:\Project\ICT_Project\IntelligentPcbaTester_Infac_Inline\E100RC_ProductionDLL\bin\x86\Debug\E100RC_ProductionDLL.dll
+E:\Project\ICT_Project\IntelligentPcbaTester_Infac_Inline\E100RC_ProductionDLL\bin\x86\Debug\E100RC_ProductionDLL.pdb
+E:\Project\ICT_Project\IntelligentPcbaTester_Infac_Inline\E100RC_ProductionDLL\obj\x86\Debug\E100RC_ProductionDLL.csproj.AssemblyReference.cache
+E:\Project\ICT_Project\IntelligentPcbaTester_Infac_Inline\E100RC_ProductionDLL\obj\x86\Debug\E100RC_ProductionDLL.csproj.CoreCompileInputs.cache
+E:\Project\ICT_Project\IntelligentPcbaTester_Infac_Inline\E100RC_ProductionDLL\obj\x86\Debug\E100RC_ProductionDLL.dll
+E:\Project\ICT_Project\IntelligentPcbaTester_Infac_Inline\E100RC_ProductionDLL\obj\x86\Debug\E100RC_ProductionDLL.pdb
+C:\OperationService\IntelligentPcbaTester_Infac_Inline\E100RC_ProductionDLL\bin\x86\Debug\E100RC_ProductionDLL.dll
+C:\OperationService\IntelligentPcbaTester_Infac_Inline\E100RC_ProductionDLL\bin\x86\Debug\E100RC_ProductionDLL.pdb
+C:\OperationService\IntelligentPcbaTester_Infac_Inline\E100RC_ProductionDLL\obj\x86\Debug\E100RC_ProductionDLL.csproj.AssemblyReference.cache
+C:\OperationService\IntelligentPcbaTester_Infac_Inline\E100RC_ProductionDLL\obj\x86\Debug\E100RC_ProductionDLL.csproj.CoreCompileInputs.cache
+C:\OperationService\IntelligentPcbaTester_Infac_Inline\E100RC_ProductionDLL\obj\x86\Debug\E100RC_ProductionDLL.dll
+C:\OperationService\IntelligentPcbaTester_Infac_Inline\E100RC_ProductionDLL\obj\x86\Debug\E100RC_ProductionDLL.pdb

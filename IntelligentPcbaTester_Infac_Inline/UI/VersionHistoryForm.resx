@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>2.5.0 [2023-10-26]
+  - 추가: 불량 마스터 보드 재시도 횟수 따로 지정
+  - 수정: EOL 테스트 결과 프린트 에러 수정
+2.4.0 [2023-10-18]
+  - 추가: 프레스 다운 전 MIDUP 할 수 있도록 옵션 추가
+2.3.0 [2023-10-13]
+  - 추가: JTAG 설정 페이지 추가
+  - 변경: NovaFlash, Log 폴더 디폴트 값 변경
+2.2.3 [2023-09-11]
+  - 수정: Async 모드에서 Probe Count 오류 수정
+2.2.2 [2023-08-30]
+  - 변경: 불량 로그 프린트 방식 변경(중복 출력 제거)
+2.2.1 [2023-08-03]
+  - 변경: 프로젝트 GRP 정보 편집 리스트 뷰로 변경
+2.2.0 [2023-07-19]
+  - 추가: 사이버보안을 위한 MES CRC 체크 및 테스트 종료 후 롬파일 제거 기능
+2.1.0 [2023-06-19]
+  - 추가: 롬 다운로드 실패 시 2번 이상의 번호를 가진 보드에 대한 다시 다운로드 기능
+2.0.1 [2023-06-13]
+  - 수정: 차종코드 검사 하지 않던 오류 수정
+2.0.0 [2023-06-08]
+  - 추가: ICT+EOL 통합 설비에 맞게 MES, 로그 저장 방식 구현
+  - 변경: ROM 다운로드 시 GRP 와 Import 파일 지정하도록 함
+  - 변경: MES 통신 오류가 발생한 경우 서버 재부팅하고 다시 시도
+1.5.3 [2023-06-02]
+  - 수정: NovaFlash 파일 업로드 시 파일이름에 공백, 괄호 포함될 때 오류 수정
+  - 변경: 실행되는 섹션이름들 중 "isp" 라는 문자열을 포함한 섹션이 있으면 ROM파일 업로드
+  - 추가: 실행할 수 있는 섹션 2개 더 추가
+  - 변경: Local, Other 위치에 저장되는 로그는 {ICT | EOL}/{프로젝트이름} 폴더 추가 생성
+1.5.2 [2023-05-30]
+  - 변경: UP-&gt;FCTUP 방식을 DOWN-&gt;FCTUP 방식으로 변경
+1.5.1 [2023-03-30]
+  - 수정: 테스트 실행 시는 Readonly로, 프로젝트 편집 시는 WriteAccess로 eloZ1 프로젝트 오픈
+1.5.0 [2023-03-29]
+  - 추가: EOL 실행을 위해 Master 보드 여부 저장
+1.4.0 [2023-03-29]
+  - 추가: 프로젝트 디버깅(eloZ1 프로젝트 오픈) 기능
+1.3.2 [2023-03-28]
+  - 변경: 로컬에 있는 GRP의 CRC와 Hydra 디바이스의 GRP CRC가 같으면 다시 업로드 안 함
+1.3.1 [2023-03-22]
+  - 변경: DATA CRC 추출 방식을 Source CRC 추출에서 Data CRC 추출로 변경
+1.3.0 [2023-03-17]
+  - 변경: GRP CRC 대신 DATA CRC 이용(Initial Value 0)
+  - 변경: 제품 설정/오픈 페이지 칼럼 정렬, 폰트 변경
+1.2.2 [2023-03-15]
+  - 변경: 로그파일이름 변경, EOL 스펙로그 내용 기존과 동일하게 함
+1.2.1 [2023-02-21]
+  - 수정: EOL Notepad 저장 로그 섹션 이름 오류 수정
+  - 추가: EOL 화면 로그 스텝 이름 앞에 UID 추가
+1.2.0 [2023-01-29]
+  - 변경: EOL 실행 결과 로깅을 전체 실행 후 하도록 함
+1.1.0 [2023-01-18]
+  - 변경: 실린더 UP 상태에서 FCT UP 상태로 이동하도록 변경
+  - 변경: MES 로그 메시지 출력에서 시간 제거
+  - 추가: 보드 상-하 배치 시 1번 보드 위치 지정 가능
+1.0.0 [2023-01-08]</value>
+  </data>
+</root>
